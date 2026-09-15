@@ -6,6 +6,14 @@ The goal is to demonstrate not only dashboard design, but also the full analytic
 
 All public projects use **synthetic and anonymised data** created specifically for portfolio purposes.
 
+## Professional context / Contexte professionnel
+
+**EN —** The projects presented in this portfolio are based on reporting, financial monitoring and operational-analysis work carried out during my professional experience at **ENGIE Solutions**. For confidentiality reasons, the public versions have been rebuilt with synthetic and anonymised data. Client identities, internal systems, contractual information, production URLs, company-specific references and confidential business data have been removed or replaced.
+
+**FR —** Les projets présentés dans ce portfolio sont basés sur des travaux de reporting, de suivi financier et d'analyse opérationnelle réalisés dans le cadre de mon expérience professionnelle chez **ENGIE Solutions**. Pour des raisons de confidentialité, les versions publiques ont été reconstruites avec des données synthétiques et anonymisées. Les identités clients, systèmes internes, informations contractuelles, URLs de production, références propres à l'entreprise et données métier confidentielles ont été supprimés ou remplacés.
+
+> The portfolio preserves the business problems, analytical approach, reporting logic and Power BI skills used in a real professional environment, without publishing confidential source data.
+
 ---
 
 # 🇬🇧 ENGLISH
