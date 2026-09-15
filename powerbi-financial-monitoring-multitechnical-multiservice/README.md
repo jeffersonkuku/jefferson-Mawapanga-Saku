@@ -4,6 +4,22 @@ A Power BI portfolio project dedicated to **financial monitoring for large multi
 
 ---
 
+## Professional context / Contexte professionnel
+
+**EN —** This portfolio project is based on financial-monitoring and operational-reporting work carried out during my professional experience at **ENGIE Solutions**, in a multitechnical and multiservice environment. The public version is not an internal ENGIE file: it is a confidentiality-safe reconstruction that preserves the type of business problems, analytical logic and Power BI work performed in a real professional context.
+
+**FR —** Ce projet de portfolio est basé sur des travaux de suivi financier et de reporting opérationnel réalisés dans le cadre de mon expérience professionnelle chez **ENGIE Solutions**, dans un environnement multitechnique et multiservice. La version publique n'est pas un fichier interne ENGIE : il s'agit d'une reconstruction respectant la confidentialité, qui conserve les problématiques métier, la logique d'analyse et les compétences Power BI mobilisées dans un contexte professionnel réel.
+
+For confidentiality reasons / Pour des raisons de confidentialité :
+
+- client names and identities are not published / les noms et identités des clients ne sont pas publiés ;
+- internal systems and URLs are removed / les systèmes et URLs internes sont supprimés ;
+- contractual and commercially sensitive information is excluded / les informations contractuelles et commercialement sensibles sont exclues ;
+- supplier, site and financial data shown publicly are anonymised or synthetic / les données fournisseurs, sites et financières publiées sont anonymisées ou synthétiques ;
+- the screenshots below are from the public portfolio reconstruction, not internal production screenshots / les captures ci-dessous proviennent de la reconstruction publique du portfolio et non d'écrans internes de production.
+
+---
+
 ## Dashboard preview / Aperçu du rapport
 
 The screenshots below are taken from the actual portfolio report. The Power BI Desktop interface has only been cropped out for a cleaner GitHub presentation; the dashboard content itself has not been altered.
@@ -14,9 +30,9 @@ Les captures ci-dessous proviennent directement du rapport du portfolio. Seule l
 
 ![Financial 360 overview](assets/screenshots/01-financial-overview.png)
 
-**EN —** Executive view of the overall financial position. It brings together the controlled budget, committed amount, received amount, invoiced amount, consumption rate and remaining budget. The page also shows the commitment trajectory, the spend cycle and the operational order pipeline.
+**EN — Purpose in the professional workflow:** this page was designed as the management entry point for financial steering. It was used to give a rapid consolidated view of budget, commitments, receipts, invoicing, consumption rate and remaining budget, while also showing whether the order pipeline was progressing normally from commitment to receipt and invoicing. The objective was to identify a financial drift or an operational blockage quickly before moving into the detailed views.
 
-**FR —** Vue de synthèse de la situation financière globale. Elle regroupe le budget piloté, les engagements, les réceptions, la facturation, le taux de consommation et la marge budgétaire. La page présente également la trajectoire des engagements, le cycle de dépense et le pipeline opérationnel des commandes.
+**FR — Utilité dans le workflow professionnel :** cette page servait de point d'entrée pour le pilotage financier. Elle permettait d'obtenir rapidement une vision consolidée du budget, des engagements, des réceptions, de la facturation, du taux de consommation et de la marge budgétaire, tout en vérifiant que le cycle des commandes évoluait normalement de l'engagement jusqu'à la réception puis à la facturation. L'objectif était d'identifier rapidement une dérive financière ou un blocage opérationnel avant d'aller dans les vues de détail.
 
 ---
 
@@ -24,9 +40,9 @@ Les captures ci-dessous proviennent directement du rapport du portfolio. Seule l
 
 ![Budget trajectory](assets/screenshots/02-budget-trajectory.png)
 
-**EN —** Monthly budget-monitoring page used to compare the financial plan with actual commitments. The journal provides a detailed reading of budget, ordered, received and invoiced amounts over time.
+**EN — Purpose in the professional workflow:** this view was used to monitor the budget trajectory over time and compare planned financial capacity with actual commitments. It helped identify months with unusually high purchasing activity, anticipate budget overruns, follow the gap between committed, received and invoiced amounts, and support periodic management reviews.
 
-**FR —** Page de suivi budgétaire mensuel permettant de comparer le plan financier aux engagements réels. Le journal mensuel donne une lecture détaillée du budget, des montants commandés, réceptionnés et facturés dans le temps.
+**FR — Utilité dans le workflow professionnel :** cette vue servait à suivre la trajectoire budgétaire dans le temps et à comparer la capacité financière planifiée aux engagements réels. Elle permettait d'identifier les mois présentant une activité achats anormalement élevée, d'anticiper les dépassements budgétaires, de suivre les écarts entre commandé, réceptionné et facturé, et d'alimenter les revues périodiques de pilotage.
 
 ---
 
@@ -34,9 +50,9 @@ Les captures ci-dessous proviennent directement du rapport du portfolio. Seule l
 
 ![Supplier exposure](assets/screenshots/03-supplier-exposure.png)
 
-**EN —** Supplier-focused view designed to monitor spend concentration, number of purchase orders, amounts still to receive or invoice, supplier exposure and the status of commitments.
+**EN — Purpose in the professional workflow:** this page was used to analyse supplier exposure and understand where financial commitments were concentrated. It supported the identification of suppliers with the largest open commitments, amounts still to receive or invoice, and purchase orders requiring follow-up. It also helped prioritise operational actions with procurement and site teams when supplier execution or invoicing was delayed.
 
-**FR —** Vue orientée fournisseurs permettant de suivre la concentration des dépenses, le volume de commandes, les montants restant à recevoir ou à facturer, l'exposition fournisseurs et le statut des engagements.
+**FR — Utilité dans le workflow professionnel :** cette page servait à analyser l'exposition fournisseurs et à comprendre où se concentraient les engagements financiers. Elle permettait d'identifier les fournisseurs présentant les plus gros engagements ouverts, les montants restant à recevoir ou à facturer, ainsi que les commandes nécessitant un suivi. Elle aidait également à prioriser les actions avec les équipes achats et exploitation lorsqu'une exécution fournisseur ou une facturation prenait du retard.
 
 ---
 
@@ -44,9 +60,9 @@ Les captures ci-dessous proviennent directement du rapport du portfolio. Seule l
 
 ![Transaction journal](assets/screenshots/04-transactions.png)
 
-**EN —** Detailed operational journal used as the audit trail behind the management KPIs. It enables transaction-level analysis by purchase order, creation date, supplier, site, status, category and financial amounts.
+**EN — Purpose in the professional workflow:** this page was the detailed investigation and control view behind the dashboard KPIs. It was used to trace a financial variance back to individual purchase orders, verify supplier, site, status and financial amounts, and identify the exact transactions requiring correction, receipt confirmation, invoicing follow-up or operational review.
 
-**FR —** Journal opérationnel détaillé servant de piste d'audit derrière les KPI de pilotage. Il permet une analyse transactionnelle par commande, date de création, fournisseur, site, statut, catégorie et montants financiers.
+**FR — Utilité dans le workflow professionnel :** cette page constituait la vue de contrôle et d'investigation détaillée derrière les KPI du dashboard. Elle servait à remonter d'un écart financier jusqu'aux commandes concernées, à vérifier le fournisseur, le site, le statut et les montants, puis à identifier précisément les transactions nécessitant une correction, une confirmation de réception, une relance de facturation ou une analyse opérationnelle.
 
 ---
 
@@ -335,7 +351,7 @@ The interface was designed around:
 
 ## 10. Privacy and confidentiality
 
-This project is a **portfolio reconstruction**.
+This project is a **confidentiality-safe portfolio reconstruction based on work and business challenges encountered during my professional experience at ENGIE Solutions**.
 
 All published information is synthetic or anonymised:
 
@@ -635,7 +651,7 @@ L'interface repose sur :
 
 ## 10. Confidentialité
 
-Ce projet est une **reconstruction destinée au portfolio**.
+Ce projet est une **reconstruction destinée au portfolio, basée sur des travaux et problématiques métier rencontrés dans le cadre de mon expérience professionnelle chez ENGIE Solutions**.
 
 Toutes les informations publiées sont synthétiques ou anonymisées :
 
