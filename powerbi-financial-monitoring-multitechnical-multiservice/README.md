@@ -4,6 +4,53 @@ A Power BI portfolio project dedicated to **financial monitoring for large multi
 
 ---
 
+## Dashboard preview / Aperçu du rapport
+
+The screenshots below are taken from the actual portfolio report. The Power BI Desktop interface has only been cropped out for a cleaner GitHub presentation; the dashboard content itself has not been altered.
+
+Les captures ci-dessous proviennent directement du rapport du portfolio. Seule l'interface Power BI Desktop autour du rapport a été recadrée pour une présentation GitHub plus propre ; le contenu du dashboard n'a pas été modifié.
+
+### 1 — Financial 360° Overview / Vue financière 360°
+
+![Financial 360 overview](assets/screenshots/01-financial-overview.png)
+
+**EN —** Executive view of the overall financial position. It brings together the controlled budget, committed amount, received amount, invoiced amount, consumption rate and remaining budget. The page also shows the commitment trajectory, the spend cycle and the operational order pipeline.
+
+**FR —** Vue de synthèse de la situation financière globale. Elle regroupe le budget piloté, les engagements, les réceptions, la facturation, le taux de consommation et la marge budgétaire. La page présente également la trajectoire des engagements, le cycle de dépense et le pipeline opérationnel des commandes.
+
+---
+
+### 2 — Budget Trajectory / Trajectoire budgétaire
+
+![Budget trajectory](assets/screenshots/02-budget-trajectory.png)
+
+**EN —** Monthly budget-monitoring page used to compare the financial plan with actual commitments. The journal provides a detailed reading of budget, ordered, received and invoiced amounts over time.
+
+**FR —** Page de suivi budgétaire mensuel permettant de comparer le plan financier aux engagements réels. Le journal mensuel donne une lecture détaillée du budget, des montants commandés, réceptionnés et facturés dans le temps.
+
+---
+
+### 3 — Supplier Exposure / Exposition fournisseurs
+
+![Supplier exposure](assets/screenshots/03-supplier-exposure.png)
+
+**EN —** Supplier-focused view designed to monitor spend concentration, number of purchase orders, amounts still to receive or invoice, supplier exposure and the status of commitments.
+
+**FR —** Vue orientée fournisseurs permettant de suivre la concentration des dépenses, le volume de commandes, les montants restant à recevoir ou à facturer, l'exposition fournisseurs et le statut des engagements.
+
+---
+
+### 4 — Transaction Journal / Journal des transactions
+
+![Transaction journal](assets/screenshots/04-transactions.png)
+
+**EN —** Detailed operational journal used as the audit trail behind the management KPIs. It enables transaction-level analysis by purchase order, creation date, supplier, site, status, category and financial amounts.
+
+**FR —** Journal opérationnel détaillé servant de piste d'audit derrière les KPI de pilotage. Il permet une analyse transactionnelle par commande, date de création, fournisseur, site, statut, catégorie et montants financiers.
+
+---
+
+
 # 🇬🇧 ENGLISH
 
 ## 1. Project overview

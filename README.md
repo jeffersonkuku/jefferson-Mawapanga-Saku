@@ -16,6 +16,16 @@ All public projects use **synthetic and anonymised data** created specifically f
 
 ➡️ [Open the project](./powerbi-financial-monitoring-multitechnical-multiservice/)
 
+
+### Dashboard preview
+
+[![Financial Monitoring Report — Multitechnical & Multiservice Operations](./powerbi-financial-monitoring-multitechnical-multiservice/assets/screenshots/01-financial-overview.png)](./powerbi-financial-monitoring-multitechnical-multiservice/)
+
+**EN —** Executive financial overview combining budget, commitments, receipts, invoicing, budget consumption and operational order status in a single management view.
+
+**FR —** Vue exécutive consolidant budget, engagements, réceptions, facturation, consommation budgétaire et statut opérationnel des commandes.
+
+
 This Power BI report simulates the financial monitoring of a **large multi-site multitechnical and multiservice operating environment**.
 
 The dashboard is designed for activities such as technical maintenance, facility operations, energy and utilities services, subcontracted works, technical purchases and recurring multiservice contracts.
