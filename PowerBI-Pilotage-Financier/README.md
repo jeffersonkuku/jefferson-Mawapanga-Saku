@@ -42,9 +42,10 @@ Supplier names, sites, buyers, projects, entities and financial values are ficti
 - Procurement / spend analytics
 - Dashboard UX/UI
 
-## Main file
+## Files
 
 - `Portfolio_Pilotage_Financier_FINAL_V6.pbix` — final Power BI report
+- `Portfolio_Commandes_Anonymise.xlsx` — synthetic source dataset used by the portfolio report
 
 ## Privacy
 
