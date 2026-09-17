@@ -1,0 +1,19 @@
+# Do not publish Power Apps packages or solution exports
+*.msapp
+*.zip
+*.cab
+
+# Environment / secret files
+.env
+.env.*
+*.secret.*
+secrets/
+
+# Local exports and temporary files
+exports/
+temp/
+.tmp/
+
+# OS files
+.DS_Store
+Thumbs.db
