@@ -1,0 +1,24 @@
+name: Debug Kaikki page
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/debug-kaikki.yml']
+permissions:
+  contents: read
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inspect run page source
+        run: |
+          python - <<'PY'
+          import requests, html
+          u='https://kaikki.org/dictionary/English/meaning/r/ru/run.html'
+          r=requests.get(u,timeout=30,headers={'User-Agent':'RoadWordsAU debug'})
+          print('status',r.status_code,'len',len(r.text))
+          t=html.unescape(r.text)
+          for q in ['mp3_url','En-au-run','Australia','en-au-run']:
+              print(q,t.find(q))
+          i=t.find('mp3_url')
+          print(t[max(0,i-1000):i+2500])
+          PY
