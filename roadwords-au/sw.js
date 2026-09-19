@@ -1,4 +1,4 @@
-const CACHE='roadwords-au-v3.0.0';
+const CACHE='roadwords-au-v4.0.0';
 const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg'];
 
 self.addEventListener('install', event => {
