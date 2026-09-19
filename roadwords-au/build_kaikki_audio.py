@@ -5,12 +5,10 @@ from urllib.parse import quote
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import requests
 
-APP=Path("roadwords-au/index.html")
+WORDS=Path("roadwords-au/words-3000.json")
 OUT=Path("roadwords-au/audio-map.json")
-html=APP.read_text(encoding="utf-8")
-m=re.search(r'window\.__ROADWORDS_WORDS__=(\[[\s\S]*?\]);</script>',html)
-if not m: raise SystemExit("word list missing")
-words=json.loads(m.group(1))
+words=json.loads(WORDS.read_text(encoding="utf-8"))
+if len(words)!=3000: raise SystemExit(f"Expected 3000 words, got {len(words)}")
 
 UA={"User-Agent":"RoadWordsAU/1.0 educational app"}
 
