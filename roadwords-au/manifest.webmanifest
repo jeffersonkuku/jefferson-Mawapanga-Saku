@@ -1,15 +1,10 @@
 {
-  "name": "RoadWords AU — English Car Trainer",
-  "short_name": "RoadWords AU",
-  "description": "Apprentissage audio de vocabulaire anglais avec accent australien et répétition espacée.",
-  "start_url": "./",
-  "scope": "./",
-  "display": "standalone",
-  "background_color": "#0b0d10",
-  "theme_color": "#0b0d10",
-  "orientation": "portrait-primary",
-  "lang": "fr",
-  "icons": [
-    {"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
-  ]
+  "name":"RoadWords AU",
+  "short_name":"RoadWords",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#0d1015",
+  "theme_color":"#0d1015",
+  "description":"English-French audio vocabulary trainer using the device's Australian English voice.",
+  "icons":[{"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
 }
