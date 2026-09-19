@@ -238,6 +238,16 @@ h3 { margin: 0 0 8px; }
         </div>
       </section>
 
+      <section id="audioStartOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-label="Démarrer l'exercice audio">
+        <div class="overlay-card">
+          <div style="font-size:52px;margin-bottom:8px">🎧</div>
+          <h2 style="margin-top:0">Audio prêt</h2>
+          <p>Le premier vrai enregistrement australien est chargé. Appuie toi-même sur le bouton pour lancer le premier mot.</p>
+          <button id="startAudioBtn" class="primary-btn huge">▶ Lancer l’exercice</button>
+          <button id="cancelAudioStartBtn" class="text-btn danger">Annuler</button>
+        </div>
+      </section>
+
       <section id="pausedOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-label="Session en pause">
         <div class="overlay-card">
           <h2>Pause</h2>
@@ -256,7 +266,7 @@ h3 { margin: 0 0 8px; }
 (() => {
   'use strict';
 
-  const STORAGE_KEY = 'roadwords-au-v3';
+  const STORAGE_KEY = 'roadwords-au-v4';
   const CUSTOM_WORDS_KEY = 'roadwords-au-custom-words-v1';
   const INTERVAL_MINUTES = [10, 24*60, 3*24*60, 7*24*60, 14*24*60, 30*24*60, 90*24*60];
   const DEFAULT_SETTINGS = {
@@ -274,12 +284,12 @@ h3 { margin: 0 0 8px; }
   const $ = (id) => document.getElementById(id);
   const els = {};
   const ids = [
-    'homeView','sessionView','settingsView','pausedOverlay','homeBtn','settingsBtn',
+    'homeView','sessionView','settingsView','pausedOverlay','audioStartOverlay','homeBtn','settingsBtn',
     'startDriveBtn','startReviewBtn','statSeen','statMastered','statDue','sessionProgress',
     'pauseBtn','phaseLabel','countdown','wordCard','englishWord','pronunciationLabel','frenchWord',
     'sessionHint','answerPanel','voiceStatus','noBtn','yesBtn','stopSessionBtn','accentSelect',
     'voiceResolved','voiceSelect','testVoiceBtn','thinkSeconds','speechRate','repeatCount','sessionSize','voiceAnswers',
-    'speakFrench','retryMisses','csvInput','importCsvBtn','exportProgressBtn','resetBtn','resumeBtn','quitFromPauseBtn'
+    'speakFrench','retryMisses','csvInput','importCsvBtn','exportProgressBtn','resetBtn','resumeBtn','quitFromPauseBtn','startAudioBtn','cancelAudioStartBtn'
   ];
   ids.forEach(id => els[id] = $(id));
 
@@ -293,6 +303,10 @@ h3 { margin: 0 0 8px; }
   let wakeLock = null;
   let humanAudioCache = loadHumanAudioCache();
   let currentHumanAudioMeta = null;
+  const humanPlayer = new Audio();
+  humanPlayer.preload = 'auto';
+  humanPlayer.playsInline = true;
+  let testAudioReady = false;
 
   function loadHumanAudioCache() {
     try { return JSON.parse(localStorage.getItem('roadwords-au-human-audio-v1') || '{}'); }
@@ -316,26 +330,47 @@ h3 { margin: 0 0 8px; }
 
     const filename = 'File:En-au-' + key.replace(/_/g, ' ') + '.ogg';
     const endpoint = 'https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*' +
-      '&redirects=1&prop=imageinfo&iiprop=url%7Cextmetadata&titles=' + encodeURIComponent(filename);
+      '&redirects=1&prop=videoinfo&viprop=url%7Cderivatives%7Cextmetadata%7Cmediatype&titles=' + encodeURIComponent(filename);
 
     try {
       const res = await fetch(endpoint, { mode: 'cors', cache: 'force-cache' });
       if (!res.ok) throw new Error('commons');
       const data = await res.json();
       const page = Object.values(data.query?.pages || {})[0];
-      if (!page || page.missing !== undefined || !page.imageinfo?.[0]?.url) {
+      const info = page?.videoinfo?.[0];
+      if (!page || page.missing !== undefined || !info) {
         humanAudioCache[key] = null;
         saveHumanAudioCache();
         return null;
       }
-      const info = page.imageinfo[0];
+
+      const derivatives = Array.isArray(info.derivatives) ? info.derivatives : [];
+      const mp3 = derivatives.find(d => {
+        const type = String(d.type || '').toLowerCase();
+        const src = String(d.src || d.url || '').toLowerCase();
+        return type.includes('mpeg') || type.includes('mp3') || src.endsWith('.mp3');
+      });
+      const playable = mp3 || derivatives.find(d => {
+        const type = String(d.type || '').toLowerCase();
+        return type.startsWith('audio/');
+      });
+
+      // On iPhone we deliberately prefer the MP3 transcode instead of the original OGG.
+      const audioUrl = playable?.src || playable?.url || null;
+      if (!audioUrl) {
+        humanAudioCache[key] = null;
+        saveHumanAudioCache();
+        return null;
+      }
+
       const meta = info.extmetadata || {};
       const out = {
-        url: info.url,
+        url: audioUrl,
         page: info.descriptionurl || ('https://commons.wikimedia.org/wiki/' + encodeURIComponent(page.title.replace(/ /g,'_'))),
         author: plainText(meta.Artist?.value || meta.Credit?.value || 'Wikimedia Commons contributor'),
         license: plainText(meta.LicenseShortName?.value || 'Wikimedia Commons licence'),
-        title: page.title
+        title: page.title,
+        format: String(playable?.type || 'audio/mpeg')
       };
       humanAudioCache[key] = out;
       saveHumanAudioCache();
@@ -348,22 +383,33 @@ h3 { margin: 0 0 8px; }
   function playAudioUrl(url, rate=1) {
     return new Promise(resolve => {
       if (!url) return resolve(false);
-      const a = new Audio();
-      a.preload = 'auto';
-      a.src = url;
-      a.playbackRate = Number(rate) || 1;
-      a.defaultPlaybackRate = Number(rate) || 1;
-      a.onended = () => resolve(true);
-      a.onerror = () => resolve(false);
-      const p = a.play();
-      if (p && typeof p.catch === 'function') p.catch(() => resolve(false));
+      try {
+        humanPlayer.pause();
+        humanPlayer.onended = null;
+        humanPlayer.onerror = null;
+        if (humanPlayer.src !== url) humanPlayer.src = url;
+        humanPlayer.playbackRate = Number(rate) || 1;
+        humanPlayer.defaultPlaybackRate = Number(rate) || 1;
+        try { humanPlayer.currentTime = 0; } catch {}
+        humanPlayer.onended = () => resolve(true);
+        humanPlayer.onerror = () => resolve(false);
+        const p = humanPlayer.play();
+        if (p && typeof p.catch === 'function') p.catch(() => resolve(false));
+      } catch {
+        resolve(false);
+      }
     });
   }
 
   async function playAustralianHuman(term, token) {
-    const meta = await resolveAustralianHumanAudio(term);
+    const key = String(term || '').trim().toLowerCase();
+    let meta = Object.prototype.hasOwnProperty.call(humanAudioCache, key) ? humanAudioCache[key] : undefined;
+    if (meta === undefined) meta = await resolveAustralianHumanAudio(term);
     if (!meta || token !== runToken || !session || session.paused) return false;
+
     currentHumanAudioMeta = meta;
+    // When this function is called directly by the user's tap, play() is reached
+    // synchronously if the audio was preloaded, which satisfies Safari/iPhone.
     const ok = await playAudioUrl(meta.url, state.settings.rate || 1);
     if (ok && els.pronunciationLabel) {
       const who = meta.author ? ' • ' + meta.author : '';
@@ -371,6 +417,40 @@ h3 { margin: 0 0 8px; }
       els.pronunciationLabel.title = meta.license || '';
     }
     return ok;
+  }
+
+  async function prepareFirstPlayableAudio() {
+    if (!session) return false;
+    els.phaseLabel.textContent = 'Préparation';
+    els.sessionHint.textContent = 'Chargement d’un vrai enregistrement australien…';
+    for (let i = session.index; i < session.queue.length; i++) {
+      const word = session.queue[i];
+      const meta = await resolveAustralianHumanAudio(word.en);
+      if (meta?.url) {
+        session.index = i;
+        humanPlayer.src = meta.url;
+        humanPlayer.load();
+        return true;
+      }
+      session.skippedNoHumanAudio++;
+    }
+    return false;
+  }
+
+  async function prepareTestAudio() {
+    if (!els.testVoiceBtn) return;
+    els.testVoiceBtn.disabled = true;
+    els.testVoiceBtn.textContent = '⏳ Préparation du test audio…';
+    const meta = await resolveAustralianHumanAudio('run');
+    testAudioReady = !!meta?.url;
+    if (testAudioReady) {
+      humanPlayer.src = meta.url;
+      humanPlayer.load();
+      els.testVoiceBtn.textContent = '🔊 Tester une vraie voix australienne';
+      els.testVoiceBtn.disabled = false;
+    } else {
+      els.testVoiceBtn.textContent = '⚠️ Test audio indisponible';
+    }
   }
 
   function prefetchHumanAudioFrom(index, count=8) {
@@ -613,7 +693,13 @@ h3 { margin: 0 0 8px; }
     els.answerPanel.classList.add('hidden');
     await requestWakeLock();
     prefetchHumanAudioFrom(0, 10);
-    nextCard(runToken);
+    const ready = await prepareFirstPlayableAudio();
+    if (!ready) {
+      alert('Aucun enregistrement australien compatible n’a pu être chargé pour cette session.');
+      finishSession();
+      return;
+    }
+    els.audioStartOverlay.classList.remove('hidden');
   }
 
   async function nextCard(token) {
@@ -820,6 +906,7 @@ h3 { margin: 0 0 8px; }
     releaseWakeLock();
     session = null;
     els.pausedOverlay.classList.add('hidden');
+    els.audioStartOverlay?.classList.add('hidden');
     showView('homeView');
   }
 
@@ -870,14 +957,26 @@ h3 { margin: 0 0 8px; }
 
     els.testVoiceBtn.addEventListener('click', async () => {
       saveSettingsFromUI();
-      const meta = await resolveAustralianHumanAudio('run');
-      if (!meta) {
-        alert('Impossible de joindre Wikimedia Commons pour le test audio.');
+      const meta = humanAudioCache['run'];
+      if (!testAudioReady || !meta?.url) {
+        els.testVoiceBtn.textContent = '⏳ Audio pas encore prêt…';
+        await prepareTestAudio();
         return;
       }
+      // This play() happens from the user's tap, with the URL already resolved.
       await playAudioUrl(meta.url, state.settings.rate || 1);
-      await wait(500, runToken);
-      await playAudioUrl(meta.url, state.settings.rate || 1);
+    });
+
+    els.startAudioBtn.addEventListener('click', () => {
+      if (!session) return;
+      els.audioStartOverlay.classList.add('hidden');
+      runToken++;
+      nextCard(runToken);
+    });
+
+    els.cancelAudioStartBtn.addEventListener('click', () => {
+      els.audioStartOverlay.classList.add('hidden');
+      finishSession();
     });
 
     els.importCsvBtn.addEventListener('click', () => els.csvInput.click());
@@ -919,6 +1018,7 @@ h3 { margin: 0 0 8px; }
     }
     try {
       await loadWords();
+      prepareTestAudio();
     } catch (err) {
       alert(err.message || 'Erreur de chargement.');
     }
