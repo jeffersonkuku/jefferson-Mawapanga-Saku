@@ -1,0 +1,55 @@
+name: Build RoadWords from Kaikki
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'roadwords-au/build_kaikki_audio.py'
+      - '.github/workflows/roadwords-kaikki.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    timeout-minutes: 25
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: pip install requests
+      - name: Find verified Australian Wiktionary recordings
+        run: python roadwords-au/build_kaikki_audio.py
+      - name: Validate map
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('roadwords-au/audio-map.json',encoding='utf-8'))
+          print('COUNT',len(d))
+          assert len(d)>=100
+          assert all('upload.wikimedia.org' in x['audio'] for x in d)
+          PY
+      - name: Validate 30 actual audio files
+        run: |
+          python - <<'PY' >/tmp/urls.txt
+          import json
+          d=json.load(open('roadwords-au/audio-map.json',encoding='utf-8'))
+          step=max(1,len(d)//30)
+          for x in d[::step][:30]: print(x['audio'])
+          PY
+          set -e
+          while IFS= read -r url; do
+            code=$(curl -L -sS --max-time 30 -o /tmp/a.mp3 -w "%{http_code}" "$url")
+            bytes=$(wc -c </tmp/a.mp3)
+            echo "HTTP=$code bytes=$bytes"
+            test "$code" = "200"
+            test "$bytes" -gt 1000
+          done </tmp/urls.txt
+      - name: Commit verified map
+        run: |
+          git config user.name "RoadWords Audio Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add roadwords-au/audio-map.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Build verified Australian Wiktionary audio map"
+          git push
