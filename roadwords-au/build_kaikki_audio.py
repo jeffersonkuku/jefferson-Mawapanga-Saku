@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import json, re, time
+import json, re, time, html as htmlmod
 from pathlib import Path
 from urllib.parse import quote
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -32,7 +32,7 @@ def fetch_one(w):
             if r.status_code==429:
                 time.sleep(2+attempt*3); continue
             r.raise_for_status()
-            t=r.text
+            t=htmlmod.unescape(r.text)
             # Prefer pattern preserving audio filename.
             for mm in PATTERNS[0].finditer(t):
                 tags=mm.group(3)
