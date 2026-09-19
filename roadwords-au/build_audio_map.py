@@ -1,75 +1,116 @@
 #!/usr/bin/env python3
-import json, re, time, sys
+import json, re, time
 from pathlib import Path
 import requests
 
 HTML = Path("roadwords-au/index.html")
 OUT = Path("roadwords-au/audio-map.json")
 API = "https://commons.wikimedia.org/w/api.php"
+CATEGORY = "Category:Australian English pronunciation"
 
 html = HTML.read_text(encoding="utf-8")
 m = re.search(r'window\.__ROADWORDS_WORDS__=(\[[\s\S]*?\]);</script>', html)
 if not m:
     raise SystemExit("word list not found")
 words = json.loads(m.group(1))
+wanted = {str(w["en"]).lower(): w for w in words}
 
 session = requests.Session()
-session.headers["User-Agent"] = "RoadWordsAU/1.0 (GitHub QA build)"
+session.headers["User-Agent"] = "RoadWordsAU/1.0 (educational vocabulary app; GitHub build)"
 
-def choose_mp3(info):
-    for d in info.get("derivatives") or []:
-        t = (d.get("type") or "").lower()
+def get_json(params, attempts=8):
+    delay = 2
+    for attempt in range(attempts):
+        r = session.get(API, params=params, timeout=60)
+        if r.status_code == 429:
+            wait = int(r.headers.get("Retry-After") or delay)
+            print(f"429 from Commons; sleeping {wait}s", flush=True)
+            time.sleep(wait)
+            delay = min(delay * 2, 30)
+            continue
+        r.raise_for_status()
+        return r.json()
+    raise RuntimeError("Commons rate limit did not clear")
+
+def plain(value):
+    return re.sub(r"<[^>]+>", "", value or "").strip()
+
+def filename_to_word(title):
+    # Category files are commonly File:En-au-word.ogg
+    name = title.split(":", 1)[-1]
+    mm = re.match(r"(?i)^en-au-(.+?)\.(ogg|oga|wav|mp3)$", name)
+    if not mm:
+        return None
+    return mm.group(1).replace("_", " ").strip().lower()
+
+def choose_audio(info):
+    derivatives = info.get("derivatives") or []
+    for d in derivatives:
+        t = str(d.get("type") or "").lower()
         src = d.get("src") or d.get("url")
         if src and ("mpeg" in t or "mp3" in t or src.lower().endswith(".mp3")):
             return src
-    return None
+    # Keep original as a fallback only when Commons has no MP3 transcode.
+    return info.get("url")
 
-resolved = []
-batch_size = 25
-for start in range(0, len(words), batch_size):
-    batch = words[start:start+batch_size]
-    titles = [f"File:En-au-{w['en'].replace('_',' ')}.ogg" for w in batch]
+resolved = {}
+cont = {}
+page_count = 0
+request_count = 0
+
+while True:
     params = {
-        "action":"query",
-        "format":"json",
-        "redirects":"1",
-        "prop":"videoinfo",
-        "viprop":"url|derivatives|extmetadata",
-        "titles":"|".join(titles),
+        "action": "query",
+        "format": "json",
+        "generator": "categorymembers",
+        "gcmtitle": CATEGORY,
+        "gcmtype": "file",
+        "gcmlimit": "200",
+        "prop": "videoinfo",
+        "viprop": "url|derivatives|extmetadata",
     }
-    r = session.get(API, params=params, timeout=40)
-    r.raise_for_status()
-    data = r.json()
-    pages = data.get("query",{}).get("pages",{})
-    by_title = {p.get("title","").lower(): p for p in pages.values()}
-    for w,title in zip(batch,titles):
-        p = by_title.get(title.lower())
-        if not p or "missing" in p:
+    params.update(cont)
+    data = get_json(params)
+    request_count += 1
+    pages = data.get("query", {}).get("pages", {})
+    page_count += len(pages)
+
+    for p in pages.values():
+        title = p.get("title", "")
+        key = filename_to_word(title)
+        if not key or key not in wanted or key in resolved:
             continue
-        vi = (p.get("videoinfo") or [None])[0]
-        if not vi:
+        info = (p.get("videoinfo") or [None])[0]
+        if not info:
             continue
-        mp3 = choose_mp3(vi)
-        if not mp3:
+        audio = choose_audio(info)
+        if not audio:
             continue
-        meta = vi.get("extmetadata") or {}
-        def val(k):
-            v = meta.get(k,{}).get("value","")
-            return re.sub(r"<[^>]+>","",v).strip()
-        resolved.append({
+        meta = info.get("extmetadata") or {}
+        w = wanted[key]
+        resolved[key] = {
             "id": w["id"],
             "rank": w["rank"],
             "en": w["en"],
             "fr": w["fr"],
-            "audio": mp3,
-            "source": vi.get("descriptionurl") or ("https://commons.wikimedia.org/wiki/" + title.replace(" ","_")),
-            "author": val("Artist") or val("Credit") or "Wikimedia Commons",
-            "license": val("LicenseShortName") or "Wikimedia Commons"
-        })
-    print(f"{min(start+batch_size,len(words))}/{len(words)} -> {len(resolved)} audios", flush=True)
-    time.sleep(0.08)
+            "audio": audio,
+            "source": info.get("descriptionurl") or ("https://commons.wikimedia.org/wiki/" + title.replace(" ", "_")),
+            "author": plain(meta.get("Artist", {}).get("value") or meta.get("Credit", {}).get("value")) or "Wikimedia Commons",
+            "license": plain(meta.get("LicenseShortName", {}).get("value")) or "Wikimedia Commons",
+        }
 
-OUT.write_text(json.dumps(resolved, ensure_ascii=False, separators=(",",":")), encoding="utf-8")
-print(f"WROTE {len(resolved)} verified Australian audio records to {OUT}")
-if len(resolved) < 1000:
-    raise SystemExit(f"Too few verified recordings: {len(resolved)}")
+    print(f"Commons files scanned: {page_count}; matched vocabulary: {len(resolved)}", flush=True)
+
+    if "continue" not in data:
+        break
+    cont = data["continue"]
+    time.sleep(1.0)
+
+records = sorted(resolved.values(), key=lambda x: x["rank"])
+OUT.write_text(json.dumps(records, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+print(f"WROTE {len(records)} VERIFIED HUMAN AUSTRALIAN RECORDINGS", flush=True)
+
+# We can launch the rebuilt app with a smaller verified corpus and expand later.
+# Failing under 100 means the category matching approach is not viable.
+if len(records) < 100:
+    raise SystemExit(f"Too few verified recordings: {len(records)}")
