@@ -1,0 +1,59 @@
+name: Build verified Australian audio map
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'roadwords-au/index.html'
+      - 'roadwords-au/build_audio_map.py'
+      - '.github/workflows/roadwords-build-audio.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - run: pip install requests
+      - name: Resolve Wikimedia Australian human recordings
+        run: python roadwords-au/build_audio_map.py
+      - name: Validate generated JSON
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('roadwords-au/audio-map.json',encoding='utf-8'))
+          print('verified records',len(d))
+          assert len(d)>=1000
+          assert all(x.get('audio','').startswith('https://') for x in d)
+          PY
+      - name: Validate a sample of actual audio files
+        run: |
+          python - <<'PY' >/tmp/audio_urls.txt
+          import json
+          d=json.load(open('roadwords-au/audio-map.json',encoding='utf-8'))
+          for x in d[:10]: print(x['audio'])
+          PY
+          while IFS= read -r url; do
+            code=$(curl -L -sS --max-time 30 -o /tmp/a.mp3 -w "%{http_code}" "$url")
+            bytes=$(wc -c </tmp/a.mp3)
+            echo "HTTP=$code bytes=$bytes $url"
+            test "$code" = "200"
+            test "$bytes" -gt 1000
+          done </tmp/audio_urls.txt
+      - name: Commit generated map
+        run: |
+          if git diff --quiet -- roadwords-au/audio-map.json; then
+            echo "No map change"
+            exit 0
+          fi
+          git config user.name "RoadWords Audio Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add roadwords-au/audio-map.json
+          git commit -m "Generate verified Australian audio map"
+          git push
