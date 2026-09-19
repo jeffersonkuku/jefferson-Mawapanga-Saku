@@ -1,134 +1,79 @@
 #!/usr/bin/env python3
-import json, re, time
+import json, re
 from pathlib import Path
-import requests
 
-HTML = Path("roadwords-au/index.html")
+APP = Path("roadwords-au/index.html")
+VT = Path("/tmp/vowel_trowel")
 OUT = Path("roadwords-au/audio-map.json")
-API = "https://commons.wikimedia.org/w/api.php"
-CATEGORY = "Category:Australian English pronunciation"
 
-html = HTML.read_text(encoding="utf-8")
+html = APP.read_text(encoding="utf-8")
 m = re.search(r'window\.__ROADWORDS_WORDS__=(\[[\s\S]*?\]);</script>', html)
 if not m:
-    raise SystemExit("word list not found")
+    raise SystemExit("Embedded 3000-word list not found")
 words = json.loads(m.group(1))
-wanted = {str(w["en"]).lower(): w for w in words}
+by_word = {str(w["en"]).strip().lower(): w for w in words}
 
-session = requests.Session()
-session.headers["User-Agent"] = "RoadWordsAU/1.0 educational app (GitHub build)"
+base = VT / "public/audio/en-gb/approved"
+if not base.exists():
+    raise SystemExit("vowel_trowel approved audio directory missing")
 
-def get_json(params, attempts=10):
-    delay = 2
-    for _ in range(attempts):
-        r = session.get(API, params=params, timeout=60)
-        if r.status_code == 429:
-            wait = int(r.headers.get("Retry-After") or delay)
-            print(f"429; sleeping {wait}s", flush=True)
-            time.sleep(wait)
-            delay = min(delay * 2, 30)
+records = []
+for key, w in by_word.items():
+    folder = base / key
+    if not folder.is_dir():
+        continue
+
+    candidates = []
+    for meta_path in folder.glob("En-au-*.ogg.metadata.json"):
+        try:
+            meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        except Exception:
             continue
-        r.raise_for_status()
-        return r.json()
-    raise RuntimeError("Commons rate limit did not clear")
-
-def filename_to_word(title):
-    name = title.split(":", 1)[-1]
-    mm = re.match(r"(?i)^en-au-(.+?)\.(ogg|oga|wav|mp3)$", name)
-    if not mm:
-        return None
-    return mm.group(1).replace("_", " ").strip().lower()
-
-def plain(value):
-    return re.sub(r"<[^>]+>", "", value or "").strip()
-
-def choose_audio(info):
-    for d in info.get("derivatives") or []:
-        t = str(d.get("type") or "").lower()
-        src = d.get("src") or d.get("url")
-        if src and ("mpeg" in t or "mp3" in t or src.lower().endswith(".mp3")):
-            return src
-    return info.get("url")
-
-# Phase 1: scan category TITLES only. This is cheap and avoids thousands of videoinfo calls.
-matched_titles = {}
-cmcontinue = None
-scanned = 0
-while True:
-    params = {
-        "action":"query",
-        "format":"json",
-        "list":"categorymembers",
-        "cmtitle":CATEGORY,
-        "cmtype":"file",
-        "cmlimit":"500",
-    }
-    if cmcontinue:
-        params["cmcontinue"] = cmcontinue
-    data = get_json(params)
-    members = data.get("query",{}).get("categorymembers",[])
-    scanned += len(members)
-    for item in members:
-        title = item.get("title","")
-        key = filename_to_word(title)
-        if key and key in wanted and key not in matched_titles:
-            matched_titles[key] = title
-    print(f"category scanned={scanned}; vocabulary filename matches={len(matched_titles)}", flush=True)
-    cont = data.get("continue")
-    if not cont:
-        break
-    cmcontinue = cont.get("cmcontinue")
-    time.sleep(0.35)
-
-print(f"Resolving metadata for {len(matched_titles)} matched files", flush=True)
-
-# Phase 2: resolve only matching vocabulary files.
-title_to_key = {title:key for key,title in matched_titles.items()}
-titles = list(title_to_key.keys())
-resolved = {}
-for start in range(0, len(titles), 40):
-    chunk = titles[start:start+40]
-    params = {
-        "action":"query",
-        "format":"json",
-        "redirects":"1",
-        "prop":"videoinfo",
-        "viprop":"url|derivatives|extmetadata",
-        "titles":"|".join(chunk),
-    }
-    data = get_json(params)
-    pages = data.get("query",{}).get("pages",{})
-    for p in pages.values():
-        title = p.get("title","")
-        key = title_to_key.get(title)
-        if not key:
-            # Redirect/canonical title can differ in case; recover by filename.
-            key = filename_to_word(title)
-        if not key or key not in wanted:
+        # Metadata schema varies slightly; flatten searchable text.
+        blob = json.dumps(meta, ensure_ascii=False).lower()
+        if "australian accent" not in blob and "australian" not in blob:
             continue
-        info = (p.get("videoinfo") or [None])[0]
-        if not info:
+        audio_name = meta_path.name[:-len(".metadata.json")]
+        audio_path = folder / audio_name
+        if not audio_path.exists() or audio_path.stat().st_size < 1000:
             continue
-        audio = choose_audio(info)
-        if not audio:
-            continue
-        meta = info.get("extmetadata") or {}
-        w = wanted[key]
-        resolved[key] = {
-            "id":w["id"],
-            "rank":w["rank"],
-            "en":w["en"],
-            "fr":w["fr"],
-            "audio":audio,
-            "source":info.get("descriptionurl") or ("https://commons.wikimedia.org/wiki/" + title.replace(" ","_")),
-            "author":plain(meta.get("Artist",{}).get("value") or meta.get("Credit",{}).get("value")) or "Wikimedia Commons",
-            "license":plain(meta.get("LicenseShortName",{}).get("value")) or "Wikimedia Commons",
-        }
-    print(f"metadata {min(start+40,len(titles))}/{len(titles)}; resolved={len(resolved)}", flush=True)
-    time.sleep(0.5)
+        # Prefer the original En-au-word.ogg over cleaned derivatives.
+        score = 0 if audio_name.lower() == f"en-au-{key}.ogg" else 1
+        candidates.append((score, audio_path, meta))
 
-records = sorted(resolved.values(), key=lambda x:x["rank"])
+    if not candidates:
+        continue
+    candidates.sort(key=lambda x: x[0])
+    _, audio_path, meta = candidates[0]
+    rel = audio_path.relative_to(VT).as_posix()
+    raw = "https://raw.githubusercontent.com/bovine3dom/vowel_trowel/master/" + rel
+    source = "https://github.com/bovine3dom/vowel_trowel/blob/master/" + rel
+
+    # Best-effort human attribution from metadata.
+    def deep_find(obj, wanted):
+        if isinstance(obj, dict):
+            for k,v in obj.items():
+                if k.lower() in wanted and isinstance(v,(str,int,float)):
+                    return str(v)
+                found = deep_find(v, wanted)
+                if found: return found
+        elif isinstance(obj, list):
+            for v in obj:
+                found = deep_find(v, wanted)
+                if found: return found
+        return ""
+
+    author = deep_find(meta, {"artist","speaker","user","username","credit"}) or "Australian speaker"
+    license_name = deep_find(meta, {"license","licence","licenseshortname"}) or "See source"
+
+    records.append({
+        "id":w["id"],"rank":w["rank"],"en":w["en"],"fr":w["fr"],
+        "audio":raw,"source":source,"author":author,"license":license_name
+    })
+
+records.sort(key=lambda x:x["rank"])
 OUT.write_text(json.dumps(records, ensure_ascii=False, separators=(",",":")), encoding="utf-8")
-print(f"WROTE {len(records)} VERIFIED AUSTRALIAN HUMAN RECORDINGS", flush=True)
+print(f"VERIFIED_AU_AUDIO_COUNT={len(records)}")
+print("FIRST_20=" + ",".join(x["en"] for x in records[:20]))
 if len(records) < 100:
-    raise SystemExit(f"Too few verified recordings: {len(records)}")
+    raise SystemExit(f"Only {len(records)} verified Australian recordings; expected >=100")
