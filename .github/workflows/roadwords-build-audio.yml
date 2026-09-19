@@ -1,10 +1,9 @@
-name: Build verified Australian audio map
+name: Build verified RoadWords audio
 
 on:
   push:
     branches: [main]
     paths:
-      - 'roadwords-au/index.html'
       - 'roadwords-au/build_audio_map.py'
       - '.github/workflows/roadwords-build-audio.yml'
   workflow_dispatch:
@@ -17,43 +16,52 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/setup-python@v6
-        with:
-          python-version: '3.13'
-      - run: pip install requests
-      - name: Resolve Wikimedia Australian human recordings
+
+      - name: Clone verified pronunciation corpus
+        run: git clone --depth=1 https://github.com/bovine3dom/vowel_trowel.git /tmp/vowel_trowel
+
+      - name: Build Australian-only audio map
         run: python roadwords-au/build_audio_map.py
-      - name: Validate generated JSON
+
+      - name: Validate audio map structure
         run: |
           python - <<'PY'
           import json
-          d=json.load(open('roadwords-au/audio-map.json',encoding='utf-8'))
-          print('verified records',len(d))
-          assert len(d)>=1000
-          assert all(x.get('audio','').startswith('https://') for x in d)
+          p='roadwords-au/audio-map.json'
+          d=json.load(open(p,encoding='utf-8'))
+          print('Verified Australian words:',len(d))
+          assert len(d)>=100
+          assert all(x['audio'].startswith('https://raw.githubusercontent.com/bovine3dom/vowel_trowel/') for x in d)
+          assert all(x['en'] and x['fr'] for x in d)
           PY
-      - name: Validate a sample of actual audio files
+
+      - name: Validate 20 real audio files
         run: |
-          python - <<'PY' >/tmp/audio_urls.txt
+          python - <<'PY' >/tmp/urls.txt
           import json
           d=json.load(open('roadwords-au/audio-map.json',encoding='utf-8'))
-          for x in d[:10]: print(x['audio'])
+          for x in d[:20]: print(x['audio'])
           PY
+          set -e
+          n=0
           while IFS= read -r url; do
-            code=$(curl -L -sS --max-time 30 -o /tmp/a.mp3 -w "%{http_code}" "$url")
-            bytes=$(wc -c </tmp/a.mp3)
-            echo "HTTP=$code bytes=$bytes $url"
+            n=$((n+1))
+            code=$(curl -L -sS --max-time 30 -o /tmp/a.ogg -w "%{http_code}" "$url")
+            bytes=$(wc -c </tmp/a.ogg)
+            type=$(file -b --mime-type /tmp/a.ogg || true)
+            echo "$n HTTP=$code bytes=$bytes type=$type"
             test "$code" = "200"
             test "$bytes" -gt 1000
-          done </tmp/audio_urls.txt
-      - name: Commit generated map
+          done </tmp/urls.txt
+
+      - name: Commit verified map
         run: |
-          if git diff --quiet -- roadwords-au/audio-map.json; then
-            echo "No map change"
+          if git diff --quiet -- roadwords-au/audio-map.json && git ls-files --error-unmatch roadwords-au/audio-map.json >/dev/null 2>&1; then
+            echo "No audio map changes"
             exit 0
           fi
           git config user.name "RoadWords Audio Bot"
           git config user.email "actions@users.noreply.github.com"
           git add roadwords-au/audio-map.json
-          git commit -m "Generate verified Australian audio map"
+          git commit -m "Generate verified Australian human audio map"
           git push
