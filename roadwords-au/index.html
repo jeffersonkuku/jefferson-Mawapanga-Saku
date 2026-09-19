@@ -184,7 +184,11 @@ h3 { margin: 0 0 8px; }
             <option value="en-US">🇺🇸 Américain</option>
           </select>
           <div id="voiceResolved" class="setting-help">Voix : détection en cours…</div>
-          <button id="testVoiceBtn" class="secondary-btn small">🔊 Tester la voix</button>
+          <select id="voiceSelect" aria-label="Voix australienne">
+            <option value="">Détection automatique de la meilleure voix australienne</option>
+          </select>
+          <div class="setting-help">L'app refuse maintenant les voix génériques : pour le mode australien, elle utilise uniquement une voix en-AU réellement disponible sur l'iPhone.</div>
+          <button id="testVoiceBtn" class="secondary-btn small">🔊 Tester la voix australienne</button>
         </div>
 
         <div class="setting-card two-col">
@@ -194,6 +198,14 @@ h3 { margin: 0 0 8px; }
             <option value="5">5 secondes</option>
             <option value="7">7 secondes</option>
             <option value="10">10 secondes</option>
+          </select>
+
+          <label for="speechRate">Vitesse de prononciation</label>
+          <select id="speechRate">
+            <option value="0.48">Très lente</option>
+            <option value="0.58">Lente (recommandée)</option>
+            <option value="0.68">Normale lente</option>
+            <option value="0.80">Normale</option>
           </select>
 
           <label for="repeatCount">Répétitions</label>
@@ -248,7 +260,7 @@ h3 { margin: 0 0 8px; }
 (() => {
   'use strict';
 
-  const STORAGE_KEY = 'roadwords-au-v1';
+  const STORAGE_KEY = 'roadwords-au-v2';
   const CUSTOM_WORDS_KEY = 'roadwords-au-custom-words-v1';
   const INTERVAL_MINUTES = [10, 24*60, 3*24*60, 7*24*60, 14*24*60, 30*24*60, 90*24*60];
   const DEFAULT_SETTINGS = {
@@ -259,7 +271,8 @@ h3 { margin: 0 0 8px; }
     voiceAnswers: true,
     speakFrench: true,
     retryMisses: true,
-    rate: 0.82
+    rate: 0.58,
+    selectedVoiceName: ''
   };
 
   const $ = (id) => document.getElementById(id);
@@ -269,7 +282,7 @@ h3 { margin: 0 0 8px; }
     'startDriveBtn','startReviewBtn','statSeen','statMastered','statDue','sessionProgress',
     'pauseBtn','phaseLabel','countdown','wordCard','englishWord','pronunciationLabel','frenchWord',
     'sessionHint','answerPanel','voiceStatus','noBtn','yesBtn','stopSessionBtn','accentSelect',
-    'voiceResolved','testVoiceBtn','thinkSeconds','repeatCount','sessionSize','voiceAnswers',
+    'voiceResolved','voiceSelect','testVoiceBtn','thinkSeconds','speechRate','repeatCount','sessionSize','voiceAnswers',
     'speakFrench','retryMisses','csvInput','importCsvBtn','exportProgressBtn','resetBtn','resumeBtn','quitFromPauseBtn'
   ];
   ids.forEach(id => els[id] = $(id));
@@ -320,6 +333,7 @@ h3 { margin: 0 0 8px; }
     els.accentSelect.value = s.accent;
     els.thinkSeconds.value = String(s.thinkSeconds);
     els.repeatCount.value = String(s.repeatCount);
+    if (els.speechRate) els.speechRate.value = String(s.rate || 0.58);
     els.sessionSize.value = String(s.sessionSize);
     els.voiceAnswers.checked = !!s.voiceAnswers;
     els.speakFrench.checked = !!s.speakFrench;
@@ -331,6 +345,8 @@ h3 { margin: 0 0 8px; }
     state.settings.accent = els.accentSelect.value;
     state.settings.thinkSeconds = Number(els.thinkSeconds.value);
     state.settings.repeatCount = Number(els.repeatCount.value);
+    if (els.speechRate) state.settings.rate = Number(els.speechRate.value || 0.58);
+    if (els.voiceSelect) state.settings.selectedVoiceName = els.voiceSelect.value || '';
     state.settings.sessionSize = Number(els.sessionSize.value);
     state.settings.voiceAnswers = els.voiceAnswers.checked;
     state.settings.speakFrench = els.speakFrench.checked;
@@ -399,18 +415,49 @@ h3 { margin: 0 0 8px; }
   function loadVoices() {
     if (!('speechSynthesis' in window)) return;
     voices = speechSynthesis.getVoices() || [];
+    populateVoiceSelect();
     updateVoiceLabel();
   }
 
-  function selectedVoice(lang) {
+  function exactVoices(lang) {
     if (!voices.length) voices = speechSynthesis.getVoices() || [];
-    const exact = voices.filter(v => (v.lang || '').toLowerCase() === lang.toLowerCase());
-    const base = lang.slice(0,2).toLowerCase();
-    const sameLanguage = voices.filter(v => (v.lang || '').toLowerCase().startsWith(base));
-    const pool = exact.length ? exact : sameLanguage;
-    if (!pool.length) return null;
-    const local = pool.find(v => v.localService);
-    return local || pool[0];
+    return voices.filter(v => (v.lang || '').toLowerCase() === lang.toLowerCase());
+  }
+
+  function voiceQualityScore(v) {
+    const n = (v.name || '').toLowerCase();
+    let score = 0;
+    if (n.includes('siri')) score += 100;
+    if (n.includes('matilda')) score += 90;
+    if (n.includes('karen')) score += 80;
+    if (n.includes('lee')) score += 70;
+    if (n.includes('premium')) score += 40;
+    if (n.includes('enhanced')) score += 30;
+    if (v.localService) score += 10;
+    return score;
+  }
+
+  function selectedVoice(lang) {
+    const exact = exactVoices(lang);
+    if (!exact.length) return null;
+    const chosenName = state.settings.selectedVoiceName || '';
+    const chosen = exact.find(v => v.name === chosenName);
+    if (chosen) return chosen;
+    return [...exact].sort((a,b) => voiceQualityScore(b) - voiceQualityScore(a))[0] || null;
+  }
+
+  function populateVoiceSelect() {
+    if (!els.voiceSelect) return;
+    const current = state.settings.selectedVoiceName || '';
+    const exact = exactVoices(state.settings.accent).sort((a,b) => voiceQualityScore(b) - voiceQualityScore(a));
+    els.voiceSelect.innerHTML = '<option value="">Automatique — meilleure voix australienne</option>';
+    exact.forEach(v => {
+      const o = document.createElement('option');
+      o.value = v.name;
+      o.textContent = `${v.name} — ${v.lang}${v.localService ? ' • téléchargée' : ''}`;
+      els.voiceSelect.appendChild(o);
+    });
+    els.voiceSelect.value = exact.some(v => v.name === current) ? current : '';
   }
 
   function updateVoiceLabel() {
@@ -420,11 +467,12 @@ h3 { margin: 0 0 8px; }
       return;
     }
     const lang = state.settings.accent;
+    populateVoiceSelect();
     const voice = selectedVoice(lang);
     const label = lang === 'en-AU' ? 'Australie' : lang === 'en-GB' ? 'Royaume-Uni' : 'États-Unis';
     els.voiceResolved.textContent = voice
-      ? `Voix ${label} : ${voice.name} (${voice.lang})`
-      : `Aucune voix ${label} exacte trouvée : le téléphone utilisera la meilleure voix anglaise disponible.`;
+      ? `✅ Voix ${label} sélectionnée : ${voice.name} (${voice.lang})`
+      : `⚠️ Aucune vraie voix ${label} installée. RoadWords ne basculera plus vers une voix générique. Installe une voix anglaise australienne de qualité dans Réglages iPhone > Accessibilité > Contenu énoncé > Voix > Anglais (Australie).`;
   }
 
   function cancelSpeech() {
@@ -440,6 +488,10 @@ h3 { margin: 0 0 8px; }
       u.pitch = pitch;
       u.volume = volume;
       const v = selectedVoice(lang);
+      if (lang === 'en-AU' && !v) {
+        if (els.voiceResolved) updateVoiceLabel();
+        return resolve();
+      }
       if (v) u.voice = v;
       u.onend = () => resolve();
       u.onerror = () => resolve();
@@ -471,6 +523,11 @@ h3 { margin: 0 0 8px; }
     await warmMicrophonePermission();
     const queue = buildQueue(state.settings.sessionSize);
     if (!queue.length) return;
+    if (state.settings.accent === 'en-AU' && !selectedVoice('en-AU')) {
+      alert('Aucune voix australienne en-AU n’est disponible sur cet iPhone. Installe d’abord une voix australienne de qualité dans Réglages > Accessibilité > Contenu énoncé > Voix > Anglais (Australie), puis reviens dans RoadWords.');
+      showView('settingsView');
+      return;
+    }
     runToken++;
     session = {
       mode,
@@ -724,13 +781,18 @@ h3 { margin: 0 0 8px; }
     els.yesBtn.addEventListener('click', () => answerCard(true));
     els.noBtn.addEventListener('click', () => answerCard(false));
 
-    [els.accentSelect,els.thinkSeconds,els.repeatCount,els.sessionSize,els.voiceAnswers,els.speakFrench,els.retryMisses]
+    [els.accentSelect,els.voiceSelect,els.thinkSeconds,els.speechRate,els.repeatCount,els.sessionSize,els.voiceAnswers,els.speakFrench,els.retryMisses]
       .forEach(el => el.addEventListener('change', saveSettingsFromUI));
 
     els.testVoiceBtn.addEventListener('click', async () => {
       saveSettingsFromUI();
       cancelSpeech();
-      await speak('Good morning. Ready to learn?', state.settings.accent, {rate:state.settings.rate});
+      const v = selectedVoice(state.settings.accent);
+      if (!v) {
+        alert('Aucune voix australienne exacte n’est installée. RoadWords refuse maintenant d’utiliser une voix générique.');
+        return;
+      }
+      await speak('Good morning. Ready to learn? Take your time.', state.settings.accent, {rate:state.settings.rate});
     });
 
     els.importCsvBtn.addEventListener('click', () => els.csvInput.click());
