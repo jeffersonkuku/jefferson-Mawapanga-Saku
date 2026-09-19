@@ -1,201 +1,131 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0b0d10">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="RoadWords AU">
-<title>RoadWords AU</title>
-<style>
-:root{color-scheme:dark;--bg:#090b0f;--card:#141922;--card2:#1b222d;--line:#2b3543;--txt:#f7f8fa;--muted:#9da8b7;--gold:#ffd84d;--yes:#1f8a52;--no:#8b343d;--blue:#59aaff;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--txt)}body{min-height:100dvh}
-button,select,input{font:inherit}button{-webkit-tap-highlight-color:transparent}
-.app{width:min(760px,100%);min-height:100dvh;margin:auto;padding:max(env(safe-area-inset-top),12px) 16px calc(20px + env(safe-area-inset-bottom))}
-.top{height:62px;display:grid;grid-template-columns:48px 1fr 48px;align-items:center;gap:10px}.brand{text-align:center;font-weight:900;font-size:20px}.au{background:var(--gold);color:#111;padding:7px 9px;border-radius:11px;margin-right:7px;font-size:13px}.icon{width:48px;height:48px;border:1px solid var(--line);border-radius:16px;background:var(--card);color:var(--txt);font-size:22px}
-.view{display:none}.view.on{display:block}.hero{padding:28px 2px 14px}.pill{display:inline-flex;background:#221f15;color:#ffe893;border:1px solid #544b2d;border-radius:999px;padding:8px 12px;font-weight:800;font-size:14px}
-h1{font-size:clamp(43px,11vw,70px);line-height:.96;letter-spacing:-3px;margin:18px 0 14px}h2{font-size:35px;margin:24px 0}p{line-height:1.5}.muted{color:var(--muted)}
-.btn{width:100%;min-height:66px;border:0;border-radius:20px;font-weight:900;padding:16px 18px}.primary{background:var(--gold);color:#151515;font-size:20px}.secondary{background:var(--card2);border:1px solid var(--line);color:var(--txt)}.danger{background:transparent;color:#ff9a9a;border:0}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.stat{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px}.stat strong{display:block;font-size:27px}.stat span{font-size:12px;color:var(--muted)}
-.bank{margin:16px 0;background:#102031;border:1px solid #274b71;border-radius:20px;padding:15px}.bank strong{display:block}.bank small{color:#b6cee6}
-.safe{margin-top:14px;background:#121a23;border:1px solid #2b4158;border-radius:20px;padding:15px;color:#bed1e4}
-audio{width:100%;margin-top:10px}.test{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:15px}
-.session.on{min-height:calc(100dvh - 90px);display:flex;flex-direction:column}.session-head{display:flex;align-items:center;justify-content:space-between;color:var(--muted);padding:6px 0}.small{min-height:45px;padding:8px 14px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--txt);font-weight:800}
-.stage{flex:1;min-height:430px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px 0}.phase{font-size:13px;letter-spacing:1.4px;text-transform:uppercase;color:var(--gold);font-weight:900}.counter{width:82px;height:82px;border-radius:50%;border:5px solid var(--line);display:grid;place-items:center;font-size:30px;font-weight:900;margin:18px 0}.counter.ready{border-color:var(--gold)}
-.word{font-size:clamp(55px,16vw,100px);font-weight:950;letter-spacing:-4px;line-height:1;overflow-wrap:anywhere}.meaning{font-size:clamp(28px,8vw,46px);font-weight:850;color:var(--gold);margin-top:19px}.source{font-size:13px;color:var(--muted);margin-top:12px}.hiddenAnswer .word,.hiddenAnswer .meaning,.hiddenAnswer .source{visibility:hidden}.hint{min-height:50px;color:var(--muted);max-width:520px}
-.answers{margin:8px 0 10px}.question{text-align:center;font-size:20px;font-weight:900}.voice{text-align:center;min-height:30px;color:var(--muted);margin:7px}.answer-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.answer{min-height:108px;border:0;border-radius:24px;color:white;font-size:27px;font-weight:950}.answer.no{background:var(--no)}.answer.yes{background:var(--yes)}.answer span{display:block;font-size:13px;opacity:.86;margin-top:5px}.hide{display:none!important}
-.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:16px;margin-bottom:14px}.card label.title{display:block;font-weight:900;margin:0 0 8px}.card select{width:100%;min-height:55px;border-radius:16px;border:1px solid var(--line);background:#0d1117;color:var(--txt);padding:0 13px;margin-bottom:12px}.row{min-height:58px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);gap:12px}.row:first-of-type{border-top:0}.row input{width:27px;height:27px}.notice{background:#2a2111;border:1px solid #665321;border-radius:18px;padding:13px;color:#f6dfa0;margin:12px 0}
-.err{background:#35171b;border:1px solid #7d303a;color:#ffc0c6;border-radius:18px;padding:13px;margin:12px 0}
-@media(max-width:480px){.app{padding-left:13px;padding-right:13px}.answer{min-height:96px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0d1015">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>RoadWords AU</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./style.css?v=7">
 </head>
 <body>
-<div class="app">
-<header class="top">
-<button id="homeBtn" class="icon" aria-label="Accueil">⌂</button>
-<div class="brand"><span class="au">AU</span>RoadWords</div>
-<button id="settingsBtn" class="icon" aria-label="Paramètres">⚙</button>
-</header>
+<div class="shell">
+  <header class="topbar">
+    <button id="homeBtn" class="iconBtn" aria-label="Accueil">⌂</button>
+    <div class="brand"><span>AU</span>RoadWords</div>
+    <button id="settingsBtn" class="iconBtn" aria-label="Réglages">⚙</button>
+  </header>
 
-<main>
-<section id="home" class="view on">
-<div class="hero">
-<div class="pill">🇦🇺 HUMAN AUSTRALIAN AUDIO</div>
-<h1>Écoute.<br>Comprends.<br>Retient.</h1>
-<p class="muted">De vrais enregistrements humains australiens. Aucun moteur de voix anglais synthétique.</p>
+  <main>
+    <section id="homeView" class="view active">
+      <div class="hero">
+        <div class="eyebrow">🇦🇺 MÉTHODE SIMPLE • VOIX DU TÉLÉPHONE</div>
+        <h1>Écoute.<br>Réfléchis.<br>Retient.</h1>
+        <p>Plus aucun fichier audio externe. L’application utilise directement la voix anglaise australienne disponible sur ton téléphone.</p>
+      </div>
+
+      <div id="voiceCard" class="panel">
+        <div class="panelTitle">Diagnostic voix</div>
+        <div id="voiceStatus" class="status">Recherche d’une voix australienne…</div>
+        <button id="testVoiceBtn" class="button secondary" disabled>🔊 Tester la voix</button>
+      </div>
+
+      <button id="startBtn" class="button primary" disabled>▶ Démarrer une session</button>
+
+      <div class="stats">
+        <div><strong id="statSeen">0</strong><span>vus</span></div>
+        <div><strong id="statKnown">0</strong><span>connus</span></div>
+        <div><strong id="statDue">0</strong><span>à revoir</span></div>
+      </div>
+
+      <div class="panel compact">
+        <strong>🚗 Mode voiture</strong>
+        <p>Démarre et règle l’application lorsque tu es à l’arrêt. Ensuite l’exercice peut s’enchaîner à l’audio, avec réponse vocale « oui / non » quand ton navigateur l’autorise.</p>
+      </div>
+    </section>
+
+    <section id="sessionView" class="view">
+      <div class="sessionTop">
+        <span id="sessionCount">1 / 20</span>
+        <button id="pauseBtn" class="miniBtn">Pause</button>
+      </div>
+
+      <div class="stage">
+        <div id="phase" class="phase">Préparation</div>
+        <div id="countdown" class="countdown">•</div>
+        <div id="word" class="word">ready</div>
+        <div id="translation" class="translation hidden">prêt</div>
+        <div id="instruction" class="instruction">Chargement…</div>
+      </div>
+
+      <div id="answerZone" class="answerZone hidden">
+        <div class="answerPrompt">Tu connaissais ce mot ?</div>
+        <div id="micStatus" class="micStatus">Dis « oui » ou « non »</div>
+        <div class="answerGrid">
+          <button id="noBtn" class="answerBtn no">NON<span>à revoir</span></button>
+          <button id="yesBtn" class="answerBtn yes">OUI<span>connu</span></button>
+        </div>
+      </div>
+
+      <button id="stopBtn" class="button ghost">Terminer</button>
+    </section>
+
+    <section id="settingsView" class="view">
+      <h2>Réglages</h2>
+
+      <div class="panel">
+        <label>Voix anglaise
+          <select id="voiceSelect"></select>
+        </label>
+        <div id="selectedVoiceMeta" class="smallText"></div>
+      </div>
+
+      <div class="panel">
+        <label>Temps de réflexion
+          <select id="thinkSelect">
+            <option value="3">3 secondes</option>
+            <option value="5">5 secondes</option>
+            <option value="7">7 secondes</option>
+            <option value="10">10 secondes</option>
+          </select>
+        </label>
+        <label>Répétitions du mot après la traduction
+          <select id="repeatSelect">
+            <option value="2">2 fois</option>
+            <option value="3">3 fois</option>
+            <option value="4">4 fois</option>
+            <option value="5">5 fois</option>
+          </select>
+        </label>
+        <label>Mots par session
+          <select id="sizeSelect">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="50">50</option>
+          </select>
+        </label>
+        <label>Vitesse
+          <select id="rateSelect">
+            <option value="0.78">0,78× lente</option>
+            <option value="0.9">0,90×</option>
+            <option value="1">1,00× naturelle</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="panel switches">
+        <label><span>🎙️ Réponse vocale oui / non</span><input id="voiceAnswerToggle" type="checkbox"></label>
+        <label><span>🇫🇷 Lire la traduction en français</span><input id="speakFrenchToggle" type="checkbox"></label>
+        <label><span>🔁 Reposer rapidement les erreurs</span><input id="retryToggle" type="checkbox"></label>
+      </div>
+
+      <button id="resetBtn" class="button secondary">Réinitialiser la progression</button>
+    </section>
+  </main>
 </div>
-
-<div id="bankInfo" class="bank"><strong>Chargement de la banque audio…</strong><small>Vérification des vrais fichiers australiens.</small></div>
-<div id="loadError" class="err hide"></div>
-
-<button id="startBtn" class="btn primary" disabled>🎧 Démarrer la session</button>
-
-<div class="grid">
-<div class="stat"><strong id="seen">0</strong><span>vus</span></div>
-<div class="stat"><strong id="mastered">0</strong><span>maîtrisés</span></div>
-<div class="stat"><strong id="due">0</strong><span>à revoir</span></div>
-</div>
-
-<div class="test">
-<strong>Test audio direct</strong>
-<p class="muted" style="margin:5px 0 0">Le lecteur ci-dessous utilise exactement le même vrai fichier que l'exercice.</p>
-<audio id="testAudio" controls playsinline preload="metadata"></audio>
-<div id="testLabel" class="muted" style="font-size:13px;margin-top:7px">En attente de la banque audio.</div>
-</div>
-
-<div class="safe"><strong>🚗 Mode voiture</strong><br>Démarre la session et règle les options lorsque tu es à l'arrêt. Ensuite privilégie l'audio et la réponse vocale.</div>
-</section>
-
-<section id="session" class="view session">
-<div class="session-head"><span id="progress">1 / 30</span><button id="pauseBtn" class="small">Pause</button></div>
-<div class="stage">
-<div id="phase" class="phase">Préparation</div>
-<div id="counter" class="counter">•</div>
-<div id="card" class="hiddenAnswer">
-<div id="english" class="word">ready</div>
-<div id="french" class="meaning">prêt</div>
-<div id="source" class="source">🎙️ vrai enregistrement australien</div>
-</div>
-<p id="hint" class="hint">Préparation de l'audio…</p>
-</div>
-<div id="answers" class="answers hide">
-<div class="question">Tu maîtrises ce mot ?</div>
-<div id="voiceStatus" class="voice">🎙️ Dis « oui » ou « non »</div>
-<div class="answer-grid">
-<button id="noBtn" class="answer no">NON<span>à revoir</span></button>
-<button id="yesBtn" class="answer yes">OUI<span>maîtrisé</span></button>
-</div>
-</div>
-<button id="stopBtn" class="btn danger">Terminer la session</button>
-</section>
-
-<section id="settings" class="view">
-<h2>Paramètres</h2>
-<div class="notice">🇦🇺 L'anglais reste toujours sur de vrais enregistrements humains marqués « Australia » dans la source. Il n'y a aucun fallback TTS anglais.</div>
-
-<div class="card">
-<label class="title" for="think">Temps pour réfléchir</label>
-<select id="think"><option>3</option><option selected>5</option><option>7</option><option>10</option></select>
-<label class="title" for="repeats">Répétitions après la réponse</label>
-<select id="repeats"><option>2</option><option selected>3</option><option>4</option><option>5</option></select>
-<label class="title" for="size">Mots par session</label>
-<select id="size"><option>10</option><option>20</option><option selected>30</option><option>50</option></select>
-<label class="title" for="rate">Vitesse du vrai enregistrement</label>
-<select id="rate"><option value="0.85">0,85× entraînement</option><option value="1" selected>1× naturelle</option></select>
-</div>
-
-<div class="card">
-<label class="row"><span>🎙️ Réponse vocale oui/non</span><input id="voiceToggle" type="checkbox" checked></label>
-<label class="row"><span>🇫🇷 Lire la traduction française</span><input id="frenchVoice" type="checkbox" checked></label>
-<label class="row"><span>🔁 Reposer rapidement les erreurs</span><input id="retry" type="checkbox" checked></label>
-</div>
-
-<div class="card">
-<strong>Diagnostic audio</strong>
-<p id="diag" class="muted">Banque audio non chargée.</p>
-<audio id="settingsTest" controls playsinline preload="metadata"></audio>
-</div>
-
-<button id="resetBtn" class="btn secondary">Réinitialiser ma progression</button>
-</section>
-</main>
-</div>
-
-<script>
-(()=>{
-'use strict';
-const BUILD='RW-AU-REBUILD-1';
-const STORE='roadwords-au-rebuild-1';
-const intervals=[10,1440,4320,10080,20160,43200,129600];
-const $=id=>document.getElementById(id);
-const el={};['home','session','settings','homeBtn','settingsBtn','bankInfo','loadError','startBtn','seen','mastered','due','testAudio','testLabel','progress','pauseBtn','phase','counter','card','english','french','source','hint','answers','voiceStatus','noBtn','yesBtn','stopBtn','think','repeats','size','rate','voiceToggle','frenchVoice','retry','diag','settingsTest','resetBtn'].forEach(id=>el[id]=$(id));
-
-let bank=[];
-let state=loadState();
-let session=null;
-let token=0;
-let ctx=null;
-let currentSource=null;
-let recognition=null;
-let wakeLock=null;
-const buffers=new Map();
-
-function loadState(){
- try{
-  const p=JSON.parse(localStorage.getItem(STORE)||'{}');
-  return {settings:{think:5,repeats:3,size:30,rate:1,voice:true,frenchVoice:true,retry:true,...(p.settings||{})},progress:p.progress||{}};
- }catch{return {settings:{think:5,repeats:3,size:30,rate:1,voice:true,frenchVoice:true,retry:true},progress:{}}}
-}
-function save(){localStorage.setItem(STORE,JSON.stringify(state))}
-function show(id){['home','session','settings'].forEach(v=>el[v].classList.toggle('on',v===id));if(id==='home')stats()}
-function settingsToUI(){el.think.value=state.settings.think;el.repeats.value=state.settings.repeats;el.size.value=state.settings.size;el.rate.value=String(state.settings.rate);el.voiceToggle.checked=state.settings.voice;el.frenchVoice.checked=state.settings.frenchVoice;el.retry.checked=state.settings.retry}
-function saveSettings(){state.settings={think:+el.think.value,repeats:+el.repeats.value,size:+el.size.value,rate:+el.rate.value,voice:el.voiceToggle.checked,frenchVoice:el.frenchVoice.checked,retry:el.retry.checked};save()}
-function stats(){let s=0,m=0,d=0,now=Date.now();Object.values(state.progress).forEach(p=>{if(p.seen)s++;if((p.level||0)>=5)m++;if(p.seen&&(p.due||0)<=now)d++});el.seen.textContent=s;el.mastered.textContent=m;el.due.textContent=d}
-function prog(w){const k=w.en.toLowerCase();if(!state.progress[k])state.progress[k]={seen:false,level:0,due:0,yes:0,no:0};return state.progress[k]}
-function queue(n){const now=Date.now(),due=[],neww=[],later=[];for(const w of bank){const p=state.progress[w.en.toLowerCase()];if(!p||!p.seen)neww.push(w);else if((p.due||0)<=now)due.push(w);else later.push(w)}due.sort((a,b)=>(prog(a).due||0)-(prog(b).due||0));neww.sort((a,b)=>a.rank-b.rank);later.sort((a,b)=>prog(a).due-prog(b).due);return [...due,...neww,...later].slice(0,Math.max(n*3,n))}
-function wait(ms,t){return new Promise(r=>setTimeout(()=>r(t===token&&session&&!session.paused),ms))}
-async function ensureAudio(){if(!ctx){const C=window.AudioContext||window.webkitAudioContext;if(!C)throw new Error('Web Audio indisponible sur ce navigateur.');ctx=new C()}if(ctx.state!=='running')await ctx.resume()}
-async function bufferFor(w){
- const key=w.audio;if(buffers.has(key))return buffers.get(key);
- const promise=(async()=>{const r=await fetch(key,{cache:'force-cache'});if(!r.ok)throw new Error('HTTP '+r.status);const ab=await r.arrayBuffer();return await ctx.decodeAudioData(ab.slice(0))})();
- buffers.set(key,promise);
- try{return await promise}catch(e){buffers.delete(key);throw e}
-}
-async function play(w){
- await ensureAudio();const b=await bufferFor(w);return new Promise((resolve,reject)=>{try{if(currentSource){try{currentSource.stop()}catch{}}const s=ctx.createBufferSource();currentSource=s;s.buffer=b;s.playbackRate.value=state.settings.rate;s.connect(ctx.destination);s.onended=()=>{if(currentSource===s)currentSource=null;resolve(true)};s.start(0)}catch(e){reject(e)}})
-}
-function prefetch(from){if(!session||!ctx)return;session.q.slice(from,from+3).forEach(w=>bufferFor(w).catch(()=>{}))}
-function stopAudio(){if(currentSource){try{currentSource.stop()}catch{}currentSource=null}}
-function speakFR(text){return new Promise(res=>{if(!state.settings.frenchVoice||!('speechSynthesis'in window))return res();try{const u=new SpeechSynthesisUtterance(text);u.lang='fr-FR';u.rate=.88;u.onend=res;u.onerror=res;speechSynthesis.cancel();speechSynthesis.speak(u)}catch{res()}})}
-async function countdown(t){for(let s=state.settings.think;s>0;s--){el.counter.textContent=s;if(!(await wait(1000,t)))return false}return true}
-async function runCard(t){
- if(!session||session.paused||t!==token)return;
- stopRec();session.answered=false;
- if(session.done>=session.target||session.i>=session.q.length){finish();return}
- const w=session.q[session.i];session.current=w;el.progress.textContent=(session.done+1)+' / '+session.target;el.english.textContent=w.en;el.french.textContent=w.fr;el.card.classList.add('hiddenAnswer');el.answers.classList.add('hide');el.phase.textContent='Écoute';el.counter.textContent='▶';el.counter.classList.remove('ready');el.hint.textContent='Écoute le mot. Ne regarde pas encore la réponse.';
- try{await play(w)}catch(e){el.hint.textContent='Audio indisponible, mot sauté.';session.i++;return runCard(t)}
- if(!session||t!==token||session.paused)return;
- prefetch(session.i+1);el.phase.textContent='Réfléchis';el.hint.textContent='Trouve le sens du mot.';if(!(await countdown(t)))return;
- el.counter.textContent='✓';el.counter.classList.add('ready');el.phase.textContent='Réponse';el.card.classList.remove('hiddenAnswer');el.source.textContent='🎙️ humain australien • '+(w.author||'source vérifiée');el.hint.textContent=w.en+' = '+w.fr;
- await speakFR(w.fr);if(!session||t!==token||session.paused)return;await wait(300,t);
- for(let i=0;i<state.settings.repeats;i++){try{await play(w)}catch{return}if(!session||t!==token||session.paused)return;if(i<state.settings.repeats-1&&!(await wait(550,t)))return}
- el.answers.classList.remove('hide');el.phase.textContent='Maîtrisé ?';el.hint.textContent='Réponds oui ou non.';if(state.settings.voice)startRec(t);else el.voiceStatus.textContent='Choisis OUI ou NON.'
-}
-function Rec(){return window.SpeechRecognition||window.webkitSpeechRecognition||null}
-function stopRec(){try{if(recognition)recognition.abort()}catch{}recognition=null}
-function startRec(t){const C=Rec();if(!C){el.voiceStatus.textContent='Commande vocale indisponible — boutons disponibles.';return}try{stopRec();recognition=new C();recognition.lang='fr-FR';recognition.continuous=false;recognition.interimResults=false;recognition.maxAlternatives=3;el.voiceStatus.textContent='🎙️ J’écoute : « oui » ou « non »';recognition.onresult=e=>{if(!session||t!==token)return;const txt=Array.from(e.results).flatMap(r=>Array.from(r)).map(x=>x.transcript).join(' ').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');if(/\b(oui|yes|ouais|yep)\b/.test(txt))answer(true);else if(/\b(non|no|nope)\b/.test(txt))answer(false);else el.voiceStatus.textContent='Pas compris — dis oui ou non.'};recognition.onerror=()=>{el.voiceStatus.textContent='Micro indisponible — boutons disponibles.'};recognition.start()}catch{el.voiceStatus.textContent='Micro indisponible — boutons disponibles.'}}
-async function answer(ok){if(!session||session.answered||!session.current)return;session.answered=true;stopRec();const p=prog(session.current);p.seen=true;p.last=Date.now();if(ok){p.yes=(p.yes||0)+1;p.level=Math.min((p.level||0)+1,intervals.length-1);p.due=Date.now()+intervals[p.level]*60000;el.voiceStatus.textContent='✅ Oui'}else{p.no=(p.no||0)+1;p.level=0;p.due=Date.now()+10*60000;el.voiceStatus.textContent='↩️ Non';if(state.settings.retry){session.q.splice(Math.min(session.q.length,session.i+4),0,session.current)}}session.done++;save();stats();await wait(500,token);if(!session||session.paused)return;session.i++;runCard(token)}
-async function start(){if(!bank.length)return;saveSettings();try{await ensureAudio()}catch(e){el.loadError.textContent=e.message;el.loadError.classList.remove('hide');return}session={q:queue(state.settings.size),i:0,done:0,target:Math.min(state.settings.size,bank.length),current:null,answered:false,paused:false};token++;show('session');el.phase.textContent='Préparation';el.hint.textContent='Chargement du premier vrai enregistrement…';try{if('wakeLock'in navigator)wakeLock=await navigator.wakeLock.request('screen')}catch{}prefetch(0);runCard(token)}
-function pause(){if(!session)return;session.paused=true;token++;stopAudio();stopRec();try{speechSynthesis.cancel()}catch{}el.pauseBtn.textContent='Reprendre';el.phase.textContent='Pause';el.hint.textContent='Session en pause.'}
-function resume(){if(!session)return;session.paused=false;token++;el.pauseBtn.textContent='Pause';runCard(token)}
-async function finish(){token++;stopAudio();stopRec();try{speechSynthesis.cancel()}catch{}try{if(wakeLock)await wakeLock.release()}catch{}wakeLock=null;session=null;el.pauseBtn.textContent='Pause';show('home')}
-async function loadBank(){
- try{const r=await fetch('./audio-map.json?build=20260919b',{cache:'no-store'});if(!r.ok)throw new Error('Banque audio introuvable (HTTP '+r.status+').');const d=await r.json();if(!Array.isArray(d)||!d.length)throw new Error('Banque audio vide.');bank=d.filter(x=>x.en&&x.fr&&x.audio);if(!bank.length)throw new Error('Aucun enregistrement valide.');el.bankInfo.innerHTML='<strong>✅ '+bank.length+' enregistrements humains australiens vérifiés</strong><small>Les mots sans vrai audio australien sont exclus de la session.</small>';el.startBtn.disabled=false;const first=bank[0];el.testAudio.src=first.audio;el.settingsTest.src=first.audio;el.testLabel.textContent='Test : « '+first.en+' » — appuie sur ▶︎';el.diag.textContent=BUILD+' • '+bank.length+' audios chargés • source du test : '+first.source}catch(e){el.loadError.textContent='❌ '+e.message;el.loadError.classList.remove('hide');el.bankInfo.innerHTML='<strong>Banque audio non disponible</strong><small>Aucune session ne sera lancée tant que le problème n’est pas corrigé.</small>'}
-}
-el.startBtn.onclick=start;el.yesBtn.onclick=()=>answer(true);el.noBtn.onclick=()=>answer(false);el.stopBtn.onclick=finish;el.pauseBtn.onclick=()=>session?.paused?resume():pause();el.homeBtn.onclick=()=>session?finish():show('home');el.settingsBtn.onclick=()=>session?pause():show('settings');[el.think,el.repeats,el.size,el.rate,el.voiceToggle,el.frenchVoice,el.retry].forEach(x=>x.onchange=saveSettings);el.resetBtn.onclick=()=>{if(confirm('Effacer toute la progression ?')){state.progress={};save();stats()}};
-settingsToUI();stats();loadBank();
-})();
-</script>
+<script src="./app.js?v=7"></script>
 </body>
 </html>
