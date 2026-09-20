@@ -1,0 +1,66 @@
+name: RoadWords Motamot QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'roadwords-au/**'
+      - '.github/workflows/roadwords-motamot-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install
+        working-directory: roadwords-au
+        run: npm install
+
+      - name: Unit tests
+        working-directory: roadwords-au
+        run: npm test
+
+      - name: Production build
+        working-directory: roadwords-au
+        run: npm run build
+
+      - name: Verify production output
+        working-directory: roadwords-au
+        run: |
+          test -f dist/index.html
+          test -d dist/assets
+          test -f dist/words-3000.json
+          grep -q "RoadWords AU" dist/index.html
+          echo "Build output OK"
+
+      - name: Verify live Australian source for RUN
+        shell: bash
+        run: |
+          set -e
+          API='https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=videoinfo&viprop=url%7Cderivatives&titles=File%3AEn-au-run.ogg'
+          curl -L --fail --max-time 30 -A 'RoadWordsAU-QA/1.0' "$API" -o /tmp/commons.json
+          python - <<'PY'
+          import json
+          d=json.load(open('/tmp/commons.json'))
+          page=next(iter(d['query']['pages'].values()))
+          info=page['videoinfo'][0]
+          urls=[info.get('url','')]+[x.get('src','') for x in info.get('derivatives',[])]
+          assert any(u.startswith('https://upload.wikimedia.org/') for u in urls), urls
+          print('Australian RUN audio found on Wikimedia Commons')
+          PY
+
+      - name: Upload tested build
+        uses: actions/upload-artifact@v4
+        with:
+          name: roadwords-au-dist
+          path: roadwords-au/dist
