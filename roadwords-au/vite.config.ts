@@ -36,6 +36,5 @@ export default defineConfig({
         ]
       }
     })
-  ],
-  test: { passWithNoTests: false }
+  ]
 })
