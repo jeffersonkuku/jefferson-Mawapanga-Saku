@@ -99,6 +99,20 @@ export async function resolveAustralianAudio(word: string): Promise<AudioResolut
   if (cached?.status === 'miss' && Date.now() - cached.checkedAt < MISS_TTL) return null
 
   try {
+    // Most Australian Wiktionary recordings follow this canonical filename.
+    // Query Commons for the title instead of guessing its hashed file URL.
+    const directName = 'En-au-' + key.replace(/\s+/g, '-') + '.ogg'
+    const direct = await resolveCommonsFile(key, directName)
+    if (direct) {
+      await putAudioCache({
+        word: key,
+        status: 'ok',
+        checkedAt: Date.now(),
+        resolution: direct,
+      })
+      return direct
+    }
+
     const fileName = await findAudioFile(key)
     if (!fileName) {
       await putAudioCache({ word: key, status: 'miss', checkedAt: Date.now() })
