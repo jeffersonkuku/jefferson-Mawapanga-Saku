@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'roadwords-au-dist/**'
+      - '.github/workflows/roadwords-public-smoke.yml'
 
 permissions:
   contents: read
