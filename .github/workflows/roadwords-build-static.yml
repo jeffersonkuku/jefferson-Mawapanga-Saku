@@ -1,0 +1,52 @@
+name: Build RoadWords static app
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'roadwords-au/**'
+      - '.github/workflows/roadwords-build-static.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install, test, build
+        working-directory: roadwords-au
+        run: |
+          npm install
+          npm test
+          npm run build
+
+      - name: Publish tested static files into repository
+        run: |
+          rm -rf roadwords-au-dist
+          cp -R roadwords-au/dist roadwords-au-dist
+          cp roadwords-au/LICENSE roadwords-au-dist/LICENSE
+          cp roadwords-au/UPSTREAM.md roadwords-au-dist/UPSTREAM.md
+          touch roadwords-au-dist/.nojekyll
+
+          git config user.name "RoadWords Build Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add roadwords-au-dist
+
+          if git diff --cached --quiet; then
+            echo "Static build unchanged"
+            exit 0
+          fi
+
+          git commit -m "Publish tested RoadWords AU static build"
+          git push
