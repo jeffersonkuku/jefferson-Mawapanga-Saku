@@ -1,5 +1,7 @@
 # ProcureFlow — Power Platform Procurement Workflow Portfolio
 
+> **Power Platform portfolio:** [Building Operations Hub — Industrial multi-technical operations & on-call assistance](projects/building-operations-hub/) · Visual case study only; source code intentionally private.
+
 ![Power Apps](https://img.shields.io/badge/Power%20Apps-Canvas%20App-742774?logo=powerapps&logoColor=white)
 ![Power Automate](https://img.shields.io/badge/Power%20Automate-Workflow-0066FF?logo=powerautomate&logoColor=white)
 ![SharePoint](https://img.shields.io/badge/SharePoint-Data%20%26%20Documents-038387?logo=microsoftsharepoint&logoColor=white)
