@@ -15,9 +15,11 @@
 
 ## Démonstration
 
-[![Démonstration Building Operations Hub](assets/01-home.png)](demo/Building_Operations_Hub_Demo.mp4)
+[![Démonstration Building Operations Hub](assets/01-home.png)](https://raw.githubusercontent.com/jeffersonkuku/jefferson-Mawapanga-Saku/main/projects/building-operations-hub/demo/Building_Operations_Hub_Demo.mp4)
 
-**[▶ Voir la vidéo complète](demo/Building_Operations_Hub_Demo.mp4)**
+**[▶ Voir la vidéo complète directement](https://raw.githubusercontent.com/jeffersonkuku/jefferson-Mawapanga-Saku/main/projects/building-operations-hub/demo/Building_Operations_Hub_Demo.mp4)**
+
+> GitHub n'affiche pas toujours les fichiers MP4 dans la vue « Code ». Le lien ci-dessus ouvre directement le fichier vidéo.
 
 La vidéo publique est recentrée sur l'application et masque les coordonnées personnelles visibles pendant l'enregistrement d'origine.
 
