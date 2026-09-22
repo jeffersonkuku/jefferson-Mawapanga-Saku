@@ -65,9 +65,9 @@ Le dépôt public met l'accent sur l'architecture, l'UX et les principes d'ingé
 
 ## Documentation
 
-- [Architecture](docs/ARCHITECTURE.md)
-- [Périmètre fonctionnel](docs/FEATURES.md)
-- [Sécurité, fiabilité & ALM](docs/SECURITY_AND_ALM.md)
+- [Architecture](docs/ARCHITECTURE_FR.md)
+- [Périmètre fonctionnel](docs/FEATURES_FR.md)
+- [Sécurité, fiabilité & ALM](docs/SECURITY_AND_ALM_FR.md)
 
 Les dossiers de captures et de démonstration sont regroupés uniquement dans ce projet :
 
