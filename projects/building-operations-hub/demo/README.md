@@ -4,7 +4,7 @@
 
 ## English
 
-**Full desktop walkthrough:** [Building_Operations_Hub_Demo.mp4](Building_Operations_Hub_Demo.mp4)
+**Full desktop walkthrough:** upload the prepared `Building_Operations_Hub_Demo.mp4` file into this folder.
 
 The portfolio version is cropped to focus on the application and hides personal contact details visible during the recording.
 
@@ -21,7 +21,7 @@ The Power Apps source, formulas and production connectors are not shown or distr
 
 ## Français
 
-**Démonstration desktop complète :** [Building_Operations_Hub_Demo.mp4](Building_Operations_Hub_Demo.mp4)
+**Démonstration desktop complète :** ajouter le fichier préparé `Building_Operations_Hub_Demo.mp4` dans ce dossier.
 
 La version portfolio est recentrée sur l'application et masque les coordonnées personnelles visibles pendant l'enregistrement.
 
