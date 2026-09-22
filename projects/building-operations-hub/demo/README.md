@@ -4,9 +4,9 @@
 
 ## English
 
-**Full desktop walkthrough:** [▶ Open the demo video directly](https://raw.githubusercontent.com/jeffersonkuku/jefferson-Mawapanga-Saku/main/projects/building-operations-hub/demo/Building_Operations_Hub_Demo.mp4)
+**Full desktop walkthrough:** [▶ Watch on YouTube](https://www.youtube.com/watch?v=Y15BCn_i-fo)
 
-The portfolio version is cropped to focus on the application and hides personal contact details visible during the recording.
+The portfolio demo is hosted on YouTube for direct browser playback. The public recording is sanitised and focused on the application.
 
 The demo covers:
 
@@ -21,9 +21,9 @@ The Power Apps source, formulas and production connectors are not shown or distr
 
 ## Français
 
-**Démonstration desktop complète :** [▶ Ouvrir directement la vidéo](https://raw.githubusercontent.com/jeffersonkuku/jefferson-Mawapanga-Saku/main/projects/building-operations-hub/demo/Building_Operations_Hub_Demo.mp4)
+**Démonstration desktop complète :** [▶ Voir sur YouTube](https://www.youtube.com/watch?v=Y15BCn_i-fo)
 
-La version portfolio est recentrée sur l'application et masque les coordonnées personnelles visibles pendant l'enregistrement.
+La démonstration portfolio est hébergée sur YouTube pour une lecture directe dans le navigateur. La version publique est anonymisée et centrée sur l'application.
 
 La démonstration couvre :
 
