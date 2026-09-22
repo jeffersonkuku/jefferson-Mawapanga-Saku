@@ -1,44 +1,37 @@
-# Demo Video
+# Building Operations Hub — Demo
 
-## Building Operations Hub — Full Walkthrough
+[English](#english) · [Français](#français)
 
-**Status:** coming soon.
+## English
 
-Place the final demonstration video here using this file name:
+**Full desktop walkthrough:** [Building_Operations_Hub_Demo.mp4](Building_Operations_Hub_Demo.mp4)
 
-`building-operations-hub-demo.mp4`
+The portfolio version is cropped to focus on the application and hides personal contact details visible during the recording.
 
-Recommended walkthrough order:
+The demo covers:
 
-1. Home / three operational services
-2. Site selection
-3. Building selection
-4. Floor / zone selection
-5. Equipment library
-6. Equipment detail
-7. Start / Stop tutorials
-8. Configuration
-9. REX / troubleshooting
-10. Add / propose a tutorial
-11. Contact directory
-12. Controlled contact edit
-13. Barometry reference
-14. Intervention rating
-15. Mobile portrait
-16. Mobile landscape
-17. Tablet / desktop responsive views
+1. Home / operational services
+2. Site → Building → Floor → Equipment
+3. Start / configuration / REX tutorial flows
+4. Contact directory and governed contact creation
+5. Technical-content proposal
+6. Hot barometry
 
-## Source-code policy
+The Power Apps source, formulas and production connectors are not shown or distributed.
 
-The recording should demonstrate functionality and UX only.
+## Français
 
-Do **not** open:
+**Démonstration desktop complète :** [Building_Operations_Hub_Demo.mp4](Building_Operations_Hub_Demo.mp4)
 
-- Power Fx formula bar;
-- Power Automate flow designer;
-- SharePoint production URLs;
-- connection references;
-- tenant administration pages;
-- production user data.
+La version portfolio est recentrée sur l'application et masque les coordonnées personnelles visibles pendant l'enregistrement.
 
-If the final video is too large for a normal GitHub file, keep this folder as the portfolio landing page and add an unlisted high-quality video link here instead of compressing the recording excessively.
+La démonstration couvre :
+
+1. Accueil / services opérationnels
+2. Site → Bâtiment → Étage → Équipement
+3. Tutoriels Marche / Paramétrage / REX
+4. Annuaire et création gouvernée d'un contact
+5. Proposition de contenu technique
+6. Barométrie à chaud
+
+Le code source Power Apps, les formules et les connecteurs de production ne sont ni affichés ni distribués.

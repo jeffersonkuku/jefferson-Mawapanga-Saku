@@ -1,19 +1,21 @@
-# Public Portfolio Notice
+# Public Portfolio Notice / Notice du portfolio public
 
-This repository is a **sanitised portfolio presentation** of a Microsoft Power Platform solution.
+## English
 
-It is intended to demonstrate solution architecture, functional design, UX, Power Fx patterns, workflow thinking, SharePoint modelling and ALM practices.
+This repository is a **sanitised professional portfolio**.
 
-The following are intentionally not published:
+Enterprise Power Apps packages, production Power Automate exports, tenant URLs, environment identifiers, connection references, credentials, real production data and confidential implementation details are intentionally not published.
 
-- production `.msapp` packages;
-- production Power Automate exports;
-- tenant URLs and environment identifiers;
-- connection references or credentials;
-- real user, supplier or request data;
-- confidential business rules;
-- internal company branding or proprietary assets.
-
-All examples and screenshots added to this repository should use synthetic or anonymised information.
+Screenshots and public demos use synthetic or sanitised information.
 
 This repository is not an official deliverable of any current or former employer or client.
+
+## Français
+
+Ce dépôt est un **portfolio professionnel anonymisé**.
+
+Les packages Power Apps d'entreprise, exports Power Automate de production, URLs de tenant, identifiants d'environnement, Connection References, secrets, données réelles et détails d'implémentation confidentiels ne sont volontairement pas publiés.
+
+Les captures et démonstrations publiques utilisent des informations synthétiques ou anonymisées.
+
+Ce dépôt n'est pas un livrable officiel d'un employeur ou client actuel ou passé.
