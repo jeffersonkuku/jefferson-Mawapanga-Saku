@@ -15,11 +15,11 @@ A **sanitised portfolio case study** for a responsive industrial operations and 
 
 ## Demo
 
-[![Building Operations Hub demo](assets/01-home.png)](demo/README.md)
+[![Building Operations Hub demo](assets/01-home.png)](demo/Building_Operations_Hub_Demo.mp4)
 
-**[▶ Demo video area](demo/README.md)**
+**[▶ Watch the full demo video](demo/Building_Operations_Hub_Demo.mp4)**
 
-The final public recording is prepared as `Building_Operations_Hub_Demo.mp4`. The repository keeps a dedicated demo area so the video can be added without exposing application source. The portfolio version is sanitised: personal contact details are hidden and the recording is focused on the application rather than the authoring environment.
+The public portfolio recording is cropped to focus on the application and hides personal contact details visible during the original recording.
 
 ---
 
