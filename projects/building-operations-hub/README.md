@@ -15,9 +15,11 @@ A **sanitised portfolio case study** for a responsive industrial operations and 
 
 ## Demo
 
-[![Building Operations Hub demo](assets/01-home.png)](demo/Building_Operations_Hub_Demo.mp4)
+[![Building Operations Hub demo](assets/01-home.png)](https://raw.githubusercontent.com/jeffersonkuku/jefferson-Mawapanga-Saku/main/projects/building-operations-hub/demo/Building_Operations_Hub_Demo.mp4)
 
-**[▶ Watch the full demo video](demo/Building_Operations_Hub_Demo.mp4)**
+**[▶ Watch the full demo video directly](https://raw.githubusercontent.com/jeffersonkuku/jefferson-Mawapanga-Saku/main/projects/building-operations-hub/demo/Building_Operations_Hub_Demo.mp4)**
+
+> GitHub does not always preview MP4 files in the “Code” view. The link above opens the raw video file directly.
 
 The public portfolio recording is cropped to focus on the application and hides personal contact details visible during the original recording.
 
