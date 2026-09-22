@@ -26,13 +26,15 @@ The public version preserves the business problem, navigation model, security pr
 
 ## Project demo
 
-➡️ **[Watch the Building Operations Hub demo](https://raw.githubusercontent.com/jeffersonkuku/jefferson-Mawapanga-Saku/main/projects/building-operations-hub/demo/Building_Operations_Hub_Demo.mp4)**
+➡️ **[▶ Watch the Building Operations Hub demo on YouTube](https://www.youtube.com/watch?v=Y15BCn_i-fo)**
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/jeffersonkuku/jefferson-Mawapanga-Saku/main/projects/building-operations-hub/demo/Building_Operations_Hub_Demo.mp4">
-    <img src="./assets/01-home.png" alt="Building Operations Hub main screen" width="100%">
+  <a href="https://www.youtube.com/watch?v=Y15BCn_i-fo">
+    <img src="https://img.youtube.com/vi/Y15BCn_i-fo/maxresdefault.jpg" alt="Building Operations Hub — Power Apps portfolio demo" width="100%">
   </a>
 </p>
+
+> **Video hosting:** the demo is hosted on YouTube so recruiters can watch it directly in the browser without downloading a file.
 
 > **Main view:** one operational entry point for on-call assistance, hot barometry and the technical contact directory.
 
@@ -349,13 +351,15 @@ La version publique conserve le besoin métier, le modèle de navigation, les pr
 
 ## Démonstration
 
-➡️ **[Voir la démonstration Building Operations Hub](https://raw.githubusercontent.com/jeffersonkuku/jefferson-Mawapanga-Saku/main/projects/building-operations-hub/demo/Building_Operations_Hub_Demo.mp4)**
+➡️ **[▶ Voir la démonstration Building Operations Hub sur YouTube](https://www.youtube.com/watch?v=Y15BCn_i-fo)**
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/jeffersonkuku/jefferson-Mawapanga-Saku/main/projects/building-operations-hub/demo/Building_Operations_Hub_Demo.mp4">
-    <img src="./assets/01-home.png" alt="Écran principal Building Operations Hub" width="100%">
+  <a href="https://www.youtube.com/watch?v=Y15BCn_i-fo">
+    <img src="https://img.youtube.com/vi/Y15BCn_i-fo/maxresdefault.jpg" alt="Building Operations Hub — démonstration portfolio Power Apps" width="100%">
   </a>
 </p>
+
+> **Hébergement vidéo :** la démonstration est hébergée sur YouTube afin qu'un recruteur puisse la lire directement dans son navigateur sans télécharger de fichier.
 
 > **Vue principale :** un point d'entrée unique vers l'aide à l'astreinte, la barométrie à chaud et l'annuaire technique.
 
