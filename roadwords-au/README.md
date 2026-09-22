@@ -1,5 +1,7 @@
 # RoadWords AU
 
+[**English**](README.md) · [**Français**](README_FR.md)
+
 Audio-first English vocabulary trainer for iPhone, rebuilt as an adaptation of
 the open-source **Motamot** project rather than as a custom one-off prototype.
 
