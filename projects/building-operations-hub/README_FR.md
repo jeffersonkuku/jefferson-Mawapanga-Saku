@@ -15,11 +15,11 @@
 
 ## Démonstration
 
-[![Démonstration Building Operations Hub](assets/01-home.png)](demo/Building_Operations_Hub_Demo.mp4)
+[![Démonstration Building Operations Hub](assets/01-home.png)](demo/README.md)
 
-**[▶ Voir la vidéo complète](demo/Building_Operations_Hub_Demo.mp4)**
+**[▶ Espace vidéo de démonstration](demo/README.md)**
 
-La vidéo publique a été préparée pour le portfolio : les coordonnées personnelles visibles pendant la démonstration sont masquées et l'image est recentrée sur l'application.
+La vidéo finale est préparée sous le nom `Building_Operations_Hub_Demo.mp4`. Le dépôt conserve un espace dédié à la démonstration afin d'ajouter la vidéo sans exposer le code source. La version portfolio masque les coordonnées personnelles visibles pendant l'enregistrement et recentre l'image sur l'application.
 
 ---
 
