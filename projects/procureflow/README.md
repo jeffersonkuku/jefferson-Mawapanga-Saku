@@ -1,46 +1,84 @@
-# ProcureFlow — Power Platform Procurement Workflow Portfolio
+# ProcureFlow
 
-[English](#english) · [Français](#francais)
+> **Power Apps · Power Automate · SharePoint · Procurement workflow**
 
----
+[← Main portfolio](../../README.md) · [▶ Power Apps demo](https://www.youtube.com/watch?v=Y15BCn_i-fo) · [📊 Power BI portfolio](https://github.com/jeffersonkuku/powerbi-portfolio-projects) · [🇫🇷 Français](#francais)
 
-<a id="english"></a>
+## 30-second overview
 
-# 🇬🇧 English
+**Business problem:** procurement and internal requests can become difficult to track when creation, assignment, documents, notifications and ownership are spread across different tools.
 
-> **Enterprise procurement and request-management workflow built around Power Apps, SharePoint and Power Automate.**
-
-![Power Apps](https://img.shields.io/badge/Power%20Apps-Canvas%20App-742774?logo=powerapps&logoColor=white)
-![Power Automate](https://img.shields.io/badge/Power%20Automate-Workflow-0066FF?logo=powerautomate&logoColor=white)
-![SharePoint](https://img.shields.io/badge/SharePoint-Data%20%26%20Documents-038387?logo=microsoftsharepoint&logoColor=white)
-
-## Professional context
-
-This project is a **sanitised portfolio reconstruction of an enterprise procurement/request workflow**.
-
-It demonstrates how a business process can be structured across Canvas App UX, SharePoint data/document storage and Power Automate orchestration without exposing production source code or tenant configuration.
-
-> Production `.msapp`, Power Fx implementation details, real flows, tenant identifiers and confidential business data are intentionally not published.
-
-## Business objective
-
-Centralise procurement and operational requests from creation through closure:
+**Solution:** one structured workflow covering the full request lifecycle:
 
 **Create → Review → Assign team + owner → Accept → Process → Documents / Comments / Status → Close & Archive**
 
-## Main functional areas
+**Stack:** Power Apps Canvas · Power Automate · SharePoint · Microsoft 365
 
-| Area | Purpose |
+**Main capabilities:** structured request forms, final validation, personal/team queues, assignment, lifecycle notifications, durable document association, team management and controlled closure.
+
+---
+
+## Workflow
+
+```mermaid
+flowchart LR
+    A[Create request] --> B[Final review]
+    B --> C[Assign team + owner]
+    C --> D[Accept]
+    D --> E[Process]
+    E --> F[Documents / comments / status]
+    F --> G[Close & archive]
+```
+
+## What this case study demonstrates
+
+| Area | Capability |
 |---|---|
-| Request creation | Structured forms by request type |
-| Review | Final validation before submission |
-| Assignment | Team + named owner |
-| Work queues | Personal and service ticket views |
-| Request detail | Status, comments, history and stakeholders |
-| Documents | Durable SharePoint document association |
-| Notifications | Lifecycle e-mails / collaboration |
-| Team management | Membership and access administration |
-| Closure | Controlled end state and archive behaviour |
+| **Power Apps** | Multi-step business workflow and request-management UX |
+| **Power Automate** | Lifecycle orchestration, notifications and controlled server-side actions |
+| **SharePoint** | Request data, team information, stakeholders and document association |
+| **Security design** | Least privilege and source-layer permissions |
+| **Reliability design** | Error paths, duplicate prevention and idempotency considerations |
+| **Performance design** | Delegation-aware, source-side filtering patterns |
+| **ALM design** | DEV → TEST/UAT → PROD with Solutions and environment configuration |
+
+## Functional scope
+
+### Request creation
+
+Users create a request through a form adapted to the selected request type and required business information.
+
+### Final review
+
+Before submission, the user sees a consolidated summary so key information can be checked before the request enters the workflow.
+
+### Assignment
+
+A request is assigned to both a **team** and a **named owner**, giving clear operational responsibility.
+
+### Personal and team queues
+
+Users can distinguish requests they own from requests visible to their service or team.
+
+### Request detail
+
+The detail view centralises current status, comments, stakeholders, history and related actions.
+
+### Documents
+
+Documents remain associated with the request through the lifecycle instead of being treated as temporary attachments only.
+
+### Notifications
+
+Power Automate patterns support creation, assignment, status-change and closure notifications.
+
+### Team management
+
+Team membership and access are managed separately from the operational ticket flow.
+
+### Closure
+
+The workflow ends in a controlled final state with archive behaviour rather than an ambiguous completed status.
 
 ## Architecture
 
@@ -50,30 +88,24 @@ flowchart TB
     APP --> SP[(SharePoint Lists)]
     APP --> LIB[(SharePoint Document Library)]
     APP --> FLOW[Power Automate]
+
     FLOW --> SP
     FLOW --> LIB
     FLOW --> M365[Microsoft 365]
     SP --> BI[Power BI / Reporting]
 ```
 
-## Key capabilities demonstrated
-
-| Area | Capability |
-|---|---|
-| Power Apps | Multi-step enterprise workflow UX |
-| Power Automate | Server-side lifecycle orchestration |
-| SharePoint | Business records, teams, stakeholders and documents |
-| Security | Least privilege and source-layer permissions |
-| Reliability | Error paths, idempotency and duplicate-prevention principles |
-| Performance | Delegation-aware source-side design |
-| ALM | DEV → TEST/UAT → PROD with Solutions and environment configuration |
-| Portfolio privacy | Architecture shown without distributing production source |
-
-## Documentation
+## Engineering documentation
 
 - [Architecture](./docs/ARCHITECTURE.md)
 - [Functional scope](./docs/FEATURES.md)
 - [Security, reliability & ALM](./docs/SECURITY_AND_ALM.md)
+
+## Public portfolio boundary
+
+This public case study focuses on the business process, architecture and engineering approach.
+
+Production `.msapp` packages, tenant-specific Power Fx implementation, live flow exports, tenant identifiers and confidential business data are intentionally not published.
 
 ---
 
@@ -81,58 +113,36 @@ flowchart TB
 
 # 🇫🇷 Français
 
-> **Workflow d'entreprise de gestion des demandes achats construit autour de Power Apps, SharePoint et Power Automate.**
+## Vue en 30 secondes
 
-## Contexte professionnel
+**Problème métier :** centraliser les demandes achats et internes afin de maîtriser la création, l'affectation, les documents, les notifications et la responsabilité de traitement.
 
-Ce projet est une **reconstruction portfolio anonymisée d'un workflow d'entreprise de gestion des demandes achats**.
-
-Il démontre comment structurer un processus métier entre UX Canvas App, stockage SharePoint et orchestration Power Automate, sans exposer le code source de production ni la configuration du tenant.
-
-> Le `.msapp` de production, les détails Power Fx, flows réels, identifiants du tenant et données métier confidentielles ne sont volontairement pas publiés.
-
-## Objectif métier
-
-Centraliser les demandes de la création jusqu'à la clôture :
+**Parcours :**
 
 **Création → Vérification → Affectation équipe + personne → Acceptation → Traitement → Documents / Commentaires / Statut → Clôture & Archivage**
 
-## Principaux domaines fonctionnels
+**Technologies :** Power Apps Canvas · Power Automate · SharePoint · Microsoft 365
 
-| Domaine | Objectif |
-|---|---|
-| Création | Formulaires structurés selon le type |
-| Vérification | Validation finale avant envoi |
-| Affectation | Équipe + propriétaire nommé |
-| Files de travail | Tickets personnels et du service |
-| Détail | Statut, commentaires, historique et parties prenantes |
-| Documents | Rattachement durable aux bibliothèques SharePoint |
-| Notifications | E-mails et événements de cycle de vie |
-| Gestion d'équipe | Membres et droits |
-| Clôture | État final et archivage contrôlé |
+## Fonctionnalités principales
 
-## Architecture
+- formulaires structurés selon le type de demande ;
+- vérification finale avant envoi ;
+- affectation équipe + propriétaire ;
+- files personnelles et service ;
+- suivi du statut et de l'historique ;
+- rattachement durable des documents ;
+- notifications de cycle de vie ;
+- gestion des équipes et accès ;
+- clôture contrôlée.
 
-```mermaid
-flowchart TB
-    U[Utilisateur métier] --> APP[Power Apps Canvas App]
-    APP --> SP[(Listes SharePoint)]
-    APP --> LIB[(Bibliothèque documentaire SharePoint)]
-    APP --> FLOW[Power Automate]
-    FLOW --> SP
-    FLOW --> LIB
-    FLOW --> M365[Microsoft 365]
-    SP --> BI[Power BI / Reporting]
-```
+## Ce que le projet démontre
 
-## Compétences démontrées
-
-**Power Apps · Power Automate · SharePoint · Délégation · Sécurité · Gestion des erreurs · Idempotence · ALM · Solutions · Connection References · Environment Variables**
+**Power Apps · Power Automate · SharePoint · Délégation · Sécurité · Gestion des erreurs · Idempotence · Documents · Notifications · ALM**
 
 ## Documentation
 
-- [Architecture](./docs/ARCHITECTURE_FR.md)
-- [Périmètre fonctionnel](./docs/FEATURES_FR.md)
-- [Sécurité, fiabilité & ALM](./docs/SECURITY_AND_ALM_FR.md)
+- [Architecture FR](./docs/ARCHITECTURE_FR.md)
+- [Périmètre fonctionnel FR](./docs/FEATURES_FR.md)
+- [Sécurité, fiabilité & ALM FR](./docs/SECURITY_AND_ALM_FR.md)
 
-Le code source de production reste privé.
+La version publique documente la logique métier et l'architecture sans exposer les éléments confidentiels de production.
