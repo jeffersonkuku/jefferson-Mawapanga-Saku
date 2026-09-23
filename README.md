@@ -1,29 +1,59 @@
-# Power Platform Portfolio — Jefferson Mawapanga Saku
+# Jefferson Mawapanga Saku — Power Platform & BI Engineer
 
-> **Power Apps · Power Automate · SharePoint · Power Fx · Business Applications · Workflow Automation**
+> **I build business applications, workflow automation, SharePoint solutions and decision dashboards for operational teams.**
 
-[English](#english) · [Français](#francais)
+[🇬🇧 English](#english) · [🇫🇷 Français](#francais) · [▶ Power Apps demo](https://www.youtube.com/watch?v=Y15BCn_i-fo) · [📊 Power BI portfolio](https://github.com/jeffersonkuku/powerbi-portfolio-projects)
 
 ![Power Apps](https://img.shields.io/badge/Power%20Apps-Canvas%20Apps-742774?logo=powerapps&logoColor=white)
 ![Power Automate](https://img.shields.io/badge/Power%20Automate-Workflow-0066FF?logo=powerautomate&logoColor=white)
 ![SharePoint](https://img.shields.io/badge/SharePoint-Data%20%26%20Documents-038387?logo=microsoftsharepoint&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power%20BI-Analytics-F2C811?logo=powerbi&logoColor=000)
 ![Power Fx](https://img.shields.io/badge/Power%20Fx-Business%20Logic-7B61FF)
-![Portfolio](https://img.shields.io/badge/Data-Sanitised%20%26%20Synthetic-6C63FF)
 
-## Start here
+## 30-second portfolio
 
-This repository is dedicated to my **Power Platform portfolio**.
+<table>
+<tr>
+<td width="50%" valign="top">
 
-It demonstrates the complete solution workflow:
+<h3>⚡ Power Apps / Power Automate / SharePoint</h3>
 
-**Business need → Process → Data model → Power Apps → Power Automate → SharePoint → Security → ALM**
+<a href="https://www.youtube.com/watch?v=Y15BCn_i-fo">
+  <img src="./projects/building-operations-hub/assets/01-home.png" alt="Building Operations Hub — Power Apps" width="100%">
+</a>
 
-The two main case studies are:
+<strong>Building Operations Hub</strong><br>
+Responsive field application for maintenance operations, on-call support, equipment procedures, technical contacts and intervention feedback.
 
-1. **[Building Operations Hub](./projects/building-operations-hub/)** — industrial multi-technical operations and on-call assistance
-2. **[ProcureFlow](./projects/procureflow/)** — procurement and request-management workflow
+<br><br>
+<a href="https://www.youtube.com/watch?v=Y15BCn_i-fo"><strong>▶ Watch the demo</strong></a>
+&nbsp;·&nbsp;
+<a href="./projects/building-operations-hub/"><strong>Open case study</strong></a>
 
-➡️ **[Power BI portfolio](https://github.com/jeffersonkuku/powerbi-portfolio-projects)**
+</td>
+<td width="50%" valign="top">
+
+<h3>📊 Power BI / Data Analysis</h3>
+
+<a href="https://github.com/jeffersonkuku/powerbi-portfolio-projects">
+  <img src="https://raw.githubusercontent.com/jeffersonkuku/powerbi-portfolio-projects/main/powerbi-procurement-financial-control-tower/assets/executive-procurement-control-tower.png" alt="Power BI Procurement and Financial Control Tower" width="100%">
+</a>
+
+<strong>Power BI Portfolio</strong><br>
+Five end-to-end projects covering finance, procurement, supplier performance, SLA, backlog, penalties and operational decision support.
+
+<br><br>
+<a href="https://github.com/jeffersonkuku/powerbi-portfolio-projects"><strong>📊 Open Power BI portfolio</strong></a>
+
+</td>
+</tr>
+</table>
+
+### See the strongest Power BI projects directly
+
+**[Procurement & Financial Control Tower](https://github.com/jeffersonkuku/powerbi-portfolio-projects/tree/main/powerbi-procurement-financial-control-tower)** ·
+**[SLA & Penalties](https://github.com/jeffersonkuku/powerbi-portfolio-projects/tree/main/powerbi-sla-penalties-portfolio)** ·
+**[P2 Financial Monitoring](https://github.com/jeffersonkuku/powerbi-portfolio-projects/tree/main/powerbi-p2-consumables-financial-monitoring)**
 
 ---
 
@@ -31,41 +61,53 @@ The two main case studies are:
 
 # 🇬🇧 English
 
-## Featured Power Platform projects
+## What I can deliver
 
-| Project | Business problem | What it demonstrates |
-|---|---|---|
-| **[Building Operations Hub](./projects/building-operations-hub/)** | On-call support, equipment procedures, contacts, technical knowledge and intervention feedback | Responsive Canvas App, SharePoint architecture, Power Automate approvals, security model, multi-device UX |
-| **[ProcureFlow](./projects/procureflow/)** | Procurement requests, assignment, documents, notifications and lifecycle | Business workflow design, team queues, SharePoint document/data model, Power Automate orchestration, ALM |
+| Business need | What I build |
+|---|---|
+| **Operational applications** | Responsive Power Apps Canvas applications for field and business teams |
+| **Workflow automation** | Power Automate flows for approvals, notifications, lifecycle management and repetitive tasks |
+| **Data & document solutions** | SharePoint lists/libraries structured for business data, documents and controlled access |
+| **Decision support** | Power BI dashboards for finance, procurement, maintenance, SLA and operational performance |
+| **End-to-end digitalisation** | Business need → data model → app/workflow → reporting → governance |
 
-## Building Operations Hub
+## Featured case studies
 
-[![Building Operations Hub](./projects/building-operations-hub/assets/01-home.png)](./projects/building-operations-hub/)
+### 1. Building Operations Hub
 
-**Why it matters:** an end-to-end operational application rather than a single form — physical asset navigation, contextual tutorials, governed contacts, technical-content proposal, hot barometry and responsive layouts.
+**Power Apps · Power Automate · SharePoint · Power Fx**
 
-➡️ **[Open Building Operations Hub](./projects/building-operations-hub/)**
+A multi-site maintenance and on-call support application that centralises equipment procedures, troubleshooting knowledge, technical contacts and post-intervention feedback.
 
-## Skills demonstrated
+**Proof first:** [▶ Watch the YouTube demo](https://www.youtube.com/watch?v=Y15BCn_i-fo) · [Open the full case study](./projects/building-operations-hub/)
 
-- Power Apps Canvas Apps
-- Power Fx
-- Power Automate
-- SharePoint lists and document/media libraries
-- responsive desktop / tablet / mobile design
-- delegation-aware design
-- explicit error handling
-- server-side validation
-- role-based access / least privilege
-- approvals and archive workflows
-- DLP considerations
-- DEV → TEST/UAT → PROD ALM
-- Solutions, Connection References and Environment Variables
-- App/Solution Checker, Monitor and regression-test expectations
+### 2. ProcureFlow
 
-## Public-source boundary
+**Power Apps · Power Automate · SharePoint · Microsoft 365**
 
-The repository intentionally does **not** publish production `.msapp` packages, Power Fx implementation formulas, Power Automate exports, tenant URLs, credentials or confidential production data.
+A procurement and request-management workflow covering request creation, final review, team/person assignment, work queues, documents, notifications, status tracking and closure.
+
+**Explore:** [Open the ProcureFlow case study](./projects/procureflow/)
+
+### 3. Power BI portfolio
+
+**Power BI · Power Query · DAX · Semantic modelling · PBIP/PBIR/TMDL**
+
+Five business-oriented analytics projects covering financial steering, procurement performance, supplier risk, SLA/penalties and operational monitoring.
+
+**Explore:** [Open the complete Power BI portfolio](https://github.com/jeffersonkuku/powerbi-portfolio-projects)
+
+## Engineering approach
+
+I design Power Platform solutions around the complete business workflow, not only the interface:
+
+**Business need → Process → Data model → Power Apps → Power Automate → SharePoint → Security → Reporting → ALM**
+
+The case studies document architecture, user journeys, security principles, responsive design, delegation-aware patterns, error handling, controlled server-side actions and DEV → TEST/UAT → PROD deployment principles.
+
+## Public portfolio boundary
+
+The public repositories use sanitised or synthetic information. Production tenant URLs, credentials, confidential datasets, production source packages and sensitive connection details are not published.
 
 ---
 
@@ -73,27 +115,40 @@ The repository intentionally does **not** publish production `.msapp` packages, 
 
 # 🇫🇷 Français
 
-## Projets Power Platform principaux
+## Ce que je peux apporter
 
-| Projet | Enjeu métier | Ce qu'il démontre |
-|---|---|---|
-| **[Building Operations Hub](./projects/building-operations-hub/#francais)** | Astreinte, procédures équipements, contacts, connaissances techniques et feedback intervention | Canvas App responsive, architecture SharePoint, approbations Power Automate, sécurité, UX multi-support |
-| **[ProcureFlow](./projects/procureflow/#francais)** | Demandes achats, affectation, documents, notifications et cycle de vie | Workflow métier, files d'équipe, modèle SharePoint données/documents, orchestration Power Automate, ALM |
+| Besoin | Solution |
+|---|---|
+| **Applications métiers** | Applications Power Apps Canvas responsives pour équipes terrain et fonctions support |
+| **Automatisation** | Flows Power Automate pour validations, notifications, cycles de vie et tâches répétitives |
+| **Données & documents** | Architecture SharePoint pour données métiers, documents et accès maîtrisés |
+| **Pilotage** | Dashboards Power BI finance, achats, maintenance, SLA et performance opérationnelle |
+| **Digitalisation de bout en bout** | Besoin métier → données → application/workflow → reporting → gouvernance |
 
-## Building Operations Hub
+## Projets à voir en priorité
 
-[![Building Operations Hub](./projects/building-operations-hub/assets/01-home.png)](./projects/building-operations-hub/#francais)
+### Building Operations Hub
 
-**Pourquoi ce projet est important :** il démontre une application opérationnelle complète et pas seulement un formulaire — navigation physique des actifs, tutoriels contextuels, annuaire gouverné, proposition de contenu technique, barométrie à chaud et responsive.
+Application Power Apps responsive pour la maintenance, l'astreinte, les procédures équipements, l'annuaire technique et le retour après intervention.
 
-➡️ **[Voir Building Operations Hub](./projects/building-operations-hub/#francais)**
+**[▶ Voir la démonstration YouTube](https://www.youtube.com/watch?v=Y15BCn_i-fo)** · **[Voir l'étude de cas](./projects/building-operations-hub/#francais)**
 
-## Compétences démontrées
+### ProcureFlow
 
-**Power Apps · Power Fx · Power Automate · SharePoint · Responsive Design · Délégation · Sécurité · Approbations · DLP · ALM · Solutions · Connection References · Environment Variables · App/Solution Checker · Monitor**
+Workflow achats et demandes : création, vérification, affectation équipe + personne, files de travail, documents, notifications, suivi de statut et clôture.
 
-## Limite du dépôt public
+**[Voir l'étude de cas ProcureFlow](./projects/procureflow/#francais)**
 
-Le dépôt ne publie volontairement pas les `.msapp` de production, les formules Power Fx d'implémentation, les exports Power Automate, les URLs de tenant, les identifiants ou les données de production confidentielles.
+### Power BI
 
-➡️ **[Voir également mon portfolio Power BI](https://github.com/jeffersonkuku/powerbi-portfolio-projects)**
+Cinq projets complets autour du pilotage financier, des achats, de la performance fournisseurs, des SLA, du backlog et des pénalités.
+
+**[📊 Voir le portfolio Power BI](https://github.com/jeffersonkuku/powerbi-portfolio-projects)**
+
+## Approche
+
+Je construis les solutions autour du processus métier complet :
+
+**Besoin métier → Processus → Modèle de données → Power Apps → Power Automate → SharePoint → Sécurité → Reporting → ALM**
+
+Les versions publiques utilisent des données anonymisées ou synthétiques et n'exposent pas les éléments confidentiels des environnements de production.
