@@ -1,0 +1,722 @@
+{
+  "c0002": {
+    "voice": "en-US-AndrewNeural",
+    "term": "./audio/c0002-term.mp3",
+    "example": "./audio/c0002-example.mp3",
+    "locale": "en-US"
+  },
+  "c0004": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0004-term.mp3",
+    "example": "./audio/c0004-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0001": {
+    "voice": "en-US-AvaNeural",
+    "term": "./audio/c0001-term.mp3",
+    "example": "./audio/c0001-example.mp3",
+    "locale": "en-US"
+  },
+  "c0003": {
+    "voice": "en-GB-SoniaNeural",
+    "term": "./audio/c0003-term.mp3",
+    "example": "./audio/c0003-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0005": {
+    "voice": "en-US-EmmaMultilingualNeural",
+    "term": "./audio/c0005-term.mp3",
+    "example": "./audio/c0005-example.mp3",
+    "locale": "en-US"
+  },
+  "c0006": {
+    "voice": "en-GB-RyanNeural",
+    "term": "./audio/c0006-term.mp3",
+    "example": "./audio/c0006-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0007": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0007-term.mp3",
+    "example": "./audio/c0007-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0008": {
+    "voice": "en-US-AvaNeural",
+    "term": "./audio/c0008-term.mp3",
+    "example": "./audio/c0008-example.mp3",
+    "locale": "en-US"
+  },
+  "c0009": {
+    "voice": "en-US-AndrewNeural",
+    "term": "./audio/c0009-term.mp3",
+    "example": "./audio/c0009-example.mp3",
+    "locale": "en-US"
+  },
+  "c0010": {
+    "voice": "en-GB-SoniaNeural",
+    "term": "./audio/c0010-term.mp3",
+    "example": "./audio/c0010-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0011": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0011-term.mp3",
+    "example": "./audio/c0011-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0012": {
+    "voice": "en-US-EmmaMultilingualNeural",
+    "term": "./audio/c0012-term.mp3",
+    "example": "./audio/c0012-example.mp3",
+    "locale": "en-US"
+  },
+  "c0013": {
+    "voice": "en-GB-RyanNeural",
+    "term": "./audio/c0013-term.mp3",
+    "example": "./audio/c0013-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0014": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0014-term.mp3",
+    "example": "./audio/c0014-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0016": {
+    "voice": "en-US-AndrewNeural",
+    "term": "./audio/c0016-term.mp3",
+    "example": "./audio/c0016-example.mp3",
+    "locale": "en-US"
+  },
+  "c0015": {
+    "voice": "en-US-AvaNeural",
+    "term": "./audio/c0015-term.mp3",
+    "example": "./audio/c0015-example.mp3",
+    "locale": "en-US"
+  },
+  "c0017": {
+    "voice": "en-GB-SoniaNeural",
+    "term": "./audio/c0017-term.mp3",
+    "example": "./audio/c0017-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0018": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0018-term.mp3",
+    "example": "./audio/c0018-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0019": {
+    "voice": "en-US-EmmaMultilingualNeural",
+    "term": "./audio/c0019-term.mp3",
+    "example": "./audio/c0019-example.mp3",
+    "locale": "en-US"
+  },
+  "c0020": {
+    "voice": "en-GB-RyanNeural",
+    "term": "./audio/c0020-term.mp3",
+    "example": "./audio/c0020-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0021": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0021-term.mp3",
+    "example": "./audio/c0021-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0022": {
+    "voice": "en-US-AvaNeural",
+    "term": "./audio/c0022-term.mp3",
+    "example": "./audio/c0022-example.mp3",
+    "locale": "en-US"
+  },
+  "c0024": {
+    "voice": "en-GB-SoniaNeural",
+    "term": "./audio/c0024-term.mp3",
+    "example": "./audio/c0024-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0023": {
+    "voice": "en-US-AndrewNeural",
+    "term": "./audio/c0023-term.mp3",
+    "example": "./audio/c0023-example.mp3",
+    "locale": "en-US"
+  },
+  "c0025": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0025-term.mp3",
+    "example": "./audio/c0025-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0026": {
+    "voice": "en-US-EmmaMultilingualNeural",
+    "term": "./audio/c0026-term.mp3",
+    "example": "./audio/c0026-example.mp3",
+    "locale": "en-US"
+  },
+  "c0028": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0028-term.mp3",
+    "example": "./audio/c0028-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0027": {
+    "voice": "en-GB-RyanNeural",
+    "term": "./audio/c0027-term.mp3",
+    "example": "./audio/c0027-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0029": {
+    "voice": "en-US-AvaNeural",
+    "term": "./audio/c0029-term.mp3",
+    "example": "./audio/c0029-example.mp3",
+    "locale": "en-US"
+  },
+  "c0030": {
+    "voice": "en-US-AndrewNeural",
+    "term": "./audio/c0030-term.mp3",
+    "example": "./audio/c0030-example.mp3",
+    "locale": "en-US"
+  },
+  "c0031": {
+    "voice": "en-GB-SoniaNeural",
+    "term": "./audio/c0031-term.mp3",
+    "example": "./audio/c0031-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0033": {
+    "voice": "en-US-EmmaMultilingualNeural",
+    "term": "./audio/c0033-term.mp3",
+    "example": "./audio/c0033-example.mp3",
+    "locale": "en-US"
+  },
+  "c0034": {
+    "voice": "en-GB-RyanNeural",
+    "term": "./audio/c0034-term.mp3",
+    "example": "./audio/c0034-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0032": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0032-term.mp3",
+    "example": "./audio/c0032-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0035": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0035-term.mp3",
+    "example": "./audio/c0035-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0036": {
+    "voice": "en-US-AvaNeural",
+    "term": "./audio/c0036-term.mp3",
+    "example": "./audio/c0036-example.mp3",
+    "locale": "en-US"
+  },
+  "c0037": {
+    "voice": "en-US-AndrewNeural",
+    "term": "./audio/c0037-term.mp3",
+    "example": "./audio/c0037-example.mp3",
+    "locale": "en-US"
+  },
+  "c0038": {
+    "voice": "en-GB-SoniaNeural",
+    "term": "./audio/c0038-term.mp3",
+    "example": "./audio/c0038-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0039": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0039-term.mp3",
+    "example": "./audio/c0039-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0040": {
+    "voice": "en-US-EmmaMultilingualNeural",
+    "term": "./audio/c0040-term.mp3",
+    "example": "./audio/c0040-example.mp3",
+    "locale": "en-US"
+  },
+  "c0041": {
+    "voice": "en-GB-RyanNeural",
+    "term": "./audio/c0041-term.mp3",
+    "example": "./audio/c0041-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0042": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0042-term.mp3",
+    "example": "./audio/c0042-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0043": {
+    "voice": "en-US-AvaNeural",
+    "term": "./audio/c0043-term.mp3",
+    "example": "./audio/c0043-example.mp3",
+    "locale": "en-US"
+  },
+  "c0044": {
+    "voice": "en-US-AndrewNeural",
+    "term": "./audio/c0044-term.mp3",
+    "example": "./audio/c0044-example.mp3",
+    "locale": "en-US"
+  },
+  "c0045": {
+    "voice": "en-GB-SoniaNeural",
+    "term": "./audio/c0045-term.mp3",
+    "example": "./audio/c0045-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0046": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0046-term.mp3",
+    "example": "./audio/c0046-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0047": {
+    "voice": "en-US-EmmaMultilingualNeural",
+    "term": "./audio/c0047-term.mp3",
+    "example": "./audio/c0047-example.mp3",
+    "locale": "en-US"
+  },
+  "c0048": {
+    "voice": "en-GB-RyanNeural",
+    "term": "./audio/c0048-term.mp3",
+    "example": "./audio/c0048-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0049": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0049-term.mp3",
+    "example": "./audio/c0049-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0050": {
+    "voice": "en-US-AvaNeural",
+    "term": "./audio/c0050-term.mp3",
+    "example": "./audio/c0050-example.mp3",
+    "locale": "en-US"
+  },
+  "c0051": {
+    "voice": "en-US-AndrewNeural",
+    "term": "./audio/c0051-term.mp3",
+    "example": "./audio/c0051-example.mp3",
+    "locale": "en-US"
+  },
+  "c0052": {
+    "voice": "en-GB-SoniaNeural",
+    "term": "./audio/c0052-term.mp3",
+    "example": "./audio/c0052-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0053": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0053-term.mp3",
+    "example": "./audio/c0053-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0054": {
+    "voice": "en-US-EmmaMultilingualNeural",
+    "term": "./audio/c0054-term.mp3",
+    "example": "./audio/c0054-example.mp3",
+    "locale": "en-US"
+  },
+  "c0056": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0056-term.mp3",
+    "example": "./audio/c0056-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0055": {
+    "voice": "en-GB-RyanNeural",
+    "term": "./audio/c0055-term.mp3",
+    "example": "./audio/c0055-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0057": {
+    "voice": "en-US-AvaNeural",
+    "term": "./audio/c0057-term.mp3",
+    "example": "./audio/c0057-example.mp3",
+    "locale": "en-US"
+  },
+  "c0058": {
+    "voice": "en-US-AndrewNeural",
+    "term": "./audio/c0058-term.mp3",
+    "example": "./audio/c0058-example.mp3",
+    "locale": "en-US"
+  },
+  "c0059": {
+    "voice": "en-GB-SoniaNeural",
+    "term": "./audio/c0059-term.mp3",
+    "example": "./audio/c0059-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0060": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0060-term.mp3",
+    "example": "./audio/c0060-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0061": {
+    "voice": "en-US-EmmaMultilingualNeural",
+    "term": "./audio/c0061-term.mp3",
+    "example": "./audio/c0061-example.mp3",
+    "locale": "en-US"
+  },
+  "c0062": {
+    "voice": "en-GB-RyanNeural",
+    "term": "./audio/c0062-term.mp3",
+    "example": "./audio/c0062-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0064": {
+    "voice": "en-US-AvaNeural",
+    "term": "./audio/c0064-term.mp3",
+    "example": "./audio/c0064-example.mp3",
+    "locale": "en-US"
+  },
+  "c0063": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0063-term.mp3",
+    "example": "./audio/c0063-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0065": {
+    "voice": "en-US-AndrewNeural",
+    "term": "./audio/c0065-term.mp3",
+    "example": "./audio/c0065-example.mp3",
+    "locale": "en-US"
+  },
+  "c0066": {
+    "voice": "en-GB-SoniaNeural",
+    "term": "./audio/c0066-term.mp3",
+    "example": "./audio/c0066-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0067": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0067-term.mp3",
+    "example": "./audio/c0067-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0068": {
+    "voice": "en-US-EmmaMultilingualNeural",
+    "term": "./audio/c0068-term.mp3",
+    "example": "./audio/c0068-example.mp3",
+    "locale": "en-US"
+  },
+  "c0069": {
+    "voice": "en-GB-RyanNeural",
+    "term": "./audio/c0069-term.mp3",
+    "example": "./audio/c0069-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0070": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0070-term.mp3",
+    "example": "./audio/c0070-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0072": {
+    "voice": "en-US-AndrewNeural",
+    "term": "./audio/c0072-term.mp3",
+    "example": "./audio/c0072-example.mp3",
+    "locale": "en-US"
+  },
+  "c0071": {
+    "voice": "en-US-AvaNeural",
+    "term": "./audio/c0071-term.mp3",
+    "example": "./audio/c0071-example.mp3",
+    "locale": "en-US"
+  },
+  "c0073": {
+    "voice": "en-GB-SoniaNeural",
+    "term": "./audio/c0073-term.mp3",
+    "example": "./audio/c0073-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0074": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0074-term.mp3",
+    "example": "./audio/c0074-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0075": {
+    "voice": "en-US-EmmaMultilingualNeural",
+    "term": "./audio/c0075-term.mp3",
+    "example": "./audio/c0075-example.mp3",
+    "locale": "en-US"
+  },
+  "c0076": {
+    "voice": "en-GB-RyanNeural",
+    "term": "./audio/c0076-term.mp3",
+    "example": "./audio/c0076-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0078": {
+    "voice": "en-US-AvaNeural",
+    "term": "./audio/c0078-term.mp3",
+    "example": "./audio/c0078-example.mp3",
+    "locale": "en-US"
+  },
+  "c0077": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0077-term.mp3",
+    "example": "./audio/c0077-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0079": {
+    "voice": "en-US-AndrewNeural",
+    "term": "./audio/c0079-term.mp3",
+    "example": "./audio/c0079-example.mp3",
+    "locale": "en-US"
+  },
+  "c0080": {
+    "voice": "en-GB-SoniaNeural",
+    "term": "./audio/c0080-term.mp3",
+    "example": "./audio/c0080-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0081": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0081-term.mp3",
+    "example": "./audio/c0081-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0082": {
+    "voice": "en-US-EmmaMultilingualNeural",
+    "term": "./audio/c0082-term.mp3",
+    "example": "./audio/c0082-example.mp3",
+    "locale": "en-US"
+  },
+  "c0084": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0084-term.mp3",
+    "example": "./audio/c0084-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0085": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0085-term.mp3",
+    "example": "./audio/c0085-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0086": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0086-term.mp3",
+    "example": "./audio/c0086-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0083": {
+    "voice": "en-GB-RyanNeural",
+    "term": "./audio/c0083-term.mp3",
+    "example": "./audio/c0083-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0087": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0087-term.mp3",
+    "example": "./audio/c0087-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0089": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0089-term.mp3",
+    "example": "./audio/c0089-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0090": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0090-term.mp3",
+    "example": "./audio/c0090-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0088": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0088-term.mp3",
+    "example": "./audio/c0088-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0091": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0091-term.mp3",
+    "example": "./audio/c0091-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0093": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0093-term.mp3",
+    "example": "./audio/c0093-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0094": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0094-term.mp3",
+    "example": "./audio/c0094-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0092": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0092-term.mp3",
+    "example": "./audio/c0092-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0095": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0095-term.mp3",
+    "example": "./audio/c0095-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0096": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0096-term.mp3",
+    "example": "./audio/c0096-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0098": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0098-term.mp3",
+    "example": "./audio/c0098-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0097": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0097-term.mp3",
+    "example": "./audio/c0097-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0099": {
+    "voice": "en-US-AvaNeural",
+    "term": "./audio/c0099-term.mp3",
+    "example": "./audio/c0099-example.mp3",
+    "locale": "en-US"
+  },
+  "c0100": {
+    "voice": "en-US-AndrewNeural",
+    "term": "./audio/c0100-term.mp3",
+    "example": "./audio/c0100-example.mp3",
+    "locale": "en-US"
+  },
+  "c0101": {
+    "voice": "en-GB-SoniaNeural",
+    "term": "./audio/c0101-term.mp3",
+    "example": "./audio/c0101-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0102": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0102-term.mp3",
+    "example": "./audio/c0102-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0103": {
+    "voice": "en-US-EmmaMultilingualNeural",
+    "term": "./audio/c0103-term.mp3",
+    "example": "./audio/c0103-example.mp3",
+    "locale": "en-US"
+  },
+  "c0105": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0105-term.mp3",
+    "example": "./audio/c0105-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0104": {
+    "voice": "en-GB-RyanNeural",
+    "term": "./audio/c0104-term.mp3",
+    "example": "./audio/c0104-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0106": {
+    "voice": "en-US-AvaNeural",
+    "term": "./audio/c0106-term.mp3",
+    "example": "./audio/c0106-example.mp3",
+    "locale": "en-US"
+  },
+  "c0107": {
+    "voice": "en-US-AndrewNeural",
+    "term": "./audio/c0107-term.mp3",
+    "example": "./audio/c0107-example.mp3",
+    "locale": "en-US"
+  },
+  "c0108": {
+    "voice": "en-GB-SoniaNeural",
+    "term": "./audio/c0108-term.mp3",
+    "example": "./audio/c0108-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0110": {
+    "voice": "en-US-EmmaMultilingualNeural",
+    "term": "./audio/c0110-term.mp3",
+    "example": "./audio/c0110-example.mp3",
+    "locale": "en-US"
+  },
+  "c0109": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0109-term.mp3",
+    "example": "./audio/c0109-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0111": {
+    "voice": "en-GB-RyanNeural",
+    "term": "./audio/c0111-term.mp3",
+    "example": "./audio/c0111-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0112": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0112-term.mp3",
+    "example": "./audio/c0112-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0114": {
+    "voice": "en-US-AndrewNeural",
+    "term": "./audio/c0114-term.mp3",
+    "example": "./audio/c0114-example.mp3",
+    "locale": "en-US"
+  },
+  "c0113": {
+    "voice": "en-US-AvaNeural",
+    "term": "./audio/c0113-term.mp3",
+    "example": "./audio/c0113-example.mp3",
+    "locale": "en-US"
+  },
+  "c0115": {
+    "voice": "en-GB-SoniaNeural",
+    "term": "./audio/c0115-term.mp3",
+    "example": "./audio/c0115-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0116": {
+    "voice": "en-AU-NatashaNeural",
+    "term": "./audio/c0116-term.mp3",
+    "example": "./audio/c0116-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0117": {
+    "voice": "en-US-EmmaMultilingualNeural",
+    "term": "./audio/c0117-term.mp3",
+    "example": "./audio/c0117-example.mp3",
+    "locale": "en-US"
+  },
+  "c0118": {
+    "voice": "en-GB-RyanNeural",
+    "term": "./audio/c0118-term.mp3",
+    "example": "./audio/c0118-example.mp3",
+    "locale": "en-GB"
+  },
+  "c0119": {
+    "voice": "en-AU-WilliamNeural",
+    "term": "./audio/c0119-term.mp3",
+    "example": "./audio/c0119-example.mp3",
+    "locale": "en-AU"
+  },
+  "c0120": {
+    "voice": "en-US-AvaNeural",
+    "term": "./audio/c0120-term.mp3",
+    "example": "./audio/c0120-example.mp3",
+    "locale": "en-US"
+  }
+}
