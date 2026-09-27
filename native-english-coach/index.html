@@ -82,7 +82,8 @@ select,input[type=number],input[type=range]{width:100%;background:#0f1317;color:
     </div>
     <div>
       <div class="controls">
-        <button class="btn soft" id="speakBtn">🔊 Écouter</button>
+        <button class="btn soft" id="speakBtn">🔊 Mot</button>
+        <button class="btn soft" id="speakExampleBtn">💬 Phrase</button>
         <button class="btn accent" id="revealBtn">Révéler</button>
       </div>
       <div class="rating" id="ratingBox" style="display:none">
@@ -140,6 +141,7 @@ const DEFAULT_SETTINGS={voiceMode:'mix',repeatCount:3,thinkSeconds:5,speakFrench
 let db, corpus=[], settings={...DEFAULT_SETTINGS}, session=[], sessionIndex=0, currentMode='normal', currentSkill='reading';
 let fsrs=null, fsrsLib=null, wakeLock=null, driveRunning=false, drivePaused=false, lastDriveItem=null;
 let audioIndex={}, activeAudio=null, audioIndexReady=false;
+let studyAudioTimer=null, studyRenderToken=0;
 
 function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
 function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
@@ -208,9 +210,20 @@ function stopNeuralAudio(){
   try{activeAudio?.pause();activeAudio.currentTime=0}catch(e){}
   activeAudio=null;
 }
-function audioKindFor(text,item){
-  if(!item)return 'example';
-  return text.trim()===String(item.term||'').trim()?'term':'example';
+function cancelStudyPlayback(){
+  if(studyAudioTimer){clearTimeout(studyAudioTimer);studyAudioTimer=null}
+  studyRenderToken++;
+  stopNeuralAudio();
+  speechSynthesis.cancel();
+}
+function preloadNativeAudio(item,kind){
+  const meta=audioIndex[item?.id];
+  const src=meta?.[kind];
+  if(!src)return null;
+  const a=new Audio(src+'?v=3');
+  a.preload='auto';
+  a.load();
+  return a;
 }
 async function playNativeAudio(item,kind){
   if(!audioIndexReady)await loadAudioIndex();
@@ -218,9 +231,24 @@ async function playNativeAudio(item,kind){
   const src=meta?.[kind];
   if(!src)throw new Error('Audio natif non disponible pour cet élément');
   stopNeuralAudio();
+  const a=new Audio();
+  activeAudio=a;
+  a.preload='auto';
+  a.src=src+'?v=3';
+  a.load();
+  await new Promise((resolve,reject)=>{
+    let settled=false;
+    const ok=()=>{if(settled)return;settled=true;resolve()};
+    const fail=()=>{if(settled)return;settled=true;reject(new Error('Préchargement MP3 impossible'))};
+    a.addEventListener('canplaythrough',ok,{once:true});
+    a.addEventListener('canplay',ok,{once:true});
+    a.addEventListener('error',fail,{once:true});
+    setTimeout(ok,1200);
+  });
+  // Petit délai après activation de la route audio iOS/Bluetooth pour éviter
+  // que la première syllabe soit coupée.
+  await sleep(120);
   return new Promise((resolve,reject)=>{
-    const a=new Audio(src+'?v=2');activeAudio=a;
-    a.preload='auto';
     a.onended=()=>{if(activeAudio===a)activeAudio=null;resolve()};
     a.onerror=()=>{if(activeAudio===a)activeAudio=null;reject(new Error('Lecture MP3 impossible'))};
     a.play().catch(reject);
@@ -234,11 +262,12 @@ function systemSpeakFrench(text,rate=.95){
     u.onend=resolve;u.onerror=resolve;speechSynthesis.speak(u);
   });
 }
-async function speak(text,lang='en',item=null,rate=settings.speechRate){
+async function speak(text,lang='en',item=null,rate=settings.speechRate,kind=null){
   if(!text)return;
   if(lang==='fr')return systemSpeakFrench(text,rate);
   try{
-    return await playNativeAudio(item,audioKindFor(text,item));
+    const resolvedKind=kind || (text===item?.term?'term':'example');
+    return await playNativeAudio(item,resolvedKind);
   }catch(e){
     console.error(e);
     $('#voiceInfo').textContent='Audio natif indisponible pour cette carte';
@@ -272,7 +301,9 @@ async function startStudy(mode){
  show('#studyView');renderStudy()
 }
 function renderStudy(){
+ cancelStudyPlayback();
  if(sessionIndex>=session.length){toast('Session terminée ✅');show('#homeView');updateStats();return}
+ const renderToken=studyRenderToken;
  const item=session[sessionIndex], listening=currentMode==='listening', speaking=currentMode==='speaking';
  $('#counter').textContent=`${sessionIndex+1}/${session.length}`;$('#progressBar').style.width=`${sessionIndex/session.length*100}%`;
  $('#catBadge').textContent=item.category;$('#sourceBadge').textContent=item.source;$('#skillBadge').textContent=currentSkill;
@@ -280,7 +311,15 @@ function renderStudy(){
  $('#meaning').textContent=speaking?item.term:item.french;$('#example').textContent=item.example;$('#exampleFr').textContent=item.exampleFr;
  $('#studyCard').classList.add('hidden-answer');$('#studyCard').classList.toggle('listening-mask',listening);
  $('#ratingBox').style.display='none';$('#revealBtn').style.display='inline-block';
- if(listening)setTimeout(()=>speak(item.example,'en',item),250)
+ if(listening){
+   preloadNativeAudio(item,'term');
+   studyAudioTimer=setTimeout(()=>{
+     studyAudioTimer=null;
+     if(renderToken===studyRenderToken && session[sessionIndex]?.id===item.id){
+       speak(item.term,'en',item,settings.speechRate,'term');
+     }
+   },450);
+ }
 }
 function reveal(){const item=session[sessionIndex];$('#studyCard').classList.remove('hidden-answer','listening-mask');$('#ratingBox').style.display='grid';$('#revealBtn').style.display='none';if(currentMode==='speaking'){$('#term').textContent=item.term;$('#phon').textContent=item.phoneticFr;$('#ipa').textContent=item.ipa}}
 async function ratingClick(r){await rateItem(session[sessionIndex],currentSkill,r);sessionIndex++;renderStudy()}
@@ -291,25 +330,26 @@ async function startDriveMode(){
 }
 async function runDrive(){
  if(driveRunning)return;driveRunning=true;drivePaused=false;$('#startDrive').style.display='none';$('#driveActions').style.display='grid';await requestWake();
+ if(session[sessionIndex]){await loadAudioIndex();preloadNativeAudio(session[sessionIndex],'term');await sleep(180)}
  while(driveRunning && sessionIndex<session.length){
    if(drivePaused){await sleep(300);continue}
    const item=session[sessionIndex];lastDriveItem=item;
    $('#driveCounter').textContent=`${sessionIndex+1}/${session.length}`;$('#driveProgress').style.width=`${sessionIndex/session.length*100}%`;
    $('#driveTerm').textContent=item.term;$('#drivePhon').textContent=item.phoneticFr;$('#driveIpa').textContent=item.ipa;$('#driveMeaning').textContent=item.french;$('#driveExample').textContent=item.example;$('#driveExampleFr').textContent=item.exampleFr;
    $('#driveStatus').textContent='Écoute le mot / l’expression';
-   for(let i=0;i<settings.repeatCount && driveRunning;i++){await speak(item.term,'en',item);await sleep(500)}
+   for(let i=0;i<settings.repeatCount && driveRunning;i++){await speak(item.term,'en',item,settings.speechRate,'term');await sleep(500)}
    if(!driveRunning)break;
    if(settings.speakFrench){$('#driveStatus').textContent='Sens';await speak(item.french,'fr',item,.95);await sleep(400)}
-   $('#driveStatus').textContent='Phrase naturelle';await speak(item.example,'en',item);await sleep(settings.thinkSeconds*1000);
+   $('#driveStatus').textContent='Phrase naturelle';await speak(item.example,'en',item,settings.speechRate,'example');await sleep(settings.thinkSeconds*1000);
    await markExposure(item);sessionIndex++;
  }
  if(driveRunning){$('#driveStatus').textContent='Session terminée ✅';$('#driveTerm').textContent='DONE';$('#drivePhon').textContent='Bravo';$('#driveActions').style.display='none';$('#startDrive').style.display='block';$('#startDrive').textContent='↻ Nouvelle session';driveRunning=false;releaseWake();updateStats()}
 }
-function stopDrive(){driveRunning=false;speechSynthesis.cancel();stopNeuralAudio();releaseWake();show('#homeView');updateStats()}
+function stopDrive(){driveRunning=false;cancelStudyPlayback();releaseWake();show('#homeView');updateStats()}
 function renderBrowse(filter=''){
  const q=filter.trim().toLowerCase();const list=corpus.filter(x=>!q||[x.term,x.french,x.category,x.source].join(' ').toLowerCase().includes(q)).slice(0,150);
  $('#browseCount').textContent=list.length;$('#browseList').innerHTML=list.map(x=>`<div class="setting"><div class="badges"><span class="badge">${x.category}</span><span class="badge">${x.source}</span></div><h3 style="margin:10px 0 4px">${x.term}</h3><div class="phon">${x.phoneticFr}</div><div class="ipa">${x.ipa}</div><p style="margin:10px 0 5px">${x.french}</p><div class="hint">${x.example}<br>${x.exampleFr}</div><button class="btn soft" style="margin-top:10px" data-speak-id="${x.id}">🔊 Écouter</button></div>`).join('');
- $$('[data-speak-id]').forEach(b=>b.onclick=()=>{const x=corpus.find(i=>i.id===b.dataset.speakId);speak(x.example,'en',x)})
+ $('[data-speak-id]').forEach(b=>b.onclick=()=>{const x=corpus.find(i=>i.id===b.dataset.speakId);speak(x.term,'en',x,settings.speechRate,'term')})
 }
 function parseCSV(text){
  const lines=text.replace(/^\uFEFF/,'').split(/\r?\n/).filter(Boolean);if(lines.length<2)return[];
@@ -325,14 +365,16 @@ async function importCSV(file){
 function download(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 async function exportProgress(){download('native-english-coach-progress.json',JSON.stringify({exportedAt:new Date().toISOString(),settings,progress:await getAll('progress')},null,2),'application/json')}
 async function resetAll(){if(!confirm('Réinitialiser toute la progression et le corpus personnalisé ?'))return;await clearStore('progress');await clearStore('customCorpus');corpus=window.__NATIVE_COACH_SEED__;await updateStats();toast('Progression réinitialisée')}
-$$('[data-home]').forEach(b=>b.onclick=()=>{speechSynthesis.cancel();stopNeuralAudio();show('#homeView');updateStats()});
+$('[data-home]').forEach(b=>b.onclick=()=>{cancelStudyPlayback();show('#homeView');updateStats()});
 $('#settingsBtn').onclick=()=>show('#settingsView');
 $$('.mode').forEach(b=>b.onclick=()=>{const m=b.dataset.mode;if(m==='drive')startDriveMode();else if(m==='browse'){show('#browseView');renderBrowse()}else startStudy(m)});
-$('#revealBtn').onclick=reveal;$('#speakBtn').onclick=async()=>{const x=session[sessionIndex];speak(currentMode==='speaking'?x.term:x.example,'en',x)};
+$('#revealBtn').onclick=reveal;
+$('#speakBtn').onclick=async()=>{const x=session[sessionIndex];if(x)await speak(x.term,'en',x,settings.speechRate,'term')};
+$('#speakExampleBtn').onclick=async()=>{const x=session[sessionIndex];if(x)await speak(x.example,'en',x,settings.speechRate,'example')};
 $$('[data-rating]').forEach(b=>b.onclick=()=>ratingClick(+b.dataset.rating));
 $('#startDrive').onclick=async()=>{if(!driveRunning){if(sessionIndex>=session.length){session=await buildSession('drive');sessionIndex=0;$('#startDrive').textContent='▶ Démarrer la session'}runDrive()}};
 $('#drivePause').onclick=()=>{drivePaused=!drivePaused;if(drivePaused){speechSynthesis.cancel();stopNeuralAudio();}$('#drivePause').textContent=drivePaused?'▶ Reprendre':'⏸ Pause'};
-$('#driveReplay').onclick=()=>lastDriveItem&&speak(lastDriveItem.example,'en',lastDriveItem);
+$('#driveReplay').onclick=()=>lastDriveItem&&speak(lastDriveItem.term,'en',lastDriveItem,settings.speechRate,'term');
 $('#stopDrive').onclick=stopDrive;
 $('#searchBox').oninput=e=>renderBrowse(e.target.value);
 ['voiceMode','repeatCount','thinkSeconds','speakFrench','rotateVoices','speechRate'].forEach(id=>$('#'+id).onchange=saveSettings);
