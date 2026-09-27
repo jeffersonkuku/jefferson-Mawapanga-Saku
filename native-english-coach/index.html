@@ -325,8 +325,6 @@ async function importCSV(file){
 function download(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 async function exportProgress(){download('native-english-coach-progress.json',JSON.stringify({exportedAt:new Date().toISOString(),settings,progress:await getAll('progress')},null,2),'application/json')}
 async function resetAll(){if(!confirm('Réinitialiser toute la progression et le corpus personnalisé ?'))return;await clearStore('progress');await clearStore('customCorpus');corpus=window.__NATIVE_COACH_SEED__;await updateStats();toast('Progression réinitialisée')}
-function updateVoiceInfo(){const vs=speechSynthesis.getVoices();const counts=['en-AU','en-US','en-GB'].map(l=>`${l}: ${vs.filter(v=>v.lang===l).length}`).join(' · ');$('#voiceInfo').textContent=counts||'Voix en cours de chargement…'}
-
 $('[data-home]').forEach(b=>b.onclick=()=>{speechSynthesis.cancel();stopNeuralAudio();show('#homeView');updateStats()});
 $('#settingsBtn').onclick=()=>show('#settingsView');
 $$('.mode').forEach(b=>b.onclick=()=>{const m=b.dataset.mode;if(m==='drive')startDriveMode();else if(m==='browse'){show('#browseView');renderBrowse()}else startStudy(m)});
