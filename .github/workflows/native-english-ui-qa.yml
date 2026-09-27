@@ -1,0 +1,88 @@
+name: Native English Coach UI QA
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "native-english-coach/ui-qa-trigger.txt"
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Playwright
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install playwright@1.55.0 >/dev/null 2>&1
+          npx playwright install chromium
+      - name: Start static server
+        run: |
+          cd native-english-coach
+          python3 -m http.server 4173 > /tmp/native-coach-server.log 2>&1 &
+          echo $! > /tmp/native-coach-server.pid
+          sleep 2
+      - name: Run UI smoke test
+        run: |
+          cat > /tmp/qa.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const browser = await chromium.launch({headless:true});
+          const page = await browser.newPage();
+          const errors=[];
+          page.on('console', msg => { if (msg.type()==='error') errors.push('console: '+msg.text()); });
+          page.on('pageerror', err => errors.push('pageerror: '+err.message));
+          await page.goto('http://127.0.0.1:4173/index.html', {waitUntil:'networkidle'});
+          const checks=[];
+          async function check(name, fn){
+            try{ await fn(); checks.push(name+': OK'); }
+            catch(e){ checks.push(name+': FAIL '+e.message); errors.push(name+': '+e.stack); }
+          }
+          await check('home visible', async()=> {
+            if(!(await page.locator('#homeView').evaluate(el=>el.classList.contains('active')))) throw new Error('home not active');
+          });
+          await check('settings', async()=> {
+            await page.click('#settingsBtn'); await page.waitForTimeout(200);
+            if(!(await page.locator('#settingsView').evaluate(el=>el.classList.contains('active')))) throw new Error('settings not active');
+            await page.click('#settingsView [data-home]'); await page.waitForTimeout(100);
+          });
+          await check('normal mode', async()=> {
+            await page.click('[data-mode="normal"]'); await page.waitForTimeout(300);
+            if(!(await page.locator('#studyView').evaluate(el=>el.classList.contains('active')))) throw new Error('study not active');
+            await page.click('#studyView [data-home]'); await page.waitForTimeout(100);
+          });
+          await check('intensive mode', async()=> {
+            await page.click('[data-mode="intensive"]'); await page.waitForTimeout(300);
+            if(!(await page.locator('#studyView').evaluate(el=>el.classList.contains('active')))) throw new Error('study not active');
+            await page.click('#studyView [data-home]'); await page.waitForTimeout(100);
+          });
+          await check('listening mode', async()=> {
+            await page.click('[data-mode="listening"]'); await page.waitForTimeout(500);
+            if(!(await page.locator('#studyView').evaluate(el=>el.classList.contains('active')))) throw new Error('study not active');
+            await page.click('#studyView [data-home]'); await page.waitForTimeout(100);
+          });
+          await check('speaking mode', async()=> {
+            await page.click('[data-mode="speaking"]'); await page.waitForTimeout(300);
+            if(!(await page.locator('#studyView').evaluate(el=>el.classList.contains('active')))) throw new Error('study not active');
+            await page.click('#studyView [data-home]'); await page.waitForTimeout(100);
+          });
+          await check('browse', async()=> {
+            await page.click('[data-mode="browse"]'); await page.waitForTimeout(300);
+            if(!(await page.locator('#browseView').evaluate(el=>el.classList.contains('active')))) throw new Error('browse not active');
+            if((await page.locator('#browseList .setting').count())===0) throw new Error('browse empty');
+            await page.click('#browseView [data-home]'); await page.waitForTimeout(100);
+          });
+          await check('drive screen', async()=> {
+            await page.click('[data-mode="drive"]'); await page.waitForTimeout(300);
+            if(!(await page.locator('#driveView').evaluate(el=>el.classList.contains('active')))) throw new Error('drive not active');
+            await page.click('#stopDrive'); await page.waitForTimeout(100);
+          });
+          console.log('CHECKS\n'+checks.join('\n'));
+          console.log('ERRORS\n'+(errors.length?errors.join('\n'):'NONE'));
+          await browser.close();
+          if(errors.length) process.exit(2);
+          EOF
+          node /tmp/qa.mjs
