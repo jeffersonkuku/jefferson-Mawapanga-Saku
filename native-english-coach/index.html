@@ -349,7 +349,7 @@ function stopDrive(){driveRunning=false;cancelStudyPlayback();releaseWake();show
 function renderBrowse(filter=''){
  const q=filter.trim().toLowerCase();const list=corpus.filter(x=>!q||[x.term,x.french,x.category,x.source].join(' ').toLowerCase().includes(q)).slice(0,150);
  $('#browseCount').textContent=list.length;$('#browseList').innerHTML=list.map(x=>`<div class="setting"><div class="badges"><span class="badge">${x.category}</span><span class="badge">${x.source}</span></div><h3 style="margin:10px 0 4px">${x.term}</h3><div class="phon">${x.phoneticFr}</div><div class="ipa">${x.ipa}</div><p style="margin:10px 0 5px">${x.french}</p><div class="hint">${x.example}<br>${x.exampleFr}</div><button class="btn soft" style="margin-top:10px" data-speak-id="${x.id}">🔊 Écouter</button></div>`).join('');
- $('[data-speak-id]').forEach(b=>b.onclick=()=>{const x=corpus.find(i=>i.id===b.dataset.speakId);speak(x.term,'en',x,settings.speechRate,'term')})
+ $$('[data-speak-id]').forEach(b=>b.onclick=()=>{const x=corpus.find(i=>i.id===b.dataset.speakId);speak(x.term,'en',x,settings.speechRate,'term')})
 }
 function parseCSV(text){
  const lines=text.replace(/^\uFEFF/,'').split(/\r?\n/).filter(Boolean);if(lines.length<2)return[];
@@ -365,7 +365,7 @@ async function importCSV(file){
 function download(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 async function exportProgress(){download('native-english-coach-progress.json',JSON.stringify({exportedAt:new Date().toISOString(),settings,progress:await getAll('progress')},null,2),'application/json')}
 async function resetAll(){if(!confirm('Réinitialiser toute la progression et le corpus personnalisé ?'))return;await clearStore('progress');await clearStore('customCorpus');corpus=window.__NATIVE_COACH_SEED__;await updateStats();toast('Progression réinitialisée')}
-$('[data-home]').forEach(b=>b.onclick=()=>{cancelStudyPlayback();show('#homeView');updateStats()});
+$$('[data-home]').forEach(b=>b.onclick=()=>{cancelStudyPlayback();show('#homeView');updateStats()});
 $('#settingsBtn').onclick=()=>show('#settingsView');
 $$('.mode').forEach(b=>b.onclick=()=>{const m=b.dataset.mode;if(m==='drive')startDriveMode();else if(m==='browse'){show('#browseView');renderBrowse()}else startStudy(m)});
 $('#revealBtn').onclick=reveal;
