@@ -28,7 +28,7 @@ jobs:
           sleep 2
       - name: Run UI smoke test
         run: |
-          cat > /tmp/qa.mjs <<'EOF'
+          cat > qa.mjs <<'EOF'
           import { chromium } from 'playwright';
           const browser = await chromium.launch({headless:true});
           const page = await browser.newPage();
@@ -85,4 +85,4 @@ jobs:
           await browser.close();
           if(errors.length) process.exit(2);
           EOF
-          node /tmp/qa.mjs
+          node qa.mjs
