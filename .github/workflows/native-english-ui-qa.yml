@@ -49,9 +49,19 @@ jobs:
             if(!(await page.locator('#settingsView').evaluate(el=>el.classList.contains('active')))) throw new Error('settings not active');
             await page.click('#settingsView [data-home]'); await page.waitForTimeout(100);
           });
-          await check('normal mode', async()=> {
+          await check('normal mode + displayed word audio mapping', async()=> {
             await page.click('[data-mode="normal"]'); await page.waitForTimeout(300);
             if(!(await page.locator('#studyView').evaluate(el=>el.classList.contains('active')))) throw new Error('study not active');
+            const displayed=(await page.locator('#term').textContent()).trim();
+            const expected=await page.evaluate((term)=>{
+              const item=(window.__NATIVE_COACH_SEED__||[]).find(x=>x.term===term);
+              return item ? item.id+'-term.mp3' : null;
+            },displayed);
+            if(!expected) throw new Error('cannot resolve displayed term '+displayed);
+            const reqPromise=page.waitForRequest(req=>req.url().includes('-term.mp3'),{timeout:6000});
+            await page.click('#speakBtn');
+            const req=await reqPromise;
+            if(!req.url().includes(expected)) throw new Error('display/audio mismatch: '+displayed+' expected '+expected+' got '+req.url());
             await page.click('#studyView [data-home]'); await page.waitForTimeout(100);
           });
           await check('intensive mode', async()=> {
