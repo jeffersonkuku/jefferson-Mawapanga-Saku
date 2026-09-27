@@ -1,0 +1,18 @@
+{
+  "name": "Native English Coach",
+  "short_name": "NativeCoach",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0d10",
+  "theme_color": "#0b0d10",
+  "description": "Apprentissage intensif de l'anglais parlé : vocabulaire, chunks, phrasal verbs, écoute et anglais australien.",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
