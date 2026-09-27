@@ -31,5 +31,7 @@ jobs:
             echo "No audio changes"
           else
             git commit -m "Generate native neural English audio"
-            git push
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
           fi
