@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#0b0d10"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<link rel="manifest" href="manifest.webmanifest"/>
+<link rel="icon" href="icon.svg"/>
+<title>Native English Coach</title>
+<style>
+:root{--bg:#0b0d10;--panel:#13171c;--panel2:#181e24;--text:#f5f7f8;--muted:#9da7b1;--accent:#7cf7c4;--accent2:#a4b7ff;--danger:#ff8a8a;--line:#2a333d;--shadow:0 18px 60px rgba(0,0,0,.28)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,select{font:inherit}.app{max-width:920px;margin:0 auto;padding:calc(18px + env(safe-area-inset-top)) 18px calc(110px + env(safe-area-inset-bottom))}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:14px;background:var(--accent);color:#07120d;display:grid;place-items:center;font-weight:900}.brand h1{font-size:20px;margin:0}.brand small{display:block;color:var(--muted);margin-top:3px}
+.icon-btn{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:14px;padding:11px 13px}
+.hero{background:linear-gradient(145deg,#15241f,#11161b);border:1px solid #27463b;border-radius:24px;padding:22px;box-shadow:var(--shadow);margin-bottom:18px}
+.hero h2{font-size:27px;margin:0 0 8px}.hero p{margin:0;color:#c9d2d5;line-height:1.5}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}.stat{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:15px}.stat b{display:block;font-size:23px}.stat span{font-size:12px;color:var(--muted)}
+.section-title{display:flex;align-items:end;justify-content:space-between;margin:24px 2px 12px}.section-title h3{margin:0;font-size:17px}.section-title span{font-size:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.mode{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:22px;padding:18px;text-align:left;min-height:138px;transition:.15s transform,.15s border-color}
+.mode:active{transform:scale(.985)}.mode strong{font-size:18px;display:block;margin:10px 0 6px}.mode p{font-size:13px;color:var(--muted);margin:0;line-height:1.42}.mode .emoji{font-size:26px}
+.mode.primary{border-color:#3d7c67;background:linear-gradient(145deg,#153126,#141b1a)}
+.view{display:none}.view.active{display:block}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:26px;padding:24px;min-height:430px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow)}
+.progressline{height:6px;background:#222a32;border-radius:999px;overflow:hidden;margin:14px 0 18px}.progressline span{display:block;height:100%;background:var(--accent);width:0}
+.badges{display:flex;gap:7px;flex-wrap:wrap}.badge{font-size:11px;color:#c9d2d5;border:1px solid var(--line);border-radius:999px;padding:5px 8px}
+.term{text-align:center;margin:26px 0}.term h2{font-size:clamp(34px,9vw,62px);margin:0;letter-spacing:-1.8px}.phon{font-size:20px;color:var(--accent);font-weight:800;margin:12px 0 5px}.ipa{font-size:14px;color:var(--muted)}
+.meaning{border-top:1px solid var(--line);padding-top:18px;margin-top:16px}.meaning h3{font-size:22px;margin:0 0 12px}.example{font-size:17px;line-height:1.5}.example-fr{font-size:14px;color:var(--muted);line-height:1.45;margin-top:5px}
+.hidden-answer .meaning{display:none}.listening-mask .term h2,.listening-mask .phon,.listening-mask .ipa{visibility:hidden}
+.controls{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px}.btn{border:0;border-radius:16px;padding:14px 18px;font-weight:800;background:#28313a;color:white;min-height:50px}.btn.accent{background:var(--accent);color:#072017}.btn.soft{background:#222a32}.btn.danger{background:#492529;color:#ffd5d5}.btn.full{width:100%}
+.rating{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}.rating button{padding:13px 7px;border-radius:14px;border:1px solid var(--line);background:#1a2026;color:white;font-weight:800}.rating button:nth-child(1){border-color:#714044}.rating button:nth-child(4){border-color:#326952}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:8px}.topbar h2{margin:0;font-size:17px}
+.drive-card{text-align:center}.drive-card .term h2{font-size:clamp(46px,13vw,82px)}.drive-status{font-size:13px;color:var(--muted);min-height:22px}.drive-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.settings{display:grid;gap:12px}.setting{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px}.setting label{font-weight:800;display:block;margin-bottom:8px}.setting small{color:var(--muted);display:block;margin-top:7px;line-height:1.4}
+select,input[type=number],input[type=range]{width:100%;background:#0f1317;color:white;border:1px solid var(--line);border-radius:12px;padding:11px}
+.toggle{display:flex;justify-content:space-between;align-items:center;gap:12px}.toggle input{width:22px;height:22px}
+.file-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hint{font-size:12px;color:var(--muted);line-height:1.45}
+.toast{position:fixed;left:50%;bottom:calc(26px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(120px);background:#edfdf6;color:#0a241a;padding:12px 16px;border-radius:14px;font-weight:800;transition:.25s;z-index:99;max-width:90%;text-align:center}.toast.show{transform:translateX(-50%) translateY(0)}
+@media(max-width:650px){.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.card{min-height:400px}.rating{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="brand"><div class="logo">NC</div><div><h1>Native English Coach</h1><small>English you actually hear</small></div></div>
+  <button class="icon-btn" id="settingsBtn" aria-label="Réglages">⚙️</button>
+</header>
+
+<main id="homeView" class="view active">
+  <section class="hero">
+    <h2>Comprends l’anglais parlé.</h2>
+    <p>Mots essentiels, expressions natives, phrasal verbs, anglais australien, football et travail — avec audio et répétition intelligente.</p>
+  </section>
+  <section class="stats">
+    <div class="stat"><b id="statKnown">0</b><span>maîtrisés</span></div>
+    <div class="stat"><b id="statDue">0</b><span>à réviser</span></div>
+    <div class="stat"><b id="statExposure">0</b><span>écoutes Drive</span></div>
+    <div class="stat"><b id="statCorpus">0</b><span>éléments</span></div>
+  </section>
+  <div class="section-title"><h3>Choisis ton entraînement</h3><span id="engineBadge">SRS local</span></div>
+  <div class="grid">
+    <button class="mode primary" data-mode="drive"><span class="emoji">🚗</span><strong>Drive</strong><p>Mode mains libres. Voix mixtes, répétitions, traduction et pause automatique.</p></button>
+    <button class="mode" data-mode="intensive"><span class="emoji">⚡</span><strong>Intensif</strong><p>Beaucoup de nouveaux éléments + toutes les révisions dues.</p></button>
+    <button class="mode" data-mode="normal"><span class="emoji">🌱</span><strong>Normal</strong><p>Session courte et équilibrée pour progresser tous les jours.</p></button>
+    <button class="mode" data-mode="listening"><span class="emoji">🎧</span><strong>Listening</strong><p>Tu entends d’abord. Le texte reste caché jusqu’à ta réponse.</p></button>
+    <button class="mode" data-mode="speaking"><span class="emoji">🗣️</span><strong>Speaking</strong><p>Le français s’affiche : produis l’anglais avant de révéler.</p></button>
+    <button class="mode" data-mode="browse"><span class="emoji">📚</span><strong>Explorer</strong><p>Parcours le corpus et écoute chaque mot ou expression.</p></button>
+  </div>
+</main>
+
+<main id="studyView" class="view">
+  <div class="topbar"><button class="icon-btn" data-home>←</button><h2 id="studyTitle">Session</h2><span id="counter">1/10</span></div>
+  <div class="progressline"><span id="progressBar"></span></div>
+  <section class="card" id="studyCard">
+    <div>
+      <div class="badges"><span class="badge" id="catBadge"></span><span class="badge" id="sourceBadge"></span><span class="badge" id="skillBadge"></span></div>
+      <div class="term"><h2 id="term"></h2><div class="phon" id="phon"></div><div class="ipa" id="ipa"></div></div>
+      <div class="meaning"><h3 id="meaning"></h3><div class="example" id="example"></div><div class="example-fr" id="exampleFr"></div></div>
+    </div>
+    <div>
+      <div class="controls">
+        <button class="btn soft" id="speakBtn">🔊 Écouter</button>
+        <button class="btn accent" id="revealBtn">Révéler</button>
+      </div>
+      <div class="rating" id="ratingBox" style="display:none">
+        <button data-rating="1">Encore</button><button data-rating="2">Difficile</button><button data-rating="3">Bien</button><button data-rating="4">Facile</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<main id="driveView" class="view">
+  <div class="topbar"><button class="icon-btn" id="stopDrive">←</button><h2>🚗 Drive</h2><span id="driveCounter">0/0</span></div>
+  <div class="progressline"><span id="driveProgress"></span></div>
+  <section class="card drive-card">
+    <div>
+      <div class="drive-status" id="driveStatus">Prêt</div>
+      <div class="term"><h2 id="driveTerm">START</h2><div class="phon" id="drivePhon">Appuie pour lancer l’audio</div><div class="ipa" id="driveIpa"></div></div>
+      <div class="meaning"><h3 id="driveMeaning"></h3><div class="example" id="driveExample"></div><div class="example-fr" id="driveExampleFr"></div></div>
+    </div>
+    <div>
+      <button class="btn accent full" id="startDrive">▶ Démarrer la session</button>
+      <div class="drive-actions" id="driveActions" style="display:none">
+        <button class="btn soft" id="driveReplay">↻ Réécouter</button><button class="btn danger" id="drivePause">⏸ Pause</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<main id="browseView" class="view">
+  <div class="topbar"><button class="icon-btn" data-home>←</button><h2>📚 Corpus</h2><span id="browseCount"></span></div>
+  <div class="setting" style="margin-top:14px"><input id="searchBox" placeholder="Rechercher : figure out, reckon, deadline…"/></div>
+  <div id="browseList" style="display:grid;gap:10px;margin-top:12px"></div>
+</main>
+
+<main id="settingsView" class="view">
+  <div class="topbar"><button class="icon-btn" data-home>←</button><h2>⚙️ Réglages</h2><span></span></div>
+  <div class="settings" style="margin-top:14px">
+    <div class="setting"><label>Voix anglaises</label><select id="voiceMode"><option value="mix">Mix AU / US / UK</option><option value="au">Australie prioritaire</option><option value="us">US prioritaire</option><option value="gb">UK prioritaire</option></select><small>La qualité dépend des voix réellement exposées par ton navigateur.</small></div>
+    <div class="setting"><label>Répétitions Drive</label><input id="repeatCount" type="number" min="1" max="5" value="3"/></div>
+    <div class="setting"><label>Pause de réflexion (secondes)</label><input id="thinkSeconds" type="number" min="1" max="12" value="5"/></div>
+    <div class="setting toggle"><div><label>Lire aussi le français</label><small>Utile en voiture.</small></div><input id="speakFrench" type="checkbox" checked/></div>
+    <div class="setting toggle"><div><label>Changer de voix régulièrement</label><small>Mélange les accents et les voix disponibles.</small></div><input id="rotateVoices" type="checkbox" checked/></div>
+    <div class="setting"><label>Vitesse audio</label><input id="speechRate" type="range" min="0.75" max="1.1" step="0.05" value="0.95"/><small id="rateLabel">0.95×</small></div>
+    <div class="setting"><label>Tester les voix détectées</label><button class="btn full" id="testVoice">🔊 Test voix</button><small id="voiceInfo"></small></div>
+    <div class="setting"><label>Importer ton corpus CSV</label><input type="file" id="csvInput" accept=".csv,text/csv"/><small>Colonnes : term, phoneticFr, ipa, french, example, exampleFr, category, type, source.</small></div>
+    <div class="file-actions"><button class="btn soft" id="exportBtn">Exporter progrès</button><button class="btn danger" id="resetBtn">Réinitialiser</button></div>
+  </div>
+</main>
+</div>
+<div class="toast" id="toast"></div>
+<script>window.__NATIVE_COACH_SEED__=[{"id": "c0001", "term": "actually", "phoneticFr": "AK-tchou-eu-li", "ipa": "/ˈæk.tʃu.ə.li/", "french": "en fait / réellement", "example": "Actually, I don't know yet.", "exampleFr": "En fait, je ne sais pas encore.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0002", "term": "achieve", "phoneticFr": "e-TCHIIV", "ipa": "/əˈtʃiːv/", "french": "atteindre / réussir", "example": "You can achieve that goal.", "exampleFr": "Tu peux atteindre cet objectif.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0003", "term": "allow", "phoneticFr": "e-LAOU", "ipa": "/əˈlaʊ/", "french": "permettre", "example": "This setting allows offline use.", "exampleFr": "Ce réglage permet l'utilisation hors ligne.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0004", "term": "avoid", "phoneticFr": "e-VOÏD", "ipa": "/əˈvɔɪd/", "french": "éviter", "example": "Try to avoid that mistake.", "exampleFr": "Essaie d'éviter cette erreur.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0005", "term": "aware", "phoneticFr": "e-WÈR", "ipa": "/əˈweə(r)/", "french": "conscient", "example": "I'm aware of the problem.", "exampleFr": "Je suis conscient du problème.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0006", "term": "available", "phoneticFr": "e-VÉÏ-leu-beul", "ipa": "/əˈveɪ.lə.bəl/", "french": "disponible", "example": "Is this option available?", "exampleFr": "Cette option est-elle disponible ?", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0007", "term": "behaviour", "phoneticFr": "bi-HÉÏ-vieu", "ipa": "/bɪˈheɪ.vjə(r)/", "french": "comportement", "example": "His behaviour changed quickly.", "exampleFr": "Son comportement a changé rapidement.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0008", "term": "choice", "phoneticFr": "TCHOÏSS", "ipa": "/tʃɔɪs/", "french": "choix", "example": "You have another choice.", "exampleFr": "Tu as un autre choix.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0009", "term": "consider", "phoneticFr": "keun-SI-deu", "ipa": "/kənˈsɪd.ə(r)/", "french": "envisager / considérer", "example": "Consider a different approach.", "exampleFr": "Envisage une autre approche.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0010", "term": "develop", "phoneticFr": "di-VÉ-leup", "ipa": "/dɪˈvel.əp/", "french": "développer", "example": "I want to develop my English.", "exampleFr": "Je veux développer mon anglais.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0011", "term": "effort", "phoneticFr": "È-feurt", "ipa": "/ˈef.ət/", "french": "effort", "example": "It takes a lot of effort.", "exampleFr": "Cela demande beaucoup d'efforts.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0012", "term": "enough", "phoneticFr": "i-NEUF", "ipa": "/ɪˈnʌf/", "french": "assez", "example": "That's enough for today.", "exampleFr": "C'est assez pour aujourd'hui.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0013", "term": "eventually", "phoneticFr": "i-VÈN-tchou-eu-li", "ipa": "/ɪˈven.tʃu.ə.li/", "french": "finalement / à terme", "example": "You'll understand it eventually.", "exampleFr": "Tu finiras par le comprendre.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0014", "term": "expect", "phoneticFr": "ik-SPÈKT", "ipa": "/ɪkˈspekt/", "french": "s'attendre à", "example": "I didn't expect that result.", "exampleFr": "Je ne m'attendais pas à ce résultat.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0015", "term": "experience", "phoneticFr": "ik-SPIR-i-euns", "ipa": "/ɪkˈspɪə.ri.əns/", "french": "expérience", "example": "It was a useful experience.", "exampleFr": "C'était une expérience utile.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0016", "term": "familiar", "phoneticFr": "feu-MIL-yeu", "ipa": "/fəˈmɪl.i.ə(r)/", "french": "familier", "example": "That expression sounds familiar.", "exampleFr": "Cette expression me semble familière.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0017", "term": "improve", "phoneticFr": "im-PROUV", "ipa": "/ɪmˈpruːv/", "french": "améliorer", "example": "I want to improve my listening.", "exampleFr": "Je veux améliorer ma compréhension orale.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0018", "term": "increase", "phoneticFr": "in-KRIISS", "ipa": "/ɪnˈkriːs/", "french": "augmenter", "example": "We need to increase the pace.", "exampleFr": "Nous devons augmenter le rythme.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0019", "term": "involve", "phoneticFr": "in-VOLV", "ipa": "/ɪnˈvɒlv/", "french": "impliquer", "example": "This job involves a lot of travel.", "exampleFr": "Ce travail implique beaucoup de déplacements.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0020", "term": "issue", "phoneticFr": "I-chou", "ipa": "/ˈɪʃ.uː/", "french": "problème / sujet", "example": "There's an issue with the system.", "exampleFr": "Il y a un problème avec le système.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0021", "term": "likely", "phoneticFr": "LAÏK-li", "ipa": "/ˈlaɪk.li/", "french": "probable", "example": "It's likely to happen again.", "exampleFr": "Cela risque de se reproduire.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0022", "term": "manage", "phoneticFr": "MA-nidj", "ipa": "/ˈmæn.ɪdʒ/", "french": "gérer / réussir à", "example": "I managed to finish on time.", "exampleFr": "J'ai réussi à finir à temps.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0023", "term": "mean", "phoneticFr": "MIIN", "ipa": "/miːn/", "french": "vouloir dire", "example": "What does that mean?", "exampleFr": "Qu'est-ce que ça veut dire ?", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0024", "term": "notice", "phoneticFr": "NO-tiss", "ipa": "/ˈnəʊ.tɪs/", "french": "remarquer", "example": "Did you notice the difference?", "exampleFr": "As-tu remarqué la différence ?", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0025", "term": "obvious", "phoneticFr": "OB-vi-euss", "ipa": "/ˈɒb.vi.əs/", "french": "évident", "example": "The answer isn't obvious.", "exampleFr": "La réponse n'est pas évidente.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0026", "term": "opportunity", "phoneticFr": "o-peu-TIOU-ni-ti", "ipa": "/ˌɒp.əˈtʃuː.nə.ti/", "french": "opportunité", "example": "It's a great opportunity.", "exampleFr": "C'est une excellente opportunité.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0027", "term": "probably", "phoneticFr": "PRO-beu-bli", "ipa": "/ˈprɒb.ə.bli/", "french": "probablement", "example": "I'll probably go tomorrow.", "exampleFr": "J'irai probablement demain.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0028", "term": "provide", "phoneticFr": "preu-VAÏD", "ipa": "/prəˈvaɪd/", "french": "fournir", "example": "They provide useful information.", "exampleFr": "Ils fournissent des informations utiles.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0029", "term": "realize", "phoneticFr": "RI-eu-laïz", "ipa": "/ˈrɪə.laɪz/", "french": "se rendre compte", "example": "I didn't realize it was late.", "exampleFr": "Je ne me suis pas rendu compte qu'il était tard.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0030", "term": "reason", "phoneticFr": "RII-zeune", "ipa": "/ˈriː.zən/", "french": "raison", "example": "What's the reason?", "exampleFr": "Quelle est la raison ?", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0031", "term": "require", "phoneticFr": "ri-KWAÏ-eu", "ipa": "/rɪˈkwaɪə(r)/", "french": "nécessiter", "example": "This task requires attention.", "exampleFr": "Cette tâche nécessite de l'attention.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0032", "term": "responsible", "phoneticFr": "ri-SPON-seu-beul", "ipa": "/rɪˈspɒn.sə.bəl/", "french": "responsable", "example": "Who's responsible for this?", "exampleFr": "Qui est responsable de ça ?", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0033", "term": "result", "phoneticFr": "ri-ZEULT", "ipa": "/rɪˈzʌlt/", "french": "résultat", "example": "The result was better than expected.", "exampleFr": "Le résultat était meilleur que prévu.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0034", "term": "seem", "phoneticFr": "SIIM", "ipa": "/siːm/", "french": "sembler", "example": "You seem tired today.", "exampleFr": "Tu sembles fatigué aujourd'hui.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0035", "term": "skill", "phoneticFr": "SKIL", "ipa": "/skɪl/", "french": "compétence", "example": "Listening is an important skill.", "exampleFr": "La compréhension orale est une compétence importante.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0036", "term": "solve", "phoneticFr": "SOLV", "ipa": "/sɒlv/", "french": "résoudre", "example": "We need to solve this problem.", "exampleFr": "Nous devons résoudre ce problème.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0037", "term": "suggest", "phoneticFr": "seu-DJÈST", "ipa": "/səˈdʒest/", "french": "suggérer", "example": "What do you suggest?", "exampleFr": "Que suggères-tu ?", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0038", "term": "support", "phoneticFr": "seu-PORT", "ipa": "/səˈpɔːt/", "french": "soutenir / support", "example": "Thanks for your support.", "exampleFr": "Merci pour ton soutien.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0039", "term": "worth", "phoneticFr": "WEURTH", "ipa": "/wɜːθ/", "french": "valoir / qui vaut", "example": "It's worth trying.", "exampleFr": "Ça vaut la peine d'essayer.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0040", "term": "weird", "phoneticFr": "WI-EURD", "ipa": "/wɪəd/", "french": "bizarre", "example": "That sounds a bit weird.", "exampleFr": "Ça semble un peu bizarre.", "category": "core", "type": "word", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0041", "term": "I mean", "phoneticFr": "aï MIIN", "ipa": "/aɪ miːn/", "french": "je veux dire", "example": "I mean, it could work.", "exampleFr": "Je veux dire, ça pourrait marcher.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0042", "term": "I guess", "phoneticFr": "aï GUÈSS", "ipa": "/aɪ ɡes/", "french": "je suppose", "example": "I guess we'll find out.", "exampleFr": "Je suppose qu'on le découvrira.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0043", "term": "I feel like", "phoneticFr": "aï FIIL laïk", "ipa": "/aɪ fiːl laɪk/", "french": "j'ai l'impression / j'ai envie", "example": "I feel like staying home.", "exampleFr": "J'ai envie de rester à la maison.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0044", "term": "to be honest", "phoneticFr": "teu bi ON-ist", "ipa": "/tə bi ˈɒn.ɪst/", "french": "pour être honnête", "example": "To be honest, I'm tired.", "exampleFr": "Pour être honnête, je suis fatigué.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0045", "term": "to be fair", "phoneticFr": "teu bi FÈR", "ipa": "/tə bi feə(r)/", "french": "pour être juste", "example": "To be fair, he tried.", "exampleFr": "Pour être juste, il a essayé.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0046", "term": "pretty much", "phoneticFr": "PRI-ti meutch", "ipa": "/ˈprɪt.i mʌtʃ/", "french": "à peu près / quasiment", "example": "That's pretty much it.", "exampleFr": "C'est à peu près tout.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0047", "term": "kind of", "phoneticFr": "KAÏND-euv", "ipa": "/ˈkaɪnd əv/", "french": "un peu / en quelque sorte", "example": "It's kind of strange.", "exampleFr": "C'est un peu étrange.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0048", "term": "at least", "phoneticFr": "at LIIST", "ipa": "/ət liːst/", "french": "au moins", "example": "At least we tried.", "exampleFr": "Au moins, nous avons essayé.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0049", "term": "as long as", "phoneticFr": "az LONG az", "ipa": "/əz lɒŋ əz/", "french": "tant que / du moment que", "example": "It's fine as long as it works.", "exampleFr": "C'est bon tant que ça marche.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0050", "term": "even though", "phoneticFr": "I-veune DZO", "ipa": "/ˈiː.vən ðəʊ/", "french": "même si", "example": "I went even though I was tired.", "exampleFr": "J'y suis allé même si j'étais fatigué.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0051", "term": "the thing is", "phoneticFr": "dzeu THING iz", "ipa": "/ðə θɪŋ ɪz/", "french": "le truc, c'est que", "example": "The thing is, we need more time.", "exampleFr": "Le truc, c'est qu'il nous faut plus de temps.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0052", "term": "it depends", "phoneticFr": "it di-PÈNDZ", "ipa": "/ɪt dɪˈpendz/", "french": "ça dépend", "example": "It depends on the situation.", "exampleFr": "Ça dépend de la situation.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0053", "term": "for some reason", "phoneticFr": "feu seum RII-zeune", "ipa": "/fə sʌm ˈriː.zən/", "french": "pour une raison quelconque", "example": "For some reason, it stopped working.", "exampleFr": "Pour une raison quelconque, ça a cessé de fonctionner.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0054", "term": "I'm about to", "phoneticFr": "aïm e-BAOUT teu", "ipa": "/aɪm əˈbaʊt tə/", "french": "je suis sur le point de", "example": "I'm about to leave.", "exampleFr": "Je suis sur le point de partir.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0055", "term": "I'm supposed to", "phoneticFr": "aïm seu-POZD teu", "ipa": "/aɪm səˈpəʊzd tə/", "french": "je suis censé", "example": "I'm supposed to call him.", "exampleFr": "Je suis censé l'appeler.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0056", "term": "I used to", "phoneticFr": "aï YOUST teu", "ipa": "/aɪ juːst tə/", "french": "avant, j'avais l'habitude de", "example": "I used to work there.", "exampleFr": "Avant, je travaillais là-bas.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0057", "term": "I'm used to", "phoneticFr": "aïm YOUST teu", "ipa": "/aɪm juːst tə/", "french": "je suis habitué à", "example": "I'm used to the traffic now.", "exampleFr": "Je suis maintenant habitué à la circulation.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0058", "term": "I might as well", "phoneticFr": "aï maït az WÈL", "ipa": "/aɪ maɪt əz wel/", "french": "autant", "example": "I might as well go now.", "exampleFr": "Autant y aller maintenant.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0059", "term": "that makes sense", "phoneticFr": "dzat MÉÏKS sens", "ipa": "/ðæt meɪks sens/", "french": "ça se tient / c'est logique", "example": "That makes sense to me.", "exampleFr": "Ça me paraît logique.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0060", "term": "no way", "phoneticFr": "NO WÉÏ", "ipa": "/nəʊ weɪ/", "french": "pas possible / jamais", "example": "No way, that's incredible.", "exampleFr": "Pas possible, c'est incroyable.", "category": "chunks", "type": "chunk", "source": "internet", "level": 1, "frequency": "high"}, {"id": "c0061", "term": "fair enough", "phoneticFr": "FÈR i-NEUF", "ipa": "/feər ɪˈnʌf/", "french": "d'accord / c'est juste", "example": "Fair enough, I understand.", "exampleFr": "D'accord, je comprends.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0062", "term": "my bad", "phoneticFr": "maï BAD", "ipa": "/maɪ bæd/", "french": "ma faute / désolé", "example": "My bad, I forgot.", "exampleFr": "Désolé, j'ai oublié.", "category": "chunks", "type": "chunk", "source": "internet", "level": 1, "frequency": "high"}, {"id": "c0063", "term": "I'm down", "phoneticFr": "aïm DAOUN", "ipa": "/aɪm daʊn/", "french": "je suis partant", "example": "I'm down for that.", "exampleFr": "Je suis partant pour ça.", "category": "chunks", "type": "chunk", "source": "internet", "level": 1, "frequency": "high"}, {"id": "c0064", "term": "I'm all set", "phoneticFr": "aïm OL SÈT", "ipa": "/aɪm ɔːl set/", "french": "c'est bon pour moi / je suis prêt", "example": "Thanks, I'm all set.", "exampleFr": "Merci, c'est bon pour moi.", "category": "chunks", "type": "chunk", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0065", "term": "figure out", "phoneticFr": "FI-gueu-raout", "ipa": "/ˈfɪɡ.ə(r) aʊt/", "french": "comprendre / trouver une solution", "example": "We'll figure it out.", "exampleFr": "On trouvera une solution.", "category": "phrasal", "type": "phrasal", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0066", "term": "find out", "phoneticFr": "FAÏND aout", "ipa": "/faɪnd aʊt/", "french": "découvrir", "example": "I need to find out what happened.", "exampleFr": "Je dois découvrir ce qui s'est passé.", "category": "phrasal", "type": "phrasal", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0067", "term": "work out", "phoneticFr": "WEURK aout", "ipa": "/wɜːk aʊt/", "french": "fonctionner / résoudre", "example": "I'm sure it'll work out.", "exampleFr": "Je suis sûr que ça va s'arranger.", "category": "phrasal", "type": "phrasal", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0068", "term": "end up", "phoneticFr": "ÈND eup", "ipa": "/end ʌp/", "french": "finir par", "example": "We ended up staying late.", "exampleFr": "Nous avons fini par rester tard.", "category": "phrasal", "type": "phrasal", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0069", "term": "turn out", "phoneticFr": "TEURN aout", "ipa": "/tɜːn aʊt/", "french": "s'avérer", "example": "It turned out to be easy.", "exampleFr": "Cela s'est avéré facile.", "category": "phrasal", "type": "phrasal", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0070", "term": "set up", "phoneticFr": "SÈT eup", "ipa": "/set ʌp/", "french": "installer / mettre en place", "example": "Let's set up the app.", "exampleFr": "Installons l'application.", "category": "phrasal", "type": "phrasal", "source": "tech", "level": 1, "frequency": "high"}, {"id": "c0071", "term": "pick up", "phoneticFr": "PIK eup", "ipa": "/pɪk ʌp/", "french": "récupérer / apprendre", "example": "I'll pick you up at six.", "exampleFr": "Je viendrai te chercher à six heures.", "category": "phrasal", "type": "phrasal", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0072", "term": "catch up", "phoneticFr": "KATCH eup", "ipa": "/kætʃ ʌp/", "french": "rattraper", "example": "I need to catch up.", "exampleFr": "Je dois rattraper mon retard.", "category": "phrasal", "type": "phrasal", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0073", "term": "keep up with", "phoneticFr": "KIIP eup widh", "ipa": "/kiːp ʌp wɪð/", "french": "suivre le rythme de", "example": "It's hard to keep up with everything.", "exampleFr": "C'est difficile de tout suivre.", "category": "phrasal", "type": "phrasal", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0074", "term": "deal with", "phoneticFr": "DIIL widh", "ipa": "/diːl wɪð/", "french": "gérer", "example": "I'll deal with it tomorrow.", "exampleFr": "Je m'en occuperai demain.", "category": "phrasal", "type": "phrasal", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0075", "term": "sort out", "phoneticFr": "SORT aout", "ipa": "/sɔːt aʊt/", "french": "régler / organiser", "example": "We need to sort this out.", "exampleFr": "Nous devons régler ça.", "category": "phrasal", "type": "phrasal", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0076", "term": "look into", "phoneticFr": "LOUK in-tou", "ipa": "/lʊk ˈɪn.tuː/", "french": "examiner", "example": "I'll look into the issue.", "exampleFr": "Je vais examiner le problème.", "category": "phrasal", "type": "phrasal", "source": "tech", "level": 1, "frequency": "high"}, {"id": "c0077", "term": "look forward to", "phoneticFr": "LOUK FOR-weurd teu", "ipa": "/lʊk ˈfɔː.wəd tə/", "french": "avoir hâte de", "example": "I look forward to seeing you.", "exampleFr": "J'ai hâte de te voir.", "category": "phrasal", "type": "phrasal", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0078", "term": "come up with", "phoneticFr": "KEUM eup widh", "ipa": "/kʌm ʌp wɪð/", "french": "trouver / inventer", "example": "We need to come up with a plan.", "exampleFr": "Nous devons trouver un plan.", "category": "phrasal", "type": "phrasal", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0079", "term": "go through", "phoneticFr": "GO THROU", "ipa": "/ɡəʊ θruː/", "french": "parcourir / traverser", "example": "Let's go through the details.", "exampleFr": "Passons en revue les détails.", "category": "phrasal", "type": "phrasal", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0080", "term": "check out", "phoneticFr": "TCHÈK aout", "ipa": "/tʃek aʊt/", "french": "regarder / vérifier", "example": "Check out this new feature.", "exampleFr": "Regarde cette nouvelle fonctionnalité.", "category": "phrasal", "type": "phrasal", "source": "internet", "level": 1, "frequency": "high"}, {"id": "c0081", "term": "show up", "phoneticFr": "CHO eup", "ipa": "/ʃəʊ ʌp/", "french": "se présenter / apparaître", "example": "He didn't show up.", "exampleFr": "Il ne s'est pas présenté.", "category": "phrasal", "type": "phrasal", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0082", "term": "move on", "phoneticFr": "MOUV on", "ipa": "/muːv ɒn/", "french": "passer à autre chose", "example": "Let's move on to the next one.", "exampleFr": "Passons au suivant.", "category": "phrasal", "type": "phrasal", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0083", "term": "bring up", "phoneticFr": "BRING eup", "ipa": "/brɪŋ ʌp/", "french": "évoquer", "example": "She brought up an interesting point.", "exampleFr": "Elle a soulevé un point intéressant.", "category": "phrasal", "type": "phrasal", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0084", "term": "run into", "phoneticFr": "REUN in-tou", "ipa": "/rʌn ˈɪn.tuː/", "french": "tomber sur / rencontrer par hasard", "example": "I ran into an old friend.", "exampleFr": "Je suis tombé sur un vieil ami.", "category": "phrasal", "type": "phrasal", "source": "general", "level": 1, "frequency": "high"}, {"id": "c0085", "term": "reckon", "phoneticFr": "RÈ-keune", "ipa": "/ˈrek.ən/", "french": "penser / estimer", "example": "I reckon it'll be fine, mate.", "exampleFr": "Je pense que ça ira, mec.", "category": "australia", "type": "word", "source": "au", "level": 2, "frequency": "context"}, {"id": "c0086", "term": "mate", "phoneticFr": "MÉÏT", "ipa": "/meɪt/", "french": "pote / mec", "example": "How are you going, mate?", "exampleFr": "Comment ça va, mec ?", "category": "australia", "type": "word", "source": "au", "level": 2, "frequency": "context"}, {"id": "c0087", "term": "keen", "phoneticFr": "KIIN", "ipa": "/kiːn/", "french": "partant / motivé", "example": "I'm keen to give it a go.", "exampleFr": "Je suis partant pour essayer.", "category": "australia", "type": "word", "source": "au", "level": 2, "frequency": "context"}, {"id": "c0088", "term": "heaps", "phoneticFr": "HIIPS", "ipa": "/hiːps/", "french": "beaucoup", "example": "Thanks heaps for your help.", "exampleFr": "Merci beaucoup pour ton aide.", "category": "australia", "type": "word", "source": "au", "level": 2, "frequency": "context"}, {"id": "c0089", "term": "arvo", "phoneticFr": "AR-vo", "ipa": "/ˈɑː.vəʊ/", "french": "après-midi", "example": "I'll see you this arvo.", "exampleFr": "Je te vois cet après-midi.", "category": "australia", "type": "word", "source": "au", "level": 2, "frequency": "context"}, {"id": "c0090", "term": "brekkie", "phoneticFr": "BRÈ-ki", "ipa": "/ˈbrek.i/", "french": "petit-déjeuner", "example": "Let's grab brekkie first.", "exampleFr": "Prenons le petit-déjeuner d'abord.", "category": "australia", "type": "word", "source": "au", "level": 2, "frequency": "context"}, {"id": "c0091", "term": "servo", "phoneticFr": "SEUR-vo", "ipa": "/ˈsɜː.vəʊ/", "french": "station-service", "example": "I'll stop at the servo.", "exampleFr": "Je vais m'arrêter à la station-service.", "category": "australia", "type": "word", "source": "au", "level": 2, "frequency": "context"}, {"id": "c0092", "term": "tradie", "phoneticFr": "TRÉÏ-di", "ipa": "/ˈtreɪ.di/", "french": "artisan / ouvrier qualifié", "example": "He's a tradie from Sydney.", "exampleFr": "C'est un artisan de Sydney.", "category": "australia", "type": "word", "source": "au", "level": 2, "frequency": "context"}, {"id": "c0093", "term": "sunnies", "phoneticFr": "SEU-niz", "ipa": "/ˈsʌn.iz/", "french": "lunettes de soleil", "example": "Don't forget your sunnies.", "exampleFr": "N'oublie pas tes lunettes de soleil.", "category": "australia", "type": "word", "source": "au", "level": 2, "frequency": "context"}, {"id": "c0094", "term": "dodgy", "phoneticFr": "DO-dji", "ipa": "/ˈdɒdʒ.i/", "french": "louche / peu fiable", "example": "That website looks dodgy.", "exampleFr": "Ce site a l'air louche.", "category": "australia", "type": "word", "source": "au", "level": 2, "frequency": "context"}, {"id": "c0095", "term": "flat out", "phoneticFr": "FLAT aout", "ipa": "/flæt aʊt/", "french": "très occupé", "example": "I've been flat out all week.", "exampleFr": "J'ai été débordé toute la semaine.", "category": "australia", "type": "chunk", "source": "au", "level": 2, "frequency": "context"}, {"id": "c0096", "term": "give it a go", "phoneticFr": "GUIV it e GO", "ipa": "/ɡɪv ɪt ə ɡəʊ/", "french": "essayer", "example": "Just give it a go.", "exampleFr": "Essaie simplement.", "category": "australia", "type": "chunk", "source": "au", "level": 2, "frequency": "context"}, {"id": "c0097", "term": "no worries", "phoneticFr": "NO WEU-riz", "ipa": "/nəʊ ˈwʌr.iz/", "french": "pas de souci", "example": "No worries, mate.", "exampleFr": "Pas de souci, mec.", "category": "australia", "type": "chunk", "source": "au", "level": 2, "frequency": "context"}, {"id": "c0098", "term": "too easy", "phoneticFr": "TOU II-zi", "ipa": "/tuː ˈiː.zi/", "french": "facile / pas de souci", "example": "Too easy, I'll do it now.", "exampleFr": "Pas de souci, je le fais maintenant.", "category": "australia", "type": "chunk", "source": "au", "level": 2, "frequency": "context"}, {"id": "c0099", "term": "lineup", "phoneticFr": "LAÏN-eup", "ipa": "/ˈlaɪn.ʌp/", "french": "composition", "example": "The lineup looks strong tonight.", "exampleFr": "La composition semble forte ce soir.", "category": "football", "type": "word", "source": "football", "level": 2, "frequency": "context"}, {"id": "c0100", "term": "squad", "phoneticFr": "SKWOD", "ipa": "/skwɒd/", "french": "effectif / équipe", "example": "The squad is ready.", "exampleFr": "L'effectif est prêt.", "category": "football", "type": "word", "source": "football", "level": 2, "frequency": "context"}, {"id": "c0101", "term": "bench", "phoneticFr": "BÈNTCH", "ipa": "/bentʃ/", "french": "banc", "example": "He started on the bench.", "exampleFr": "Il a commencé sur le banc.", "category": "football", "type": "word", "source": "football", "level": 2, "frequency": "context"}, {"id": "c0102", "term": "concede", "phoneticFr": "keun-SIID", "ipa": "/kənˈsiːd/", "french": "encaisser", "example": "They conceded too early.", "exampleFr": "Ils ont encaissé trop tôt.", "category": "football", "type": "word", "source": "football", "level": 2, "frequency": "context"}, {"id": "c0103", "term": "equalise", "phoneticFr": "II-kweu-laïz", "ipa": "/ˈiː.kwə.laɪz/", "french": "égaliser", "example": "They equalised in the second half.", "exampleFr": "Ils ont égalisé en seconde période.", "category": "football", "type": "word", "source": "football", "level": 2, "frequency": "context"}, {"id": "c0104", "term": "clinical", "phoneticFr": "KLI-ni-keul", "ipa": "/ˈklɪn.ɪ.kəl/", "french": "efficace devant le but", "example": "They were clinical in front of goal.", "exampleFr": "Ils ont été très efficaces devant le but.", "category": "football", "type": "word", "source": "football", "level": 2, "frequency": "context"}, {"id": "c0105", "term": "overrated", "phoneticFr": "o-veur-RÉÏ-tid", "ipa": "/ˌəʊ.vəˈreɪ.tɪd/", "french": "surcoté", "example": "Some fans think he's overrated.", "exampleFr": "Certains supporters pensent qu'il est surcoté.", "category": "football", "type": "word", "source": "football", "level": 2, "frequency": "context"}, {"id": "c0106", "term": "underrated", "phoneticFr": "eun-deur-RÉÏ-tid", "ipa": "/ˌʌn.dəˈreɪ.tɪd/", "french": "sous-coté", "example": "That player is underrated.", "exampleFr": "Ce joueur est sous-coté.", "category": "football", "type": "word", "source": "football", "level": 2, "frequency": "context"}, {"id": "c0107", "term": "cooked", "phoneticFr": "KOUKT", "ipa": "/kʊkt/", "french": "fini / dépassé (slang)", "example": "They looked completely cooked.", "exampleFr": "Ils avaient l'air complètement cuits.", "category": "internet", "type": "slang", "source": "football", "level": 2, "frequency": "context"}, {"id": "c0108", "term": "that's wild", "phoneticFr": "dzats WAÏLD", "ipa": "/ðæts waɪld/", "french": "c'est dingue", "example": "That's wild, I didn't expect it.", "exampleFr": "C'est dingue, je ne m'y attendais pas.", "category": "internet", "type": "chunk", "source": "internet", "level": 2, "frequency": "context"}, {"id": "c0109", "term": "low-key", "phoneticFr": "LO-KII", "ipa": "/ˌləʊˈkiː/", "french": "discrètement / un peu", "example": "I'm low-key excited about it.", "exampleFr": "Je suis un peu enthousiaste à ce sujet.", "category": "internet", "type": "slang", "source": "internet", "level": 2, "frequency": "context"}, {"id": "c0110", "term": "ngl", "phoneticFr": "ène-dji-ÈL", "ipa": "/ˌen.dʒiːˈel/", "french": "franchement / je ne vais pas mentir", "example": "NGL, that was impressive.", "exampleFr": "Franchement, c'était impressionnant.", "category": "internet", "type": "slang", "source": "internet", "level": 2, "frequency": "context"}, {"id": "c0111", "term": "deadline", "phoneticFr": "DÈD-laïn", "ipa": "/ˈded.laɪn/", "french": "échéance", "example": "The deadline is Friday.", "exampleFr": "L'échéance est vendredi.", "category": "tech", "type": "word", "source": "tech", "level": 2, "frequency": "context"}, {"id": "c0112", "term": "workload", "phoneticFr": "WEURK-lod", "ipa": "/ˈwɜːk.ləʊd/", "french": "charge de travail", "example": "My workload is heavy this week.", "exampleFr": "Ma charge de travail est élevée cette semaine.", "category": "tech", "type": "word", "source": "tech", "level": 2, "frequency": "context"}, {"id": "c0113", "term": "feedback", "phoneticFr": "FIID-bak", "ipa": "/ˈfiːd.bæk/", "french": "retour / avis", "example": "Thanks for the feedback.", "exampleFr": "Merci pour le retour.", "category": "tech", "type": "word", "source": "tech", "level": 2, "frequency": "context"}, {"id": "c0114", "term": "deploy", "phoneticFr": "di-PLOÏ", "ipa": "/dɪˈplɔɪ/", "french": "déployer", "example": "We'll deploy the update tonight.", "exampleFr": "Nous déploierons la mise à jour ce soir.", "category": "tech", "type": "word", "source": "tech", "level": 2, "frequency": "context"}, {"id": "c0115", "term": "release", "phoneticFr": "ri-LIISS", "ipa": "/rɪˈliːs/", "french": "version / publier", "example": "The release is ready.", "exampleFr": "La version est prête.", "category": "tech", "type": "word", "source": "tech", "level": 2, "frequency": "context"}, {"id": "c0116", "term": "bug", "phoneticFr": "BEUG", "ipa": "/bʌɡ/", "french": "bug / anomalie", "example": "We found a bug in production.", "exampleFr": "Nous avons trouvé une anomalie en production.", "category": "tech", "type": "word", "source": "tech", "level": 2, "frequency": "context"}, {"id": "c0117", "term": "troubleshoot", "phoneticFr": "TREU-beul-chout", "ipa": "/ˈtrʌb.əl.ʃuːt/", "french": "diagnostiquer / dépanner", "example": "Let's troubleshoot the issue.", "exampleFr": "Diagnostiquons le problème.", "category": "tech", "type": "word", "source": "tech", "level": 2, "frequency": "context"}, {"id": "c0118", "term": "on-call", "phoneticFr": "ON-KOL", "ipa": "/ˌɒnˈkɔːl/", "french": "astreinte", "example": "I'm on-call this weekend.", "exampleFr": "Je suis d'astreinte ce week-end.", "category": "tech", "type": "word", "source": "tech", "level": 2, "frequency": "context"}, {"id": "c0119", "term": "workflow", "phoneticFr": "WEURK-flo", "ipa": "/ˈwɜːk.fləʊ/", "french": "flux de travail", "example": "This workflow saves time.", "exampleFr": "Ce flux de travail fait gagner du temps.", "category": "tech", "type": "word", "source": "tech", "level": 2, "frequency": "context"}, {"id": "c0120", "term": "stakeholder", "phoneticFr": "STÉÏK-hol-deur", "ipa": "/ˈsteɪkˌhəʊl.də(r)/", "french": "partie prenante", "example": "We need stakeholder approval.", "exampleFr": "Nous avons besoin de l'accord de la partie prenante.", "category": "tech", "type": "word", "source": "tech", "level": 2, "frequency": "context"}];</script>
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const DB_NAME='native-english-coach', DB_VERSION=1;
+const DEFAULT_SETTINGS={voiceMode:'mix',repeatCount:3,thinkSeconds:5,speakFrench:true,rotateVoices:true,speechRate:.95};
+let db, corpus=[], settings={...DEFAULT_SETTINGS}, session=[], sessionIndex=0, currentMode='normal', currentSkill='reading';
+let fsrs=null, fsrsLib=null, wakeLock=null, driveRunning=false, drivePaused=false, lastDriveItem=null;
+
+function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
+function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
+function show(id){$$('.view').forEach(v=>v.classList.remove('active'));$(id).classList.add('active');scrollTo(0,0)}
+function openDB(){return new Promise((resolve,reject)=>{const r=indexedDB.open(DB_NAME,DB_VERSION);r.onupgradeneeded=()=>{const d=r.result;if(!d.objectStoreNames.contains('progress'))d.createObjectStore('progress',{keyPath:'id'});if(!d.objectStoreNames.contains('settings'))d.createObjectStore('settings',{keyPath:'id'});if(!d.objectStoreNames.contains('customCorpus'))d.createObjectStore('customCorpus',{keyPath:'id'})};r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+function store(name,mode='readonly'){return db.transaction(name,mode).objectStore(name)}
+function getOne(name,key){return new Promise((res,rej)=>{const r=store(name).get(key);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+function getAll(name){return new Promise((res,rej)=>{const r=store(name).getAll();r.onsuccess=()=>res(r.result||[]);r.onerror=()=>rej(r.error)})}
+function put(name,val){return new Promise((res,rej)=>{const r=store(name,'readwrite').put(val);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
+function clearStore(name){return new Promise((res,rej)=>{const r=store(name,'readwrite').clear();r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
+async function loadSettings(){settings={...DEFAULT_SETTINGS,...((await getOne('settings','main'))?.value||{})};applySettingsUI()}
+async function saveSettings(){settings={voiceMode:$('#voiceMode').value,repeatCount:+$('#repeatCount').value,thinkSeconds:+$('#thinkSeconds').value,speakFrench:$('#speakFrench').checked,rotateVoices:$('#rotateVoices').checked,speechRate:+$('#speechRate').value};await put('settings',{id:'main',value:settings});$('#rateLabel').textContent=settings.speechRate.toFixed(2)+'×'}
+function applySettingsUI(){$('#voiceMode').value=settings.voiceMode;$('#repeatCount').value=settings.repeatCount;$('#thinkSeconds').value=settings.thinkSeconds;$('#speakFrench').checked=settings.speakFrench;$('#rotateVoices').checked=settings.rotateVoices;$('#speechRate').value=settings.speechRate;$('#rateLabel').textContent=settings.speechRate.toFixed(2)+'×'}
+async function loadCorpus(){const custom=await getAll('customCorpus');corpus=custom.length?custom:window.__NATIVE_COACH_SEED__;$('#statCorpus').textContent=corpus.length}
+async function initFsrs(){
+  try{
+    fsrsLib=await import('https://esm.sh/ts-fsrs@5.4.2?bundle');
+    fsrs=fsrsLib.fsrs({request_retention:.9,maximum_interval:3650,enable_fuzz:true,enable_short_term:true,learning_steps:['1m','10m'],relearning_steps:['10m']});
+    $('#engineBadge').textContent='FSRS 5.4.2';
+  }catch(e){fsrs=null;$('#engineBadge').textContent='SRS offline';}
+}
+function hydrateCard(x){if(!x)return null;return {...x,due:new Date(x.due),last_review:x.last_review?new Date(x.last_review):undefined}}
+function serializeCard(x){return {...x,due:x.due instanceof Date?x.due.getTime():x.due,last_review:x.last_review instanceof Date?x.last_review.getTime():(x.last_review??null)}}
+function fallbackSchedule(prev,rating){
+ const now=Date.now(), reps=(prev?.reps||0)+1, lapses=(prev?.lapses||0)+(rating===1?1:0);
+ let interval;
+ if(rating===1) interval=10*60*1000;
+ else if(rating===2) interval=Math.max(6*3600e3,(prev?.intervalMs||6*3600e3)*1.35);
+ else if(rating===3) interval=Math.max(24*3600e3,(prev?.intervalMs||12*3600e3)*2.25);
+ else interval=Math.max(3*24*3600e3,(prev?.intervalMs||24*3600e3)*3.4);
+ return {due:now+interval,reps,lapses,intervalMs:interval,lastReview:now,engine:'fallback'};
+}
+async function rateItem(item,skill,rating){
+ let rec=await getOne('progress',item.id)||{id:item.id,skills:{},exposures:0};
+ let state=rec.skills[skill]||null;
+ if(fsrs){
+   try{
+     const card=state?.fsrs?hydrateCard(state.fsrs):fsrsLib.createEmptyCard(new Date());
+     const out=fsrs.next(card,new Date(),rating);
+     state={...state,fsrs:serializeCard(out.card),due:out.card.due.getTime(),reps:out.card.reps,lapses:out.card.lapses,engine:'fsrs',lastRating:rating,lastReview:Date.now()};
+   }catch(e){state={...state,...fallbackSchedule(state,rating),lastRating:rating}}
+ }else state={...state,...fallbackSchedule(state,rating),lastRating:rating};
+ rec.skills[skill]=state;await put('progress',rec);
+}
+async function markExposure(item){
+ let rec=await getOne('progress',item.id)||{id:item.id,skills:{},exposures:0};
+ rec.exposures=(rec.exposures||0)+1;rec.lastExposure=Date.now();await put('progress',rec)
+}
+async function updateStats(){
+ const p=await getAll('progress');let known=0,due=0,ex=0,now=Date.now();
+ for(const r of p){ex+=r.exposures||0;for(const s of Object.values(r.skills||{})){if((s.reps||0)>=3 && (s.lastRating||0)>=3)known++;if((s.due||0)<=now)due++}}
+ $('#statKnown').textContent=known;$('#statDue').textContent=due;$('#statExposure').textContent=ex
+}
+function voiceCandidates(langPrefix){
+ let vs=speechSynthesis.getVoices().filter(v=>v.lang.toLowerCase().startsWith(langPrefix.toLowerCase()));
+ const score=v=>{
+   const n=v.name.toLowerCase();let s=0;
+   if(/premium|enhanced|natural|neural|siri/.test(n))s+=50;
+   if(/karen|lee|matilda|samantha|daniel|ava|allison|tom|zoe/.test(n))s+=20;
+   if(v.localService)s+=5;return -s
+ };
+ return vs.sort((a,b)=>score(a)-score(b))
+}
+function chooseEnglishVoice(item){
+ const au=voiceCandidates('en-AU'), us=voiceCandidates('en-US'), gb=voiceCandidates('en-GB');
+ let pools;
+ if(item?.source==='au'||settings.voiceMode==='au') pools=[au,us,gb];
+ else if(settings.voiceMode==='us') pools=[us,au,gb];
+ else if(settings.voiceMode==='gb') pools=[gb,au,us];
+ else pools=[au,us,gb].filter(x=>x.length);
+ const pool=pools.find(x=>x.length)||speechSynthesis.getVoices().filter(v=>v.lang.startsWith('en'));
+ if(!pool.length)return null;
+ return settings.rotateVoices?pool[Math.floor(Math.random()*Math.min(pool.length,4))]:pool[0]
+}
+function chooseFrenchVoice(){return voiceCandidates('fr')[0]||null}
+function speak(text,lang='en',item=null,rate=settings.speechRate){
+ return new Promise(resolve=>{
+   if(!text){resolve();return}
+   speechSynthesis.cancel();
+   const u=new SpeechSynthesisUtterance(text);u.rate=rate;u.pitch=1;
+   const v=lang==='fr'?chooseFrenchVoice():chooseEnglishVoice(item);
+   if(v){u.voice=v;u.lang=v.lang}else u.lang=lang==='fr'?'fr-FR':'en-AU';
+   u.onend=()=>resolve();u.onerror=()=>resolve();speechSynthesis.speak(u)
+ })
+}
+async function requestWake(){try{if('wakeLock'in navigator)wakeLock=await navigator.wakeLock.request('screen')}catch(e){}}
+function releaseWake(){try{wakeLock?.release()}catch(e){}wakeLock=null}
+async function buildSession(mode){
+ const progress=await getAll('progress'), map=new Map(progress.map(x=>[x.id,x])), now=Date.now();
+ let skill=mode==='listening'||mode==='drive'?'listening':mode==='speaking'?'speaking':'reading';
+ currentSkill=skill;
+ let due=[],fresh=[];
+ for(const item of corpus){
+   const st=map.get(item.id)?.skills?.[skill];
+   if(!st)fresh.push(item); else if((st.due||0)<=now)due.push(item)
+ }
+ due.sort((a,b)=>(map.get(a.id)?.skills?.[skill]?.due||0)-(map.get(b.id)?.skills?.[skill]?.due||0));
+ fresh.sort(()=>Math.random()-.5);
+ const spec=mode==='intensive'?{n:25,d:40}:mode==='normal'?{n:10,d:20}:mode==='listening'?{n:10,d:30}:mode==='speaking'?{n:8,d:20}:{n:18,d:22};
+ let chosen=[...due.slice(0,spec.d),...fresh.slice(0,spec.n)];
+ if(!chosen.length)chosen=corpus.slice().sort(()=>Math.random()-.5).slice(0,spec.n);
+ return chosen.sort(()=>Math.random()-.5)
+}
+async function startStudy(mode){
+ currentMode=mode;session=await buildSession(mode);sessionIndex=0;
+ $('#studyTitle').textContent=mode==='intensive'?'⚡ Intensif':mode==='listening'?'🎧 Listening':mode==='speaking'?'🗣️ Speaking':'🌱 Normal';
+ show('#studyView');renderStudy()
+}
+function renderStudy(){
+ if(sessionIndex>=session.length){toast('Session terminée ✅');show('#homeView');updateStats();return}
+ const item=session[sessionIndex], listening=currentMode==='listening', speaking=currentMode==='speaking';
+ $('#counter').textContent=`${sessionIndex+1}/${session.length}`;$('#progressBar').style.width=`${sessionIndex/session.length*100}%`;
+ $('#catBadge').textContent=item.category;$('#sourceBadge').textContent=item.source;$('#skillBadge').textContent=currentSkill;
+ $('#term').textContent=speaking?'🇫🇷 '+item.french:item.term;$('#phon').textContent=speaking?'Produis l’anglais avant de révéler':item.phoneticFr;$('#ipa').textContent=speaking?'':item.ipa;
+ $('#meaning').textContent=speaking?item.term:item.french;$('#example').textContent=item.example;$('#exampleFr').textContent=item.exampleFr;
+ $('#studyCard').classList.add('hidden-answer');$('#studyCard').classList.toggle('listening-mask',listening);
+ $('#ratingBox').style.display='none';$('#revealBtn').style.display='inline-block';
+ if(listening)setTimeout(()=>speak(item.example,'en',item),250)
+}
+function reveal(){const item=session[sessionIndex];$('#studyCard').classList.remove('hidden-answer','listening-mask');$('#ratingBox').style.display='grid';$('#revealBtn').style.display='none';if(currentMode==='speaking'){$('#term').textContent=item.term;$('#phon').textContent=item.phoneticFr;$('#ipa').textContent=item.ipa}}
+async function ratingClick(r){await rateItem(session[sessionIndex],currentSkill,r);sessionIndex++;renderStudy()}
+async function startDriveMode(){
+ currentMode='drive';session=await buildSession('drive');sessionIndex=0;driveRunning=false;drivePaused=false;
+ $('#driveActions').style.display='none';$('#startDrive').style.display='block';$('#driveTerm').textContent='START';$('#drivePhon').textContent='Appuie pour lancer l’audio';$('#driveMeaning').textContent='';$('#driveExample').textContent='';$('#driveExampleFr').textContent='';
+ show('#driveView')
+}
+async function runDrive(){
+ if(driveRunning)return;driveRunning=true;drivePaused=false;$('#startDrive').style.display='none';$('#driveActions').style.display='grid';await requestWake();
+ while(driveRunning && sessionIndex<session.length){
+   if(drivePaused){await sleep(300);continue}
+   const item=session[sessionIndex];lastDriveItem=item;
+   $('#driveCounter').textContent=`${sessionIndex+1}/${session.length}`;$('#driveProgress').style.width=`${sessionIndex/session.length*100}%`;
+   $('#driveTerm').textContent=item.term;$('#drivePhon').textContent=item.phoneticFr;$('#driveIpa').textContent=item.ipa;$('#driveMeaning').textContent=item.french;$('#driveExample').textContent=item.example;$('#driveExampleFr').textContent=item.exampleFr;
+   $('#driveStatus').textContent='Écoute le mot / l’expression';
+   for(let i=0;i<settings.repeatCount && driveRunning;i++){await speak(item.term,'en',item);await sleep(500)}
+   if(!driveRunning)break;
+   if(settings.speakFrench){$('#driveStatus').textContent='Sens';await speak(item.french,'fr',item,.95);await sleep(400)}
+   $('#driveStatus').textContent='Phrase naturelle';await speak(item.example,'en',item);await sleep(settings.thinkSeconds*1000);
+   await markExposure(item);sessionIndex++;
+ }
+ if(driveRunning){$('#driveStatus').textContent='Session terminée ✅';$('#driveTerm').textContent='DONE';$('#drivePhon').textContent='Bravo';$('#driveActions').style.display='none';$('#startDrive').style.display='block';$('#startDrive').textContent='↻ Nouvelle session';driveRunning=false;releaseWake();updateStats()}
+}
+function stopDrive(){driveRunning=false;speechSynthesis.cancel();releaseWake();show('#homeView');updateStats()}
+function renderBrowse(filter=''){
+ const q=filter.trim().toLowerCase();const list=corpus.filter(x=>!q||[x.term,x.french,x.category,x.source].join(' ').toLowerCase().includes(q)).slice(0,150);
+ $('#browseCount').textContent=list.length;$('#browseList').innerHTML=list.map(x=>`<div class="setting"><div class="badges"><span class="badge">${x.category}</span><span class="badge">${x.source}</span></div><h3 style="margin:10px 0 4px">${x.term}</h3><div class="phon">${x.phoneticFr}</div><div class="ipa">${x.ipa}</div><p style="margin:10px 0 5px">${x.french}</p><div class="hint">${x.example}<br>${x.exampleFr}</div><button class="btn soft" style="margin-top:10px" data-speak-id="${x.id}">🔊 Écouter</button></div>`).join('');
+ $$('[data-speak-id]').forEach(b=>b.onclick=()=>{const x=corpus.find(i=>i.id===b.dataset.speakId);speak(x.example,'en',x)})
+}
+function parseCSV(text){
+ const lines=text.replace(/^\uFEFF/,'').split(/\r?\n/).filter(Boolean);if(lines.length<2)return[];
+ const sep=(lines[0].match(/;/g)||[]).length>(lines[0].match(/,/g)||[]).length?';':',';
+ const split=line=>{let out=[],cur='',q=false;for(let i=0;i<line.length;i++){const c=line[i];if(c==='"'){if(q&&line[i+1]==='"'){cur+='"';i++}else q=!q}else if(c===sep&&!q){out.push(cur.trim());cur=''}else cur+=c}out.push(cur.trim());return out};
+ const headers=split(lines[0]);return lines.slice(1).map((l,i)=>{const vals=split(l),o={id:'u'+String(i+1).padStart(5,'0')};headers.forEach((h,j)=>o[h]=vals[j]||'');return o}).filter(x=>x.term)
+}
+async function importCSV(file){
+ const rows=parseCSV(await file.text());if(!rows.length){toast('CSV invalide');return}
+ await clearStore('customCorpus');for(const r of rows)await put('customCorpus',{category:'custom',type:'word',source:'custom',level:1,frequency:'custom',...r});
+ await loadCorpus();toast(`${rows.length} éléments importés`);updateStats()
+}
+function download(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+async function exportProgress(){download('native-english-coach-progress.json',JSON.stringify({exportedAt:new Date().toISOString(),settings,progress:await getAll('progress')},null,2),'application/json')}
+async function resetAll(){if(!confirm('Réinitialiser toute la progression et le corpus personnalisé ?'))return;await clearStore('progress');await clearStore('customCorpus');corpus=window.__NATIVE_COACH_SEED__;await updateStats();toast('Progression réinitialisée')}
+function updateVoiceInfo(){const vs=speechSynthesis.getVoices();const counts=['en-AU','en-US','en-GB'].map(l=>`${l}: ${vs.filter(v=>v.lang===l).length}`).join(' · ');$('#voiceInfo').textContent=counts||'Voix en cours de chargement…'}
+
+$$('[data-home]').forEach(b=>b.onclick=()=>{speechSynthesis.cancel();show('#homeView');updateStats()});
+$('#settingsBtn').onclick=()=>show('#settingsView');
+$$('.mode').forEach(b=>b.onclick=()=>{const m=b.dataset.mode;if(m==='drive')startDriveMode();else if(m==='browse'){show('#browseView');renderBrowse()}else startStudy(m)});
+$('#revealBtn').onclick=reveal;$('#speakBtn').onclick=()=>{const x=session[sessionIndex];speak(currentMode==='speaking'?x.term:x.example,'en',x)};
+$$('[data-rating]').forEach(b=>b.onclick=()=>ratingClick(+b.dataset.rating));
+$('#startDrive').onclick=async()=>{if(!driveRunning){if(sessionIndex>=session.length){session=await buildSession('drive');sessionIndex=0;$('#startDrive').textContent='▶ Démarrer la session'}runDrive()}};
+$('#drivePause').onclick=()=>{drivePaused=!drivePaused;if(drivePaused)speechSynthesis.cancel();$('#drivePause').textContent=drivePaused?'▶ Reprendre':'⏸ Pause'};
+$('#driveReplay').onclick=()=>lastDriveItem&&speak(lastDriveItem.example,'en',lastDriveItem);
+$('#stopDrive').onclick=stopDrive;
+$('#searchBox').oninput=e=>renderBrowse(e.target.value);
+['voiceMode','repeatCount','thinkSeconds','speakFrench','rotateVoices','speechRate'].forEach(id=>$('#'+id).onchange=saveSettings);
+$('#speechRate').oninput=e=>$('#rateLabel').textContent=(+e.target.value).toFixed(2)+'×';
+$('#testVoice').onclick=()=>speak('Good morning. I reckon this is going to be a great day.','en',{source:'au'});
+$('#csvInput').onchange=e=>{const f=e.target.files?.[0];if(f)importCSV(f);e.target.value=''};
+$('#exportBtn').onclick=exportProgress;$('#resetBtn').onclick=resetAll;
+speechSynthesis.onvoiceschanged=updateVoiceInfo;
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&driveRunning)requestWake()});
+
+async function boot(){
+ db=await openDB();await loadSettings();await loadCorpus();await updateStats();updateVoiceInfo();initFsrs();
+ if('serviceWorker'in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
+}
+boot();
+</script>
+</body></html>
