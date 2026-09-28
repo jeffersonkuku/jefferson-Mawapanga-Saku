@@ -265,7 +265,10 @@ async function playNativeAudio(item,kind){
   return new Promise((resolve,reject)=>{
     a.onended=()=>{if(activeAudio===a)activeAudio=null;resolve()};
     a.onerror=()=>{if(activeAudio===a)activeAudio=null;reject(new Error('Lecture MP3 impossible'))};
-    a.play().catch(reject);
+    a.play().catch(err=>{
+      if(err && err.name==='AbortError'){resolve();return}
+      reject(err);
+    });
   });
 }
 function systemSpeakFrench(text,rate=.95){
@@ -346,7 +349,8 @@ async function startIntensiveAuto(){
  $('#driveTerm').textContent='START';$('#drivePhon').textContent='Mot + phonétique, puis 5 secondes pour trouver le sens';
  $('#driveIpa').textContent='';$('#driveMeaning').textContent='';$('#driveExample').textContent='';$('#driveExampleFr').textContent='';
  $('#knowledgeQuestion').style.display='none';$('#driveStatus').textContent='Prêt';
- show('#driveView')
+ show('#driveView');
+ loadAudioIndex().then(()=>warmIntensiveAudio(session,0,Math.min(8,session.length))).catch(()=>{});
 }
 function setIntensiveChoice(choice){
  if(!currentIntensiveItemId)return;
@@ -371,8 +375,8 @@ async function runDrive(){
  driveRunning=true;drivePaused=false;
  $('#startDrive').style.display='none';$('#driveActions').style.display='grid';
  $('#driveStatus').textContent='Préparation audio…';await requestWake();
- await warmIntensiveAudio(session,0,Math.min(8,session.length));
- warmIntensiveAudio(session,8,session.length).catch(()=>{});
+ await warmIntensiveAudio(session,0,Math.min(2,session.length));
+ warmIntensiveAudio(session,2,session.length).catch(()=>{});
  while(driveRunning && sessionIndex<session.length){
    if(drivePaused){await sleep(100);continue}
    const item=session[sessionIndex];lastDriveItem=item;currentIntensiveItemId=item.id;intensiveChoice=null;
