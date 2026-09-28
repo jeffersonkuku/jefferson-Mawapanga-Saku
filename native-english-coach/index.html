@@ -443,7 +443,7 @@ async function exportProgress(){download('native-english-coach-progress.json',JS
 async function resetAll(){if(!confirm('Réinitialiser toute la progression et le corpus personnalisé ?'))return;await clearStore('progress');await clearStore('customCorpus');corpus=window.__NATIVE_COACH_SEED__;await updateStats();toast('Progression réinitialisée')}
 $$('[data-home]').forEach(b=>b.onclick=()=>{cancelStudyPlayback();show('#homeView');updateStats()});
 $('#settingsBtn').onclick=()=>show('#settingsView');
-$('.mode').forEach(b=>b.onclick=()=>{
+$$('.mode').forEach(b=>b.onclick=()=>{
  const m=b.dataset.mode;
  if(m==='intensive-auto')startIntensiveAuto();
  else if(m==='intensive-calm')startStudy('intensive');
