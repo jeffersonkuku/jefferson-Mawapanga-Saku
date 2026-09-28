@@ -99,8 +99,11 @@ jobs:
               window.warmIntensiveAudio=async()=>{};
               window.requestWake=async()=>{};
             });
-            await page.fill('#thinkSeconds','2');
-            await page.dispatchEvent('#thinkSeconds','change');
+            await page.evaluate(()=>{
+              const el=document.querySelector('#thinkSeconds');
+              el.value='2';
+              el.dispatchEvent(new Event('change',{bubbles:true}));
+            });
             await page.click('#startDrive');
             const first=await page.locator('#driveTerm').textContent();
             await page.waitForFunction(()=>document.querySelector('#knowledgeQuestion').style.display==='block',{timeout:5000});
