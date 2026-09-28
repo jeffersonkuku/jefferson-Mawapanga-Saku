@@ -44,22 +44,27 @@ async def main():
         voice = voice_for(item, idx)
         term = AUDIO / f"{item['id']}-term.mp3"
         example = AUDIO / f"{item['id']}-example.mp3"
+        drill = AUDIO / f"{item['id']}-drill.mp3"
         async with sem:
             if not term.exists():
                 await synth(item["term"], voice, term, rate="-6%")
             if not example.exists():
                 await synth(item["example"], voice, example, rate="+0%")
+            if not drill.exists():
+                drill_text = f"{item['term']}. {item['term']}. {item['term']}."
+                await synth(drill_text, voice, drill, rate="-3%")
         index[item["id"]] = {
             "voice": voice,
             "term": f"./audio/{term.name}",
             "example": f"./audio/{example.name}",
+            "drill": f"./audio/{drill.name}",
             "locale": voice[:5]
         }
         print(f"{idx+1}/{len(items)} {item['id']} {voice}", flush=True)
 
     await asyncio.gather(*(one(item, idx) for idx, item in enumerate(items)))
     INDEX.write_text(json.dumps(index, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"Generated {len(index)} items / {len(index)*2} MP3 files")
+    print(f"Generated {len(index)} items / {len(index)*3} MP3 files")
 
 if __name__ == "__main__":
     asyncio.run(main())
