@@ -152,7 +152,7 @@ let audioIndex={}, activeAudio=null, audioIndexReady=false;
 let studyAudioTimer=null, studyRenderToken=0;
 let audioBlobCache=new Map(), audioFetchCache=new Map();
 let intensiveChoice=null, intensiveAttempts=new Map(), currentIntensiveItemId=null;
-let intensiveChoiceResolver=null, intensiveChoiceTimer=null;
+let intensiveBusy=false, intensiveToken=0;
 
 function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
 function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
@@ -366,128 +366,161 @@ async function startIntensiveAuto(){
  show('#driveView');
  loadAudioIndex().then(()=>warmIntensiveAudio(session,0,Math.min(8,session.length))).catch(()=>{});
 }
-function setIntensiveChoice(choice){
- if(!currentIntensiveItemId)return;
- intensiveChoice=choice;
- if(choice==='known'){
-   $('#driveKnown').textContent='✅ Connu ✓';$('#driveUnknown').textContent='❌ Pas connu';
-   $('#knowledgeHint').textContent='Connu • passage au mot suivant…';
- }else{
-   $('#driveKnown').textContent='✅ Connu';$('#driveUnknown').textContent='❌ Pas connu ✓';
-   $('#knowledgeHint').textContent='Pas connu • il reviendra plus tard.';
- }
- if(intensiveChoiceResolver){
-   const resolve=intensiveChoiceResolver;
-   intensiveChoiceResolver=null;
-   if(intensiveChoiceTimer){clearTimeout(intensiveChoiceTimer);intensiveChoiceTimer=null}
-   resolve(choice);
- }
+function setIntensiveButtonsEnabled(enabled){
+ $('#driveKnown').disabled=!enabled;
+ $('#driveUnknown').disabled=!enabled;
+ $('#driveKnown').style.opacity=enabled?'1':'.55';
+ $('#driveUnknown').style.opacity=enabled?'1':'.55';
 }
-function waitForIntensiveChoice(timeoutMs=1800){
- return new Promise(resolve=>{
-   if(intensiveChoice){resolve(intensiveChoice);return}
-   intensiveChoiceResolver=resolve;
-   intensiveChoiceTimer=setTimeout(()=>{
-     intensiveChoiceTimer=null;
-     if(intensiveChoiceResolver){
-       intensiveChoiceResolver=null;
-       resolve(null);
-     }
-   },timeoutMs);
- })
-}
+
 async function waitIntensive(ms){
  let remaining=ms;
  while(driveRunning && remaining>0){
    if(drivePaused){await sleep(100);continue}
-   const step=Math.min(100,remaining);await sleep(step);remaining-=step;
+   const step=Math.min(100,remaining);
+   await sleep(step);
+   remaining-=step;
  }
 }
+
+async function presentIntensiveCard(){
+ if(!driveRunning)return;
+ if(sessionIndex>=session.length){
+   currentIntensiveItemId=null;
+   $('#driveStatus').textContent='Session terminée ✅';
+   $('#driveTerm').textContent='DONE';
+   $('#drivePhon').textContent='Révisions enregistrées';
+   $('#driveIpa').textContent='';
+   $('#driveMeaning').textContent='';
+   $('#knowledgeQuestion').style.display='none';
+   $('#driveActions').style.display='none';
+   $('#startDrive').style.display='block';
+   $('#startDrive').textContent='↻ Nouvelle session';
+   driveRunning=false;
+   releaseWake();
+   updateStats();
+   return;
+ }
+
+ const token=++intensiveToken;
+ const item=session[sessionIndex];
+ lastDriveItem=item;
+ currentIntensiveItemId=item.id;
+ intensiveChoice=null;
+ intensiveBusy=false;
+
+ $('#driveCounter').textContent=`${sessionIndex+1}/${session.length}`;
+ $('#driveProgress').style.width=`${sessionIndex/session.length*100}%`;
+ $('#driveTerm').textContent=item.term;
+ $('#drivePhon').textContent=item.phoneticFr;
+ $('#driveIpa').textContent=item.ipa + (/[ðθ]/.test(item.ipa)?' · DH/TH = langue entre les dents':'');
+ $('#driveMeaning').textContent='';
+ $('#driveExample').textContent='';
+ $('#driveExampleFr').textContent='';
+ $('#knowledgeQuestion').style.display='none';
+ $('#driveKnown').textContent='✅ Connu';
+ $('#driveUnknown').textContent='❌ Pas connu';
+ $('#knowledgeHint').textContent='Pas connu = le mot reviendra plus tard dans la session.';
+ setIntensiveButtonsEnabled(false);
+
+ $('#driveStatus').textContent='Écoute et trouve le sens';
+
+ preloadNativeAudio(item,'drill');
+ const nextItems=session.slice(sessionIndex+1,sessionIndex+5);
+ nextItems.forEach(x=>{preloadNativeAudio(x,'term');preloadNativeAudio(x,'drill')});
+
+ try{
+   await playNativeAudio(item,'term');
+ }catch(e){ console.error(e); }
+
+ if(!driveRunning || token!==intensiveToken)return;
+
+ for(let sec=settings.thinkSeconds;sec>0 && driveRunning;sec--){
+   $('#driveStatus').textContent=`Trouve le sens • ${sec} s`;
+   await waitIntensive(1000);
+   if(token!==intensiveToken)return;
+ }
+ if(!driveRunning || token!==intensiveToken)return;
+
+ $('#driveMeaning').textContent=item.french;
+ $('#driveStatus').textContent='Traduction affichée • 3 répétitions';
+
+ // Les trois répétitions sont déjà contenues dans un seul MP3.
+ try{
+   await playNativeAudio(item,'drill');
+ }catch(e){ console.error(e); }
+
+ if(!driveRunning || token!==intensiveToken)return;
+
+ $('#knowledgeQuestion').style.display='block';
+ $('#driveStatus').textContent='Connu ou pas connu ?';
+ setIntensiveButtonsEnabled(true);
+}
+
+async function handleIntensiveAnswer(choice){
+ if(!driveRunning || intensiveBusy || !currentIntensiveItemId)return;
+ const item=session[sessionIndex];
+ if(!item || item.id!==currentIntensiveItemId)return;
+
+ intensiveBusy=true;
+ setIntensiveButtonsEnabled(false);
+
+ if(choice==='known'){
+   $('#driveKnown').textContent='✅ Connu ✓';
+   $('#knowledgeHint').textContent='Connu • mot suivant…';
+ }else{
+   $('#driveUnknown').textContent='❌ Pas connu ✓';
+   $('#knowledgeHint').textContent='Pas connu • il reviendra plus tard.';
+ }
+
+ await markExposure(item);
+
+ if(choice==='known'){
+   await rateItem(item,'reading',3);
+ }else{
+   await rateItem(item,'reading',1);
+   const attempts=(intensiveAttempts.get(item.id)||0)+1;
+   intensiveAttempts.set(item.id,attempts);
+   if(attempts<3){
+     const reinsertAt=Math.min(sessionIndex+6,session.length);
+     session.splice(reinsertAt,0,item);
+   }
+ }
+
+ sessionIndex++;
+ currentIntensiveItemId=null;
+ $('#knowledgeQuestion').style.display='none';
+
+ // Le mot suivant est lancé immédiatement par le clic.
+ intensiveBusy=false;
+ await presentIntensiveCard();
+}
+
 async function runDrive(){
  if(driveRunning)return;
- driveRunning=true;drivePaused=false;
- $('#startDrive').style.display='none';$('#driveActions').style.display='grid';
- $('#driveStatus').textContent='Préparation audio…';await requestWake();
+ driveRunning=true;
+ drivePaused=false;
+ intensiveBusy=false;
+ $('#startDrive').style.display='none';
+ $('#driveActions').style.display='grid';
+ $('#driveStatus').textContent='Préparation audio…';
+ await requestWake();
+
  await warmIntensiveAudio(session,0,Math.min(2,session.length));
  warmIntensiveAudio(session,2,session.length).catch(()=>{});
- while(driveRunning && sessionIndex<session.length){
-   if(drivePaused){await sleep(100);continue}
-   const item=session[sessionIndex];lastDriveItem=item;currentIntensiveItemId=item.id;intensiveChoice=null;
-   $('#driveCounter').textContent=`${sessionIndex+1}/${session.length}`;
-   $('#driveProgress').style.width=`${sessionIndex/session.length*100}%`;
-   $('#driveTerm').textContent=item.term;$('#drivePhon').textContent=item.phoneticFr;$('#driveIpa').textContent=item.ipa + (/[ðθ]/.test(item.ipa)?' · DH/TH = langue entre les dents':'');
-   $('#driveMeaning').textContent='';$('#driveExample').textContent='';$('#driveExampleFr').textContent='';
-   $('#knowledgeQuestion').style.display='none';
-   $('#driveKnown').textContent='✅ Connu';$('#driveUnknown').textContent='❌ Pas connu';
-   $('#knowledgeHint').textContent='Pas connu = le mot reviendra plus tard dans la session.';
-   $('#driveStatus').textContent='Écoute et trouve le sens';
-   preloadNativeAudio(item,'drill');
-   const nextItems=session.slice(sessionIndex+1,sessionIndex+4);
-   nextItems.forEach(x=>{preloadNativeAudio(x,'term');preloadNativeAudio(x,'drill')});
-   await playNativeAudio(item,'term');
-   for(let sec=settings.thinkSeconds;sec>0 && driveRunning;sec--){
-     $('#driveStatus').textContent=`Trouve le sens • ${sec} s`;
-     await waitIntensive(1000);
-   }
-   if(!driveRunning)break;
-   $('#driveMeaning').textContent=item.french;
-   $('#knowledgeQuestion').style.display='block';
-   $('#driveStatus').textContent='Traduction affichée • 3 répétitions';
-   const drillPromise=playNativeAudio(item,'drill');
-   let answer=intensiveChoice;
-   if(!answer){
-     // Le bouton peut être pressé pendant les 3 répétitions.
-     const choiceDuringDrill=waitForIntensiveChoice(100000);
-     await drillPromise;
-     answer=intensiveChoice;
-     if(!answer){
-       if(intensiveChoiceResolver){
-         intensiveChoiceResolver=null;
-         if(intensiveChoiceTimer){clearTimeout(intensiveChoiceTimer);intensiveChoiceTimer=null}
-       }
-       $('#driveStatus').textContent='Connu ou pas connu ?';
-       answer=await waitForIntensiveChoice(1800);
-     }else{
-       if(intensiveChoiceResolver){
-         intensiveChoiceResolver=null;
-         if(intensiveChoiceTimer){clearTimeout(intensiveChoiceTimer);intensiveChoiceTimer=null}
-       }
-     }
-   }else{
-     await drillPromise;
-   }
-   if(!answer){
-     answer='unknown';
-     $('#knowledgeHint').textContent='Pas de réponse • classé à revoir.';
-   }
-   await markExposure(item);
-   if(answer==='known'){
-     await rateItem(item,'reading',3);
-   }else{
-     await rateItem(item,'reading',1);
-     const attempts=(intensiveAttempts.get(item.id)||0)+1;
-     intensiveAttempts.set(item.id,attempts);
-     if(attempts<3){
-       const reinsertAt=Math.min(sessionIndex+6,session.length);
-       session.splice(reinsertAt,0,item);
-     }
-   }
-   $('#knowledgeQuestion').style.display='none';
-   sessionIndex++;
- }
- currentIntensiveItemId=null;
- if(driveRunning){
-   $('#driveStatus').textContent='Session terminée ✅';$('#driveTerm').textContent='DONE';$('#drivePhon').textContent='Révisions enregistrées';
-   $('#driveMeaning').textContent='';$('#knowledgeQuestion').style.display='none';
-   $('#driveActions').style.display='none';$('#startDrive').style.display='block';$('#startDrive').textContent='↻ Nouvelle session';
-   driveRunning=false;releaseWake();updateStats();
- }
+
+ await presentIntensiveCard();
 }
 function stopDrive(){
- driveRunning=false;currentIntensiveItemId=null;
- if(intensiveChoiceTimer){clearTimeout(intensiveChoiceTimer);intensiveChoiceTimer=null}
- if(intensiveChoiceResolver){intensiveChoiceResolver(null);intensiveChoiceResolver=null}
- cancelStudyPlayback();releaseWake();show('#homeView');updateStats()
+ driveRunning=false;
+ drivePaused=false;
+ intensiveToken++;
+ intensiveBusy=false;
+ currentIntensiveItemId=null;
+ cancelStudyPlayback();
+ releaseWake();
+ show('#homeView');
+ updateStats()
 }
 function renderBrowse(filter=''){
  const q=filter.trim().toLowerCase();const list=corpus.filter(x=>!q||[x.term,x.french,x.category,x.source].join(' ').toLowerCase().includes(q)).slice(0,150);
@@ -521,11 +554,23 @@ $('#revealBtn').onclick=reveal;
 $('#speakBtn').onclick=async()=>{const x=session[sessionIndex];if(x)await speak(x.term,'en',x,settings.speechRate,'term')};
 $('#speakExampleBtn').onclick=async()=>{const x=session[sessionIndex];if(x)await speak(x.example,'en',x,settings.speechRate,'example')};
 $$('[data-rating]').forEach(b=>b.onclick=()=>ratingClick(+b.dataset.rating));
-$('#startDrive').onclick=async()=>{if(!driveRunning){if(sessionIndex>=session.length){session=await buildSession('intensive');sessionIndex=0;intensiveAttempts=new Map();$('#startDrive').textContent='▶ Démarrer l’intensif'}runDrive()}};
+$('#startDrive').onclick=async()=>{
+ if(!driveRunning){
+   if(sessionIndex>=session.length){
+     session=await buildSession('intensive');
+     sessionIndex=0;
+     intensiveAttempts=new Map();
+     currentIntensiveItemId=null;
+     intensiveToken++;
+     $('#startDrive').textContent='▶ Démarrer l’intensif';
+   }
+   runDrive();
+ }
+};
 $('#drivePause').onclick=()=>{drivePaused=!drivePaused;if(activeAudio){if(drivePaused)activeAudio.pause();else activeAudio.play().catch(()=>{})}$('#drivePause').textContent=drivePaused?'▶ Reprendre':'⏸ Pause'};
 $('#driveReplay').onclick=()=>lastDriveItem&&playNativeAudio(lastDriveItem,'term');
-$('#driveKnown').onclick=()=>setIntensiveChoice('known');
-$('#driveUnknown').onclick=()=>setIntensiveChoice('unknown');
+$('#driveKnown').onclick=()=>handleIntensiveAnswer('known');
+$('#driveUnknown').onclick=()=>handleIntensiveAnswer('unknown');
 $('#stopDrive').onclick=stopDrive;
 $('#searchBox').oninput=e=>renderBrowse(e.target.value);
 ['voiceMode','repeatCount','thinkSeconds','speakFrench','rotateVoices','speechRate'].forEach(id=>$('#'+id).onchange=saveSettings);
