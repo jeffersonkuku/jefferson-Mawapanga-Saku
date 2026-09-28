@@ -91,6 +91,13 @@ jobs:
             if((await page.locator('#browseList .setting').count())===0) throw new Error('browse empty');
             await page.click('#browseView [data-home]'); await page.waitForTimeout(100);
           });
+          await check('correct TH phonetic cue', async()=> {
+            const cue=await page.evaluate(()=>{
+              const item=(window.__NATIVE_COACH_SEED__||[]).find(x=>x.term==='the thing is');
+              return item?.phoneticFr;
+            });
+            if(cue!=='DHEU THING iz') throw new Error('wrong cue: '+cue);
+          });
           await check('intensive drill audio index', async()=> {
             const result=await page.evaluate(async()=>{
               const r=await fetch('./audio-index.json',{cache:'no-store'});
