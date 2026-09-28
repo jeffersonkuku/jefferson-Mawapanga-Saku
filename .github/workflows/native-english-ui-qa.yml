@@ -91,6 +91,26 @@ jobs:
             if((await page.locator('#browseList .setting').count())===0) throw new Error('browse empty');
             await page.click('#browseView [data-home]'); await page.waitForTimeout(100);
           });
+          await check('known button advances to next intensive word', async()=> {
+            await page.click('[data-mode="intensive-auto"]');
+            await page.waitForTimeout(150);
+            await page.evaluate(()=>{
+              window.playNativeAudio=async()=>{};
+              window.warmIntensiveAudio=async()=>{};
+              window.requestWake=async()=>{};
+            });
+            await page.fill('#thinkSeconds','2');
+            await page.dispatchEvent('#thinkSeconds','change');
+            await page.click('#startDrive');
+            const first=await page.locator('#driveTerm').textContent();
+            await page.waitForFunction(()=>document.querySelector('#knowledgeQuestion').style.display==='block',{timeout:5000});
+            await page.click('#driveKnown');
+            await page.waitForFunction(prev=>document.querySelector('#driveTerm').textContent!==prev,first,{timeout:3500});
+            const second=await page.locator('#driveTerm').textContent();
+            if(!second || second===first) throw new Error('word did not advance');
+            await page.click('#stopDrive');
+            await page.waitForTimeout(100);
+          });
           await check('correct TH phonetic cue', async()=> {
             const cue=await page.evaluate(()=>{
               const item=(window.__NATIVE_COACH_SEED__||[]).find(x=>x.term==='the thing is');
