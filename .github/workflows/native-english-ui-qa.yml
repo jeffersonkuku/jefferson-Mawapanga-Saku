@@ -64,8 +64,14 @@ jobs:
             if(!req.url().includes(expected)) throw new Error('display/audio mismatch: '+displayed+' expected '+expected+' got '+req.url());
             await page.click('#studyView [data-home]'); await page.waitForTimeout(100);
           });
-          await check('intensive mode', async()=> {
-            await page.click('[data-mode="intensive"]'); await page.waitForTimeout(300);
+          await check('intensive auto mode', async()=> {
+            await page.click('[data-mode="intensive-auto"]'); await page.waitForTimeout(300);
+            if(!(await page.locator('#driveView').evaluate(el=>el.classList.contains('active')))) throw new Error('intensive auto view not active');
+            if((await page.locator('#driveKnown').count())!==1 || (await page.locator('#driveUnknown').count())!==1) throw new Error('knowledge buttons missing');
+            await page.click('#stopDrive'); await page.waitForTimeout(100);
+          });
+          await check('intensive calm mode', async()=> {
+            await page.click('[data-mode="intensive-calm"]'); await page.waitForTimeout(300);
             if(!(await page.locator('#studyView').evaluate(el=>el.classList.contains('active')))) throw new Error('study not active');
             await page.click('#studyView [data-home]'); await page.waitForTimeout(100);
           });
@@ -85,10 +91,14 @@ jobs:
             if((await page.locator('#browseList .setting').count())===0) throw new Error('browse empty');
             await page.click('#browseView [data-home]'); await page.waitForTimeout(100);
           });
-          await check('drive screen', async()=> {
-            await page.click('[data-mode="drive"]'); await page.waitForTimeout(300);
-            if(!(await page.locator('#driveView').evaluate(el=>el.classList.contains('active')))) throw new Error('drive not active');
-            await page.click('#stopDrive'); await page.waitForTimeout(100);
+          await check('intensive drill audio index', async()=> {
+            const result=await page.evaluate(async()=>{
+              const r=await fetch('./audio-index.json',{cache:'no-store'});
+              const j=await r.json();
+              const vals=Object.values(j);
+              return {count:vals.length,drills:vals.filter(x=>x.drill).length};
+            });
+            if(result.count!==120 || result.drills!==120) throw new Error('drill audio index incomplete '+JSON.stringify(result));
           });
           console.log('CHECKS\n'+checks.join('\n'));
           console.log('ERRORS\n'+(errors.length?errors.join('\n'):'NONE'));
