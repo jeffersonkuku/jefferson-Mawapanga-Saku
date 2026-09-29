@@ -16,6 +16,7 @@ VOICES_GENERAL = [
     "en-AU-WilliamNeural",
 ]
 VOICES_AU = ["en-AU-NatashaNeural", "en-AU-WilliamNeural"]
+VOICES_FR = ["fr-FR-DeniseNeural", "fr-FR-HenriNeural"]
 
 def voice_for(item, idx):
     if item.get("source") == "au" or item.get("category") == "australia":
@@ -42,9 +43,11 @@ async def main():
 
     async def one(item, idx):
         voice = voice_for(item, idx)
+        french_voice = VOICES_FR[idx % len(VOICES_FR)]
         term = AUDIO / f"{item['id']}-term.mp3"
         example = AUDIO / f"{item['id']}-example.mp3"
         drill = AUDIO / f"{item['id']}-drill.mp3"
+        french = AUDIO / f"{item['id']}-fr.mp3"
         async with sem:
             if not term.exists():
                 await synth(item["term"], voice, term, rate="-6%")
@@ -53,18 +56,23 @@ async def main():
             if not drill.exists():
                 drill_text = f"{item['term']}. {item['term']}. {item['term']}."
                 await synth(drill_text, voice, drill, rate="-3%")
+            if not french.exists():
+                await synth(item["french"], french_voice, french, rate="-4%")
         index[item["id"]] = {
             "voice": voice,
+            "frenchVoice": french_voice,
             "term": f"./audio/{term.name}",
             "example": f"./audio/{example.name}",
             "drill": f"./audio/{drill.name}",
-            "locale": voice[:5]
+            "french": f"./audio/{french.name}",
+            "locale": voice[:5],
+            "frenchLocale": "fr-FR"
         }
         print(f"{idx+1}/{len(items)} {item['id']} {voice}", flush=True)
 
     await asyncio.gather(*(one(item, idx) for idx, item in enumerate(items)))
     INDEX.write_text(json.dumps(index, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"Generated {len(index)} items / {len(index)*3} MP3 files")
+    print(f"Generated {len(index)} items / {len(index)*4} MP3 files")
 
 if __name__ == "__main__":
     asyncio.run(main())
