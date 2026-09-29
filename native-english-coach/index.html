@@ -62,7 +62,7 @@ select,input[type=number],input[type=range]{width:100%;background:#0f1317;color:
   </section>
   <div class="section-title"><h3>Choisis ton entraînement</h3><span id="engineBadge">SRS local</span></div>
   <div class="grid">
-    <button class="mode primary" data-mode="intensive-auto"><span class="emoji">⚡</span><strong>Intensif Auto</strong><p>Mode voiture : mot → 5 s → traduction → 3 répétitions → mot suivant.</p></button>
+    <button class="mode primary" data-mode="intensive-auto"><span class="emoji">⚡</span><strong>Intensif Auto</strong><p>Mode voiture : mot → 5 s → traduction française audio → 3 répétitions natives → Oui/Non → mot suivant automatique.</p></button>
     <button class="mode" data-mode="intensive-calm"><span class="emoji">🧠</span><strong>Intensif tranquille</strong><p>Même sélection intensive, mais tu avances manuellement à ton rythme.</p></button>
     <button class="mode" data-mode="normal"><span class="emoji">🌱</span><strong>Normal</strong><p>Session courte et équilibrée pour progresser tous les jours.</p></button>
     <button class="mode" data-mode="listening"><span class="emoji">🎧</span><strong>Listening</strong><p>Tu entends d’abord. Le texte reste caché jusqu’à ta réponse.</p></button>
@@ -102,12 +102,12 @@ select,input[type=number],input[type=range]{width:100%;background:#0f1317;color:
       <div class="term"><h2 id="driveTerm">START</h2><div class="phon" id="drivePhon">Mot + phonétique, puis 5 secondes pour trouver le sens</div><div class="ipa" id="driveIpa"></div></div>
       <div class="meaning"><h3 id="driveMeaning"></h3><div class="example" id="driveExample"></div><div class="example-fr" id="driveExampleFr"></div></div>
       <div id="knowledgeQuestion" style="display:none;margin-top:18px;text-align:center">
-        <div style="font-weight:900;margin-bottom:10px">Tu connaissais ce mot ?</div>
+        <div style="font-weight:900;margin-bottom:10px">Connais-tu ce mot ?</div>
         <div class="drive-actions">
-          <button class="btn accent" id="driveKnown">✅ Connu</button>
-          <button class="btn danger" id="driveUnknown">❌ Pas connu</button>
+          <button class="btn accent" id="driveKnown">✅ Oui</button>
+          <button class="btn danger" id="driveUnknown">❌ Non</button>
         </div>
-        <div class="hint" id="knowledgeHint" style="margin-top:8px">Pas connu = le mot reviendra plus tard dans la session.</div>
+        <div class="hint" id="knowledgeHint" style="margin-top:8px">Non = le mot revient plus tard dans la session. Oui = révision espacée à long terme.</div>
       </div>
     </div>
     <div>
@@ -146,6 +146,7 @@ select,input[type=number],input[type=range]{width:100%;background:#0f1317;color:
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const DB_NAME='native-english-coach', DB_VERSION=1;
 const DEFAULT_SETTINGS={voiceMode:'mix',repeatCount:3,thinkSeconds:5,speakFrench:true,rotateVoices:true,speechRate:.95};
+const INTENSIVE_KNOWN_COOLDOWN_MS=30*24*60*60*1000;
 let db, corpus=[], settings={...DEFAULT_SETTINGS}, session=[], sessionIndex=0, currentMode='normal', currentSkill='reading';
 let fsrs=null, fsrsLib=null, wakeLock=null, driveRunning=false, drivePaused=false, lastDriveItem=null;
 let audioIndex={}, activeAudio=null, audioIndexReady=false;
@@ -203,7 +204,14 @@ async function markExposure(item){
 }
 async function updateStats(){
  const p=await getAll('progress');let known=0,due=0,ex=0,now=Date.now();
- for(const r of p){ex+=r.exposures||0;for(const s of Object.values(r.skills||{})){if((s.reps||0)>=3 && (s.lastRating||0)>=3)known++;if((s.due||0)<=now)due++}}
+ for(const r of p){
+   ex+=r.exposures||0;
+   for(const s of Object.values(r.skills||{})){
+     const effectiveDue=Math.max(s.due||0,s.masteredUntil||0);
+     if((s.masteredUntil||0)>now || ((s.reps||0)>=3 && (s.lastRating||0)>=3))known++;
+     if(effectiveDue<=now)due++;
+   }
+ }
  $('#statKnown').textContent=known;$('#statDue').textContent=due;$('#statExposure').textContent=ex
 }
 async function loadAudioIndex(){
@@ -211,7 +219,7 @@ async function loadAudioIndex(){
     const r=await fetch('./audio-index.json?v=2',{cache:'no-store'});
     if(!r.ok)throw new Error('audio-index unavailable');
     audioIndex=await r.json();audioIndexReady=true;
-    $('#voiceInfo').textContent='Audio natif prêt · AU / US / UK';
+    $('#voiceInfo').textContent='Audio natif prêt · anglais AU / US / UK + français';
   }catch(e){
     audioIndexReady=false;
     $('#voiceInfo').textContent='Pack audio natif en cours de génération';
@@ -254,6 +262,7 @@ async function warmIntensiveAudio(items,start=0,count=8){
   const slice=items.slice(start,start+count);
   await Promise.all(slice.flatMap(item=>[
     cachedAudioUrl(item,'term').catch(()=>null),
+    cachedAudioUrl(item,'french').catch(()=>null),
     cachedAudioUrl(item,'drill').catch(()=>null)
   ]));
 }
@@ -295,18 +304,25 @@ function systemSpeakFrench(text,rate=.95){
 }
 async function speak(text,lang='en',item=null,rate=settings.speechRate,kind=null){
   if(!text)return;
-  if(lang==='fr')return systemSpeakFrench(text,rate);
+  if(lang==='fr'){
+    try{
+      if(item)return await playNativeAudio(item,kind||'french');
+    }catch(e){
+      console.warn('Audio français pré-généré indisponible, repli TTS système',e);
+    }
+    return systemSpeakFrench(text,rate);
+  }
   try{
     const resolvedKind=kind || (text===item?.term?'term':'example');
     return await playNativeAudio(item,resolvedKind);
   }catch(e){
     console.error(e);
     $('#voiceInfo').textContent='Audio natif indisponible pour cette carte';
-    toast('Pack audio natif indisponible. Aucun TTS générique utilisé.');
+    toast('Pack audio natif indisponible. Aucun TTS anglais générique utilisé.');
   }
 }
 function updateVoiceInfo(){
-  $('#voiceInfo').textContent=audioIndexReady?'Audio natif prêt · AU / US / UK':'Pack audio natif en cours de génération';
+  $('#voiceInfo').textContent=audioIndexReady?'Audio natif prêt · anglais AU / US / UK + français':'Pack audio natif en cours de génération';
 }
 async function requestWake(){try{if('wakeLock'in navigator)wakeLock=await navigator.wakeLock.request('screen')}catch(e){}}
 function releaseWake(){try{wakeLock?.release()}catch(e){}wakeLock=null}
@@ -314,14 +330,15 @@ async function buildSession(mode){
  const progress=await getAll('progress'), map=new Map(progress.map(x=>[x.id,x])), now=Date.now();
  let skill=mode==='listening'||mode==='drive'?'listening':mode==='speaking'?'speaking':'reading';
  currentSkill=skill;
+ const effectiveDue=st=>Math.max(st?.due||0,st?.masteredUntil||0);
  let due=[],fresh=[];
  for(const item of corpus){
    const st=map.get(item.id)?.skills?.[skill];
-   if(!st)fresh.push(item); else if((st.due||0)<=now)due.push(item)
+   if(!st)fresh.push(item); else if(effectiveDue(st)<=now)due.push(item)
  }
- due.sort((a,b)=>(map.get(a.id)?.skills?.[skill]?.due||0)-(map.get(b.id)?.skills?.[skill]?.due||0));
+ due.sort((a,b)=>effectiveDue(map.get(a.id)?.skills?.[skill])-effectiveDue(map.get(b.id)?.skills?.[skill]));
  fresh.sort(()=>Math.random()-.5);
- const spec=mode==='intensive'?{n:25,d:40}:mode==='normal'?{n:10,d:20}:mode==='listening'?{n:10,d:30}:mode==='speaking'?{n:8,d:20}:{n:18,d:22};
+ const spec=(mode==='intensive'||mode==='drive')?{n:25,d:40}:mode==='normal'?{n:10,d:20}:mode==='listening'?{n:10,d:30}:mode==='speaking'?{n:8,d:20}:{n:18,d:22};
  let chosen=[...due.slice(0,spec.d),...fresh.slice(0,spec.n)];
  if(!chosen.length)chosen=corpus.slice().sort(()=>Math.random()-.5).slice(0,spec.n);
  return chosen.sort(()=>Math.random()-.5)
@@ -353,10 +370,17 @@ function renderStudy(){
  }
 }
 function reveal(){const item=session[sessionIndex];$('#studyCard').classList.remove('hidden-answer','listening-mask');$('#ratingBox').style.display='grid';$('#revealBtn').style.display='none';if(currentMode==='speaking'){$('#term').textContent=item.term;$('#phon').textContent=item.phoneticFr;$('#ipa').textContent=item.ipa}}
-async function ratingClick(r){await rateItem(session[sessionIndex],currentSkill,r);sessionIndex++;renderStudy()}
+function ratingClick(r){
+ const item=session[sessionIndex];
+ if(!item)return;
+ const skill=currentSkill;
+ sessionIndex++;
+ renderStudy();
+ rateItem(item,skill,r).then(updateStats).catch(e=>{console.error(e);toast('Progression non enregistrée, réessaie.')});
+}
 async function startIntensiveAuto(){
- currentMode='intensive-auto';currentSkill='reading';
- session=await buildSession('intensive');sessionIndex=0;driveRunning=false;drivePaused=false;
+ currentMode='intensive-auto';currentSkill='listening';
+ session=await buildSession('drive');sessionIndex=0;driveRunning=false;drivePaused=false;
  intensiveChoice=null;intensiveAttempts=new Map();currentIntensiveItemId=null;
  $('#driveActions').style.display='none';$('#startDrive').style.display='block';
  $('#startDrive').textContent='▶ Démarrer l’intensif';
@@ -392,6 +416,8 @@ async function presentIntensiveCard(){
    $('#drivePhon').textContent='Révisions enregistrées';
    $('#driveIpa').textContent='';
    $('#driveMeaning').textContent='';
+   $('#driveExample').textContent='';
+   $('#driveExampleFr').textContent='';
    $('#knowledgeQuestion').style.display='none';
    $('#driveActions').style.display='none';
    $('#startDrive').style.display='block';
@@ -418,21 +444,24 @@ async function presentIntensiveCard(){
  $('#driveExample').textContent='';
  $('#driveExampleFr').textContent='';
  $('#knowledgeQuestion').style.display='none';
- $('#driveKnown').textContent='✅ Connu';
- $('#driveUnknown').textContent='❌ Pas connu';
- $('#knowledgeHint').textContent='Pas connu = le mot reviendra plus tard dans la session.';
+ $('#driveKnown').textContent='✅ Oui';
+ $('#driveUnknown').textContent='❌ Non';
+ $('#knowledgeHint').textContent='Non = le mot revient plus tard. Oui = révision espacée à long terme.';
  setIntensiveButtonsEnabled(false);
 
- $('#driveStatus').textContent='Écoute et trouve le sens';
-
+ $('#driveStatus').textContent='Écoute le mot';
+ preloadNativeAudio(item,'term');
+ preloadNativeAudio(item,'french');
  preloadNativeAudio(item,'drill');
  const nextItems=session.slice(sessionIndex+1,sessionIndex+5);
- nextItems.forEach(x=>{preloadNativeAudio(x,'term');preloadNativeAudio(x,'drill')});
+ nextItems.forEach(x=>{
+   preloadNativeAudio(x,'term');
+   preloadNativeAudio(x,'french');
+   preloadNativeAudio(x,'drill');
+ });
 
- try{
-   await playNativeAudio(item,'term');
- }catch(e){ console.error(e); }
-
+ try{ await playNativeAudio(item,'term'); }
+ catch(e){ console.error(e); }
  if(!driveRunning || token!==intensiveToken)return;
 
  for(let sec=settings.thinkSeconds;sec>0 && driveRunning;sec--){
@@ -443,42 +472,63 @@ async function presentIntensiveCard(){
  if(!driveRunning || token!==intensiveToken)return;
 
  $('#driveMeaning').textContent=item.french;
- $('#driveStatus').textContent='Traduction affichée • 3 répétitions';
+ $('#driveStatus').textContent='Traduction française';
+ if(settings.speakFrench){
+   await speak(item.french,'fr',item,.95,'french');
+ }else{
+   await waitIntensive(650);
+ }
+ if(!driveRunning || token!==intensiveToken)return;
 
- // Les trois répétitions sont déjà contenues dans un seul MP3.
- try{
-   await playNativeAudio(item,'drill');
- }catch(e){ console.error(e); }
-
+ $('#driveStatus').textContent='Répète à voix haute • 3 fois';
+ try{ await playNativeAudio(item,'drill'); }
+ catch(e){ console.error(e); }
  if(!driveRunning || token!==intensiveToken)return;
 
  $('#knowledgeQuestion').style.display='block';
- $('#driveStatus').textContent='Connu ou pas connu ?';
+ $('#driveStatus').textContent='Connais-tu ce mot ?';
  setIntensiveButtonsEnabled(true);
 }
 
-async function handleIntensiveAnswer(choice){
+async function persistIntensiveAnswer(item,choice,skill){
+ try{
+   await markExposure(item);
+   if(choice==='known'){
+     await rateItem(item,skill,4);
+     const rec=await getOne('progress',item.id);
+     if(rec?.skills?.[skill]){
+       const st=rec.skills[skill];
+       st.masteredUntil=Math.max(st.masteredUntil||0,Date.now()+INTENSIVE_KNOWN_COOLDOWN_MS);
+       st.confirmedKnownAt=Date.now();
+       rec.skills[skill]=st;
+       await put('progress',rec);
+     }
+   }else{
+     await rateItem(item,skill,1);
+     const rec=await getOne('progress',item.id);
+     if(rec?.skills?.[skill]){
+       delete rec.skills[skill].masteredUntil;
+       delete rec.skills[skill].confirmedKnownAt;
+       await put('progress',rec);
+     }
+   }
+   await updateStats();
+ }catch(e){
+   console.error('Progression intensive non enregistrée',e);
+   toast('Le mot suivant continue, mais la progression n’a pas été enregistrée.');
+ }
+}
+
+function handleIntensiveAnswer(choice){
  if(!driveRunning || intensiveBusy || !currentIntensiveItemId)return;
  const item=session[sessionIndex];
  if(!item || item.id!==currentIntensiveItemId)return;
 
  intensiveBusy=true;
  setIntensiveButtonsEnabled(false);
+ const skill=currentSkill;
 
- if(choice==='known'){
-   $('#driveKnown').textContent='✅ Connu ✓';
-   $('#knowledgeHint').textContent='Connu • mot suivant…';
- }else{
-   $('#driveUnknown').textContent='❌ Pas connu ✓';
-   $('#knowledgeHint').textContent='Pas connu • il reviendra plus tard.';
- }
-
- await markExposure(item);
-
- if(choice==='known'){
-   await rateItem(item,'reading',3);
- }else{
-   await rateItem(item,'reading',1);
+ if(choice==='unknown'){
    const attempts=(intensiveAttempts.get(item.id)||0)+1;
    intensiveAttempts.set(item.id,attempts);
    if(attempts<3){
@@ -490,10 +540,11 @@ async function handleIntensiveAnswer(choice){
  sessionIndex++;
  currentIntensiveItemId=null;
  $('#knowledgeQuestion').style.display='none';
-
- // Le mot suivant est lancé immédiatement par le clic.
  intensiveBusy=false;
- await presentIntensiveCard();
+
+ // Transition immédiate : l'UI ne dépend jamais de l'écriture IndexedDB/FSRS.
+ presentIntensiveCard();
+ persistIntensiveAnswer(item,choice,skill);
 }
 
 async function runDrive(){
@@ -557,7 +608,7 @@ $$('[data-rating]').forEach(b=>b.onclick=()=>ratingClick(+b.dataset.rating));
 $('#startDrive').onclick=async()=>{
  if(!driveRunning){
    if(sessionIndex>=session.length){
-     session=await buildSession('intensive');
+     session=await buildSession('drive');
      sessionIndex=0;
      intensiveAttempts=new Map();
      currentIntensiveItemId=null;
