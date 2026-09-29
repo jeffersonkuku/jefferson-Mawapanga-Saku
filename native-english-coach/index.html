@@ -23,6 +23,8 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
 .mode{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:22px;padding:18px;text-align:left;min-height:138px;transition:.15s transform,.15s border-color}
 .mode:active{transform:scale(.985)}.mode strong{font-size:18px;display:block;margin:10px 0 6px}.mode p{font-size:13px;color:var(--muted);margin:0;line-height:1.42}.mode .emoji{font-size:26px}
 .mode.primary{border-color:#3d7c67;background:linear-gradient(145deg,#153126,#141b1a)}
+.list-choice:not(.active-list){border-color:var(--line);background:var(--panel)}
+.list-choice.active-list{border-color:var(--accent);background:linear-gradient(145deg,#153126,#141b1a);box-shadow:0 0 0 1px rgba(119,240,194,.18) inset}
 .view{display:none}.view.active{display:block}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:26px;padding:24px;min-height:430px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow)}
 .progressline{height:6px;background:#222a32;border-radius:999px;overflow:hidden;margin:14px 0 18px}.progressline span{display:block;height:100%;background:var(--accent);width:0}
