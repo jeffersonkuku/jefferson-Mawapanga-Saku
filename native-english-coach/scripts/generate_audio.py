@@ -3,6 +3,7 @@ import edge_tts
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CORPUS = ROOT / "corpus.json"
+IRREGULAR = ROOT / "irregular-verbs.json"
 AUDIO = ROOT / "audio"
 INDEX = ROOT / "audio-index.json"
 
@@ -19,7 +20,7 @@ VOICES_AU = ["en-AU-NatashaNeural", "en-AU-WilliamNeural"]
 VOICES_FR = ["fr-FR-DeniseNeural", "fr-FR-HenriNeural"]
 
 def voice_for(item, idx):
-    if item.get("source") == "au" or item.get("category") == "australia":
+    if item.get("source") in {"au", "irregular-au"} or item.get("category") in {"australia", "irregular"}:
         return VOICES_AU[idx % len(VOICES_AU)]
     return VOICES_GENERAL[idx % len(VOICES_GENERAL)]
 
@@ -37,6 +38,8 @@ async def synth(text, voice, out, rate="+0%"):
 
 async def main():
     items = json.loads(CORPUS.read_text(encoding="utf-8"))
+    if IRREGULAR.exists():
+        items += json.loads(IRREGULAR.read_text(encoding="utf-8"))
     AUDIO.mkdir(exist_ok=True)
     index = {}
     sem = asyncio.Semaphore(4)
