@@ -60,6 +60,11 @@ select,input[type=number],input[type=range]{width:100%;background:#0f1317;color:
     <div class="stat"><b id="statExposure">0</b><span>écoutes Drive</span></div>
     <div class="stat"><b id="statCorpus">0</b><span>éléments</span></div>
   </section>
+  <div class="section-title"><h3>Choisis ta liste</h3><span id="listBadge">120 cartes</span></div>
+  <div class="grid" id="listGrid">
+    <button class="mode primary list-choice active-list" data-list="general"><span class="emoji">💬</span><strong>Anglais utile</strong><p>120 mots et expressions du quotidien, travail, Australie et conversation.</p></button>
+    <button class="mode list-choice" data-list="irregular"><span class="emoji">🔁</span><strong>Verbes irréguliers</strong><p>140 verbes · 421 cartes séparées : Base, Past Simple et Past Participle, avec WAS/WERE séparés.</p></button>
+  </div>
   <div class="section-title"><h3>Choisis ton entraînement</h3><span id="engineBadge">SRS local</span></div>
   <div class="grid">
     <button class="mode primary" data-mode="intensive-auto"><span class="emoji">⚡</span><strong>Intensif Auto</strong><p>Mode voiture : mot → 5 s → traduction française audio → 3 répétitions natives → Oui/Non → mot suivant automatique.</p></button>
@@ -147,7 +152,7 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const DB_NAME='native-english-coach', DB_VERSION=1;
 const DEFAULT_SETTINGS={voiceMode:'mix',repeatCount:3,thinkSeconds:5,speakFrench:true,rotateVoices:true,speechRate:.95};
 const INTENSIVE_KNOWN_COOLDOWN_MS=30*24*60*60*1000;
-let db, corpus=[], settings={...DEFAULT_SETTINGS}, session=[], sessionIndex=0, currentMode='normal', currentSkill='reading';
+let db, corpus=[], generalCorpus=[], irregularCorpus=[], activeList='general', settings={...DEFAULT_SETTINGS}, session=[], sessionIndex=0, currentMode='normal', currentSkill='reading';
 let fsrs=null, fsrsLib=null, wakeLock=null, driveRunning=false, drivePaused=false, lastDriveItem=null;
 let audioIndex={}, activeAudio=null, audioIndexReady=false;
 let studyAudioTimer=null, studyRenderToken=0;
@@ -167,7 +172,23 @@ function clearStore(name){return new Promise((res,rej)=>{const r=store(name,'rea
 async function loadSettings(){settings={...DEFAULT_SETTINGS,...((await getOne('settings','main'))?.value||{})};applySettingsUI()}
 async function saveSettings(){settings={voiceMode:$('#voiceMode').value,repeatCount:+$('#repeatCount').value,thinkSeconds:+$('#thinkSeconds').value,speakFrench:$('#speakFrench').checked,rotateVoices:$('#rotateVoices').checked,speechRate:+$('#speechRate').value};await put('settings',{id:'main',value:settings});$('#rateLabel').textContent=settings.speechRate.toFixed(2)+'×'}
 function applySettingsUI(){$('#voiceMode').value=settings.voiceMode;$('#repeatCount').value=settings.repeatCount;$('#thinkSeconds').value=settings.thinkSeconds;$('#speakFrench').checked=settings.speakFrench;$('#rotateVoices').checked=settings.rotateVoices;$('#speechRate').value=settings.speechRate;$('#rateLabel').textContent=settings.speechRate.toFixed(2)+'×'}
-async function loadCorpus(){const custom=await getAll('customCorpus');corpus=custom.length?custom:window.__NATIVE_COACH_SEED__;$('#statCorpus').textContent=corpus.length}
+function activeCorpus(){return activeList==='irregular'?irregularCorpus:generalCorpus}
+function updateListUI(){
+ corpus=activeCorpus();
+ $('#statCorpus').textContent=corpus.length;
+ $('#listBadge').textContent=activeList==='irregular'?'140 verbes · 421 cartes':corpus.length+' cartes';
+ $('.list-choice').forEach(b=>b.classList.toggle('active-list',b.dataset.list===activeList));
+}
+async function loadCorpus(){
+ const custom=await getAll('customCorpus');
+ generalCorpus=custom.length?custom:window.__NATIVE_COACH_SEED__;
+ try{
+   const r=await fetch('./irregular-verbs.json?v=1',{cache:'no-store'});
+   if(!r.ok)throw new Error('irregular-verbs unavailable');
+   irregularCorpus=await r.json();
+ }catch(e){console.error(e);irregularCorpus=[]}
+ updateListUI();
+}
 async function initFsrs(){
   try{
     fsrsLib=await import('https://esm.sh/ts-fsrs@5.4.2?bundle');
@@ -332,7 +353,7 @@ async function buildSession(mode){
  currentSkill=skill;
  const effectiveDue=st=>Math.max(st?.due||0,st?.masteredUntil||0);
  let due=[],fresh=[];
- for(const item of corpus){
+ for(const item of activeCorpus()){
    const st=map.get(item.id)?.skills?.[skill];
    if(!st)fresh.push(item); else if(effectiveDue(st)<=now)due.push(item)
  }
@@ -340,7 +361,7 @@ async function buildSession(mode){
  fresh.sort(()=>Math.random()-.5);
  const spec=(mode==='intensive'||mode==='drive')?{n:25,d:40}:mode==='normal'?{n:10,d:20}:mode==='listening'?{n:10,d:30}:mode==='speaking'?{n:8,d:20}:{n:18,d:22};
  let chosen=[...due.slice(0,spec.d),...fresh.slice(0,spec.n)];
- if(!chosen.length)chosen=corpus.slice().sort(()=>Math.random()-.5).slice(0,spec.n);
+ if(!chosen.length)chosen=activeCorpus().slice().sort(()=>Math.random()-.5).slice(0,spec.n);
  return chosen.sort(()=>Math.random()-.5)
 }
 async function startStudy(mode){
@@ -354,9 +375,9 @@ function renderStudy(){
  const renderToken=studyRenderToken;
  const item=session[sessionIndex], listening=currentMode==='listening', speaking=currentMode==='speaking';
  $('#counter').textContent=`${sessionIndex+1}/${session.length}`;$('#progressBar').style.width=`${sessionIndex/session.length*100}%`;
- $('#catBadge').textContent=item.category;$('#sourceBadge').textContent=item.source;$('#skillBadge').textContent=currentSkill;
- $('#term').textContent=speaking?'🇫🇷 '+item.french:item.term;$('#phon').textContent=speaking?'Produis l’anglais avant de révéler':item.phoneticFr;$('#ipa').textContent=speaking?'':item.ipa;
- $('#meaning').textContent=speaking?item.term:item.french;$('#example').textContent=item.example;$('#exampleFr').textContent=item.exampleFr;
+ $('#catBadge').textContent=item.category==='irregular'?'verbe irrégulier':item.category;$('#sourceBadge').textContent=item.formRole||item.source;$('#skillBadge').textContent=currentSkill;
+ $('#term').textContent=speaking?'🇫🇷 '+item.french:item.term;$('#phon').textContent=speaking?'Produis l’anglais avant de révéler':(item.phoneticFr||item.formRole||'');$('#ipa').textContent=speaking?'':item.ipa;
+ $('#meaning').textContent=speaking?item.term:item.french;$('#example').textContent=item.example;$('#exampleFr').innerHTML=(item.exampleIpa?'<span class="ipa">'+item.exampleIpa+'</span><br>':'')+item.exampleFr;
  $('#studyCard').classList.add('hidden-answer');$('#studyCard').classList.toggle('listening-mask',listening);
  $('#ratingBox').style.display='none';$('#revealBtn').style.display='inline-block';
  if(listening){
@@ -438,7 +459,7 @@ async function presentIntensiveCard(){
  $('#driveCounter').textContent=`${sessionIndex+1}/${session.length}`;
  $('#driveProgress').style.width=`${sessionIndex/session.length*100}%`;
  $('#driveTerm').textContent=item.term;
- $('#drivePhon').textContent=item.phoneticFr;
+ $('#drivePhon').textContent=item.phoneticFr||item.formRole||'';
  $('#driveIpa').textContent=item.ipa + (/[ðθ]/.test(item.ipa)?' · DH/TH = langue entre les dents':'');
  $('#driveMeaning').textContent='';
  $('#driveExample').textContent='';
@@ -574,9 +595,14 @@ function stopDrive(){
  updateStats()
 }
 function renderBrowse(filter=''){
- const q=filter.trim().toLowerCase();const list=corpus.filter(x=>!q||[x.term,x.french,x.category,x.source].join(' ').toLowerCase().includes(q)).slice(0,150);
- $('#browseCount').textContent=list.length;$('#browseList').innerHTML=list.map(x=>`<div class="setting"><div class="badges"><span class="badge">${x.category}</span><span class="badge">${x.source}</span></div><h3 style="margin:10px 0 4px">${x.term}</h3><div class="phon">${x.phoneticFr}</div><div class="ipa">${x.ipa}</div><p style="margin:10px 0 5px">${x.french}</p><div class="hint">${x.example}<br>${x.exampleFr}</div><button class="btn soft" style="margin-top:10px" data-speak-id="${x.id}">🔊 Écouter</button></div>`).join('');
- $$('[data-speak-id]').forEach(b=>b.onclick=()=>{const x=corpus.find(i=>i.id===b.dataset.speakId);speak(x.term,'en',x,settings.speechRate,'term')})
+ const q=filter.trim().toLowerCase();
+ let list=activeCorpus().filter(x=>!q||[x.term,x.baseVerb,x.french,x.category,x.source,x.formRole].join(' ').toLowerCase().includes(q));
+ if(activeList==='irregular')list.sort((a,b)=>a.verbNumber-b.verbNumber||a.id.localeCompare(b.id));
+ list=list.slice(0,500);
+ $('#browseCount').textContent=list.length+'/'+activeCorpus().length;
+ $('#browseList').innerHTML=list.map(x=>`<div class="setting"><div class="badges"><span class="badge">${x.category==='irregular'?'verbe #'+x.verbNumber:x.category}</span><span class="badge">${x.formRole||x.source}</span></div><h3 style="margin:10px 0 4px">${x.term}</h3>${x.phoneticFr?'<div class="phon">'+x.phoneticFr+'</div>':''}<div class="ipa">${x.ipa}</div><p style="margin:10px 0 5px">${x.french}</p><div class="hint">${x.example}${x.exampleIpa?'<br><span class="ipa">'+x.exampleIpa+'</span>':''}<br>${x.exampleFr}</div><div class="drive-actions" style="margin-top:10px"><button class="btn soft" data-speak-id="${x.id}">🔊 Mot</button><button class="btn soft" data-example-id="${x.id}">💬 Phrase</button></div></div>`).join('');
+ $('[data-speak-id]').forEach(b=>b.onclick=()=>{const x=activeCorpus().find(i=>i.id===b.dataset.speakId);speak(x.term,'en',x,settings.speechRate,'term')});
+ $('[data-example-id]').forEach(b=>b.onclick=()=>{const x=activeCorpus().find(i=>i.id===b.dataset.exampleId);speak(x.example,'en',x,settings.speechRate,'example')});
 }
 function parseCSV(text){
  const lines=text.replace(/^\uFEFF/,'').split(/\r?\n/).filter(Boolean);if(lines.length<2)return[];
@@ -591,10 +617,15 @@ async function importCSV(file){
 }
 function download(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 async function exportProgress(){download('native-english-coach-progress.json',JSON.stringify({exportedAt:new Date().toISOString(),settings,progress:await getAll('progress')},null,2),'application/json')}
-async function resetAll(){if(!confirm('Réinitialiser toute la progression et le corpus personnalisé ?'))return;await clearStore('progress');await clearStore('customCorpus');corpus=window.__NATIVE_COACH_SEED__;await updateStats();toast('Progression réinitialisée')}
+async function resetAll(){if(!confirm('Réinitialiser toute la progression et le corpus personnalisé ?'))return;await clearStore('progress');await clearStore('customCorpus');generalCorpus=window.__NATIVE_COACH_SEED__;updateListUI();await updateStats();toast('Progression réinitialisée')}
 $$('[data-home]').forEach(b=>b.onclick=()=>{cancelStudyPlayback();show('#homeView');updateStats()});
 $('#settingsBtn').onclick=()=>show('#settingsView');
-$$('.mode').forEach(b=>b.onclick=()=>{
+$('.list-choice').forEach(b=>b.onclick=()=>{
+ activeList=b.dataset.list;updateListUI();
+ if(activeList==='irregular'&&!irregularCorpus.length)toast('La liste des verbes irréguliers est en cours de chargement.');
+ else toast(activeList==='irregular'?'Verbes irréguliers · 421 cartes':'Anglais utile · '+generalCorpus.length+' cartes');
+});
+$('.mode:not(.list-choice)').forEach(b=>b.onclick=()=>{
  const m=b.dataset.mode;
  if(m==='intensive-auto')startIntensiveAuto();
  else if(m==='intensive-calm')startStudy('intensive');
@@ -626,7 +657,7 @@ $('#stopDrive').onclick=stopDrive;
 $('#searchBox').oninput=e=>renderBrowse(e.target.value);
 ['voiceMode','repeatCount','thinkSeconds','speakFrench','rotateVoices','speechRate'].forEach(id=>$('#'+id).onchange=saveSettings);
 $('#speechRate').oninput=e=>$('#rateLabel').textContent=(+e.target.value).toFixed(2)+'×';
-$('#testVoice').onclick=async()=>{const x=corpus.find(i=>i.term==='reckon')||corpus[0];await speak(x.example,'en',x);};
+$('#testVoice').onclick=async()=>{const x=activeCorpus().find(i=>i.term==='reckon')||activeCorpus()[0];if(x)await speak(x.example,'en',x);};
 $('#csvInput').onchange=e=>{const f=e.target.files?.[0];if(f)importCSV(f);e.target.value=''};
 $('#exportBtn').onclick=exportProgress;$('#resetBtn').onclick=resetAll;
 updateVoiceInfo();
