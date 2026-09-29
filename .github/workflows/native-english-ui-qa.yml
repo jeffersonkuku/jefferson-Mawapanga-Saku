@@ -183,6 +183,24 @@ jobs:
             });
             if(cue!=='DHEU THING iz') throw new Error('wrong cue: '+cue);
           });
+          await check('irregular list contains 140 verbs and 421 cards', async()=> {
+            const result=await page.evaluate(async()=>{
+              const r=await fetch('./irregular-verbs.json?qa='+Date.now(),{cache:'no-store'});
+              const items=await r.json();
+              return {cards:items.length,verbs:new Set(items.map(x=>x.verbNumber)).size,be:items.filter(x=>x.baseVerb==='be').map(x=>x.term),bad:items.filter(x=>!x.ipa||!x.example||!x.exampleIpa||!x.exampleFr).length};
+            });
+            if(result.cards!==421||result.verbs!==140||result.bad!==0) throw new Error(JSON.stringify(result));
+            if(result.be.join(',')!=='be,was,were,been') throw new Error('BE sequence '+result.be.join(','));
+          });
+          await check('irregular list can drive a training session', async()=> {
+            const result=await page.evaluate(async()=>{
+              activeList='irregular';updateListUI();
+              const s=await buildSession('drive');
+              activeList='general';updateListUI();
+              return {corpus:421,session:s.length,all:s.every(x=>x.category==='irregular')};
+            });
+            if(!result.session||!result.all) throw new Error(JSON.stringify(result));
+          });
           await check('intensive drill audio index', async()=> {
             const result=await page.evaluate(async()=>{
               const r=await fetch('./audio-index.json',{cache:'no-store'});
@@ -190,7 +208,7 @@ jobs:
               const vals=Object.values(j);
               return {count:vals.length,drills:vals.filter(x=>x.drill).length,french:vals.filter(x=>x.french).length};
             });
-            if(result.count!==120 || result.drills!==120 || result.french!==120) throw new Error('audio index incomplete '+JSON.stringify(result));
+            if(result.count!==541 || result.drills!==541 || result.french!==541) throw new Error('audio index incomplete '+JSON.stringify(result));
           });
           console.log('CHECKS\n'+checks.join('\n'));
           console.log('ERRORS\n'+(errors.length?errors.join('\n'):'NONE'));
