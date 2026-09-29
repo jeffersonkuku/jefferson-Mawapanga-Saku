@@ -91,28 +91,90 @@ jobs:
             if((await page.locator('#browseList .setting').count())===0) throw new Error('browse empty');
             await page.click('#browseView [data-home]'); await page.waitForTimeout(100);
           });
-          await check('known button advances to next intensive word', async()=> {
+          await check('intensive sequence + instant known advance', async()=> {
             await page.click('[data-mode="intensive-auto"]');
             await page.waitForTimeout(150);
             await page.evaluate(()=>{
+              window.__qaAudioKinds=[];
+              window.__qaOriginalPlayNativeAudio=window.playNativeAudio;
+              window.__qaOriginalWarmIntensiveAudio=window.warmIntensiveAudio;
+              window.__qaOriginalRequestWake=window.requestWake;
+              window.__qaOriginalWaitIntensive=window.waitIntensive;
+              window.__qaOriginalMarkExposure=window.markExposure;
+              window.__qaOriginalRateItem=window.rateItem;
+              window.playNativeAudio=async(item,kind)=>{ window.__qaAudioKinds.push(kind); };
+              window.warmIntensiveAudio=async()=>{};
+              window.requestWake=async()=>{};
+              window.waitIntensive=async()=>{};
+              window.markExposure=async()=>{ await new Promise(r=>setTimeout(r,1500)); };
+              window.rateItem=async()=>{ await new Promise(r=>setTimeout(r,1500)); };
+              settings.thinkSeconds=0;
+              settings.speakFrench=true;
+            });
+            await page.click('#startDrive');
+            const first=(await page.locator('#driveTerm').textContent()).trim();
+            await page.waitForFunction(()=>document.querySelector('#knowledgeQuestion').style.display==='block',{timeout:3000});
+            const sequence=await page.evaluate(()=>window.__qaAudioKinds.slice(0,3));
+            if(sequence.join(',')!=='term,french,drill') throw new Error('wrong intensive audio sequence '+sequence.join(','));
+            const t0=Date.now();
+            await page.click('#driveKnown');
+            await page.waitForFunction(prev=>document.querySelector('#driveTerm').textContent.trim()!==prev,first,{timeout:600});
+            const elapsed=Date.now()-t0;
+            if(elapsed>550) throw new Error('known answer waited for persistence: '+elapsed+'ms');
+            await page.click('#stopDrive');
+            await page.evaluate(()=>{
+              window.playNativeAudio=window.__qaOriginalPlayNativeAudio;
+              window.warmIntensiveAudio=window.__qaOriginalWarmIntensiveAudio;
+              window.requestWake=window.__qaOriginalRequestWake;
+              window.waitIntensive=window.__qaOriginalWaitIntensive;
+              window.markExposure=window.__qaOriginalMarkExposure;
+              window.rateItem=window.__qaOriginalRateItem;
+            });
+            await page.waitForTimeout(100);
+          });
+          await check('unknown answer is reinserted later in same session', async()=> {
+            await page.click('[data-mode="intensive-auto"]');
+            await page.waitForTimeout(100);
+            await page.evaluate(()=>{
+              window.__qaOriginalPlayNativeAudio2=window.playNativeAudio;
+              window.__qaOriginalWarmIntensiveAudio2=window.warmIntensiveAudio;
+              window.__qaOriginalRequestWake2=window.requestWake;
+              window.__qaOriginalWaitIntensive2=window.waitIntensive;
               window.playNativeAudio=async()=>{};
               window.warmIntensiveAudio=async()=>{};
               window.requestWake=async()=>{};
-            });
-            await page.evaluate(()=>{
-              const el=document.querySelector('#thinkSeconds');
-              el.value='2';
-              el.dispatchEvent(new Event('change',{bubbles:true}));
+              window.waitIntensive=async()=>{};
+              settings.thinkSeconds=0;
+              settings.speakFrench=true;
             });
             await page.click('#startDrive');
-            const first=await page.locator('#driveTerm').textContent();
-            await page.waitForFunction(()=>document.querySelector('#knowledgeQuestion').style.display==='block',{timeout:5000});
-            await page.click('#driveKnown');
-            await page.waitForFunction(prev=>document.querySelector('#driveTerm').textContent!==prev,first,{timeout:3500});
-            const second=await page.locator('#driveTerm').textContent();
-            if(!second || second===first) throw new Error('word did not advance');
+            await page.waitForFunction(()=>document.querySelector('#knowledgeQuestion').style.display==='block',{timeout:3000});
+            const firstId=await page.evaluate(()=>session[0].id);
+            await page.click('#driveUnknown');
+            await page.waitForTimeout(50);
+            const retryIndex=await page.evaluate(id=>session.findIndex((x,i)=>i>0&&x.id===id),firstId);
+            if(retryIndex<5 || retryIndex>7) throw new Error('unknown retry not spaced correctly: '+retryIndex);
             await page.click('#stopDrive');
+            await page.evaluate(()=>{
+              window.playNativeAudio=window.__qaOriginalPlayNativeAudio2;
+              window.warmIntensiveAudio=window.__qaOriginalWarmIntensiveAudio2;
+              window.requestWake=window.__qaOriginalRequestWake2;
+              window.waitIntensive=window.__qaOriginalWaitIntensive2;
+            });
             await page.waitForTimeout(100);
+          });
+          await check('known answer creates long-term cooldown', async()=> {
+            const result=await page.evaluate(async()=>{
+              await clearStore('progress');
+              const item=(window.__NATIVE_COACH_SEED__||[])[0];
+              const before=Date.now();
+              await persistIntensiveAnswer(item,'known','listening');
+              const rec=await getOne('progress',item.id);
+              const until=rec?.skills?.listening?.masteredUntil||0;
+              await clearStore('progress');
+              return {before,until};
+            });
+            if(result.until-result.before < 29*24*60*60*1000) throw new Error('cooldown too short '+JSON.stringify(result));
           });
           await check('correct TH phonetic cue', async()=> {
             const cue=await page.evaluate(()=>{
@@ -126,9 +188,9 @@ jobs:
               const r=await fetch('./audio-index.json',{cache:'no-store'});
               const j=await r.json();
               const vals=Object.values(j);
-              return {count:vals.length,drills:vals.filter(x=>x.drill).length};
+              return {count:vals.length,drills:vals.filter(x=>x.drill).length,french:vals.filter(x=>x.french).length};
             });
-            if(result.count!==120 || result.drills!==120) throw new Error('drill audio index incomplete '+JSON.stringify(result));
+            if(result.count!==120 || result.drills!==120 || result.french!==120) throw new Error('audio index incomplete '+JSON.stringify(result));
           });
           console.log('CHECKS\n'+checks.join('\n'));
           console.log('ERRORS\n'+(errors.length?errors.join('\n'):'NONE'));
