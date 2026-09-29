@@ -1,5 +1,5 @@
-const CACHE='native-english-coach-v1.4.0';
-const ASSETS=['./','./index.html','./manifest.webmanifest','./icon.svg','./audio-index.json'];
+const CACHE='native-english-coach-v1.5.0';
+const ASSETS=['./','./index.html','./manifest.webmanifest','./icon.svg','./audio-index.json','./irregular-verbs.json'];
 
 self.addEventListener('install',e=>{
   e.waitUntil(
@@ -23,7 +23,8 @@ self.addEventListener('fetch',e=>{
   const networkFirst=
     e.request.mode==='navigate' ||
     url.pathname.endsWith('/index.html') ||
-    url.pathname.endsWith('/audio-index.json');
+    url.pathname.endsWith('/audio-index.json') ||
+    url.pathname.endsWith('/irregular-verbs.json');
 
   if(networkFirst){
     e.respondWith(
