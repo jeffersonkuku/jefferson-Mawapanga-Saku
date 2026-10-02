@@ -213,33 +213,53 @@ jobs:
             if(result.first.join(',')!=='be,was,were,been,have,had,had') throw new Error('wrong first blocks '+JSON.stringify(result));
             if(!result.ordered || result.lastVerb!==140) throw new Error('not ordered '+JSON.stringify(result));
           });
-          await check('irregular auto chains word 5s translation word x3 phrase without touch', async()=> {
+          await check('continuous irregular course has exact requested sequence', async()=> {
+            const result=await page.evaluate(async()=>{
+              const r=await fetch('./irregular-course-cues.json?qa='+Date.now(),{cache:'no-store'});
+              const data=await r.json();
+              const head=await fetch('./irregular-course.mp3',{method:'HEAD',cache:'no-store'});
+              const first=data.cards[0], firstFour=data.cards.slice(0,4).map(x=>x.term);
+              return {
+                cards:data.cards.length,
+                sequence:data.sequence,
+                expectedDuration:data.expectedDuration,
+                actualDuration:data.actualDuration,
+                size:+(head.headers.get('content-length')||0),
+                firstFour,
+                phases:first.phases.map(p=>({phase:p.phase,repetition:p.repetition||0,start:p.start,end:p.end})),
+                firstEnd:first.end,
+                secondStart:data.cards[1].start
+              };
+            });
+            if(result.cards!==421) throw new Error('wrong course cards '+JSON.stringify(result));
+            if(result.firstFour.join(',')!=='be,was,were,been') throw new Error('wrong first block '+JSON.stringify(result));
+            const expected=['word','think','french','repeat','repeat','repeat','example'];
+            if(result.phases.map(x=>x.phase).join(',')!==expected.join(',')) throw new Error('wrong phase order '+JSON.stringify(result));
+            if(result.phases.filter(x=>x.phase==='repeat').map(x=>x.repetition).join(',')!=='1,2,3') throw new Error('wrong repetition count '+JSON.stringify(result));
+            const think=result.phases.find(x=>x.phase==='think');
+            if(Math.abs((think.end-think.start)-5)>0.08) throw new Error('think gap is not 5 seconds '+JSON.stringify(result));
+            if(Math.abs(result.firstEnd-result.secondStart)>0.01) throw new Error('cards do not chain directly '+JSON.stringify(result));
+            if(Math.abs(result.expectedDuration-result.actualDuration)>0.1) throw new Error('course duration mismatch '+JSON.stringify(result));
+            if(result.size<10000000) throw new Error('continuous course file missing or too small '+JSON.stringify(result));
+          });
+          await check('irregular auto uses one media play for the whole course', async()=> {
             const result=await page.evaluate(async()=>{
               activeList='irregular';updateListUI();
-              const all=await buildSession('drive');
-              session=all.slice(0,4);
-              sessionIndex=0;driveRunning=true;drivePaused=false;intensiveToken=0;
-              const calls=[], waits=[];
-              const oldSeq=playIrregularSequenceAudio, oldWait=waitIntensive, oldPreload=preloadNativeAudio, oldExposure=markExposure;
-              playIrregularSequenceAudio=async(item,kind)=>{calls.push(item.term+':'+kind)};
-              waitIntensive=async(ms)=>{waits.push(ms)};
-              preloadNativeAudio=()=>{};
-              markExposure=async()=>{};
-              await presentIntensiveCard();
+              await startIntensiveAuto();
+              const oldPlay=irregularCourseAudio.play.bind(irregularCourseAudio);
+              let plays=0;
+              irregularCourseAudio.play=async()=>{plays++;};
+              await document.querySelector('#startDrive').click();
               await new Promise(r=>setTimeout(r,50));
-              const question=$('#knowledgeQuestion').style.display;
-              const finalIndex=sessionIndex;
-              driveRunning=false;intensiveToken++;
-              playIrregularSequenceAudio=oldSeq;waitIntensive=oldWait;preloadNativeAudio=oldPreload;markExposure=oldExposure;
+              const running=driveRunning;
+              const actions=document.querySelector('#driveActions').style.display;
+              irregularCourseAudio.play=oldPlay;
+              stopDrive();
               activeList='general';updateListUI();
-              return {calls,waits,question,finalIndex};
+              return {plays,running,actions};
             });
-            const one=term=>[term+':term',term+':french',term+':term',term+':term',term+':term',term+':example'];
-            const expected=[...one('be'),...one('was'),...one('were'),...one('been')];
-            if(result.calls.join('|')!==expected.join('|')) throw new Error('wrong chain '+JSON.stringify(result));
-            if(result.waits.length!==20 || result.waits.some(x=>x!==1000)) throw new Error('5-second waits wrong '+JSON.stringify(result));
-            if(result.question!=='none') throw new Error('knowledge prompt should stay hidden '+JSON.stringify(result));
-            if(result.finalIndex!==4) throw new Error('did not auto advance '+JSON.stringify(result));
+            if(result.plays!==1) throw new Error('expected one play call, got '+JSON.stringify(result));
+            if(!result.running || result.actions!=='grid') throw new Error('course did not start '+JSON.stringify(result));
           });
           await check('intensive drill audio index', async()=> {
             const result=await page.evaluate(async()=>{
