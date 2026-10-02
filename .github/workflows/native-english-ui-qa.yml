@@ -201,6 +201,45 @@ jobs:
             });
             if(!result.session||!result.all) throw new Error(JSON.stringify(result));
           });
+          await check('irregular auto keeps complete verb blocks', async()=> {
+            const result=await page.evaluate(async()=>{
+              activeList='irregular';updateListUI();
+              const s=await buildSession('drive');
+              const first=s.slice(0,7).map(x=>x.term);
+              const ordered=s.every((x,i)=>i===0 || x.verbNumber>s[i-1].verbNumber || (x.verbNumber===s[i-1].verbNumber && x.id.localeCompare(s[i-1].id)>=0));
+              return {length:s.length,first,ordered,lastVerb:s.at(-1)?.verbNumber};
+            });
+            if(result.length!==421) throw new Error('wrong length '+JSON.stringify(result));
+            if(result.first.join(',')!=='be,was,were,been,have,had,had') throw new Error('wrong first blocks '+JSON.stringify(result));
+            if(!result.ordered || result.lastVerb!==140) throw new Error('not ordered '+JSON.stringify(result));
+          });
+          await check('irregular auto chains term translation drill phrase without touch', async()=> {
+            const result=await page.evaluate(async()=>{
+              activeList='irregular';updateListUI();
+              const all=await buildSession('drive');
+              session=all.slice(0,4);
+              sessionIndex=0;driveRunning=true;drivePaused=false;intensiveToken=0;
+              const calls=[];
+              const oldPlay=playNativeAudio, oldSpeak=speak, oldWait=waitIntensive, oldPreload=preloadNativeAudio, oldExposure=markExposure;
+              playNativeAudio=async(item,kind)=>{calls.push(item.term+':'+kind)};
+              speak=async(text,lang,item,rate,kind)=>{calls.push(item.term+':'+(kind||lang))};
+              waitIntensive=async()=>{};
+              preloadNativeAudio=()=>{};
+              markExposure=async()=>{};
+              await presentIntensiveCard();
+              await new Promise(r=>setTimeout(r,50));
+              const question=$('#knowledgeQuestion').style.display;
+              const finalIndex=sessionIndex;
+              driveRunning=false;intensiveToken++;
+              playNativeAudio=oldPlay;speak=oldSpeak;waitIntensive=oldWait;preloadNativeAudio=oldPreload;markExposure=oldExposure;
+              activeList='general';updateListUI();
+              return {calls,question,finalIndex};
+            });
+            const expected=['be:term','be:french','be:drill','be:example','was:term','was:french','was:drill','was:example','were:term','were:french','were:drill','were:example','been:term','been:french','been:drill','been:example'];
+            if(result.calls.join('|')!==expected.join('|')) throw new Error('wrong chain '+JSON.stringify(result));
+            if(result.question!=='none') throw new Error('knowledge prompt should stay hidden '+JSON.stringify(result));
+            if(result.finalIndex!==4) throw new Error('did not auto advance '+JSON.stringify(result));
+          });
           await check('intensive drill audio index', async()=> {
             const result=await page.evaluate(async()=>{
               const r=await fetch('./audio-index.json',{cache:'no-store'});
