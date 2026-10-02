@@ -40,6 +40,8 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
 select,input[type=number],input[type=range]{width:100%;background:#0f1317;color:white;border:1px solid var(--line);border-radius:12px;padding:11px}
 .toggle{display:flex;justify-content:space-between;align-items:center;gap:12px}.toggle input{width:22px;height:22px}
 .file-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hint{font-size:12px;color:var(--muted);line-height:1.45}
+.system-rules{display:none;margin:14px 0 2px;padding:16px 18px;border:1px solid #3d7c67;border-radius:20px;background:linear-gradient(145deg,#12251f,#151b1a)}
+.system-rules.show{display:block}.system-rules h3{margin:0 0 10px;font-size:17px}.system-rules p{margin:5px 0;color:#d8e3df;font-size:13px;line-height:1.5}.system-flow{font-weight:900;color:var(--accent)!important}
 .toast{position:fixed;left:50%;bottom:calc(26px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(120px);background:#edfdf6;color:#0a241a;padding:12px 16px;border-radius:14px;font-weight:800;transition:.25s;z-index:99;max-width:90%;text-align:center}.toast.show{transform:translateX(-50%) translateY(0)}
 @media(max-width:650px){.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.card{min-height:400px}.rating{grid-template-columns:repeat(2,1fr)}}
 </style>
@@ -67,9 +69,16 @@ select,input[type=number],input[type=range]{width:100%;background:#0f1317;color:
     <button class="mode primary list-choice active-list" data-list="general"><span class="emoji">💬</span><strong>Anglais utile</strong><p>120 mots et expressions du quotidien, travail, Australie et conversation.</p></button>
     <button class="mode list-choice" data-list="irregular"><span class="emoji">🔁</span><strong>Verbes irréguliers</strong><p>140 verbes · 421 cartes séparées : Base, Past Simple et Past Participle, avec WAS/WERE séparés.</p></button>
   </div>
+  <section class="system-rules" id="irregularRules">
+    <h3>🔁 Système Verbes irréguliers</h3>
+    <p><strong>Ordre par blocs :</strong> BE → WAS → WERE → BEEN, puis HAVE → HAD → HAD, puis le verbe suivant.</p>
+    <p class="system-flow">Mot anglais → 5 s → traduction française → mot ×3 → phrase anglaise → forme suivante.</p>
+    <p>Le bloc d’un verbe est toujours terminé avant de passer au suivant. WAS/WERE restent séparés. Past Simple et Past Participle restent deux cartes même quand le mot est identique.</p>
+    <p><strong>Automatique :</strong> un seul Play lance tout le parcours. Pause et Rejouer restent disponibles.</p>
+  </section>
   <div class="section-title"><h3>Choisis ton entraînement</h3><span id="engineBadge">SRS local</span></div>
   <div class="grid">
-    <button class="mode primary" data-mode="intensive-auto"><span class="emoji">⚡</span><strong>Intensif Auto</strong><p>Mode voiture : mot → 5 s → traduction française audio → 3 répétitions natives → Oui/Non → mot suivant automatique.</p></button>
+    <button class="mode primary" data-mode="intensive-auto"><span class="emoji">⚡</span><strong id="autoModeTitle">Intensif Auto</strong><p>Mode voiture : mot → 5 s → traduction française audio → 3 répétitions natives → Oui/Non → mot suivant automatique.</p></button>
     <button class="mode" data-mode="intensive-calm"><span class="emoji">🧠</span><strong>Intensif tranquille</strong><p>Même sélection intensive, mais tu avances manuellement à ton rythme.</p></button>
     <button class="mode" data-mode="normal"><span class="emoji">🌱</span><strong>Normal</strong><p>Session courte et équilibrée pour progresser tous les jours.</p></button>
     <button class="mode" data-mode="listening"><span class="emoji">🎧</span><strong>Listening</strong><p>Tu entends d’abord. Le texte reste caché jusqu’à ta réponse.</p></button>
@@ -189,11 +198,14 @@ function updateListUI(){
  corpus=activeCorpus();
  $('#statCorpus').textContent=corpus.length;
  $('#listBadge').textContent=activeList==='irregular'?'140 verbes · 421 cartes':corpus.length+' cartes';
- $$('.list-choice').forEach(b=>b.classList.toggle('active-list',b.dataset.list===activeList));
+ $('.list-choice').forEach(b=>b.classList.toggle('active-list',b.dataset.list===activeList));
+ const irregular=activeList==='irregular';
+ $('#irregularRules').classList.toggle('show',irregular);
+ $('#autoModeTitle').textContent=irregular?'Système Verbes irréguliers':'Intensif Auto';
  const autoCopy=$('[data-mode="intensive-auto"] p');
  if(autoCopy){
-   autoCopy.textContent=activeList==='irregular'
-     ?'Par blocs, dans l’ordre : BE → WAS → WERE → BEEN, puis le verbe suivant. Mot → 5 s → traduction → 3 répétitions → phrase → suivant, 100 % automatique.'
+   autoCopy.textContent=irregular
+     ?'Un seul Play : mot → 5 s → traduction française → mot ×3 → phrase anglaise → forme suivante. Blocs complets, jamais mélangés.'
      :'Mode voiture : mot → 5 s → traduction française audio → 3 répétitions natives → Oui/Non → mot suivant automatique.';
  }
 }
@@ -597,7 +609,7 @@ async function startIntensiveAuto(){
  session=await buildSession('drive');sessionIndex=0;driveRunning=false;drivePaused=false;
  intensiveChoice=null;intensiveAttempts=new Map();currentIntensiveItemId=null;
  $('#driveActions').style.display='none';$('#startDrive').style.display='block';
- $('#driveTitle').textContent=activeList==='irregular'?'🔁 Verbes irréguliers Auto':'⚡ Intensif Auto';
+ $('#driveTitle').textContent=activeList==='irregular'?'🔁 Système Verbes irréguliers':'⚡ Intensif Auto';
  $('#startDrive').textContent=activeList==='irregular'?'▶ Lancer les 140 blocs':'▶ Démarrer l’intensif';
  $('#driveTerm').textContent='START';
  $('#drivePhon').textContent=activeList==='irregular'
