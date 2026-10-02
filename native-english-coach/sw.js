@@ -1,4 +1,4 @@
-const CACHE='native-english-coach-v1.6.0';
+const CACHE='native-english-coach-v1.7.0';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon.svg','./audio-index.json','./irregular-verbs.json'];
 
 self.addEventListener('install',e=>{
