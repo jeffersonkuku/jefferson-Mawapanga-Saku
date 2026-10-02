@@ -179,7 +179,7 @@ function updateListUI(){
  corpus=activeCorpus();
  $('#statCorpus').textContent=corpus.length;
  $('#listBadge').textContent=activeList==='irregular'?'140 verbes · 421 cartes':corpus.length+' cartes';
- $('.list-choice').forEach(b=>b.classList.toggle('active-list',b.dataset.list===activeList));
+ $$('.list-choice').forEach(b=>b.classList.toggle('active-list',b.dataset.list===activeList));
 }
 async function loadCorpus(){
  const custom=await getAll('customCorpus');
@@ -603,8 +603,8 @@ function renderBrowse(filter=''){
  list=list.slice(0,500);
  $('#browseCount').textContent=list.length+'/'+activeCorpus().length;
  $('#browseList').innerHTML=list.map(x=>`<div class="setting"><div class="badges"><span class="badge">${x.category==='irregular'?'verbe #'+x.verbNumber:x.category}</span><span class="badge">${x.formRole||x.source}</span></div><h3 style="margin:10px 0 4px">${x.term}</h3>${x.phoneticFr?'<div class="phon">'+x.phoneticFr+'</div>':''}<div class="ipa">${x.ipa}</div><p style="margin:10px 0 5px">${x.french}</p><div class="hint">${x.example}${x.exampleIpa?'<br><span class="ipa">'+x.exampleIpa+'</span>':''}<br>${x.exampleFr}</div><div class="drive-actions" style="margin-top:10px"><button class="btn soft" data-speak-id="${x.id}">🔊 Mot</button><button class="btn soft" data-example-id="${x.id}">💬 Phrase</button></div></div>`).join('');
- $('[data-speak-id]').forEach(b=>b.onclick=()=>{const x=activeCorpus().find(i=>i.id===b.dataset.speakId);speak(x.term,'en',x,settings.speechRate,'term')});
- $('[data-example-id]').forEach(b=>b.onclick=()=>{const x=activeCorpus().find(i=>i.id===b.dataset.exampleId);speak(x.example,'en',x,settings.speechRate,'example')});
+ $$('[data-speak-id]').forEach(b=>b.onclick=()=>{const x=activeCorpus().find(i=>i.id===b.dataset.speakId);speak(x.term,'en',x,settings.speechRate,'term')});
+ $$('[data-example-id]').forEach(b=>b.onclick=()=>{const x=activeCorpus().find(i=>i.id===b.dataset.exampleId);speak(x.example,'en',x,settings.speechRate,'example')});
 }
 function parseCSV(text){
  const lines=text.replace(/^\uFEFF/,'').split(/\r?\n/).filter(Boolean);if(lines.length<2)return[];
@@ -622,12 +622,12 @@ async function exportProgress(){download('native-english-coach-progress.json',JS
 async function resetAll(){if(!confirm('Réinitialiser toute la progression et le corpus personnalisé ?'))return;await clearStore('progress');await clearStore('customCorpus');generalCorpus=window.__NATIVE_COACH_SEED__;updateListUI();await updateStats();toast('Progression réinitialisée')}
 $$('[data-home]').forEach(b=>b.onclick=()=>{cancelStudyPlayback();show('#homeView');updateStats()});
 $('#settingsBtn').onclick=()=>show('#settingsView');
-$('.list-choice').forEach(b=>b.onclick=()=>{
+$$('.list-choice').forEach(b=>b.onclick=()=>{
  activeList=b.dataset.list;updateListUI();
  if(activeList==='irregular'&&!irregularCorpus.length)toast('La liste des verbes irréguliers est en cours de chargement.');
  else toast(activeList==='irregular'?'Verbes irréguliers · 421 cartes':'Anglais utile · '+generalCorpus.length+' cartes');
 });
-$('.mode:not(.list-choice)').forEach(b=>b.onclick=()=>{
+$$('.mode:not(.list-choice)').forEach(b=>b.onclick=()=>{
  const m=b.dataset.mode;
  if(m==='intensive-auto')startIntensiveAuto();
  else if(m==='intensive-calm')startStudy('intensive');
