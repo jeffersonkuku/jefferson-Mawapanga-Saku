@@ -179,7 +179,7 @@ function updateListUI(){
  corpus=activeCorpus();
  $('#statCorpus').textContent=corpus.length;
  $('#listBadge').textContent=activeList==='irregular'?'140 verbes · 421 cartes':corpus.length+' cartes';
- $('.list-choice').forEach(b=>b.classList.toggle('active-list',b.dataset.list===activeList));
+ $$('.list-choice').forEach(b=>b.classList.toggle('active-list',b.dataset.list===activeList));
  const autoCopy=$('[data-mode="intensive-auto"] p');
  if(autoCopy){
    autoCopy.textContent=activeList==='irregular'
