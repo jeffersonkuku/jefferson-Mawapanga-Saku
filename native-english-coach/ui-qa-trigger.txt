@@ -1,2 +1,4 @@
 Native English Coach UI QA
 Intensive sequence + instant advance + French audio
+
+Rerun after user-reported click regression 2026-10-02
