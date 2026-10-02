@@ -157,6 +157,10 @@ const INTENSIVE_KNOWN_COOLDOWN_MS=30*24*60*60*1000;
 let db, corpus=[], generalCorpus=[], irregularCorpus=[], activeList='general', settings={...DEFAULT_SETTINGS}, session=[], sessionIndex=0, currentMode='normal', currentSkill='reading';
 let fsrs=null, fsrsLib=null, wakeLock=null, driveRunning=false, drivePaused=false, lastDriveItem=null;
 let audioIndex={}, activeAudio=null, audioIndexReady=false;
+const irregularSequenceAudio=new Audio();
+irregularSequenceAudio.preload='auto';
+irregularSequenceAudio.playsInline=true;
+let irregularSequenceFinish=null;
 let studyAudioTimer=null, studyRenderToken=0;
 let audioBlobCache=new Map(), audioFetchCache=new Map();
 let intensiveChoice=null, intensiveAttempts=new Map(), currentIntensiveItemId=null;
@@ -257,6 +261,60 @@ async function loadAudioIndex(){
 function stopNeuralAudio(){
   try{activeAudio?.pause();activeAudio.currentTime=0}catch(e){}
   activeAudio=null;
+}
+function stopIrregularSequenceAudio(resolvePending=true){
+  try{irregularSequenceAudio.pause();irregularSequenceAudio.currentTime=0}catch(e){}
+  if(resolvePending && irregularSequenceFinish){
+    const done=irregularSequenceFinish;
+    irregularSequenceFinish=null;
+    done();
+  }
+}
+function playIrregularSequenceAudio(item,kind){
+  return new Promise(async resolve=>{
+    if(!driveRunning){resolve();return}
+    if(!audioIndexReady)await loadAudioIndex();
+    const src=audioIndex[item?.id]?.[kind];
+    if(!src){console.error('Audio irrégulier manquant',item?.id,kind);resolve();return}
+
+    // Finish a previous wait cleanly, but KEEP the same HTMLAudioElement.
+    if(irregularSequenceFinish){
+      const previous=irregularSequenceFinish;
+      irregularSequenceFinish=null;
+      previous();
+    }
+    try{irregularSequenceAudio.pause()}catch(e){}
+
+    let finished=false,watchdog=null;
+    const finish=()=>{
+      if(finished)return;
+      finished=true;
+      if(watchdog)clearTimeout(watchdog);
+      irregularSequenceAudio.removeEventListener('ended',finish);
+      irregularSequenceAudio.removeEventListener('error',finish);
+      if(irregularSequenceFinish===finish)irregularSequenceFinish=null;
+      resolve();
+    };
+    irregularSequenceFinish=finish;
+    irregularSequenceAudio.addEventListener('ended',finish,{once:true});
+    irregularSequenceAudio.addEventListener('error',finish,{once:true});
+    irregularSequenceAudio.src=src+'?v=7';
+    irregularSequenceAudio.load();
+
+    try{
+      const playPromise=irregularSequenceAudio.play();
+      if(playPromise)await playPromise;
+      const d=Number.isFinite(irregularSequenceAudio.duration)&&irregularSequenceAudio.duration>0
+        ? irregularSequenceAudio.duration*1000 : 7000;
+      watchdog=setTimeout(finish,Math.min(Math.max(d+1200,2500),15000));
+    }catch(e){
+      console.error('Lecture auto irrégulière bloquée',kind,e);
+      $('#driveStatus').textContent='Audio bloqué · appuie sur Reprendre';
+      drivePaused=true;
+      $('#drivePause').textContent='▶ Reprendre';
+      finish();
+    }
+  });
 }
 function cancelStudyPlayback(){
   if(studyAudioTimer){clearTimeout(studyAudioTimer);studyAudioTimer=null}
@@ -468,6 +526,7 @@ async function presentIrregularAutoCard(){
    $('#startDrive').style.display='block';
    $('#startDrive').textContent='↻ Recommencer depuis BE';
    driveRunning=false;
+   stopIrregularSequenceAudio();
    releaseWake();
    updateStats();
    return;
@@ -493,17 +552,17 @@ async function presentIrregularAutoCard(){
  $('#driveExampleFr').textContent='';
  $('#knowledgeQuestion').style.display='none';
 
- // Préchargement local seulement : fluide sans lancer des centaines de requêtes.
- ['term','french','drill','example'].forEach(kind=>preloadNativeAudio(item,kind));
- session.slice(sessionIndex+1,sessionIndex+7).forEach(next=>{
-   ['term','french','drill','example'].forEach(kind=>preloadNativeAudio(next,kind));
+ // Précharge les cartes suivantes sans changer l'élément audio qui joue la séquence.
+ session.slice(sessionIndex,sessionIndex+6).forEach(next=>{
+   ['term','french','example'].forEach(kind=>preloadNativeAudio(next,kind));
  });
 
- $('#driveStatus').textContent=`Bloc ${item.verbNumber}/140 · écoute`;
- try{await playNativeAudio(item,'term')}catch(e){console.error(e)}
+ // 1) MOT
+ $('#driveStatus').textContent=`Bloc ${item.verbNumber}/140 · écoute le mot`;
+ await playIrregularSequenceAudio(item,'term');
  if(!driveRunning || token!==intensiveToken)return;
 
- // Règle fixe demandée : 5 secondes pour retrouver le sens.
+ // 2) EXACTEMENT 5 SECONDES
  for(let sec=5;sec>0 && driveRunning;sec--){
    $('#driveStatus').textContent=`Trouve le sens · ${sec} s`;
    await waitIntensive(1000);
@@ -511,28 +570,30 @@ async function presentIrregularAutoCard(){
  }
  if(!driveRunning || token!==intensiveToken)return;
 
+ // 3) TRADUCTION FRANÇAISE UNE SEULE FOIS
  $('#driveMeaning').textContent=item.french;
- $('#driveStatus').textContent='Traduction';
- try{await speak(item.french,'fr',item,.95,'french')}catch(e){console.error(e)}
+ $('#driveStatus').textContent='Traduction française';
+ await playIrregularSequenceAudio(item,'french');
  if(!driveRunning || token!==intensiveToken)return;
 
- $('#driveStatus').textContent='Répète 3 fois';
- try{await playNativeAudio(item,'drill')}catch(e){console.error(e)}
- if(!driveRunning || token!==intensiveToken)return;
+ // 4) LE MÊME MOT, TROIS FOIS — trois lectures réelles et séparées
+ for(let repetition=1;repetition<=3;repetition++){
+   $('#driveStatus').textContent=`Répétition ${repetition}/3`;
+   await playIrregularSequenceAudio(item,'term');
+   if(!driveRunning || token!==intensiveToken)return;
+ }
 
- // La phrase est entendue en anglais uniquement : aucune traduction française de la phrase.
+ // 5) PHRASE ANGLAISE, SANS TRADUCTION FRANÇAISE
  $('#driveStatus').textContent='Phrase naturelle';
  $('#driveExample').textContent=item.example;
  $('#driveExampleFr').textContent=item.exampleIpa||'';
- try{await playNativeAudio(item,'example')}catch(e){console.error(e)}
+ await playIrregularSequenceAudio(item,'example');
  if(!driveRunning || token!==intensiveToken)return;
 
+ // 6) CARTE SUIVANTE IMMÉDIATEMENT, TOUJOURS DANS LE MÊME BLOC VERBAL
  markExposure(item).catch(e=>console.error('Exposure non enregistrée',e));
  sessionIndex++;
  currentIntensiveItemId=null;
-
- // Enchaînement automatique : aucune action utilisateur requise entre les cartes.
- await waitIntensive(250);
  if(driveRunning && token===intensiveToken)presentIntensiveCard();
 }
 
@@ -703,6 +764,7 @@ function stopDrive(){
  intensiveToken++;
  intensiveBusy=false;
  currentIntensiveItemId=null;
+ stopIrregularSequenceAudio();
  cancelStudyPlayback();
  releaseWake();
  show('#homeView');
@@ -751,20 +813,48 @@ $('#speakBtn').onclick=async()=>{const x=session[sessionIndex];if(x)await speak(
 $('#speakExampleBtn').onclick=async()=>{const x=session[sessionIndex];if(x)await speak(x.example,'en',x,settings.speechRate,'example')};
 $$('[data-rating]').forEach(b=>b.onclick=()=>ratingClick(+b.dataset.rating));
 $('#startDrive').onclick=async()=>{
- if(!driveRunning){
-   if(sessionIndex>=session.length){
-     session=await buildSession('drive');
-     sessionIndex=0;
-     intensiveAttempts=new Map();
-     currentIntensiveItemId=null;
-     intensiveToken++;
-     $('#startDrive').textContent=activeList==='irregular'?'▶ Lancer les 140 blocs':'▶ Démarrer l’intensif';
-   }
+ if(driveRunning)return;
+ if(sessionIndex>=session.length){
+   session=await buildSession('drive');
+   sessionIndex=0;
+   intensiveAttempts=new Map();
+   currentIntensiveItemId=null;
+   intensiveToken++;
+   $('#startDrive').textContent=activeList==='irregular'?'▶ Lancer les 140 blocs':'▶ Démarrer l’intensif';
+ }
+
+ if(activeList==='irregular'){
+   // IMPORTANT iPhone/Safari : démarrer la séquence audio dans le geste utilisateur.
+   driveRunning=true;
+   drivePaused=false;
+   intensiveBusy=false;
+   $('#startDrive').style.display='none';
+   $('#driveActions').style.display='grid';
+   $('#driveStatus').textContent='Démarrage…';
+   requestWake().catch(()=>{});
+   presentIntensiveCard();
+ }else{
    runDrive();
  }
 };
-$('#drivePause').onclick=()=>{drivePaused=!drivePaused;if(activeAudio){if(drivePaused)activeAudio.pause();else activeAudio.play().catch(()=>{})}$('#drivePause').textContent=drivePaused?'▶ Reprendre':'⏸ Pause'};
-$('#driveReplay').onclick=()=>lastDriveItem&&playNativeAudio(lastDriveItem,'term');
+$('#drivePause').onclick=()=>{
+ drivePaused=!drivePaused;
+ const player=activeList==='irregular'?irregularSequenceAudio:activeAudio;
+ if(player){
+   if(drivePaused)player.pause();
+   else player.play().catch(e=>console.error('Reprise audio impossible',e));
+ }
+ $('#drivePause').textContent=drivePaused?'▶ Reprendre':'⏸ Pause';
+};
+$('#driveReplay').onclick=async()=>{
+ if(!lastDriveItem)return;
+ if(activeList==='irregular' && driveRunning){
+   drivePaused=true;
+   irregularSequenceAudio.pause();
+   $('#drivePause').textContent='▶ Reprendre';
+ }
+ await playNativeAudio(lastDriveItem,'term');
+};
 $('#driveKnown').onclick=()=>handleIntensiveAnswer('known');
 $('#driveUnknown').onclick=()=>handleIntensiveAnswer('unknown');
 $('#stopDrive').onclick=stopDrive;
