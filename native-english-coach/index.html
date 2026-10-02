@@ -157,6 +157,12 @@ const INTENSIVE_KNOWN_COOLDOWN_MS=30*24*60*60*1000;
 let db, corpus=[], generalCorpus=[], irregularCorpus=[], activeList='general', settings={...DEFAULT_SETTINGS}, session=[], sessionIndex=0, currentMode='normal', currentSkill='reading';
 let fsrs=null, fsrsLib=null, wakeLock=null, driveRunning=false, drivePaused=false, lastDriveItem=null;
 let audioIndex={}, activeAudio=null, audioIndexReady=false;
+const irregularCourseAudio=new Audio();
+irregularCourseAudio.preload='metadata';
+irregularCourseAudio.playsInline=true;
+let irregularCourseCues=[], irregularCourseReady=false, irregularCourseLoading=null, irregularCourseIndex=-1;
+let irregularCourseMarked=new Set();
+
 const irregularSequenceAudio=new Audio();
 irregularSequenceAudio.preload='auto';
 irregularSequenceAudio.playsInline=true;
@@ -258,6 +264,116 @@ async function loadAudioIndex(){
     $('#voiceInfo').textContent='Pack audio natif en cours de génération';
   }
 }
+async function loadIrregularCourse(){
+  if(irregularCourseReady)return true;
+  if(irregularCourseLoading)return irregularCourseLoading;
+  irregularCourseLoading=(async()=>{
+    try{
+      const r=await fetch('./irregular-course-cues.json?v=2',{cache:'no-store'});
+      if(!r.ok)throw new Error('cues unavailable');
+      const data=await r.json();
+      if(!Array.isArray(data.cards)||data.cards.length!==421)throw new Error('invalid irregular course cues');
+      irregularCourseCues=data.cards;
+      irregularCourseAudio.src='./irregular-course.mp3?v=2';
+      irregularCourseAudio.load();
+      irregularCourseReady=true;
+      return true;
+    }catch(e){
+      console.error('Cours audio irrégulier indisponible',e);
+      irregularCourseReady=false;
+      return false;
+    }finally{
+      irregularCourseLoading=null;
+    }
+  })();
+  return irregularCourseLoading;
+}
+function irregularCourseCardAt(time){
+  let lo=0,hi=irregularCourseCues.length-1,best=-1;
+  while(lo<=hi){
+    const mid=(lo+hi)>>1, card=irregularCourseCues[mid];
+    if(time>=card.start){best=mid;lo=mid+1}else hi=mid-1;
+  }
+  if(best<0)return null;
+  const card=irregularCourseCues[best];
+  return time<card.end?{card,index:best}:null;
+}
+function irregularCoursePhaseAt(card,time){
+  return (card.phases||[]).find(p=>time>=p.start&&time<p.end)||card.phases?.[card.phases.length-1]||null;
+}
+function renderIrregularCourseAt(time,force=false){
+  const hit=irregularCourseCardAt(time);
+  if(!hit)return;
+  const {card,index}=hit;
+  const phase=irregularCoursePhaseAt(card,time);
+  const item=irregularCorpus.find(x=>x.id===card.id)||card;
+  sessionIndex=index;
+  lastDriveItem=item;
+  currentIntensiveItemId=item.id;
+
+  if(force||irregularCourseIndex!==index){
+    irregularCourseIndex=index;
+    const block=irregularCorpus.filter(x=>x.verbNumber===item.verbNumber);
+    const blockIndex=Math.max(0,block.findIndex(x=>x.id===item.id));
+    const blockForms=block.map(x=>x.term.toUpperCase()).join(' → ');
+    $('#driveCounter').textContent=`Verbe ${item.verbNumber}/140 · ${blockIndex+1}/${block.length}`;
+    $('#driveTerm').textContent=(item.term||'').toUpperCase();
+    $('#drivePhon').textContent=`${item.formRole||''} · ${blockForms}`;
+    $('#driveIpa').textContent=item.ipa||'';
+    $('#driveMeaning').textContent='';
+    $('#driveExample').textContent='';
+    $('#driveExampleFr').textContent='';
+    $('#knowledgeQuestion').style.display='none';
+    if(!irregularCourseMarked.has(item.id)){
+      irregularCourseMarked.add(item.id);
+      markExposure(item).catch(()=>{});
+    }
+  }
+
+  const duration=Number.isFinite(irregularCourseAudio.duration)&&irregularCourseAudio.duration>0
+    ? irregularCourseAudio.duration
+    : (irregularCourseCues.at(-1)?.end||1);
+  $('#driveProgress').style.width=`${Math.min(100,time/duration*100)}%`;
+
+  if(!phase)return;
+  if(phase.phase==='word'){
+    $('#driveStatus').textContent='Écoute le mot';
+  }else if(phase.phase==='think'){
+    const left=Math.max(1,Math.ceil(phase.end-time));
+    $('#driveStatus').textContent=`Trouve le sens · ${left} s`;
+  }else if(phase.phase==='french'){
+    $('#driveStatus').textContent='Traduction française';
+    $('#driveMeaning').textContent=item.french||'';
+  }else if(phase.phase==='repeat'){
+    $('#driveStatus').textContent=`Répétition ${phase.repetition}/3`;
+    $('#driveMeaning').textContent=item.french||'';
+  }else if(phase.phase==='example'){
+    $('#driveStatus').textContent='Phrase naturelle';
+    $('#driveMeaning').textContent=item.french||'';
+    $('#driveExample').textContent=item.example||'';
+    $('#driveExampleFr').textContent=item.exampleIpa||'';
+  }
+}
+function finishIrregularCourse(){
+  driveRunning=false;
+  drivePaused=false;
+  currentIntensiveItemId=null;
+  $('#driveStatus').textContent='Les 140 blocs sont terminés ✅';
+  $('#driveTerm').textContent='DONE';
+  $('#drivePhon').textContent='421 formes parcourues dans l’ordre';
+  $('#driveIpa').textContent='';
+  $('#driveMeaning').textContent='';
+  $('#driveExample').textContent='';
+  $('#driveExampleFr').textContent='';
+  $('#driveActions').style.display='none';
+  $('#startDrive').style.display='block';
+  $('#startDrive').textContent='↻ Recommencer depuis BE';
+  releaseWake();
+  updateStats();
+}
+irregularCourseAudio.addEventListener('timeupdate',()=>{if(driveRunning&&activeList==='irregular')renderIrregularCourseAt(irregularCourseAudio.currentTime)});
+irregularCourseAudio.addEventListener('ended',finishIrregularCourse);
+
 function stopNeuralAudio(){
   try{activeAudio?.pause();activeAudio.currentTime=0}catch(e){}
   activeAudio=null;
@@ -489,8 +605,17 @@ async function startIntensiveAuto(){
    :'Mot + phonétique, puis 5 secondes pour trouver le sens';
  $('#driveIpa').textContent='';$('#driveMeaning').textContent='';$('#driveExample').textContent='';$('#driveExampleFr').textContent='';
  $('#knowledgeQuestion').style.display='none';$('#driveStatus').textContent='Prêt';
+ if(activeList==='irregular'){
+   $('#startDrive').disabled=true;
+   $('#startDrive').textContent='Chargement du parcours…';
+   const ok=await loadIrregularCourse();
+   $('#startDrive').disabled=false;
+   $('#startDrive').textContent=ok?'▶ Lancer les 140 blocs':'Audio indisponible';
+   if(!ok)toast('Le parcours audio complet n’est pas encore disponible.');
+ }else{
+   loadAudioIndex().then(()=>warmIntensiveAudio(session,0,Math.min(8,session.length))).catch(()=>{});
+ }
  show('#driveView');
- loadAudioIndex().then(()=>warmIntensiveAudio(session,0,Math.min(8,session.length))).catch(()=>{});
 }
 function setIntensiveButtonsEnabled(enabled){
  $('#driveKnown').disabled=!enabled;
@@ -599,7 +724,7 @@ async function presentIrregularAutoCard(){
 
 async function presentIntensiveCard(){
  if(!driveRunning)return;
- if(activeList==='irregular')return presentIrregularAutoCard();
+ if(activeList==='irregular')return;
  if(sessionIndex>=session.length){
    currentIntensiveItemId=null;
    $('#driveStatus').textContent='Session terminée ✅';
@@ -764,6 +889,8 @@ function stopDrive(){
  intensiveToken++;
  intensiveBusy=false;
  currentIntensiveItemId=null;
+ try{irregularCourseAudio.pause();irregularCourseAudio.currentTime=0}catch(e){}
+ irregularCourseIndex=-1;
  stopIrregularSequenceAudio();
  cancelStudyPlayback();
  releaseWake();
@@ -820,26 +947,45 @@ $('#startDrive').onclick=async()=>{
    intensiveAttempts=new Map();
    currentIntensiveItemId=null;
    intensiveToken++;
-   $('#startDrive').textContent=activeList==='irregular'?'▶ Lancer les 140 blocs':'▶ Démarrer l’intensif';
  }
 
  if(activeList==='irregular'){
-   // IMPORTANT iPhone/Safari : démarrer la séquence audio dans le geste utilisateur.
+   if(!irregularCourseReady){
+     toast('Chargement du parcours audio…');
+     return;
+   }
    driveRunning=true;
    drivePaused=false;
    intensiveBusy=false;
+   irregularCourseMarked=new Set();
+   irregularCourseIndex=-1;
+   try{irregularCourseAudio.currentTime=0}catch(e){}
    $('#startDrive').style.display='none';
    $('#driveActions').style.display='grid';
+   $('#drivePause').textContent='⏸ Pause';
+   $('#driveReplay').textContent='↻ Rejouer la carte';
    $('#driveStatus').textContent='Démarrage…';
    requestWake().catch(()=>{});
-   presentIntensiveCard();
+   renderIrregularCourseAt(0,true);
+   try{
+     // Une seule lecture audio pour tout le parcours : iPhone n'a plus
+     // à autoriser une nouvelle lecture après chaque traduction/répétition.
+     await irregularCourseAudio.play();
+   }catch(e){
+     console.error('Lecture du parcours bloquée',e);
+     driveRunning=false;
+     $('#startDrive').style.display='block';
+     $('#driveActions').style.display='none';
+     toast('Appuie de nouveau sur Play pour autoriser l’audio.');
+   }
  }else{
+   $('#driveReplay').textContent='↻ Réécouter le mot';
    runDrive();
  }
 };
 $('#drivePause').onclick=()=>{
  drivePaused=!drivePaused;
- const player=activeList==='irregular'?irregularSequenceAudio:activeAudio;
+ const player=activeList==='irregular'?irregularCourseAudio:activeAudio;
  if(player){
    if(drivePaused)player.pause();
    else player.play().catch(e=>console.error('Reprise audio impossible',e));
@@ -848,10 +994,17 @@ $('#drivePause').onclick=()=>{
 };
 $('#driveReplay').onclick=async()=>{
  if(!lastDriveItem)return;
- if(activeList==='irregular' && driveRunning){
-   drivePaused=true;
-   irregularSequenceAudio.pause();
-   $('#drivePause').textContent='▶ Reprendre';
+ if(activeList==='irregular' && irregularCourseReady){
+   const card=irregularCourseCues.find(x=>x.id===lastDriveItem.id);
+   if(!card)return;
+   try{
+     irregularCourseAudio.currentTime=card.start;
+     drivePaused=false;
+     $('#drivePause').textContent='⏸ Pause';
+     renderIrregularCourseAt(card.start,true);
+     await irregularCourseAudio.play();
+   }catch(e){console.error('Relecture impossible',e)}
+   return;
  }
  await playNativeAudio(lastDriveItem,'term');
 };
@@ -868,7 +1021,7 @@ updateVoiceInfo();
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&driveRunning)requestWake()});
 
 async function boot(){
- db=await openDB();await loadSettings();await loadCorpus();await loadAudioIndex();await updateStats();updateVoiceInfo();initFsrs();
+ db=await openDB();await loadSettings();await loadCorpus();await loadAudioIndex();loadIrregularCourse().catch(()=>{});await updateStats();updateVoiceInfo();initFsrs();
  if('serviceWorker'in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
 }
 boot();
