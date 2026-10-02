@@ -8,3 +8,5 @@ Validate click-handler fix 2026-10-02
 Validate ordered fully automatic irregular verb blocks 2026-10-02
 
 Final QA for ordered automatic irregular blocks 2026-10-02
+
+Validate exact iPhone irregular audio chain 2026-10-02
