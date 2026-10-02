@@ -1,4 +1,4 @@
-import asyncio, json, pathlib, hashlib, os, sys
+import asyncio, json, pathlib, hashlib, os, sys, subprocess, tempfile
 import edge_tts
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -6,6 +6,8 @@ CORPUS = ROOT / "corpus.json"
 IRREGULAR = ROOT / "irregular-verbs.json"
 AUDIO = ROOT / "audio"
 INDEX = ROOT / "audio-index.json"
+IRREGULAR_COURSE = ROOT / "irregular-course.mp3"
+IRREGULAR_CUES = ROOT / "irregular-course-cues.json"
 
 VOICES_GENERAL = [
     "en-US-AvaNeural",
@@ -36,10 +38,114 @@ async def synth(text, voice, out, rate="+0%"):
                 raise
             await asyncio.sleep(2 + attempt * 2)
 
+def media_duration(path):
+    out = subprocess.check_output([
+        "ffprobe", "-v", "error",
+        "-show_entries", "format=duration",
+        "-of", "default=noprint_wrappers=1:nokey=1",
+        str(path)
+    ], text=True).strip()
+    return float(out)
+
+def build_irregular_course(irregular_items):
+    if not irregular_items:
+        return
+
+    ordered = sorted(irregular_items, key=lambda x: (int(x.get("verbNumber", 0)), x["id"]))
+    silence = AUDIO / "_silence-5s.mp3"
+    if not silence.exists():
+        subprocess.run([
+            "ffmpeg", "-y", "-v", "error",
+            "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono",
+            "-t", "5",
+            "-c:a", "libmp3lame", "-b:a", "48k",
+            str(silence)
+        ], check=True)
+
+    silence_dur = media_duration(silence)
+    parts = []
+    cards = []
+    t = 0.0
+
+    for item in ordered:
+        term = AUDIO / f"{item['id']}-term.mp3"
+        french = AUDIO / f"{item['id']}-fr.mp3"
+        example = AUDIO / f"{item['id']}-example.mp3"
+        term_dur = media_duration(term)
+        french_dur = media_duration(french)
+        example_dur = media_duration(example)
+
+        card_start = t
+        phases = []
+
+        def add(path, phase, duration, repetition=None):
+            nonlocal t
+            start = t
+            parts.append(path)
+            t += duration
+            phase_obj = {
+                "phase": phase,
+                "start": round(start, 3),
+                "end": round(t, 3)
+            }
+            if repetition is not None:
+                phase_obj["repetition"] = repetition
+            phases.append(phase_obj)
+
+        add(term, "word", term_dur)
+        add(silence, "think", silence_dur)
+        add(french, "french", french_dur)
+        add(term, "repeat", term_dur, 1)
+        add(term, "repeat", term_dur, 2)
+        add(term, "repeat", term_dur, 3)
+        add(example, "example", example_dur)
+
+        cards.append({
+            "id": item["id"],
+            "verbNumber": item.get("verbNumber"),
+            "baseVerb": item.get("baseVerb"),
+            "formRole": item.get("formRole"),
+            "term": item.get("term"),
+            "french": item.get("french"),
+            "ipa": item.get("ipa"),
+            "example": item.get("example"),
+            "exampleIpa": item.get("exampleIpa"),
+            "start": round(card_start, 3),
+            "end": round(t, 3),
+            "phases": phases
+        })
+
+    concat_file = ROOT / "_irregular-course-concat.txt"
+    concat_file.write_text(
+        "\n".join("file '" + str(p.resolve()).replace("'", "'\\''") + "'" for p in parts) + "\n",
+        encoding="utf-8"
+    )
+
+    subprocess.run([
+        "ffmpeg", "-y", "-v", "error",
+        "-f", "concat", "-safe", "0", "-i", str(concat_file),
+        "-c:a", "copy",
+        str(IRREGULAR_COURSE)
+    ], check=True)
+
+    actual_duration = media_duration(IRREGULAR_COURSE)
+    IRREGULAR_CUES.write_text(json.dumps({
+        "version": 1,
+        "sequence": "word -> 5s -> french -> word x3 -> example -> next",
+        "cards": cards,
+        "expectedDuration": round(t, 3),
+        "actualDuration": round(actual_duration, 3)
+    }, ensure_ascii=False, indent=2), encoding="utf-8")
+    concat_file.unlink(missing_ok=True)
+    silence.unlink(missing_ok=True)
+    print(f"Built irregular course: {len(cards)} cards, {actual_duration/60:.1f} minutes, {IRREGULAR_COURSE.stat().st_size/1024/1024:.1f} MB")
+
 async def main():
     items = json.loads(CORPUS.read_text(encoding="utf-8"))
+    irregular_items = []
     if IRREGULAR.exists():
-        items += json.loads(IRREGULAR.read_text(encoding="utf-8"))
+        irregular_items = json.loads(IRREGULAR.read_text(encoding="utf-8"))
+        items += irregular_items
     AUDIO.mkdir(exist_ok=True)
     index = {}
     sem = asyncio.Semaphore(4)
@@ -75,6 +181,7 @@ async def main():
 
     await asyncio.gather(*(one(item, idx) for idx, item in enumerate(items)))
     INDEX.write_text(json.dumps(index, indent=2, ensure_ascii=False), encoding="utf-8")
+    build_irregular_course(irregular_items)
     print(f"Generated {len(index)} items / {len(index)*4} MP3 files")
 
 if __name__ == "__main__":
