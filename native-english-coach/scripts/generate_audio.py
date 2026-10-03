@@ -134,7 +134,7 @@ def build_irregular_course(irregular_items):
         "-ar", "24000",
         "-c:a", "aac",
         "-profile:a", "aac_low",
-        "-b:a", "80k",
+        "-b:a", "72k",
         "-movflags", "+faststart",
         str(IRREGULAR_COURSE)
     ], check=True)
