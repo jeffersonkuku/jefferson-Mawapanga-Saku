@@ -72,13 +72,13 @@ select,input[type=number],input[type=range]{width:100%;background:#0f1317;color:
   <section class="system-rules" id="irregularRules">
     <h3>🔁 Système Verbes irréguliers</h3>
     <p><strong>Ordre par blocs :</strong> BE → WAS → WERE → BEEN, puis HAVE → HAD → HAD, puis le verbe suivant.</p>
-    <p class="system-flow">Mot anglais → 5 s → traduction française → mot ×3 → phrase anglaise → forme suivante.</p>
+    <p class="system-flow">Mot anglais → 2 s → traduction française → mot ×3 → phrase anglaise → forme suivante.</p>
     <p>Le bloc d’un verbe est toujours terminé avant de passer au suivant. WAS/WERE restent séparés. Past Simple et Past Participle restent deux cartes même quand le mot est identique.</p>
     <p><strong>Automatique :</strong> un seul Play lance tout le parcours. Pause et Rejouer restent disponibles.</p>
   </section>
   <div class="section-title"><h3>Choisis ton entraînement</h3><span id="engineBadge">SRS local</span></div>
   <div class="grid">
-    <button class="mode primary" data-mode="intensive-auto"><span class="emoji">⚡</span><strong id="autoModeTitle">Intensif Auto</strong><p>Mode voiture : mot → 5 s → traduction française audio → 3 répétitions natives → Oui/Non → mot suivant automatique.</p></button>
+    <button class="mode primary" data-mode="intensive-auto"><span class="emoji">⚡</span><strong id="autoModeTitle">Intensif Auto</strong><p>Mode voiture : mot → 2 s → traduction française audio → 3 répétitions natives → Oui/Non → mot suivant automatique.</p></button>
     <button class="mode" data-mode="intensive-calm"><span class="emoji">🧠</span><strong>Intensif tranquille</strong><p>Même sélection intensive, mais tu avances manuellement à ton rythme.</p></button>
     <button class="mode" data-mode="normal"><span class="emoji">🌱</span><strong>Normal</strong><p>Session courte et équilibrée pour progresser tous les jours.</p></button>
     <button class="mode" data-mode="listening"><span class="emoji">🎧</span><strong>Listening</strong><p>Tu entends d’abord. Le texte reste caché jusqu’à ta réponse.</p></button>
@@ -115,7 +115,7 @@ select,input[type=number],input[type=range]{width:100%;background:#0f1317;color:
   <section class="card drive-card">
     <div>
       <div class="drive-status" id="driveStatus">Prêt</div>
-      <div class="term"><h2 id="driveTerm">START</h2><div class="phon" id="drivePhon">Mot + phonétique, puis 5 secondes pour trouver le sens</div><div class="ipa" id="driveIpa"></div></div>
+      <div class="term"><h2 id="driveTerm">START</h2><div class="phon" id="drivePhon">Mot + phonétique, puis 2 secondes pour trouver le sens</div><div class="ipa" id="driveIpa"></div></div>
       <div class="meaning"><h3 id="driveMeaning"></h3><div class="example" id="driveExample"></div><div class="example-fr" id="driveExampleFr"></div></div>
       <div id="knowledgeQuestion" style="display:none;margin-top:18px;text-align:center">
         <div style="font-weight:900;margin-bottom:10px">Connais-tu ce mot ?</div>
@@ -171,6 +171,8 @@ irregularCourseAudio.preload='metadata';
 irregularCourseAudio.playsInline=true;
 let irregularCourseCues=[], irregularCourseReady=false, irregularCourseLoading=null, irregularCourseIndex=-1;
 let irregularCourseMarked=new Set();
+const IRREGULAR_RESUME_KEY='native-english-coach-irregular-resume-v1';
+let irregularLastSavedSecond=-1;
 
 const irregularSequenceAudio=new Audio();
 irregularSequenceAudio.preload='auto';
@@ -205,8 +207,8 @@ function updateListUI(){
  const autoCopy=$('[data-mode="intensive-auto"] p');
  if(autoCopy){
    autoCopy.textContent=irregular
-     ?'Un seul Play : mot → 5 s → traduction française → mot ×3 → phrase anglaise → forme suivante. Blocs complets, jamais mélangés.'
-     :'Mode voiture : mot → 5 s → traduction française audio → 3 répétitions natives → Oui/Non → mot suivant automatique.';
+     ?'Un seul Play : mot → 2 s → traduction française → mot ×3 → phrase anglaise → forme suivante. Blocs complets, jamais mélangés.'
+     :'Mode voiture : mot → 2 s → traduction française audio → 3 répétitions natives → Oui/Non → mot suivant automatique.';
  }
 }
 async function loadCorpus(){
@@ -276,19 +278,71 @@ async function loadAudioIndex(){
     $('#voiceInfo').textContent='Pack audio natif en cours de génération';
   }
 }
+function readIrregularResume(){
+  try{
+    const raw=localStorage.getItem(IRREGULAR_RESUME_KEY);
+    if(!raw)return null;
+    const saved=JSON.parse(raw);
+    if(!saved?.cardId)return null;
+    const card=irregularCourseCues.find(x=>x.id===saved.cardId);
+    if(!card)return null;
+    const maxOffset=Math.max(0,(card.end-card.start)-0.15);
+    const offset=Math.min(Math.max(+saved.offset||0,0),maxOffset);
+    return {card,time:card.start+offset};
+  }catch(e){return null}
+}
+function saveIrregularResume(force=false){
+  if(!irregularCourseCues.length)return;
+  const time=Math.max(0,+irregularCourseAudio.currentTime||0);
+  const second=Math.floor(time);
+  if(!force && second===irregularLastSavedSecond)return;
+  const hit=irregularCourseCardAt(time);
+  if(!hit)return;
+  irregularLastSavedSecond=second;
+  try{
+    localStorage.setItem(IRREGULAR_RESUME_KEY,JSON.stringify({
+      cardId:hit.card.id,
+      offset:Math.max(0,time-hit.card.start),
+      savedAt:Date.now()
+    }));
+  }catch(e){}
+}
+function clearIrregularResume(){
+  irregularLastSavedSecond=-1;
+  try{localStorage.removeItem(IRREGULAR_RESUME_KEY)}catch(e){}
+}
+function previewIrregularResume(){
+  const resume=readIrregularResume();
+  if(!resume)return null;
+  try{irregularCourseAudio.currentTime=resume.time}catch(e){}
+  renderIrregularCourseAt(resume.time,true);
+  $('#driveStatus').textContent='Reprendre où tu t’étais arrêté';
+  return resume;
+}
+
 async function loadIrregularCourse(){
   if(irregularCourseReady)return true;
   if(irregularCourseLoading)return irregularCourseLoading;
   irregularCourseLoading=(async()=>{
     try{
-      const r=await fetch('./irregular-course-cues.json?v=3',{cache:'no-store'});
+      const r=await fetch('./irregular-course-cues.json?v=4',{cache:'no-store'});
       if(!r.ok)throw new Error('cues unavailable');
       const data=await r.json();
       if(!Array.isArray(data.cards)||data.cards.length!==421)throw new Error('invalid irregular course cues');
       irregularCourseCues=data.cards;
-      irregularCourseAudio.src='./irregular-course.m4a?v=3';
+      irregularCourseAudio.src='./irregular-course.m4a?v=4';
       irregularCourseAudio.load();
+      if(irregularCourseAudio.readyState<1){
+        await new Promise(resolve=>{
+          let done=false;
+          const finish=()=>{if(done)return;done=true;clearTimeout(timer);resolve()};
+          const timer=setTimeout(finish,8000);
+          irregularCourseAudio.addEventListener('loadedmetadata',finish,{once:true});
+          irregularCourseAudio.addEventListener('error',finish,{once:true});
+        });
+      }
       irregularCourseReady=true;
+      previewIrregularResume();
       return true;
     }catch(e){
       console.error('Cours audio irrégulier indisponible',e);
@@ -367,6 +421,7 @@ function renderIrregularCourseAt(time,force=false){
   }
 }
 function finishIrregularCourse(){
+  clearIrregularResume();
   driveRunning=false;
   drivePaused=false;
   currentIntensiveItemId=null;
@@ -383,7 +438,12 @@ function finishIrregularCourse(){
   releaseWake();
   updateStats();
 }
-irregularCourseAudio.addEventListener('timeupdate',()=>{if(driveRunning&&activeList==='irregular')renderIrregularCourseAt(irregularCourseAudio.currentTime)});
+irregularCourseAudio.addEventListener('timeupdate',()=>{
+  if(driveRunning&&activeList==='irregular'){
+    renderIrregularCourseAt(irregularCourseAudio.currentTime);
+    saveIrregularResume();
+  }
+});
 irregularCourseAudio.addEventListener('playing',()=>{if(driveRunning)drivePaused=false});
 irregularCourseAudio.addEventListener('waiting',()=>{if(driveRunning)$('#driveStatus').textContent='Chargement audio…'});
 irregularCourseAudio.addEventListener('stalled',()=>{if(driveRunning)$('#driveStatus').textContent='Connexion lente · reprise automatique…'});
@@ -626,7 +686,7 @@ async function startIntensiveAuto(){
  $('#driveTerm').textContent='START';
  $('#drivePhon').textContent=activeList==='irregular'
    ?'BE → WAS → WERE → BEEN, puis chaque verbe dans l’ordre'
-   :'Mot + phonétique, puis 5 secondes pour trouver le sens';
+   :'Mot + phonétique, puis 2 secondes pour trouver le sens';
  $('#driveIpa').textContent='';$('#driveMeaning').textContent='';$('#driveExample').textContent='';$('#driveExampleFr').textContent='';
  $('#knowledgeQuestion').style.display='none';$('#driveStatus').textContent='Prêt';
  if(activeList==='irregular'){
@@ -634,8 +694,18 @@ async function startIntensiveAuto(){
    $('#startDrive').textContent='Chargement du parcours…';
    const ok=await loadIrregularCourse();
    $('#startDrive').disabled=false;
-   $('#startDrive').textContent=ok?'▶ Lancer les 140 blocs':'Audio indisponible';
-   if(!ok)toast('Le parcours audio complet n’est pas encore disponible.');
+   if(ok){
+     const resume=readIrregularResume();
+     if(resume){
+       previewIrregularResume();
+       $('#startDrive').textContent='▶ Reprendre à '+String(resume.card.term||'').toUpperCase();
+     }else{
+       $('#startDrive').textContent='▶ Lancer les 140 blocs';
+     }
+   }else{
+     $('#startDrive').textContent='Audio indisponible';
+     toast('Le parcours audio complet n’est pas encore disponible.');
+   }
  }else{
    loadAudioIndex().then(()=>warmIntensiveAudio(session,0,Math.min(8,session.length))).catch(()=>{});
  }
@@ -711,8 +781,8 @@ async function presentIrregularAutoCard(){
  await playIrregularSequenceAudio(item,'term');
  if(!driveRunning || token!==intensiveToken)return;
 
- // 2) EXACTEMENT 5 SECONDES
- for(let sec=5;sec>0 && driveRunning;sec--){
+ // 2) EXACTEMENT 2 SECONDES
+ for(let sec=2;sec>0 && driveRunning;sec--){
    $('#driveStatus').textContent=`Trouve le sens · ${sec} s`;
    await waitIntensive(1000);
    if(token!==intensiveToken)return;
@@ -908,6 +978,7 @@ async function runDrive(){
  await presentIntensiveCard();
 }
 function stopDrive(){
+ if(activeList==='irregular')saveIrregularResume(true);
  driveRunning=false;
  drivePaused=false;
  intensiveToken++;
@@ -983,14 +1054,16 @@ $('#startDrive').onclick=async()=>{
    intensiveBusy=false;
    irregularCourseMarked=new Set();
    irregularCourseIndex=-1;
-   try{irregularCourseAudio.currentTime=0}catch(e){}
+   const resume=readIrregularResume();
+   const startTime=resume?.time||0;
+   try{irregularCourseAudio.currentTime=startTime}catch(e){}
    $('#startDrive').style.display='none';
    $('#driveActions').style.display='grid';
    $('#drivePause').textContent='⏸ Pause';
    $('#driveReplay').textContent='↻ Rejouer la carte';
    $('#driveStatus').textContent='Démarrage…';
    requestWake().catch(()=>{});
-   renderIrregularCourseAt(0,true);
+   renderIrregularCourseAt(startTime,true);
    try{
      // Une seule lecture audio pour tout le parcours : iPhone n'a plus
      // à autoriser une nouvelle lecture après chaque traduction/répétition.
@@ -1011,8 +1084,10 @@ $('#drivePause').onclick=()=>{
  drivePaused=!drivePaused;
  const player=activeList==='irregular'?irregularCourseAudio:activeAudio;
  if(player){
-   if(drivePaused)player.pause();
-   else player.play().catch(e=>console.error('Reprise audio impossible',e));
+   if(drivePaused){
+     player.pause();
+     if(activeList==='irregular')saveIrregularResume(true);
+   }else player.play().catch(e=>console.error('Reprise audio impossible',e));
  }
  $('#drivePause').textContent=drivePaused?'▶ Reprendre':'⏸ Pause';
 };
@@ -1042,7 +1117,11 @@ $('#testVoice').onclick=async()=>{const x=activeCorpus().find(i=>i.term==='recko
 $('#csvInput').onchange=e=>{const f=e.target.files?.[0];if(f)importCSV(f);e.target.value=''};
 $('#exportBtn').onclick=exportProgress;$('#resetBtn').onclick=resetAll;
 updateVoiceInfo();
-document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&driveRunning)requestWake()});
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState==='hidden'&&activeList==='irregular')saveIrregularResume(true);
+  if(document.visibilityState==='visible'&&driveRunning)requestWake();
+});
+window.addEventListener('pagehide',()=>{if(activeList==='irregular')saveIrregularResume(true)});
 
 async function boot(){
  db=await openDB();await loadSettings();await loadCorpus();await loadAudioIndex();loadIrregularCourse().catch(()=>{});await updateStats();updateVoiceInfo();initFsrs();
