@@ -279,6 +279,34 @@ jobs:
             if(!result.savedCard || result.savedCard!==result.restoredCard || result.savedCard!==result.lastItem) throw new Error('resume card mismatch '+JSON.stringify(result));
             if(Math.abs(result.restoredTime-result.target)>.15) throw new Error('resume time mismatch '+JSON.stringify(result));
           });
+          await check('app reopens saved irregular session after reload', async()=> {
+            const saved=await page.evaluate(async()=>{
+              activeList='irregular';updateListUI();
+              await loadIrregularCourse();
+              const card=irregularCourseCues[12];
+              const target=card.start+.5;
+              irregularCourseAudio.currentTime=target;
+              renderIrregularCourseAt(target,true);
+              saveIrregularResume(true);
+              return {id:card.id,term:card.term};
+            });
+            await page.reload({waitUntil:'networkidle'});
+            await page.waitForTimeout(700);
+            const result=await page.evaluate(()=>({
+              driveActive:document.querySelector('#driveView').classList.contains('active'),
+              activeList,
+              button:document.querySelector('#startDrive').textContent,
+              item:lastDriveItem?.id||null
+            }));
+            if(!result.driveActive || result.activeList!=='irregular') throw new Error('saved session not reopened '+JSON.stringify({saved,result}));
+            if(result.item!==saved.id || !result.button.includes('Reprendre')) throw new Error('wrong resumed card '+JSON.stringify({saved,result}));
+            await page.evaluate(()=>{
+              clearIrregularResume();
+              try{irregularCourseAudio.pause();irregularCourseAudio.currentTime=0}catch(e){}
+              driveRunning=false;drivePaused=false;
+              activeList='general';updateListUI();show('#homeView');
+            });
+          });
           await check('irregular auto uses one media play for the whole course', async()=> {
             const result=await page.evaluate(async()=>{
               activeList='irregular';updateListUI();
