@@ -1,0 +1,6488 @@
+{
+  "version": 3,
+  "sequence": "word -> 2s -> french -> word x3 -> example -> next",
+  "cards": [
+    {
+      "id": "c0001",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "actually",
+      "phoneticFr": "AK-tchou-eu-li",
+      "french": "en fait / réellement",
+      "ipa": "/ˈæk.tʃu.ə.li/",
+      "example": "Actually, I don't know yet.",
+      "exampleIpa": null,
+      "start": 0.0,
+      "end": 14.616,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 0.0,
+          "end": 2.088
+        },
+        {
+          "phase": "think",
+          "start": 2.088,
+          "end": 4.152
+        },
+        {
+          "phase": "french",
+          "start": 4.152,
+          "end": 6.264
+        },
+        {
+          "phase": "repeat",
+          "start": 6.264,
+          "end": 8.352,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 8.352,
+          "end": 10.44,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 10.44,
+          "end": 12.528,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 12.528,
+          "end": 14.616
+        }
+      ]
+    },
+    {
+      "id": "c0002",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "achieve",
+      "phoneticFr": "e-TCHIIV",
+      "french": "atteindre / réussir",
+      "ipa": "/əˈtʃiːv/",
+      "example": "You can achieve that goal.",
+      "exampleIpa": null,
+      "start": 14.616,
+      "end": 24.936,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 14.616,
+          "end": 15.6
+        },
+        {
+          "phase": "think",
+          "start": 15.6,
+          "end": 17.664
+        },
+        {
+          "phase": "french",
+          "start": 17.664,
+          "end": 19.896
+        },
+        {
+          "phase": "repeat",
+          "start": 19.896,
+          "end": 20.88,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 20.88,
+          "end": 21.864,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 21.864,
+          "end": 22.848,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 22.848,
+          "end": 24.936
+        }
+      ]
+    },
+    {
+      "id": "c0003",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "allow",
+      "phoneticFr": "e-LAOU",
+      "french": "permettre",
+      "ipa": "/əˈlaʊ/",
+      "example": "This setting allows offline use.",
+      "exampleIpa": null,
+      "start": 24.936,
+      "end": 40.152,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 24.936,
+          "end": 27.024
+        },
+        {
+          "phase": "think",
+          "start": 27.024,
+          "end": 29.088
+        },
+        {
+          "phase": "french",
+          "start": 29.088,
+          "end": 31.176
+        },
+        {
+          "phase": "repeat",
+          "start": 31.176,
+          "end": 33.264,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 33.264,
+          "end": 35.352,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 35.352,
+          "end": 37.44,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 37.44,
+          "end": 40.152
+        }
+      ]
+    },
+    {
+      "id": "c0004",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "avoid",
+      "phoneticFr": "e-VOÏD",
+      "french": "éviter",
+      "ipa": "/əˈvɔɪd/",
+      "example": "Try to avoid that mistake.",
+      "exampleIpa": null,
+      "start": 40.152,
+      "end": 55.296,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 40.152,
+          "end": 42.24
+        },
+        {
+          "phase": "think",
+          "start": 42.24,
+          "end": 44.304
+        },
+        {
+          "phase": "french",
+          "start": 44.304,
+          "end": 46.392
+        },
+        {
+          "phase": "repeat",
+          "start": 46.392,
+          "end": 48.48,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 48.48,
+          "end": 50.568,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 50.568,
+          "end": 52.656,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 52.656,
+          "end": 55.296
+        }
+      ]
+    },
+    {
+      "id": "c0005",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "aware",
+      "phoneticFr": "e-WÈR",
+      "french": "conscient",
+      "ipa": "/əˈweə(r)/",
+      "example": "I'm aware of the problem.",
+      "exampleIpa": null,
+      "start": 55.296,
+      "end": 69.888,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 55.296,
+          "end": 57.384
+        },
+        {
+          "phase": "think",
+          "start": 57.384,
+          "end": 59.448
+        },
+        {
+          "phase": "french",
+          "start": 59.448,
+          "end": 61.536
+        },
+        {
+          "phase": "repeat",
+          "start": 61.536,
+          "end": 63.624,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 63.624,
+          "end": 65.712,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 65.712,
+          "end": 67.8,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 67.8,
+          "end": 69.888
+        }
+      ]
+    },
+    {
+      "id": "c0006",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "available",
+      "phoneticFr": "e-VÉÏ-leu-beul",
+      "french": "disponible",
+      "ipa": "/əˈveɪ.lə.bəl/",
+      "example": "Is this option available?",
+      "exampleIpa": null,
+      "start": 69.888,
+      "end": 84.6,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 69.888,
+          "end": 71.976
+        },
+        {
+          "phase": "think",
+          "start": 71.976,
+          "end": 74.04
+        },
+        {
+          "phase": "french",
+          "start": 74.04,
+          "end": 76.128
+        },
+        {
+          "phase": "repeat",
+          "start": 76.128,
+          "end": 78.216,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 78.216,
+          "end": 80.304,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 80.304,
+          "end": 82.392,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 82.392,
+          "end": 84.6
+        }
+      ]
+    },
+    {
+      "id": "c0007",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "behaviour",
+      "phoneticFr": "bi-HÉÏ-vieu",
+      "french": "comportement",
+      "ipa": "/bɪˈheɪ.vjə(r)/",
+      "example": "His behaviour changed quickly.",
+      "exampleIpa": null,
+      "start": 84.6,
+      "end": 99.312,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 84.6,
+          "end": 86.688
+        },
+        {
+          "phase": "think",
+          "start": 86.688,
+          "end": 88.752
+        },
+        {
+          "phase": "french",
+          "start": 88.752,
+          "end": 90.84
+        },
+        {
+          "phase": "repeat",
+          "start": 90.84,
+          "end": 92.928,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 92.928,
+          "end": 95.016,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 95.016,
+          "end": 97.104,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 97.104,
+          "end": 99.312
+        }
+      ]
+    },
+    {
+      "id": "c0008",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "choice",
+      "phoneticFr": "TCHOÏSS",
+      "french": "choix",
+      "ipa": "/tʃɔɪs/",
+      "example": "You have another choice.",
+      "exampleIpa": null,
+      "start": 99.312,
+      "end": 113.904,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 99.312,
+          "end": 101.4
+        },
+        {
+          "phase": "think",
+          "start": 101.4,
+          "end": 103.464
+        },
+        {
+          "phase": "french",
+          "start": 103.464,
+          "end": 105.552
+        },
+        {
+          "phase": "repeat",
+          "start": 105.552,
+          "end": 107.64,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 107.64,
+          "end": 109.728,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 109.728,
+          "end": 111.816,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 111.816,
+          "end": 113.904
+        }
+      ]
+    },
+    {
+      "id": "c0009",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "consider",
+      "phoneticFr": "keun-SI-deu",
+      "french": "envisager / considérer",
+      "ipa": "/kənˈsɪd.ə(r)/",
+      "example": "Consider a different approach.",
+      "exampleIpa": null,
+      "start": 113.904,
+      "end": 124.752,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 113.904,
+          "end": 114.912
+        },
+        {
+          "phase": "think",
+          "start": 114.912,
+          "end": 116.976
+        },
+        {
+          "phase": "french",
+          "start": 116.976,
+          "end": 119.64
+        },
+        {
+          "phase": "repeat",
+          "start": 119.64,
+          "end": 120.648,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 120.648,
+          "end": 121.656,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 121.656,
+          "end": 122.664,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 122.664,
+          "end": 124.752
+        }
+      ]
+    },
+    {
+      "id": "c0010",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "develop",
+      "phoneticFr": "di-VÉ-leup",
+      "french": "développer",
+      "ipa": "/dɪˈvel.əp/",
+      "example": "I want to develop my English.",
+      "exampleIpa": null,
+      "start": 124.752,
+      "end": 139.56,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 124.752,
+          "end": 126.84
+        },
+        {
+          "phase": "think",
+          "start": 126.84,
+          "end": 128.904
+        },
+        {
+          "phase": "french",
+          "start": 128.904,
+          "end": 130.992
+        },
+        {
+          "phase": "repeat",
+          "start": 130.992,
+          "end": 133.08,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 133.08,
+          "end": 135.168,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 135.168,
+          "end": 137.256,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 137.256,
+          "end": 139.56
+        }
+      ]
+    },
+    {
+      "id": "c0011",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "effort",
+      "phoneticFr": "È-feurt",
+      "french": "effort",
+      "ipa": "/ˈef.ət/",
+      "example": "It takes a lot of effort.",
+      "exampleIpa": null,
+      "start": 139.56,
+      "end": 154.416,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 139.56,
+          "end": 141.648
+        },
+        {
+          "phase": "think",
+          "start": 141.648,
+          "end": 143.712
+        },
+        {
+          "phase": "french",
+          "start": 143.712,
+          "end": 145.8
+        },
+        {
+          "phase": "repeat",
+          "start": 145.8,
+          "end": 147.888,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 147.888,
+          "end": 149.976,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 149.976,
+          "end": 152.064,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 152.064,
+          "end": 154.416
+        }
+      ]
+    },
+    {
+      "id": "c0012",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "enough",
+      "phoneticFr": "i-NEUF",
+      "french": "assez",
+      "ipa": "/ɪˈnʌf/",
+      "example": "That's enough for today.",
+      "exampleIpa": null,
+      "start": 154.416,
+      "end": 169.008,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 154.416,
+          "end": 156.504
+        },
+        {
+          "phase": "think",
+          "start": 156.504,
+          "end": 158.568
+        },
+        {
+          "phase": "french",
+          "start": 158.568,
+          "end": 160.656
+        },
+        {
+          "phase": "repeat",
+          "start": 160.656,
+          "end": 162.744,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 162.744,
+          "end": 164.832,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 164.832,
+          "end": 166.92,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 166.92,
+          "end": 169.008
+        }
+      ]
+    },
+    {
+      "id": "c0013",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "eventually",
+      "phoneticFr": "i-VÈN-tchou-eu-li",
+      "french": "finalement / à terme",
+      "ipa": "/ɪˈven.tʃu.ə.li/",
+      "example": "You'll understand it eventually.",
+      "exampleIpa": null,
+      "start": 169.008,
+      "end": 184.224,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 169.008,
+          "end": 171.096
+        },
+        {
+          "phase": "think",
+          "start": 171.096,
+          "end": 173.16
+        },
+        {
+          "phase": "french",
+          "start": 173.16,
+          "end": 175.464
+        },
+        {
+          "phase": "repeat",
+          "start": 175.464,
+          "end": 177.552,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 177.552,
+          "end": 179.64,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 179.64,
+          "end": 181.728,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 181.728,
+          "end": 184.224
+        }
+      ]
+    },
+    {
+      "id": "c0014",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "expect",
+      "phoneticFr": "ik-SPÈKT",
+      "french": "s'attendre à",
+      "ipa": "/ɪkˈspekt/",
+      "example": "I didn't expect that result.",
+      "exampleIpa": null,
+      "start": 184.224,
+      "end": 199.008,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 184.224,
+          "end": 186.312
+        },
+        {
+          "phase": "think",
+          "start": 186.312,
+          "end": 188.376
+        },
+        {
+          "phase": "french",
+          "start": 188.376,
+          "end": 190.464
+        },
+        {
+          "phase": "repeat",
+          "start": 190.464,
+          "end": 192.552,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 192.552,
+          "end": 194.64,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 194.64,
+          "end": 196.728,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 196.728,
+          "end": 199.008
+        }
+      ]
+    },
+    {
+      "id": "c0015",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "experience",
+      "phoneticFr": "ik-SPIR-i-euns",
+      "french": "expérience",
+      "ipa": "/ɪkˈspɪə.ri.əns/",
+      "example": "It was a useful experience.",
+      "exampleIpa": null,
+      "start": 199.008,
+      "end": 213.696,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 199.008,
+          "end": 201.096
+        },
+        {
+          "phase": "think",
+          "start": 201.096,
+          "end": 203.16
+        },
+        {
+          "phase": "french",
+          "start": 203.16,
+          "end": 205.248
+        },
+        {
+          "phase": "repeat",
+          "start": 205.248,
+          "end": 207.336,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 207.336,
+          "end": 209.424,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 209.424,
+          "end": 211.512,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 211.512,
+          "end": 213.696
+        }
+      ]
+    },
+    {
+      "id": "c0016",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "familiar",
+      "phoneticFr": "feu-MIL-yeu",
+      "french": "familier",
+      "ipa": "/fəˈmɪl.i.ə(r)/",
+      "example": "That expression sounds familiar.",
+      "exampleIpa": null,
+      "start": 213.696,
+      "end": 224.064,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 213.696,
+          "end": 214.728
+        },
+        {
+          "phase": "think",
+          "start": 214.728,
+          "end": 216.792
+        },
+        {
+          "phase": "french",
+          "start": 216.792,
+          "end": 218.88
+        },
+        {
+          "phase": "repeat",
+          "start": 218.88,
+          "end": 219.912,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 219.912,
+          "end": 220.944,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 220.944,
+          "end": 221.976,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 221.976,
+          "end": 224.064
+        }
+      ]
+    },
+    {
+      "id": "c0017",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "improve",
+      "phoneticFr": "im-PROUV",
+      "french": "améliorer",
+      "ipa": "/ɪmˈpruːv/",
+      "example": "I want to improve my listening.",
+      "exampleIpa": null,
+      "start": 224.064,
+      "end": 238.872,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 224.064,
+          "end": 226.152
+        },
+        {
+          "phase": "think",
+          "start": 226.152,
+          "end": 228.216
+        },
+        {
+          "phase": "french",
+          "start": 228.216,
+          "end": 230.304
+        },
+        {
+          "phase": "repeat",
+          "start": 230.304,
+          "end": 232.392,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 232.392,
+          "end": 234.48,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 234.48,
+          "end": 236.568,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 236.568,
+          "end": 238.872
+        }
+      ]
+    },
+    {
+      "id": "c0018",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "increase",
+      "phoneticFr": "in-KRIISS",
+      "french": "augmenter",
+      "ipa": "/ɪnˈkriːs/",
+      "example": "We need to increase the pace.",
+      "exampleIpa": null,
+      "start": 238.872,
+      "end": 254.016,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 238.872,
+          "end": 240.96
+        },
+        {
+          "phase": "think",
+          "start": 240.96,
+          "end": 243.024
+        },
+        {
+          "phase": "french",
+          "start": 243.024,
+          "end": 245.112
+        },
+        {
+          "phase": "repeat",
+          "start": 245.112,
+          "end": 247.2,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 247.2,
+          "end": 249.288,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 249.288,
+          "end": 251.376,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 251.376,
+          "end": 254.016
+        }
+      ]
+    },
+    {
+      "id": "c0019",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "involve",
+      "phoneticFr": "in-VOLV",
+      "french": "impliquer",
+      "ipa": "/ɪnˈvɒlv/",
+      "example": "This job involves a lot of travel.",
+      "exampleIpa": null,
+      "start": 254.016,
+      "end": 268.92,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 254.016,
+          "end": 256.104
+        },
+        {
+          "phase": "think",
+          "start": 256.104,
+          "end": 258.168
+        },
+        {
+          "phase": "french",
+          "start": 258.168,
+          "end": 260.256
+        },
+        {
+          "phase": "repeat",
+          "start": 260.256,
+          "end": 262.344,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 262.344,
+          "end": 264.432,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 264.432,
+          "end": 266.52,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 266.52,
+          "end": 268.92
+        }
+      ]
+    },
+    {
+      "id": "c0020",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "issue",
+      "phoneticFr": "I-chou",
+      "french": "problème / sujet",
+      "ipa": "/ˈɪʃ.uː/",
+      "example": "There's an issue with the system.",
+      "exampleIpa": null,
+      "start": 268.92,
+      "end": 283.8,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 268.92,
+          "end": 271.008
+        },
+        {
+          "phase": "think",
+          "start": 271.008,
+          "end": 273.072
+        },
+        {
+          "phase": "french",
+          "start": 273.072,
+          "end": 275.16
+        },
+        {
+          "phase": "repeat",
+          "start": 275.16,
+          "end": 277.248,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 277.248,
+          "end": 279.336,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 279.336,
+          "end": 281.424,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 281.424,
+          "end": 283.8
+        }
+      ]
+    },
+    {
+      "id": "c0021",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "likely",
+      "phoneticFr": "LAÏK-li",
+      "french": "probable",
+      "ipa": "/ˈlaɪk.li/",
+      "example": "It's likely to happen again.",
+      "exampleIpa": null,
+      "start": 283.8,
+      "end": 298.392,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 283.8,
+          "end": 285.888
+        },
+        {
+          "phase": "think",
+          "start": 285.888,
+          "end": 287.952
+        },
+        {
+          "phase": "french",
+          "start": 287.952,
+          "end": 290.04
+        },
+        {
+          "phase": "repeat",
+          "start": 290.04,
+          "end": 292.128,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 292.128,
+          "end": 294.216,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 294.216,
+          "end": 296.304,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 296.304,
+          "end": 298.392
+        }
+      ]
+    },
+    {
+      "id": "c0022",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "manage",
+      "phoneticFr": "MA-nidj",
+      "french": "gérer / réussir à",
+      "ipa": "/ˈmæn.ɪdʒ/",
+      "example": "I managed to finish on time.",
+      "exampleIpa": null,
+      "start": 298.392,
+      "end": 313.296,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 298.392,
+          "end": 300.48
+        },
+        {
+          "phase": "think",
+          "start": 300.48,
+          "end": 302.544
+        },
+        {
+          "phase": "french",
+          "start": 302.544,
+          "end": 304.752
+        },
+        {
+          "phase": "repeat",
+          "start": 304.752,
+          "end": 306.84,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 306.84,
+          "end": 308.928,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 308.928,
+          "end": 311.016,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 311.016,
+          "end": 313.296
+        }
+      ]
+    },
+    {
+      "id": "c0023",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "mean",
+      "phoneticFr": "MIIN",
+      "french": "vouloir dire",
+      "ipa": "/miːn/",
+      "example": "What does that mean?",
+      "exampleIpa": null,
+      "start": 313.296,
+      "end": 322.8,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 313.296,
+          "end": 314.112
+        },
+        {
+          "phase": "think",
+          "start": 314.112,
+          "end": 316.176
+        },
+        {
+          "phase": "french",
+          "start": 316.176,
+          "end": 318.264
+        },
+        {
+          "phase": "repeat",
+          "start": 318.264,
+          "end": 319.08,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 319.08,
+          "end": 319.896,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 319.896,
+          "end": 320.712,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 320.712,
+          "end": 322.8
+        }
+      ]
+    },
+    {
+      "id": "c0024",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "notice",
+      "phoneticFr": "NO-tiss",
+      "french": "remarquer",
+      "ipa": "/ˈnəʊ.tɪs/",
+      "example": "Did you notice the difference?",
+      "exampleIpa": null,
+      "start": 322.8,
+      "end": 337.536,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 322.8,
+          "end": 324.888
+        },
+        {
+          "phase": "think",
+          "start": 324.888,
+          "end": 326.952
+        },
+        {
+          "phase": "french",
+          "start": 326.952,
+          "end": 329.04
+        },
+        {
+          "phase": "repeat",
+          "start": 329.04,
+          "end": 331.128,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 331.128,
+          "end": 333.216,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 333.216,
+          "end": 335.304,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 335.304,
+          "end": 337.536
+        }
+      ]
+    },
+    {
+      "id": "c0025",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "obvious",
+      "phoneticFr": "OB-vi-euss",
+      "french": "évident",
+      "ipa": "/ˈɒb.vi.əs/",
+      "example": "The answer isn't obvious.",
+      "exampleIpa": null,
+      "start": 337.536,
+      "end": 352.68,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 337.536,
+          "end": 339.624
+        },
+        {
+          "phase": "think",
+          "start": 339.624,
+          "end": 341.688
+        },
+        {
+          "phase": "french",
+          "start": 341.688,
+          "end": 343.776
+        },
+        {
+          "phase": "repeat",
+          "start": 343.776,
+          "end": 345.864,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 345.864,
+          "end": 347.952,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 347.952,
+          "end": 350.04,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 350.04,
+          "end": 352.68
+        }
+      ]
+    },
+    {
+      "id": "c0026",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "opportunity",
+      "phoneticFr": "o-peu-TIOU-ni-ti",
+      "french": "opportunité",
+      "ipa": "/ˌɒp.əˈtʃuː.nə.ti/",
+      "example": "It's a great opportunity.",
+      "exampleIpa": null,
+      "start": 352.68,
+      "end": 367.272,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 352.68,
+          "end": 354.768
+        },
+        {
+          "phase": "think",
+          "start": 354.768,
+          "end": 356.832
+        },
+        {
+          "phase": "french",
+          "start": 356.832,
+          "end": 358.92
+        },
+        {
+          "phase": "repeat",
+          "start": 358.92,
+          "end": 361.008,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 361.008,
+          "end": 363.096,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 363.096,
+          "end": 365.184,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 365.184,
+          "end": 367.272
+        }
+      ]
+    },
+    {
+      "id": "c0027",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "probably",
+      "phoneticFr": "PRO-beu-bli",
+      "french": "probablement",
+      "ipa": "/ˈprɒb.ə.bli/",
+      "example": "I'll probably go tomorrow.",
+      "exampleIpa": null,
+      "start": 367.272,
+      "end": 382.104,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 367.272,
+          "end": 369.36
+        },
+        {
+          "phase": "think",
+          "start": 369.36,
+          "end": 371.424
+        },
+        {
+          "phase": "french",
+          "start": 371.424,
+          "end": 373.512
+        },
+        {
+          "phase": "repeat",
+          "start": 373.512,
+          "end": 375.6,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 375.6,
+          "end": 377.688,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 377.688,
+          "end": 379.776,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 379.776,
+          "end": 382.104
+        }
+      ]
+    },
+    {
+      "id": "c0028",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "provide",
+      "phoneticFr": "preu-VAÏD",
+      "french": "fournir",
+      "ipa": "/prəˈvaɪd/",
+      "example": "They provide useful information.",
+      "exampleIpa": null,
+      "start": 382.104,
+      "end": 396.984,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 382.104,
+          "end": 384.192
+        },
+        {
+          "phase": "think",
+          "start": 384.192,
+          "end": 386.256
+        },
+        {
+          "phase": "french",
+          "start": 386.256,
+          "end": 388.344
+        },
+        {
+          "phase": "repeat",
+          "start": 388.344,
+          "end": 390.432,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 390.432,
+          "end": 392.52,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 392.52,
+          "end": 394.608,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 394.608,
+          "end": 396.984
+        }
+      ]
+    },
+    {
+      "id": "c0029",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "realize",
+      "phoneticFr": "RI-eu-laïz",
+      "french": "se rendre compte",
+      "ipa": "/ˈrɪə.laɪz/",
+      "example": "I didn't realize it was late.",
+      "exampleIpa": null,
+      "start": 396.984,
+      "end": 411.648,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 396.984,
+          "end": 399.072
+        },
+        {
+          "phase": "think",
+          "start": 399.072,
+          "end": 401.136
+        },
+        {
+          "phase": "french",
+          "start": 401.136,
+          "end": 403.296
+        },
+        {
+          "phase": "repeat",
+          "start": 403.296,
+          "end": 405.384,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 405.384,
+          "end": 407.472,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 407.472,
+          "end": 409.56,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 409.56,
+          "end": 411.648
+        }
+      ]
+    },
+    {
+      "id": "c0030",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "reason",
+      "phoneticFr": "RII-zeune",
+      "french": "raison",
+      "ipa": "/ˈriː.zən/",
+      "example": "What's the reason?",
+      "exampleIpa": null,
+      "start": 411.648,
+      "end": 420.312,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 411.648,
+          "end": 412.512
+        },
+        {
+          "phase": "think",
+          "start": 412.512,
+          "end": 414.576
+        },
+        {
+          "phase": "french",
+          "start": 414.576,
+          "end": 416.664
+        },
+        {
+          "phase": "repeat",
+          "start": 416.664,
+          "end": 417.528,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 417.528,
+          "end": 418.392,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 418.392,
+          "end": 419.256,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 419.256,
+          "end": 420.312
+        }
+      ]
+    },
+    {
+      "id": "c0031",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "require",
+      "phoneticFr": "ri-KWAÏ-eu",
+      "french": "nécessiter",
+      "ipa": "/rɪˈkwaɪə(r)/",
+      "example": "This task requires attention.",
+      "exampleIpa": null,
+      "start": 420.312,
+      "end": 435.288,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 420.312,
+          "end": 422.4
+        },
+        {
+          "phase": "think",
+          "start": 422.4,
+          "end": 424.464
+        },
+        {
+          "phase": "french",
+          "start": 424.464,
+          "end": 426.552
+        },
+        {
+          "phase": "repeat",
+          "start": 426.552,
+          "end": 428.64,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 428.64,
+          "end": 430.728,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 430.728,
+          "end": 432.816,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 432.816,
+          "end": 435.288
+        }
+      ]
+    },
+    {
+      "id": "c0032",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "responsible",
+      "phoneticFr": "ri-SPON-seu-beul",
+      "french": "responsable",
+      "ipa": "/rɪˈspɒn.sə.bəl/",
+      "example": "Who's responsible for this?",
+      "exampleIpa": null,
+      "start": 435.288,
+      "end": 450.408,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 435.288,
+          "end": 437.376
+        },
+        {
+          "phase": "think",
+          "start": 437.376,
+          "end": 439.44
+        },
+        {
+          "phase": "french",
+          "start": 439.44,
+          "end": 441.528
+        },
+        {
+          "phase": "repeat",
+          "start": 441.528,
+          "end": 443.616,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 443.616,
+          "end": 445.704,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 445.704,
+          "end": 447.792,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 447.792,
+          "end": 450.408
+        }
+      ]
+    },
+    {
+      "id": "c0033",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "result",
+      "phoneticFr": "ri-ZEULT",
+      "french": "résultat",
+      "ipa": "/rɪˈzʌlt/",
+      "example": "The result was better than expected.",
+      "exampleIpa": null,
+      "start": 450.408,
+      "end": 465.336,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 450.408,
+          "end": 452.496
+        },
+        {
+          "phase": "think",
+          "start": 452.496,
+          "end": 454.56
+        },
+        {
+          "phase": "french",
+          "start": 454.56,
+          "end": 456.648
+        },
+        {
+          "phase": "repeat",
+          "start": 456.648,
+          "end": 458.736,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 458.736,
+          "end": 460.824,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 460.824,
+          "end": 462.912,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 462.912,
+          "end": 465.336
+        }
+      ]
+    },
+    {
+      "id": "c0034",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "seem",
+      "phoneticFr": "SIIM",
+      "french": "sembler",
+      "ipa": "/siːm/",
+      "example": "You seem tired today.",
+      "exampleIpa": null,
+      "start": 465.336,
+      "end": 480.168,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 465.336,
+          "end": 467.424
+        },
+        {
+          "phase": "think",
+          "start": 467.424,
+          "end": 469.488
+        },
+        {
+          "phase": "french",
+          "start": 469.488,
+          "end": 471.576
+        },
+        {
+          "phase": "repeat",
+          "start": 471.576,
+          "end": 473.664,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 473.664,
+          "end": 475.752,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 475.752,
+          "end": 477.84,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 477.84,
+          "end": 480.168
+        }
+      ]
+    },
+    {
+      "id": "c0035",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "skill",
+      "phoneticFr": "SKIL",
+      "french": "compétence",
+      "ipa": "/skɪl/",
+      "example": "Listening is an important skill.",
+      "exampleIpa": null,
+      "start": 480.168,
+      "end": 494.976,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 480.168,
+          "end": 482.256
+        },
+        {
+          "phase": "think",
+          "start": 482.256,
+          "end": 484.32
+        },
+        {
+          "phase": "french",
+          "start": 484.32,
+          "end": 486.408
+        },
+        {
+          "phase": "repeat",
+          "start": 486.408,
+          "end": 488.496,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 488.496,
+          "end": 490.584,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 490.584,
+          "end": 492.672,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 492.672,
+          "end": 494.976
+        }
+      ]
+    },
+    {
+      "id": "c0036",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "solve",
+      "phoneticFr": "SOLV",
+      "french": "résoudre",
+      "ipa": "/sɒlv/",
+      "example": "We need to solve this problem.",
+      "exampleIpa": null,
+      "start": 494.976,
+      "end": 509.568,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 494.976,
+          "end": 497.064
+        },
+        {
+          "phase": "think",
+          "start": 497.064,
+          "end": 499.128
+        },
+        {
+          "phase": "french",
+          "start": 499.128,
+          "end": 501.216
+        },
+        {
+          "phase": "repeat",
+          "start": 501.216,
+          "end": 503.304,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 503.304,
+          "end": 505.392,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 505.392,
+          "end": 507.48,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 507.48,
+          "end": 509.568
+        }
+      ]
+    },
+    {
+      "id": "c0037",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "suggest",
+      "phoneticFr": "seu-DJÈST",
+      "french": "suggérer",
+      "ipa": "/səˈdʒest/",
+      "example": "What do you suggest?",
+      "exampleIpa": null,
+      "start": 509.568,
+      "end": 524.16,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 509.568,
+          "end": 511.656
+        },
+        {
+          "phase": "think",
+          "start": 511.656,
+          "end": 513.72
+        },
+        {
+          "phase": "french",
+          "start": 513.72,
+          "end": 515.808
+        },
+        {
+          "phase": "repeat",
+          "start": 515.808,
+          "end": 517.896,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 517.896,
+          "end": 519.984,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 519.984,
+          "end": 522.072,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 522.072,
+          "end": 524.16
+        }
+      ]
+    },
+    {
+      "id": "c0038",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "support",
+      "phoneticFr": "seu-PORT",
+      "french": "soutenir / support",
+      "ipa": "/səˈpɔːt/",
+      "example": "Thanks for your support.",
+      "exampleIpa": null,
+      "start": 524.16,
+      "end": 538.992,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 524.16,
+          "end": 526.248
+        },
+        {
+          "phase": "think",
+          "start": 526.248,
+          "end": 528.312
+        },
+        {
+          "phase": "french",
+          "start": 528.312,
+          "end": 530.64
+        },
+        {
+          "phase": "repeat",
+          "start": 530.64,
+          "end": 532.728,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 532.728,
+          "end": 534.816,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 534.816,
+          "end": 536.904,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 536.904,
+          "end": 538.992
+        }
+      ]
+    },
+    {
+      "id": "c0039",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "worth",
+      "phoneticFr": "WEURTH",
+      "french": "valoir / qui vaut",
+      "ipa": "/wɜːθ/",
+      "example": "It's worth trying.",
+      "exampleIpa": null,
+      "start": 538.992,
+      "end": 553.776,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 538.992,
+          "end": 541.08
+        },
+        {
+          "phase": "think",
+          "start": 541.08,
+          "end": 543.144
+        },
+        {
+          "phase": "french",
+          "start": 543.144,
+          "end": 545.376
+        },
+        {
+          "phase": "repeat",
+          "start": 545.376,
+          "end": 547.464,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 547.464,
+          "end": 549.552,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 549.552,
+          "end": 551.64,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 551.64,
+          "end": 553.776
+        }
+      ]
+    },
+    {
+      "id": "c0040",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "weird",
+      "phoneticFr": "WI-EURD",
+      "french": "bizarre",
+      "ipa": "/wɪəd/",
+      "example": "That sounds a bit weird.",
+      "exampleIpa": null,
+      "start": 553.776,
+      "end": 563.76,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 553.776,
+          "end": 554.712
+        },
+        {
+          "phase": "think",
+          "start": 554.712,
+          "end": 556.776
+        },
+        {
+          "phase": "french",
+          "start": 556.776,
+          "end": 558.864
+        },
+        {
+          "phase": "repeat",
+          "start": 558.864,
+          "end": 559.8,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 559.8,
+          "end": 560.736,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 560.736,
+          "end": 561.672,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 561.672,
+          "end": 563.76
+        }
+      ]
+    },
+    {
+      "id": "c0041",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "I mean",
+      "phoneticFr": "aï MIIN",
+      "french": "je veux dire",
+      "ipa": "/aɪ miːn/",
+      "example": "I mean, it could work.",
+      "exampleIpa": null,
+      "start": 563.76,
+      "end": 578.808,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 563.76,
+          "end": 565.848
+        },
+        {
+          "phase": "think",
+          "start": 565.848,
+          "end": 567.912
+        },
+        {
+          "phase": "french",
+          "start": 567.912,
+          "end": 570.0
+        },
+        {
+          "phase": "repeat",
+          "start": 570.0,
+          "end": 572.088,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 572.088,
+          "end": 574.176,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 574.176,
+          "end": 576.264,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 576.264,
+          "end": 578.808
+        }
+      ]
+    },
+    {
+      "id": "c0042",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "I guess",
+      "phoneticFr": "aï GUÈSS",
+      "french": "je suppose",
+      "ipa": "/aɪ ɡes/",
+      "example": "I guess we'll find out.",
+      "exampleIpa": null,
+      "start": 578.808,
+      "end": 593.4,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 578.808,
+          "end": 580.896
+        },
+        {
+          "phase": "think",
+          "start": 580.896,
+          "end": 582.96
+        },
+        {
+          "phase": "french",
+          "start": 582.96,
+          "end": 585.048
+        },
+        {
+          "phase": "repeat",
+          "start": 585.048,
+          "end": 587.136,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 587.136,
+          "end": 589.224,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 589.224,
+          "end": 591.312,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 591.312,
+          "end": 593.4
+        }
+      ]
+    },
+    {
+      "id": "c0043",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "I feel like",
+      "phoneticFr": "aï FIIL laïk",
+      "french": "j'ai l'impression / j'ai envie",
+      "ipa": "/aɪ fiːl laɪk/",
+      "example": "I feel like staying home.",
+      "exampleIpa": null,
+      "start": 593.4,
+      "end": 608.592,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 593.4,
+          "end": 595.488
+        },
+        {
+          "phase": "think",
+          "start": 595.488,
+          "end": 597.552
+        },
+        {
+          "phase": "french",
+          "start": 597.552,
+          "end": 600.24
+        },
+        {
+          "phase": "repeat",
+          "start": 600.24,
+          "end": 602.328,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 602.328,
+          "end": 604.416,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 604.416,
+          "end": 606.504,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 606.504,
+          "end": 608.592
+        }
+      ]
+    },
+    {
+      "id": "c0044",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "to be honest",
+      "phoneticFr": "teu bi ON-ist",
+      "french": "pour être honnête",
+      "ipa": "/tə bi ˈɒn.ɪst/",
+      "example": "To be honest, I'm tired.",
+      "exampleIpa": null,
+      "start": 608.592,
+      "end": 623.184,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 608.592,
+          "end": 610.68
+        },
+        {
+          "phase": "think",
+          "start": 610.68,
+          "end": 612.744
+        },
+        {
+          "phase": "french",
+          "start": 612.744,
+          "end": 614.832
+        },
+        {
+          "phase": "repeat",
+          "start": 614.832,
+          "end": 616.92,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 616.92,
+          "end": 619.008,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 619.008,
+          "end": 621.096,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 621.096,
+          "end": 623.184
+        }
+      ]
+    },
+    {
+      "id": "c0045",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "to be fair",
+      "phoneticFr": "teu bi FÈR",
+      "french": "pour être juste",
+      "ipa": "/tə bi feə(r)/",
+      "example": "To be fair, he tried.",
+      "exampleIpa": null,
+      "start": 623.184,
+      "end": 637.776,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 623.184,
+          "end": 625.272
+        },
+        {
+          "phase": "think",
+          "start": 625.272,
+          "end": 627.336
+        },
+        {
+          "phase": "french",
+          "start": 627.336,
+          "end": 629.424
+        },
+        {
+          "phase": "repeat",
+          "start": 629.424,
+          "end": 631.512,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 631.512,
+          "end": 633.6,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 633.6,
+          "end": 635.688,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 635.688,
+          "end": 637.776
+        }
+      ]
+    },
+    {
+      "id": "c0046",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "pretty much",
+      "phoneticFr": "PRI-ti meutch",
+      "french": "à peu près / quasiment",
+      "ipa": "/ˈprɪt.i mʌtʃ/",
+      "example": "That's pretty much it.",
+      "exampleIpa": null,
+      "start": 637.776,
+      "end": 652.488,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 637.776,
+          "end": 639.864
+        },
+        {
+          "phase": "think",
+          "start": 639.864,
+          "end": 641.928
+        },
+        {
+          "phase": "french",
+          "start": 641.928,
+          "end": 644.064
+        },
+        {
+          "phase": "repeat",
+          "start": 644.064,
+          "end": 646.152,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 646.152,
+          "end": 648.24,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 648.24,
+          "end": 650.328,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 650.328,
+          "end": 652.488
+        }
+      ]
+    },
+    {
+      "id": "c0047",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "kind of",
+      "phoneticFr": "KAÏND-euv",
+      "french": "un peu / en quelque sorte",
+      "ipa": "/ˈkaɪnd əv/",
+      "example": "It's kind of strange.",
+      "exampleIpa": null,
+      "start": 652.488,
+      "end": 667.464,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 652.488,
+          "end": 654.576
+        },
+        {
+          "phase": "think",
+          "start": 654.576,
+          "end": 656.64
+        },
+        {
+          "phase": "french",
+          "start": 656.64,
+          "end": 659.112
+        },
+        {
+          "phase": "repeat",
+          "start": 659.112,
+          "end": 661.2,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 661.2,
+          "end": 663.288,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 663.288,
+          "end": 665.376,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 665.376,
+          "end": 667.464
+        }
+      ]
+    },
+    {
+      "id": "c0048",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "at least",
+      "phoneticFr": "at LIIST",
+      "french": "au moins",
+      "ipa": "/ət liːst/",
+      "example": "At least we tried.",
+      "exampleIpa": null,
+      "start": 667.464,
+      "end": 682.128,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 667.464,
+          "end": 669.552
+        },
+        {
+          "phase": "think",
+          "start": 669.552,
+          "end": 671.616
+        },
+        {
+          "phase": "french",
+          "start": 671.616,
+          "end": 673.704
+        },
+        {
+          "phase": "repeat",
+          "start": 673.704,
+          "end": 675.792,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 675.792,
+          "end": 677.88,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 677.88,
+          "end": 679.968,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 679.968,
+          "end": 682.128
+        }
+      ]
+    },
+    {
+      "id": "c0049",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "as long as",
+      "phoneticFr": "az LONG az",
+      "french": "tant que / du moment que",
+      "ipa": "/əz lɒŋ əz/",
+      "example": "It's fine as long as it works.",
+      "exampleIpa": null,
+      "start": 682.128,
+      "end": 697.056,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 682.128,
+          "end": 684.216
+        },
+        {
+          "phase": "think",
+          "start": 684.216,
+          "end": 686.28
+        },
+        {
+          "phase": "french",
+          "start": 686.28,
+          "end": 688.608
+        },
+        {
+          "phase": "repeat",
+          "start": 688.608,
+          "end": 690.696,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 690.696,
+          "end": 692.784,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 692.784,
+          "end": 694.872,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 694.872,
+          "end": 697.056
+        }
+      ]
+    },
+    {
+      "id": "c0050",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "even though",
+      "phoneticFr": "II-veune DHO",
+      "french": "même si",
+      "ipa": "/ˈiː.vən ðəʊ/",
+      "example": "I went even though I was tired.",
+      "exampleIpa": null,
+      "start": 697.056,
+      "end": 711.672,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 697.056,
+          "end": 699.144
+        },
+        {
+          "phase": "think",
+          "start": 699.144,
+          "end": 701.208
+        },
+        {
+          "phase": "french",
+          "start": 701.208,
+          "end": 703.296
+        },
+        {
+          "phase": "repeat",
+          "start": 703.296,
+          "end": 705.384,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 705.384,
+          "end": 707.472,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 707.472,
+          "end": 709.56,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 709.56,
+          "end": 711.672
+        }
+      ]
+    },
+    {
+      "id": "c0051",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "the thing is",
+      "phoneticFr": "DHEU THING iz",
+      "french": "le truc, c'est que",
+      "ipa": "/ðə θɪŋ ɪz/",
+      "example": "The thing is, we need more time.",
+      "exampleIpa": null,
+      "start": 711.672,
+      "end": 726.576,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 711.672,
+          "end": 713.76
+        },
+        {
+          "phase": "think",
+          "start": 713.76,
+          "end": 715.824
+        },
+        {
+          "phase": "french",
+          "start": 715.824,
+          "end": 718.224
+        },
+        {
+          "phase": "repeat",
+          "start": 718.224,
+          "end": 720.312,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 720.312,
+          "end": 722.4,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 722.4,
+          "end": 724.488,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 724.488,
+          "end": 726.576
+        }
+      ]
+    },
+    {
+      "id": "c0052",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "it depends",
+      "phoneticFr": "it di-PÈNDZ",
+      "french": "ça dépend",
+      "ipa": "/ɪt dɪˈpendz/",
+      "example": "It depends on the situation.",
+      "exampleIpa": null,
+      "start": 726.576,
+      "end": 741.336,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 726.576,
+          "end": 728.664
+        },
+        {
+          "phase": "think",
+          "start": 728.664,
+          "end": 730.728
+        },
+        {
+          "phase": "french",
+          "start": 730.728,
+          "end": 732.816
+        },
+        {
+          "phase": "repeat",
+          "start": 732.816,
+          "end": 734.904,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 734.904,
+          "end": 736.992,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 736.992,
+          "end": 739.08,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 739.08,
+          "end": 741.336
+        }
+      ]
+    },
+    {
+      "id": "c0053",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "for some reason",
+      "phoneticFr": "feu seum RII-zeune",
+      "french": "pour une raison quelconque",
+      "ipa": "/fə sʌm ˈriː.zən/",
+      "example": "For some reason, it stopped working.",
+      "exampleIpa": null,
+      "start": 741.336,
+      "end": 757.992,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 741.336,
+          "end": 743.568
+        },
+        {
+          "phase": "think",
+          "start": 743.568,
+          "end": 745.632
+        },
+        {
+          "phase": "french",
+          "start": 745.632,
+          "end": 748.056
+        },
+        {
+          "phase": "repeat",
+          "start": 748.056,
+          "end": 750.288,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 750.288,
+          "end": 752.52,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 752.52,
+          "end": 754.752,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 754.752,
+          "end": 757.992
+        }
+      ]
+    },
+    {
+      "id": "c0054",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "I'm about to",
+      "phoneticFr": "aïm e-BAOUT teu",
+      "french": "je suis sur le point de",
+      "ipa": "/aɪm əˈbaʊt tə/",
+      "example": "I'm about to leave.",
+      "exampleIpa": null,
+      "start": 757.992,
+      "end": 772.704,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 757.992,
+          "end": 760.08
+        },
+        {
+          "phase": "think",
+          "start": 760.08,
+          "end": 762.144
+        },
+        {
+          "phase": "french",
+          "start": 762.144,
+          "end": 764.352
+        },
+        {
+          "phase": "repeat",
+          "start": 764.352,
+          "end": 766.44,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 766.44,
+          "end": 768.528,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 768.528,
+          "end": 770.616,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 770.616,
+          "end": 772.704
+        }
+      ]
+    },
+    {
+      "id": "c0055",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "I'm supposed to",
+      "phoneticFr": "aïm seu-POZD teu",
+      "french": "je suis censé",
+      "ipa": "/aɪm səˈpəʊzd tə/",
+      "example": "I'm supposed to call him.",
+      "exampleIpa": null,
+      "start": 772.704,
+      "end": 787.464,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 772.704,
+          "end": 774.792
+        },
+        {
+          "phase": "think",
+          "start": 774.792,
+          "end": 776.856
+        },
+        {
+          "phase": "french",
+          "start": 776.856,
+          "end": 778.944
+        },
+        {
+          "phase": "repeat",
+          "start": 778.944,
+          "end": 781.032,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 781.032,
+          "end": 783.12,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 783.12,
+          "end": 785.208,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 785.208,
+          "end": 787.464
+        }
+      ]
+    },
+    {
+      "id": "c0056",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "I used to",
+      "phoneticFr": "aï YOUST teu",
+      "french": "avant, j'avais l'habitude de",
+      "ipa": "/aɪ juːst tə/",
+      "example": "I used to work there.",
+      "exampleIpa": null,
+      "start": 787.464,
+      "end": 802.68,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 787.464,
+          "end": 789.552
+        },
+        {
+          "phase": "think",
+          "start": 789.552,
+          "end": 791.616
+        },
+        {
+          "phase": "french",
+          "start": 791.616,
+          "end": 794.328
+        },
+        {
+          "phase": "repeat",
+          "start": 794.328,
+          "end": 796.416,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 796.416,
+          "end": 798.504,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 798.504,
+          "end": 800.592,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 800.592,
+          "end": 802.68
+        }
+      ]
+    },
+    {
+      "id": "c0057",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "I'm used to",
+      "phoneticFr": "aïm YOUST teu",
+      "french": "je suis habitué à",
+      "ipa": "/aɪm juːst tə/",
+      "example": "I'm used to the traffic now.",
+      "exampleIpa": null,
+      "start": 802.68,
+      "end": 817.512,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 802.68,
+          "end": 804.768
+        },
+        {
+          "phase": "think",
+          "start": 804.768,
+          "end": 806.832
+        },
+        {
+          "phase": "french",
+          "start": 806.832,
+          "end": 809.16
+        },
+        {
+          "phase": "repeat",
+          "start": 809.16,
+          "end": 811.248,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 811.248,
+          "end": 813.336,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 813.336,
+          "end": 815.424,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 815.424,
+          "end": 817.512
+        }
+      ]
+    },
+    {
+      "id": "c0058",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "I might as well",
+      "phoneticFr": "aï maït az WÈL",
+      "french": "autant",
+      "ipa": "/aɪ maɪt əz wel/",
+      "example": "I might as well go now.",
+      "exampleIpa": null,
+      "start": 817.512,
+      "end": 832.104,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 817.512,
+          "end": 819.6
+        },
+        {
+          "phase": "think",
+          "start": 819.6,
+          "end": 821.664
+        },
+        {
+          "phase": "french",
+          "start": 821.664,
+          "end": 823.752
+        },
+        {
+          "phase": "repeat",
+          "start": 823.752,
+          "end": 825.84,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 825.84,
+          "end": 827.928,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 827.928,
+          "end": 830.016,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 830.016,
+          "end": 832.104
+        }
+      ]
+    },
+    {
+      "id": "c0059",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "that makes sense",
+      "phoneticFr": "DHAT MÉÏKS sens",
+      "french": "ça se tient / c'est logique",
+      "ipa": "/ðæt meɪks sens/",
+      "example": "That makes sense to me.",
+      "exampleIpa": null,
+      "start": 832.104,
+      "end": 847.176,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 832.104,
+          "end": 834.192
+        },
+        {
+          "phase": "think",
+          "start": 834.192,
+          "end": 836.256
+        },
+        {
+          "phase": "french",
+          "start": 836.256,
+          "end": 838.824
+        },
+        {
+          "phase": "repeat",
+          "start": 838.824,
+          "end": 840.912,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 840.912,
+          "end": 843.0,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 843.0,
+          "end": 845.088,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 845.088,
+          "end": 847.176
+        }
+      ]
+    },
+    {
+      "id": "c0060",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "no way",
+      "phoneticFr": "NO WÉÏ",
+      "french": "pas possible / jamais",
+      "ipa": "/nəʊ weɪ/",
+      "example": "No way, that's incredible.",
+      "exampleIpa": null,
+      "start": 847.176,
+      "end": 862.464,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 847.176,
+          "end": 849.264
+        },
+        {
+          "phase": "think",
+          "start": 849.264,
+          "end": 851.328
+        },
+        {
+          "phase": "french",
+          "start": 851.328,
+          "end": 853.488
+        },
+        {
+          "phase": "repeat",
+          "start": 853.488,
+          "end": 855.576,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 855.576,
+          "end": 857.664,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 857.664,
+          "end": 859.752,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 859.752,
+          "end": 862.464
+        }
+      ]
+    },
+    {
+      "id": "c0061",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "fair enough",
+      "phoneticFr": "FÈR i-NEUF",
+      "french": "d'accord / c'est juste",
+      "ipa": "/feər ɪˈnʌf/",
+      "example": "Fair enough, I understand.",
+      "exampleIpa": null,
+      "start": 862.464,
+      "end": 877.464,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 862.464,
+          "end": 864.552
+        },
+        {
+          "phase": "think",
+          "start": 864.552,
+          "end": 866.616
+        },
+        {
+          "phase": "french",
+          "start": 866.616,
+          "end": 868.992
+        },
+        {
+          "phase": "repeat",
+          "start": 868.992,
+          "end": 871.08,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 871.08,
+          "end": 873.168,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 873.168,
+          "end": 875.256,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 875.256,
+          "end": 877.464
+        }
+      ]
+    },
+    {
+      "id": "c0062",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "my bad",
+      "phoneticFr": "maï BAD",
+      "french": "ma faute / désolé",
+      "ipa": "/maɪ bæd/",
+      "example": "My bad, I forgot.",
+      "exampleIpa": null,
+      "start": 877.464,
+      "end": 892.488,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 877.464,
+          "end": 879.552
+        },
+        {
+          "phase": "think",
+          "start": 879.552,
+          "end": 881.616
+        },
+        {
+          "phase": "french",
+          "start": 881.616,
+          "end": 883.776
+        },
+        {
+          "phase": "repeat",
+          "start": 883.776,
+          "end": 885.864,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 885.864,
+          "end": 887.952,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 887.952,
+          "end": 890.04,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 890.04,
+          "end": 892.488
+        }
+      ]
+    },
+    {
+      "id": "c0063",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "I'm down",
+      "phoneticFr": "aïm DAOUN",
+      "french": "je suis partant",
+      "ipa": "/aɪm daʊn/",
+      "example": "I'm down for that.",
+      "exampleIpa": null,
+      "start": 892.488,
+      "end": 907.08,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 892.488,
+          "end": 894.576
+        },
+        {
+          "phase": "think",
+          "start": 894.576,
+          "end": 896.64
+        },
+        {
+          "phase": "french",
+          "start": 896.64,
+          "end": 898.728
+        },
+        {
+          "phase": "repeat",
+          "start": 898.728,
+          "end": 900.816,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 900.816,
+          "end": 902.904,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 902.904,
+          "end": 904.992,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 904.992,
+          "end": 907.08
+        }
+      ]
+    },
+    {
+      "id": "c0064",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "I'm all set",
+      "phoneticFr": "aïm OL SÈT",
+      "french": "c'est bon pour moi / je suis prêt",
+      "ipa": "/aɪm ɔːl set/",
+      "example": "Thanks, I'm all set.",
+      "exampleIpa": null,
+      "start": 907.08,
+      "end": 922.152,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 907.08,
+          "end": 909.168
+        },
+        {
+          "phase": "think",
+          "start": 909.168,
+          "end": 911.232
+        },
+        {
+          "phase": "french",
+          "start": 911.232,
+          "end": 913.8
+        },
+        {
+          "phase": "repeat",
+          "start": 913.8,
+          "end": 915.888,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 915.888,
+          "end": 917.976,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 917.976,
+          "end": 920.064,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 920.064,
+          "end": 922.152
+        }
+      ]
+    },
+    {
+      "id": "c0065",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "figure out",
+      "phoneticFr": "FI-gueu-raout",
+      "french": "comprendre / trouver une solution",
+      "ipa": "/ˈfɪɡ.ə(r) aʊt/",
+      "example": "We'll figure it out.",
+      "exampleIpa": null,
+      "start": 922.152,
+      "end": 933.312,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 922.152,
+          "end": 923.184
+        },
+        {
+          "phase": "think",
+          "start": 923.184,
+          "end": 925.248
+        },
+        {
+          "phase": "french",
+          "start": 925.248,
+          "end": 928.128
+        },
+        {
+          "phase": "repeat",
+          "start": 928.128,
+          "end": 929.16,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 929.16,
+          "end": 930.192,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 930.192,
+          "end": 931.224,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 931.224,
+          "end": 933.312
+        }
+      ]
+    },
+    {
+      "id": "c0066",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "find out",
+      "phoneticFr": "FAÏND aout",
+      "french": "découvrir",
+      "ipa": "/faɪnd aʊt/",
+      "example": "I need to find out what happened.",
+      "exampleIpa": null,
+      "start": 933.312,
+      "end": 948.192,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 933.312,
+          "end": 935.4
+        },
+        {
+          "phase": "think",
+          "start": 935.4,
+          "end": 937.464
+        },
+        {
+          "phase": "french",
+          "start": 937.464,
+          "end": 939.552
+        },
+        {
+          "phase": "repeat",
+          "start": 939.552,
+          "end": 941.64,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 941.64,
+          "end": 943.728,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 943.728,
+          "end": 945.816,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 945.816,
+          "end": 948.192
+        }
+      ]
+    },
+    {
+      "id": "c0067",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "work out",
+      "phoneticFr": "WEURK aout",
+      "french": "fonctionner / résoudre",
+      "ipa": "/wɜːk aʊt/",
+      "example": "I'm sure it'll work out.",
+      "exampleIpa": null,
+      "start": 948.192,
+      "end": 963.528,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 948.192,
+          "end": 950.28
+        },
+        {
+          "phase": "think",
+          "start": 950.28,
+          "end": 952.344
+        },
+        {
+          "phase": "french",
+          "start": 952.344,
+          "end": 954.84
+        },
+        {
+          "phase": "repeat",
+          "start": 954.84,
+          "end": 956.928,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 956.928,
+          "end": 959.016,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 959.016,
+          "end": 961.104,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 961.104,
+          "end": 963.528
+        }
+      ]
+    },
+    {
+      "id": "c0068",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "end up",
+      "phoneticFr": "ÈND eup",
+      "french": "finir par",
+      "ipa": "/end ʌp/",
+      "example": "We ended up staying late.",
+      "exampleIpa": null,
+      "start": 963.528,
+      "end": 973.992,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 963.528,
+          "end": 964.584
+        },
+        {
+          "phase": "think",
+          "start": 964.584,
+          "end": 966.648
+        },
+        {
+          "phase": "french",
+          "start": 966.648,
+          "end": 968.736
+        },
+        {
+          "phase": "repeat",
+          "start": 968.736,
+          "end": 969.792,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 969.792,
+          "end": 970.848,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 970.848,
+          "end": 971.904,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 971.904,
+          "end": 973.992
+        }
+      ]
+    },
+    {
+      "id": "c0069",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "turn out",
+      "phoneticFr": "TEURN aout",
+      "french": "s'avérer",
+      "ipa": "/tɜːn aʊt/",
+      "example": "It turned out to be easy.",
+      "exampleIpa": null,
+      "start": 973.992,
+      "end": 988.776,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 973.992,
+          "end": 976.08
+        },
+        {
+          "phase": "think",
+          "start": 976.08,
+          "end": 978.144
+        },
+        {
+          "phase": "french",
+          "start": 978.144,
+          "end": 980.232
+        },
+        {
+          "phase": "repeat",
+          "start": 980.232,
+          "end": 982.32,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 982.32,
+          "end": 984.408,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 984.408,
+          "end": 986.496,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 986.496,
+          "end": 988.776
+        }
+      ]
+    },
+    {
+      "id": "c0070",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "set up",
+      "phoneticFr": "SÈT eup",
+      "french": "installer / mettre en place",
+      "ipa": "/set ʌp/",
+      "example": "Let's set up the app.",
+      "exampleIpa": null,
+      "start": 988.776,
+      "end": 1003.848,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 988.776,
+          "end": 990.864
+        },
+        {
+          "phase": "think",
+          "start": 990.864,
+          "end": 992.928
+        },
+        {
+          "phase": "french",
+          "start": 992.928,
+          "end": 995.496
+        },
+        {
+          "phase": "repeat",
+          "start": 995.496,
+          "end": 997.584,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 997.584,
+          "end": 999.672,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 999.672,
+          "end": 1001.76,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1001.76,
+          "end": 1003.848
+        }
+      ]
+    },
+    {
+      "id": "c0071",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "pick up",
+      "phoneticFr": "PIK eup",
+      "french": "récupérer / apprendre",
+      "ipa": "/pɪk ʌp/",
+      "example": "I'll pick you up at six.",
+      "exampleIpa": null,
+      "start": 1003.848,
+      "end": 1018.92,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1003.848,
+          "end": 1005.936
+        },
+        {
+          "phase": "think",
+          "start": 1005.936,
+          "end": 1008.0
+        },
+        {
+          "phase": "french",
+          "start": 1008.0,
+          "end": 1010.568
+        },
+        {
+          "phase": "repeat",
+          "start": 1010.568,
+          "end": 1012.656,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1012.656,
+          "end": 1014.744,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1014.744,
+          "end": 1016.832,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1016.832,
+          "end": 1018.92
+        }
+      ]
+    },
+    {
+      "id": "c0072",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "catch up",
+      "phoneticFr": "KATCH eup",
+      "french": "rattraper",
+      "ipa": "/kætʃ ʌp/",
+      "example": "I need to catch up.",
+      "exampleIpa": null,
+      "start": 1018.92,
+      "end": 1028.904,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1018.92,
+          "end": 1019.856
+        },
+        {
+          "phase": "think",
+          "start": 1019.856,
+          "end": 1021.92
+        },
+        {
+          "phase": "french",
+          "start": 1021.92,
+          "end": 1024.008
+        },
+        {
+          "phase": "repeat",
+          "start": 1024.008,
+          "end": 1024.944,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1024.944,
+          "end": 1025.88,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1025.88,
+          "end": 1026.816,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1026.816,
+          "end": 1028.904
+        }
+      ]
+    },
+    {
+      "id": "c0073",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "keep up with",
+      "phoneticFr": "KIIP eup WIDH",
+      "french": "suivre le rythme de",
+      "ipa": "/kiːp ʌp wɪð/",
+      "example": "It's hard to keep up with everything.",
+      "exampleIpa": null,
+      "start": 1028.904,
+      "end": 1043.88,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1028.904,
+          "end": 1030.992
+        },
+        {
+          "phase": "think",
+          "start": 1030.992,
+          "end": 1033.056
+        },
+        {
+          "phase": "french",
+          "start": 1033.056,
+          "end": 1035.288
+        },
+        {
+          "phase": "repeat",
+          "start": 1035.288,
+          "end": 1037.376,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1037.376,
+          "end": 1039.464,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1039.464,
+          "end": 1041.552,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1041.552,
+          "end": 1043.88
+        }
+      ]
+    },
+    {
+      "id": "c0074",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "deal with",
+      "phoneticFr": "DIIL WIDH",
+      "french": "gérer",
+      "ipa": "/diːl wɪð/",
+      "example": "I'll deal with it tomorrow.",
+      "exampleIpa": null,
+      "start": 1043.88,
+      "end": 1058.832,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1043.88,
+          "end": 1045.968
+        },
+        {
+          "phase": "think",
+          "start": 1045.968,
+          "end": 1048.032
+        },
+        {
+          "phase": "french",
+          "start": 1048.032,
+          "end": 1050.12
+        },
+        {
+          "phase": "repeat",
+          "start": 1050.12,
+          "end": 1052.208,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1052.208,
+          "end": 1054.296,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1054.296,
+          "end": 1056.384,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1056.384,
+          "end": 1058.832
+        }
+      ]
+    },
+    {
+      "id": "c0075",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "sort out",
+      "phoneticFr": "SORT aout",
+      "french": "régler / organiser",
+      "ipa": "/sɔːt aʊt/",
+      "example": "We need to sort this out.",
+      "exampleIpa": null,
+      "start": 1058.832,
+      "end": 1073.736,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1058.832,
+          "end": 1060.92
+        },
+        {
+          "phase": "think",
+          "start": 1060.92,
+          "end": 1062.984
+        },
+        {
+          "phase": "french",
+          "start": 1062.984,
+          "end": 1065.384
+        },
+        {
+          "phase": "repeat",
+          "start": 1065.384,
+          "end": 1067.472,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1067.472,
+          "end": 1069.56,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1069.56,
+          "end": 1071.648,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1071.648,
+          "end": 1073.736
+        }
+      ]
+    },
+    {
+      "id": "c0076",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "look into",
+      "phoneticFr": "LOUK in-tou",
+      "french": "examiner",
+      "ipa": "/lʊk ˈɪn.tuː/",
+      "example": "I'll look into the issue.",
+      "exampleIpa": null,
+      "start": 1073.736,
+      "end": 1088.352,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1073.736,
+          "end": 1075.824
+        },
+        {
+          "phase": "think",
+          "start": 1075.824,
+          "end": 1077.888
+        },
+        {
+          "phase": "french",
+          "start": 1077.888,
+          "end": 1079.976
+        },
+        {
+          "phase": "repeat",
+          "start": 1079.976,
+          "end": 1082.064,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1082.064,
+          "end": 1084.152,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1084.152,
+          "end": 1086.24,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1086.24,
+          "end": 1088.352
+        }
+      ]
+    },
+    {
+      "id": "c0077",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "look forward to",
+      "phoneticFr": "LOUK FOR-weurd teu",
+      "french": "avoir hâte de",
+      "ipa": "/lʊk ˈfɔː.wəd tə/",
+      "example": "I look forward to seeing you.",
+      "exampleIpa": null,
+      "start": 1088.352,
+      "end": 1102.944,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1088.352,
+          "end": 1090.44
+        },
+        {
+          "phase": "think",
+          "start": 1090.44,
+          "end": 1092.504
+        },
+        {
+          "phase": "french",
+          "start": 1092.504,
+          "end": 1094.592
+        },
+        {
+          "phase": "repeat",
+          "start": 1094.592,
+          "end": 1096.68,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1096.68,
+          "end": 1098.768,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1098.768,
+          "end": 1100.856,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1100.856,
+          "end": 1102.944
+        }
+      ]
+    },
+    {
+      "id": "c0078",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "come up with",
+      "phoneticFr": "KEUM eup WIDH",
+      "french": "trouver / inventer",
+      "ipa": "/kʌm ʌp wɪð/",
+      "example": "We need to come up with a plan.",
+      "exampleIpa": null,
+      "start": 1102.944,
+      "end": 1117.536,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1102.944,
+          "end": 1105.032
+        },
+        {
+          "phase": "think",
+          "start": 1105.032,
+          "end": 1107.096
+        },
+        {
+          "phase": "french",
+          "start": 1107.096,
+          "end": 1109.184
+        },
+        {
+          "phase": "repeat",
+          "start": 1109.184,
+          "end": 1111.272,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1111.272,
+          "end": 1113.36,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1113.36,
+          "end": 1115.448,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1115.448,
+          "end": 1117.536
+        }
+      ]
+    },
+    {
+      "id": "c0079",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "go through",
+      "phoneticFr": "GO THROU",
+      "french": "parcourir / traverser",
+      "ipa": "/ɡəʊ θruː/",
+      "example": "Let's go through the details.",
+      "exampleIpa": null,
+      "start": 1117.536,
+      "end": 1128.144,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1117.536,
+          "end": 1118.52
+        },
+        {
+          "phase": "think",
+          "start": 1118.52,
+          "end": 1120.584
+        },
+        {
+          "phase": "french",
+          "start": 1120.584,
+          "end": 1123.104
+        },
+        {
+          "phase": "repeat",
+          "start": 1123.104,
+          "end": 1124.088,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1124.088,
+          "end": 1125.072,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1125.072,
+          "end": 1126.056,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1126.056,
+          "end": 1128.144
+        }
+      ]
+    },
+    {
+      "id": "c0080",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "check out",
+      "phoneticFr": "TCHÈK aout",
+      "french": "regarder / vérifier",
+      "ipa": "/tʃek aʊt/",
+      "example": "Check out this new feature.",
+      "exampleIpa": null,
+      "start": 1128.144,
+      "end": 1142.976,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1128.144,
+          "end": 1130.232
+        },
+        {
+          "phase": "think",
+          "start": 1130.232,
+          "end": 1132.296
+        },
+        {
+          "phase": "french",
+          "start": 1132.296,
+          "end": 1134.576
+        },
+        {
+          "phase": "repeat",
+          "start": 1134.576,
+          "end": 1136.664,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1136.664,
+          "end": 1138.752,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1138.752,
+          "end": 1140.84,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1140.84,
+          "end": 1142.976
+        }
+      ]
+    },
+    {
+      "id": "c0081",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "show up",
+      "phoneticFr": "CHO eup",
+      "french": "se présenter / apparaître",
+      "ipa": "/ʃəʊ ʌp/",
+      "example": "He didn't show up.",
+      "exampleIpa": null,
+      "start": 1142.976,
+      "end": 1158.144,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1142.976,
+          "end": 1145.064
+        },
+        {
+          "phase": "think",
+          "start": 1145.064,
+          "end": 1147.128
+        },
+        {
+          "phase": "french",
+          "start": 1147.128,
+          "end": 1149.792
+        },
+        {
+          "phase": "repeat",
+          "start": 1149.792,
+          "end": 1151.88,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1151.88,
+          "end": 1153.968,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1153.968,
+          "end": 1156.056,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1156.056,
+          "end": 1158.144
+        }
+      ]
+    },
+    {
+      "id": "c0082",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "move on",
+      "phoneticFr": "MOUV on",
+      "french": "passer à autre chose",
+      "ipa": "/muːv ɒn/",
+      "example": "Let's move on to the next one.",
+      "exampleIpa": null,
+      "start": 1158.144,
+      "end": 1172.88,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1158.144,
+          "end": 1160.232
+        },
+        {
+          "phase": "think",
+          "start": 1160.232,
+          "end": 1162.296
+        },
+        {
+          "phase": "french",
+          "start": 1162.296,
+          "end": 1164.528
+        },
+        {
+          "phase": "repeat",
+          "start": 1164.528,
+          "end": 1166.616,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1166.616,
+          "end": 1168.704,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1168.704,
+          "end": 1170.792,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1170.792,
+          "end": 1172.88
+        }
+      ]
+    },
+    {
+      "id": "c0083",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "bring up",
+      "phoneticFr": "BRING eup",
+      "french": "évoquer",
+      "ipa": "/brɪŋ ʌp/",
+      "example": "She brought up an interesting point.",
+      "exampleIpa": null,
+      "start": 1172.88,
+      "end": 1188.192,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1172.88,
+          "end": 1174.968
+        },
+        {
+          "phase": "think",
+          "start": 1174.968,
+          "end": 1177.032
+        },
+        {
+          "phase": "french",
+          "start": 1177.032,
+          "end": 1179.12
+        },
+        {
+          "phase": "repeat",
+          "start": 1179.12,
+          "end": 1181.208,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1181.208,
+          "end": 1183.296,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1183.296,
+          "end": 1185.384,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1185.384,
+          "end": 1188.192
+        }
+      ]
+    },
+    {
+      "id": "c0084",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "run into",
+      "phoneticFr": "REUN in-tou",
+      "french": "tomber sur / rencontrer par hasard",
+      "ipa": "/rʌn ˈɪn.tuː/",
+      "example": "I ran into an old friend.",
+      "exampleIpa": null,
+      "start": 1188.192,
+      "end": 1203.696,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1188.192,
+          "end": 1190.28
+        },
+        {
+          "phase": "think",
+          "start": 1190.28,
+          "end": 1192.344
+        },
+        {
+          "phase": "french",
+          "start": 1192.344,
+          "end": 1195.2
+        },
+        {
+          "phase": "repeat",
+          "start": 1195.2,
+          "end": 1197.288,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1197.288,
+          "end": 1199.376,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1199.376,
+          "end": 1201.464,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1201.464,
+          "end": 1203.696
+        }
+      ]
+    },
+    {
+      "id": "c0085",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "reckon",
+      "phoneticFr": "RÈ-keune",
+      "french": "penser / estimer",
+      "ipa": "/ˈrek.ən/",
+      "example": "I reckon it'll be fine, mate.",
+      "exampleIpa": null,
+      "start": 1203.696,
+      "end": 1219.248,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1203.696,
+          "end": 1205.784
+        },
+        {
+          "phase": "think",
+          "start": 1205.784,
+          "end": 1207.848
+        },
+        {
+          "phase": "french",
+          "start": 1207.848,
+          "end": 1210.104
+        },
+        {
+          "phase": "repeat",
+          "start": 1210.104,
+          "end": 1212.192,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1212.192,
+          "end": 1214.28,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1214.28,
+          "end": 1216.368,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1216.368,
+          "end": 1219.248
+        }
+      ]
+    },
+    {
+      "id": "c0086",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "mate",
+      "phoneticFr": "MÉÏT",
+      "french": "pote / mec",
+      "ipa": "/meɪt/",
+      "example": "How are you going, mate?",
+      "exampleIpa": null,
+      "start": 1219.248,
+      "end": 1229.616,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1219.248,
+          "end": 1220.28
+        },
+        {
+          "phase": "think",
+          "start": 1220.28,
+          "end": 1222.344
+        },
+        {
+          "phase": "french",
+          "start": 1222.344,
+          "end": 1224.432
+        },
+        {
+          "phase": "repeat",
+          "start": 1224.432,
+          "end": 1225.464,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1225.464,
+          "end": 1226.496,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1226.496,
+          "end": 1227.528,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1227.528,
+          "end": 1229.616
+        }
+      ]
+    },
+    {
+      "id": "c0087",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "keen",
+      "phoneticFr": "KIIN",
+      "french": "partant / motivé",
+      "ipa": "/kiːn/",
+      "example": "I'm keen to give it a go.",
+      "exampleIpa": null,
+      "start": 1229.616,
+      "end": 1244.592,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1229.616,
+          "end": 1231.704
+        },
+        {
+          "phase": "think",
+          "start": 1231.704,
+          "end": 1233.768
+        },
+        {
+          "phase": "french",
+          "start": 1233.768,
+          "end": 1236.0
+        },
+        {
+          "phase": "repeat",
+          "start": 1236.0,
+          "end": 1238.088,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1238.088,
+          "end": 1240.176,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1240.176,
+          "end": 1242.264,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1242.264,
+          "end": 1244.592
+        }
+      ]
+    },
+    {
+      "id": "c0088",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "heaps",
+      "phoneticFr": "HIIPS",
+      "french": "beaucoup",
+      "ipa": "/hiːps/",
+      "example": "Thanks heaps for your help.",
+      "exampleIpa": null,
+      "start": 1244.592,
+      "end": 1259.184,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1244.592,
+          "end": 1246.68
+        },
+        {
+          "phase": "think",
+          "start": 1246.68,
+          "end": 1248.744
+        },
+        {
+          "phase": "french",
+          "start": 1248.744,
+          "end": 1250.832
+        },
+        {
+          "phase": "repeat",
+          "start": 1250.832,
+          "end": 1252.92,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1252.92,
+          "end": 1255.008,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1255.008,
+          "end": 1257.096,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1257.096,
+          "end": 1259.184
+        }
+      ]
+    },
+    {
+      "id": "c0089",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "arvo",
+      "phoneticFr": "AR-vo",
+      "french": "après-midi",
+      "ipa": "/ˈɑː.vəʊ/",
+      "example": "I'll see you this arvo.",
+      "exampleIpa": null,
+      "start": 1259.184,
+      "end": 1274.04,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1259.184,
+          "end": 1261.272
+        },
+        {
+          "phase": "think",
+          "start": 1261.272,
+          "end": 1263.336
+        },
+        {
+          "phase": "french",
+          "start": 1263.336,
+          "end": 1265.424
+        },
+        {
+          "phase": "repeat",
+          "start": 1265.424,
+          "end": 1267.512,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1267.512,
+          "end": 1269.6,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1269.6,
+          "end": 1271.688,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1271.688,
+          "end": 1274.04
+        }
+      ]
+    },
+    {
+      "id": "c0090",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "brekkie",
+      "phoneticFr": "BRÈ-ki",
+      "french": "petit-déjeuner",
+      "ipa": "/ˈbrek.i/",
+      "example": "Let's grab brekkie first.",
+      "exampleIpa": null,
+      "start": 1274.04,
+      "end": 1288.632,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1274.04,
+          "end": 1276.128
+        },
+        {
+          "phase": "think",
+          "start": 1276.128,
+          "end": 1278.192
+        },
+        {
+          "phase": "french",
+          "start": 1278.192,
+          "end": 1280.28
+        },
+        {
+          "phase": "repeat",
+          "start": 1280.28,
+          "end": 1282.368,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1282.368,
+          "end": 1284.456,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1284.456,
+          "end": 1286.544,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1286.544,
+          "end": 1288.632
+        }
+      ]
+    },
+    {
+      "id": "c0091",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "servo",
+      "phoneticFr": "SEUR-vo",
+      "french": "station-service",
+      "ipa": "/ˈsɜː.vəʊ/",
+      "example": "I'll stop at the servo.",
+      "exampleIpa": null,
+      "start": 1288.632,
+      "end": 1303.488,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1288.632,
+          "end": 1290.72
+        },
+        {
+          "phase": "think",
+          "start": 1290.72,
+          "end": 1292.784
+        },
+        {
+          "phase": "french",
+          "start": 1292.784,
+          "end": 1294.92
+        },
+        {
+          "phase": "repeat",
+          "start": 1294.92,
+          "end": 1297.008,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1297.008,
+          "end": 1299.096,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1299.096,
+          "end": 1301.184,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1301.184,
+          "end": 1303.488
+        }
+      ]
+    },
+    {
+      "id": "c0092",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "tradie",
+      "phoneticFr": "TRÉÏ-di",
+      "french": "artisan / ouvrier qualifié",
+      "ipa": "/ˈtreɪ.di/",
+      "example": "He's a tradie from Sydney.",
+      "exampleIpa": null,
+      "start": 1303.488,
+      "end": 1318.608,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1303.488,
+          "end": 1305.576
+        },
+        {
+          "phase": "think",
+          "start": 1305.576,
+          "end": 1307.64
+        },
+        {
+          "phase": "french",
+          "start": 1307.64,
+          "end": 1310.256
+        },
+        {
+          "phase": "repeat",
+          "start": 1310.256,
+          "end": 1312.344,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1312.344,
+          "end": 1314.432,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1314.432,
+          "end": 1316.52,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1316.52,
+          "end": 1318.608
+        }
+      ]
+    },
+    {
+      "id": "c0093",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "sunnies",
+      "phoneticFr": "SEU-niz",
+      "french": "lunettes de soleil",
+      "ipa": "/ˈsʌn.iz/",
+      "example": "Don't forget your sunnies.",
+      "exampleIpa": null,
+      "start": 1318.608,
+      "end": 1333.728,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1318.608,
+          "end": 1320.696
+        },
+        {
+          "phase": "think",
+          "start": 1320.696,
+          "end": 1322.76
+        },
+        {
+          "phase": "french",
+          "start": 1322.76,
+          "end": 1325.064
+        },
+        {
+          "phase": "repeat",
+          "start": 1325.064,
+          "end": 1327.152,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1327.152,
+          "end": 1329.24,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1329.24,
+          "end": 1331.328,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1331.328,
+          "end": 1333.728
+        }
+      ]
+    },
+    {
+      "id": "c0094",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "dodgy",
+      "phoneticFr": "DO-dji",
+      "french": "louche / peu fiable",
+      "ipa": "/ˈdɒdʒ.i/",
+      "example": "That website looks dodgy.",
+      "exampleIpa": null,
+      "start": 1333.728,
+      "end": 1344.096,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1333.728,
+          "end": 1334.76
+        },
+        {
+          "phase": "think",
+          "start": 1334.76,
+          "end": 1336.824
+        },
+        {
+          "phase": "french",
+          "start": 1336.824,
+          "end": 1338.912
+        },
+        {
+          "phase": "repeat",
+          "start": 1338.912,
+          "end": 1339.944,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1339.944,
+          "end": 1340.976,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1340.976,
+          "end": 1342.008,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1342.008,
+          "end": 1344.096
+        }
+      ]
+    },
+    {
+      "id": "c0095",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "flat out",
+      "phoneticFr": "FLAT aout",
+      "french": "très occupé",
+      "ipa": "/flæt aʊt/",
+      "example": "I've been flat out all week.",
+      "exampleIpa": null,
+      "start": 1344.096,
+      "end": 1359.192,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1344.096,
+          "end": 1346.184
+        },
+        {
+          "phase": "think",
+          "start": 1346.184,
+          "end": 1348.248
+        },
+        {
+          "phase": "french",
+          "start": 1348.248,
+          "end": 1350.336
+        },
+        {
+          "phase": "repeat",
+          "start": 1350.336,
+          "end": 1352.424,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1352.424,
+          "end": 1354.512,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1354.512,
+          "end": 1356.6,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1356.6,
+          "end": 1359.192
+        }
+      ]
+    },
+    {
+      "id": "c0096",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "give it a go",
+      "phoneticFr": "GUIV it e GO",
+      "french": "essayer",
+      "ipa": "/ɡɪv ɪt ə ɡəʊ/",
+      "example": "Just give it a go.",
+      "exampleIpa": null,
+      "start": 1359.192,
+      "end": 1373.784,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1359.192,
+          "end": 1361.28
+        },
+        {
+          "phase": "think",
+          "start": 1361.28,
+          "end": 1363.344
+        },
+        {
+          "phase": "french",
+          "start": 1363.344,
+          "end": 1365.432
+        },
+        {
+          "phase": "repeat",
+          "start": 1365.432,
+          "end": 1367.52,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1367.52,
+          "end": 1369.608,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1369.608,
+          "end": 1371.696,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1371.696,
+          "end": 1373.784
+        }
+      ]
+    },
+    {
+      "id": "c0097",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "no worries",
+      "phoneticFr": "NO WEU-riz",
+      "french": "pas de souci",
+      "ipa": "/nəʊ ˈwʌr.iz/",
+      "example": "No worries, mate.",
+      "exampleIpa": null,
+      "start": 1373.784,
+      "end": 1388.64,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1373.784,
+          "end": 1375.872
+        },
+        {
+          "phase": "think",
+          "start": 1375.872,
+          "end": 1377.936
+        },
+        {
+          "phase": "french",
+          "start": 1377.936,
+          "end": 1380.024
+        },
+        {
+          "phase": "repeat",
+          "start": 1380.024,
+          "end": 1382.112,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1382.112,
+          "end": 1384.2,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1384.2,
+          "end": 1386.288,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1386.288,
+          "end": 1388.64
+        }
+      ]
+    },
+    {
+      "id": "c0098",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "too easy",
+      "phoneticFr": "TOU II-zi",
+      "french": "facile / pas de souci",
+      "ipa": "/tuː ˈiː.zi/",
+      "example": "Too easy, I'll do it now.",
+      "exampleIpa": null,
+      "start": 1388.64,
+      "end": 1403.688,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1388.64,
+          "end": 1390.728
+        },
+        {
+          "phase": "think",
+          "start": 1390.728,
+          "end": 1392.792
+        },
+        {
+          "phase": "french",
+          "start": 1392.792,
+          "end": 1395.12
+        },
+        {
+          "phase": "repeat",
+          "start": 1395.12,
+          "end": 1397.208,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1397.208,
+          "end": 1399.296,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1399.296,
+          "end": 1401.384,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1401.384,
+          "end": 1403.688
+        }
+      ]
+    },
+    {
+      "id": "c0099",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "lineup",
+      "phoneticFr": "LAÏN-eup",
+      "french": "composition",
+      "ipa": "/ˈlaɪn.ʌp/",
+      "example": "The lineup looks strong tonight.",
+      "exampleIpa": null,
+      "start": 1403.688,
+      "end": 1418.328,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1403.688,
+          "end": 1405.776
+        },
+        {
+          "phase": "think",
+          "start": 1405.776,
+          "end": 1407.84
+        },
+        {
+          "phase": "french",
+          "start": 1407.84,
+          "end": 1409.928
+        },
+        {
+          "phase": "repeat",
+          "start": 1409.928,
+          "end": 1412.016,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1412.016,
+          "end": 1414.104,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1414.104,
+          "end": 1416.192,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1416.192,
+          "end": 1418.328
+        }
+      ]
+    },
+    {
+      "id": "c0100",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "squad",
+      "phoneticFr": "SKWOD",
+      "french": "effectif / équipe",
+      "ipa": "/skwɒd/",
+      "example": "The squad is ready.",
+      "exampleIpa": null,
+      "start": 1418.328,
+      "end": 1428.456,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1418.328,
+          "end": 1419.288
+        },
+        {
+          "phase": "think",
+          "start": 1419.288,
+          "end": 1421.352
+        },
+        {
+          "phase": "french",
+          "start": 1421.352,
+          "end": 1423.488
+        },
+        {
+          "phase": "repeat",
+          "start": 1423.488,
+          "end": 1424.448,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1424.448,
+          "end": 1425.408,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1425.408,
+          "end": 1426.368,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1426.368,
+          "end": 1428.456
+        }
+      ]
+    },
+    {
+      "id": "c0101",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "bench",
+      "phoneticFr": "BÈNTCH",
+      "french": "banc",
+      "ipa": "/bentʃ/",
+      "example": "He started on the bench.",
+      "exampleIpa": null,
+      "start": 1428.456,
+      "end": 1443.048,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1428.456,
+          "end": 1430.544
+        },
+        {
+          "phase": "think",
+          "start": 1430.544,
+          "end": 1432.608
+        },
+        {
+          "phase": "french",
+          "start": 1432.608,
+          "end": 1434.696
+        },
+        {
+          "phase": "repeat",
+          "start": 1434.696,
+          "end": 1436.784,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1436.784,
+          "end": 1438.872,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1438.872,
+          "end": 1440.96,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1440.96,
+          "end": 1443.048
+        }
+      ]
+    },
+    {
+      "id": "c0102",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "concede",
+      "phoneticFr": "keun-SIID",
+      "french": "encaisser",
+      "ipa": "/kənˈsiːd/",
+      "example": "They conceded too early.",
+      "exampleIpa": null,
+      "start": 1443.048,
+      "end": 1458.192,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1443.048,
+          "end": 1445.136
+        },
+        {
+          "phase": "think",
+          "start": 1445.136,
+          "end": 1447.2
+        },
+        {
+          "phase": "french",
+          "start": 1447.2,
+          "end": 1449.288
+        },
+        {
+          "phase": "repeat",
+          "start": 1449.288,
+          "end": 1451.376,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1451.376,
+          "end": 1453.464,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1453.464,
+          "end": 1455.552,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1455.552,
+          "end": 1458.192
+        }
+      ]
+    },
+    {
+      "id": "c0103",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "equalise",
+      "phoneticFr": "II-kweu-laïz",
+      "french": "égaliser",
+      "ipa": "/ˈiː.kwə.laɪz/",
+      "example": "They equalised in the second half.",
+      "exampleIpa": null,
+      "start": 1458.192,
+      "end": 1473.0,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1458.192,
+          "end": 1460.28
+        },
+        {
+          "phase": "think",
+          "start": 1460.28,
+          "end": 1462.344
+        },
+        {
+          "phase": "french",
+          "start": 1462.344,
+          "end": 1464.432
+        },
+        {
+          "phase": "repeat",
+          "start": 1464.432,
+          "end": 1466.52,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1466.52,
+          "end": 1468.608,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1468.608,
+          "end": 1470.696,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1470.696,
+          "end": 1473.0
+        }
+      ]
+    },
+    {
+      "id": "c0104",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "clinical",
+      "phoneticFr": "KLI-ni-keul",
+      "french": "efficace devant le but",
+      "ipa": "/ˈklɪn.ɪ.kəl/",
+      "example": "They were clinical in front of goal.",
+      "exampleIpa": null,
+      "start": 1473.0,
+      "end": 1488.984,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1473.0,
+          "end": 1475.256
+        },
+        {
+          "phase": "think",
+          "start": 1475.256,
+          "end": 1477.32
+        },
+        {
+          "phase": "french",
+          "start": 1477.32,
+          "end": 1479.528
+        },
+        {
+          "phase": "repeat",
+          "start": 1479.528,
+          "end": 1481.784,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1481.784,
+          "end": 1484.04,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1484.04,
+          "end": 1486.296,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1486.296,
+          "end": 1488.984
+        }
+      ]
+    },
+    {
+      "id": "c0105",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "overrated",
+      "phoneticFr": "o-veur-RÉÏ-tid",
+      "french": "surcoté",
+      "ipa": "/ˌəʊ.vəˈreɪ.tɪd/",
+      "example": "Some fans think he's overrated.",
+      "exampleIpa": null,
+      "start": 1488.984,
+      "end": 1503.816,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1488.984,
+          "end": 1491.072
+        },
+        {
+          "phase": "think",
+          "start": 1491.072,
+          "end": 1493.136
+        },
+        {
+          "phase": "french",
+          "start": 1493.136,
+          "end": 1495.224
+        },
+        {
+          "phase": "repeat",
+          "start": 1495.224,
+          "end": 1497.312,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1497.312,
+          "end": 1499.4,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1499.4,
+          "end": 1501.488,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1501.488,
+          "end": 1503.816
+        }
+      ]
+    },
+    {
+      "id": "c0106",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "underrated",
+      "phoneticFr": "eun-deur-RÉÏ-tid",
+      "french": "sous-coté",
+      "ipa": "/ˌʌn.dəˈreɪ.tɪd/",
+      "example": "That player is underrated.",
+      "exampleIpa": null,
+      "start": 1503.816,
+      "end": 1518.408,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1503.816,
+          "end": 1505.904
+        },
+        {
+          "phase": "think",
+          "start": 1505.904,
+          "end": 1507.968
+        },
+        {
+          "phase": "french",
+          "start": 1507.968,
+          "end": 1510.056
+        },
+        {
+          "phase": "repeat",
+          "start": 1510.056,
+          "end": 1512.144,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1512.144,
+          "end": 1514.232,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1514.232,
+          "end": 1516.32,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1516.32,
+          "end": 1518.408
+        }
+      ]
+    },
+    {
+      "id": "c0107",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "cooked",
+      "phoneticFr": "KOUKT",
+      "french": "fini / dépassé (slang)",
+      "ipa": "/kʊkt/",
+      "example": "They looked completely cooked.",
+      "exampleIpa": null,
+      "start": 1518.408,
+      "end": 1528.824,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1518.408,
+          "end": 1519.224
+        },
+        {
+          "phase": "think",
+          "start": 1519.224,
+          "end": 1521.288
+        },
+        {
+          "phase": "french",
+          "start": 1521.288,
+          "end": 1524.288
+        },
+        {
+          "phase": "repeat",
+          "start": 1524.288,
+          "end": 1525.104,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1525.104,
+          "end": 1525.92,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1525.92,
+          "end": 1526.736,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1526.736,
+          "end": 1528.824
+        }
+      ]
+    },
+    {
+      "id": "c0108",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "that's wild",
+      "phoneticFr": "DHATS WAÏLD",
+      "french": "c'est dingue",
+      "ipa": "/ðæts waɪld/",
+      "example": "That's wild, I didn't expect it.",
+      "exampleIpa": null,
+      "start": 1528.824,
+      "end": 1544.16,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1528.824,
+          "end": 1530.912
+        },
+        {
+          "phase": "think",
+          "start": 1530.912,
+          "end": 1532.976
+        },
+        {
+          "phase": "french",
+          "start": 1532.976,
+          "end": 1535.064
+        },
+        {
+          "phase": "repeat",
+          "start": 1535.064,
+          "end": 1537.152,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1537.152,
+          "end": 1539.24,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1539.24,
+          "end": 1541.328,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1541.328,
+          "end": 1544.16
+        }
+      ]
+    },
+    {
+      "id": "c0109",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "low-key",
+      "phoneticFr": "LO-KII",
+      "french": "discrètement / un peu",
+      "ipa": "/ˌləʊˈkiː/",
+      "example": "I'm low-key excited about it.",
+      "exampleIpa": null,
+      "start": 1544.16,
+      "end": 1559.544,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1544.16,
+          "end": 1546.248
+        },
+        {
+          "phase": "think",
+          "start": 1546.248,
+          "end": 1548.312
+        },
+        {
+          "phase": "french",
+          "start": 1548.312,
+          "end": 1550.544
+        },
+        {
+          "phase": "repeat",
+          "start": 1550.544,
+          "end": 1552.632,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1552.632,
+          "end": 1554.72,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1554.72,
+          "end": 1556.808,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1556.808,
+          "end": 1559.544
+        }
+      ]
+    },
+    {
+      "id": "c0110",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "ngl",
+      "phoneticFr": "ène-dji-ÈL",
+      "french": "franchement / je ne vais pas mentir",
+      "ipa": "/ˌen.dʒiːˈel/",
+      "example": "NGL, that was impressive.",
+      "exampleIpa": null,
+      "start": 1559.544,
+      "end": 1575.048,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1559.544,
+          "end": 1561.632
+        },
+        {
+          "phase": "think",
+          "start": 1561.632,
+          "end": 1563.696
+        },
+        {
+          "phase": "french",
+          "start": 1563.696,
+          "end": 1566.408
+        },
+        {
+          "phase": "repeat",
+          "start": 1566.408,
+          "end": 1568.496,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1568.496,
+          "end": 1570.584,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1570.584,
+          "end": 1572.672,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1572.672,
+          "end": 1575.048
+        }
+      ]
+    },
+    {
+      "id": "c0111",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "deadline",
+      "phoneticFr": "DÈD-laïn",
+      "french": "échéance",
+      "ipa": "/ˈded.laɪn/",
+      "example": "The deadline is Friday.",
+      "exampleIpa": null,
+      "start": 1575.048,
+      "end": 1589.976,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1575.048,
+          "end": 1577.136
+        },
+        {
+          "phase": "think",
+          "start": 1577.136,
+          "end": 1579.2
+        },
+        {
+          "phase": "french",
+          "start": 1579.2,
+          "end": 1581.288
+        },
+        {
+          "phase": "repeat",
+          "start": 1581.288,
+          "end": 1583.376,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1583.376,
+          "end": 1585.464,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1585.464,
+          "end": 1587.552,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1587.552,
+          "end": 1589.976
+        }
+      ]
+    },
+    {
+      "id": "c0112",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "workload",
+      "phoneticFr": "WEURK-lod",
+      "french": "charge de travail",
+      "ipa": "/ˈwɜːk.ləʊd/",
+      "example": "My workload is heavy this week.",
+      "exampleIpa": null,
+      "start": 1589.976,
+      "end": 1604.856,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1589.976,
+          "end": 1592.064
+        },
+        {
+          "phase": "think",
+          "start": 1592.064,
+          "end": 1594.128
+        },
+        {
+          "phase": "french",
+          "start": 1594.128,
+          "end": 1596.264
+        },
+        {
+          "phase": "repeat",
+          "start": 1596.264,
+          "end": 1598.352,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1598.352,
+          "end": 1600.44,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1600.44,
+          "end": 1602.528,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1602.528,
+          "end": 1604.856
+        }
+      ]
+    },
+    {
+      "id": "c0113",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "feedback",
+      "phoneticFr": "FIID-bak",
+      "french": "retour / avis",
+      "ipa": "/ˈfiːd.bæk/",
+      "example": "Thanks for the feedback.",
+      "exampleIpa": null,
+      "start": 1604.856,
+      "end": 1619.448,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1604.856,
+          "end": 1606.944
+        },
+        {
+          "phase": "think",
+          "start": 1606.944,
+          "end": 1609.008
+        },
+        {
+          "phase": "french",
+          "start": 1609.008,
+          "end": 1611.096
+        },
+        {
+          "phase": "repeat",
+          "start": 1611.096,
+          "end": 1613.184,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1613.184,
+          "end": 1615.272,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1615.272,
+          "end": 1617.36,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1617.36,
+          "end": 1619.448
+        }
+      ]
+    },
+    {
+      "id": "c0114",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "deploy",
+      "phoneticFr": "di-PLOÏ",
+      "french": "déployer",
+      "ipa": "/dɪˈplɔɪ/",
+      "example": "We'll deploy the update tonight.",
+      "exampleIpa": null,
+      "start": 1619.448,
+      "end": 1629.24,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1619.448,
+          "end": 1620.336
+        },
+        {
+          "phase": "think",
+          "start": 1620.336,
+          "end": 1622.4
+        },
+        {
+          "phase": "french",
+          "start": 1622.4,
+          "end": 1624.488
+        },
+        {
+          "phase": "repeat",
+          "start": 1624.488,
+          "end": 1625.376,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1625.376,
+          "end": 1626.264,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1626.264,
+          "end": 1627.152,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1627.152,
+          "end": 1629.24
+        }
+      ]
+    },
+    {
+      "id": "c0115",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "release",
+      "phoneticFr": "ri-LIISS",
+      "french": "version / publier",
+      "ipa": "/rɪˈliːs/",
+      "example": "The release is ready.",
+      "exampleIpa": null,
+      "start": 1629.24,
+      "end": 1644.048,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1629.24,
+          "end": 1631.328
+        },
+        {
+          "phase": "think",
+          "start": 1631.328,
+          "end": 1633.392
+        },
+        {
+          "phase": "french",
+          "start": 1633.392,
+          "end": 1635.696
+        },
+        {
+          "phase": "repeat",
+          "start": 1635.696,
+          "end": 1637.784,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1637.784,
+          "end": 1639.872,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1639.872,
+          "end": 1641.96,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1641.96,
+          "end": 1644.048
+        }
+      ]
+    },
+    {
+      "id": "c0116",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "bug",
+      "phoneticFr": "BEUG",
+      "french": "bug / anomalie",
+      "ipa": "/bʌɡ/",
+      "example": "We found a bug in production.",
+      "exampleIpa": null,
+      "start": 1644.048,
+      "end": 1659.216,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1644.048,
+          "end": 1646.136
+        },
+        {
+          "phase": "think",
+          "start": 1646.136,
+          "end": 1648.2
+        },
+        {
+          "phase": "french",
+          "start": 1648.2,
+          "end": 1650.288
+        },
+        {
+          "phase": "repeat",
+          "start": 1650.288,
+          "end": 1652.376,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1652.376,
+          "end": 1654.464,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1654.464,
+          "end": 1656.552,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1656.552,
+          "end": 1659.216
+        }
+      ]
+    },
+    {
+      "id": "c0117",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "troubleshoot",
+      "phoneticFr": "TREU-beul-chout",
+      "french": "diagnostiquer / dépanner",
+      "ipa": "/ˈtrʌb.əl.ʃuːt/",
+      "example": "Let's troubleshoot the issue.",
+      "exampleIpa": null,
+      "start": 1659.216,
+      "end": 1674.456,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1659.216,
+          "end": 1661.304
+        },
+        {
+          "phase": "think",
+          "start": 1661.304,
+          "end": 1663.368
+        },
+        {
+          "phase": "french",
+          "start": 1663.368,
+          "end": 1666.104
+        },
+        {
+          "phase": "repeat",
+          "start": 1666.104,
+          "end": 1668.192,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1668.192,
+          "end": 1670.28,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1670.28,
+          "end": 1672.368,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1672.368,
+          "end": 1674.456
+        }
+      ]
+    },
+    {
+      "id": "c0118",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "on-call",
+      "phoneticFr": "ON-KOL",
+      "french": "astreinte",
+      "ipa": "/ˌɒnˈkɔːl/",
+      "example": "I'm on-call this weekend.",
+      "exampleIpa": null,
+      "start": 1674.456,
+      "end": 1689.336,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1674.456,
+          "end": 1676.544
+        },
+        {
+          "phase": "think",
+          "start": 1676.544,
+          "end": 1678.608
+        },
+        {
+          "phase": "french",
+          "start": 1678.608,
+          "end": 1680.696
+        },
+        {
+          "phase": "repeat",
+          "start": 1680.696,
+          "end": 1682.784,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1682.784,
+          "end": 1684.872,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1684.872,
+          "end": 1686.96,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1686.96,
+          "end": 1689.336
+        }
+      ]
+    },
+    {
+      "id": "c0119",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "workflow",
+      "phoneticFr": "WEURK-flo",
+      "french": "flux de travail",
+      "ipa": "/ˈwɜːk.fləʊ/",
+      "example": "This workflow saves time.",
+      "exampleIpa": null,
+      "start": 1689.336,
+      "end": 1703.952,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1689.336,
+          "end": 1691.424
+        },
+        {
+          "phase": "think",
+          "start": 1691.424,
+          "end": 1693.488
+        },
+        {
+          "phase": "french",
+          "start": 1693.488,
+          "end": 1695.576
+        },
+        {
+          "phase": "repeat",
+          "start": 1695.576,
+          "end": 1697.664,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1697.664,
+          "end": 1699.752,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1699.752,
+          "end": 1701.84,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1701.84,
+          "end": 1703.952
+        }
+      ]
+    },
+    {
+      "id": "c0120",
+      "verbNumber": null,
+      "baseVerb": null,
+      "formRole": null,
+      "term": "stakeholder",
+      "phoneticFr": "STÉÏK-hol-deur",
+      "french": "partie prenante",
+      "ipa": "/ˈsteɪkˌhəʊl.də(r)/",
+      "example": "We need stakeholder approval.",
+      "exampleIpa": null,
+      "start": 1703.952,
+      "end": 1718.544,
+      "phases": [
+        {
+          "phase": "word",
+          "start": 1703.952,
+          "end": 1706.04
+        },
+        {
+          "phase": "think",
+          "start": 1706.04,
+          "end": 1708.104
+        },
+        {
+          "phase": "french",
+          "start": 1708.104,
+          "end": 1710.192
+        },
+        {
+          "phase": "repeat",
+          "start": 1710.192,
+          "end": 1712.28,
+          "repetition": 1
+        },
+        {
+          "phase": "repeat",
+          "start": 1712.28,
+          "end": 1714.368,
+          "repetition": 2
+        },
+        {
+          "phase": "repeat",
+          "start": 1714.368,
+          "end": 1716.456,
+          "repetition": 3
+        },
+        {
+          "phase": "example",
+          "start": 1716.456,
+          "end": 1718.544
+        }
+      ]
+    }
+  ],
+  "expectedDuration": 1718.544,
+  "actualDuration": 1718.544
+}
