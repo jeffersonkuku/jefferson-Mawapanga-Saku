@@ -64,11 +64,11 @@ jobs:
             if(!req.url().includes(expected)) throw new Error('display/audio mismatch: '+displayed+' expected '+expected+' got '+req.url());
             await page.click('#studyView [data-home]'); await page.waitForTimeout(100);
           });
-          await check('intensive auto mode', async()=> {
+          await check('normal words auto opens resume picker', async()=> {
             await page.click('[data-mode="intensive-auto"]'); await page.waitForTimeout(300);
-            if(!(await page.locator('#driveView').evaluate(el=>el.classList.contains('active')))) throw new Error('intensive auto view not active');
-            if((await page.locator('#driveKnown').count())!==1 || (await page.locator('#driveUnknown').count())!==1) throw new Error('knowledge buttons missing');
-            await page.click('#stopDrive'); await page.waitForTimeout(100);
+            if(!(await page.locator('#generalStartView').evaluate(el=>el.classList.contains('active')))) throw new Error('general resume picker not active');
+            if((await page.locator('#generalWordSelect option').count())!==120) throw new Error('general picker should contain 120 words');
+            await page.click('#generalStartView [data-home]'); await page.waitForTimeout(100);
           });
           await check('intensive calm mode', async()=> {
             await page.click('[data-mode="intensive-calm"]'); await page.waitForTimeout(300);
@@ -91,77 +91,62 @@ jobs:
             if((await page.locator('#browseList .setting').count())===0) throw new Error('browse empty');
             await page.click('#browseView [data-home]'); await page.waitForTimeout(100);
           });
-          await check('intensive sequence + instant known advance', async()=> {
-            await page.click('[data-mode="intensive-auto"]');
-            await page.waitForTimeout(150);
-            await page.evaluate(()=>{
-              window.__qaAudioKinds=[];
-              window.__qaOriginalPlayNativeAudio=window.playNativeAudio;
-              window.__qaOriginalWarmIntensiveAudio=window.warmIntensiveAudio;
-              window.__qaOriginalRequestWake=window.requestWake;
-              window.__qaOriginalWaitIntensive=window.waitIntensive;
-              window.__qaOriginalMarkExposure=window.markExposure;
-              window.__qaOriginalRateItem=window.rateItem;
-              window.playNativeAudio=async(item,kind)=>{ window.__qaAudioKinds.push(kind); };
-              window.warmIntensiveAudio=async()=>{};
-              window.requestWake=async()=>{};
-              window.waitIntensive=async()=>{};
-              window.markExposure=async()=>{ await new Promise(r=>setTimeout(r,1500)); };
-              window.rateItem=async()=>{ await new Promise(r=>setTimeout(r,1500)); };
-              settings.thinkSeconds=0;
-              settings.speakFrench=true;
+          await check('normal words use exact same continuous auto sequence', async()=> {
+            const result=await page.evaluate(async()=>{
+              const r=await fetch('./general-course-cues.json?qa='+Date.now(),{cache:'no-store'});
+              const data=await r.json();
+              const head=await fetch('./general-course-mobile.m4a',{method:'HEAD',cache:'no-store'});
+              const first=data.cards[0], second=data.cards[1];
+              return {
+                cards:data.cards.length,
+                size:+(head.headers.get('content-length')||0),
+                firstTerm:first.term,
+                firstPhon:first.phoneticFr,
+                phases:first.phases.map(p=>({phase:p.phase,repetition:p.repetition||0,start:p.start,end:p.end})),
+                firstEnd:first.end,
+                secondStart:second.start
+              };
             });
-            await page.click('#startDrive');
-            const first=(await page.locator('#driveTerm').textContent()).trim();
-            await page.waitForFunction(()=>document.querySelector('#knowledgeQuestion').style.display==='block',{timeout:3000});
-            const sequence=await page.evaluate(()=>window.__qaAudioKinds.slice(0,3));
-            if(sequence.join(',')!=='term,french,drill') throw new Error('wrong intensive audio sequence '+sequence.join(','));
-            const t0=Date.now();
-            await page.click('#driveKnown');
-            await page.waitForFunction(prev=>document.querySelector('#driveTerm').textContent.trim()!==prev,first,{timeout:600});
-            const elapsed=Date.now()-t0;
-            if(elapsed>550) throw new Error('known answer waited for persistence: '+elapsed+'ms');
-            await page.click('#stopDrive');
-            await page.evaluate(()=>{
-              window.playNativeAudio=window.__qaOriginalPlayNativeAudio;
-              window.warmIntensiveAudio=window.__qaOriginalWarmIntensiveAudio;
-              window.requestWake=window.__qaOriginalRequestWake;
-              window.waitIntensive=window.__qaOriginalWaitIntensive;
-              window.markExposure=window.__qaOriginalMarkExposure;
-              window.rateItem=window.__qaOriginalRateItem;
-            });
-            await page.waitForTimeout(100);
+            if(result.cards!==120) throw new Error('wrong normal-course count '+JSON.stringify(result));
+            if(result.size<1000000) throw new Error('normal continuous course missing '+JSON.stringify(result));
+            const expected=['word','think','french','repeat','repeat','repeat','example'];
+            if(result.phases.map(x=>x.phase).join(',')!==expected.join(',')) throw new Error('wrong normal phase order '+JSON.stringify(result));
+            if(result.phases.filter(x=>x.phase==='repeat').map(x=>x.repetition).join(',')!=='1,2,3') throw new Error('wrong normal repeat count '+JSON.stringify(result));
+            const think=result.phases.find(x=>x.phase==='think');
+            if(Math.abs((think.end-think.start)-2)>0.08) throw new Error('normal think gap is not 2 seconds '+JSON.stringify(result));
+            if(Math.abs(result.firstEnd-result.secondStart)>0.01) throw new Error('normal cards do not chain '+JSON.stringify(result));
+            if(!result.firstPhon) throw new Error('normal French-readable pronunciation missing '+JSON.stringify(result));
           });
-          await check('unknown answer is reinserted later in same session', async()=> {
-            await page.click('[data-mode="intensive-auto"]');
-            await page.waitForTimeout(100);
-            await page.evaluate(()=>{
-              window.__qaOriginalPlayNativeAudio2=window.playNativeAudio;
-              window.__qaOriginalWarmIntensiveAudio2=window.warmIntensiveAudio;
-              window.__qaOriginalRequestWake2=window.requestWake;
-              window.__qaOriginalWaitIntensive2=window.waitIntensive;
-              window.playNativeAudio=async()=>{};
-              window.warmIntensiveAudio=async()=>{};
-              window.requestWake=async()=>{};
-              window.waitIntensive=async()=>{};
-              settings.thinkSeconds=0;
-              settings.speakFrench=true;
+          await check('normal picker starts auto course at chosen word with one play', async()=> {
+            const result=await page.evaluate(async()=>{
+              activeList='general';updateListUI();
+              await loadGeneralCourse();
+              const chosen=generalCourseCues[10];
+              generalSelectedStartId=chosen.id;
+              await startIntensiveAuto();
+              const oldPlay=generalCourseAudio.play.bind(generalCourseAudio);
+              let plays=0;
+              generalCourseAudio.play=async()=>{plays++;};
+              await document.querySelector('#startDrive').click();
+              await new Promise(r=>setTimeout(r,50));
+              const out={
+                chosen:chosen.id,
+                currentTime:generalCourseAudio.currentTime,
+                chosenStart:chosen.start,
+                item:lastDriveItem?.id||null,
+                plays,
+                running:driveRunning,
+                question:document.querySelector('#knowledgeQuestion').style.display
+              };
+              generalCourseAudio.play=oldPlay;
+              stopDrive();
+              activeList='general';updateListUI();
+              return out;
             });
-            await page.click('#startDrive');
-            await page.waitForFunction(()=>document.querySelector('#knowledgeQuestion').style.display==='block',{timeout:3000});
-            const firstId=await page.evaluate(()=>session[0].id);
-            await page.click('#driveUnknown');
-            await page.waitForTimeout(50);
-            const retryIndex=await page.evaluate(id=>session.findIndex((x,i)=>i>0&&x.id===id),firstId);
-            if(retryIndex<5 || retryIndex>7) throw new Error('unknown retry not spaced correctly: '+retryIndex);
-            await page.click('#stopDrive');
-            await page.evaluate(()=>{
-              window.playNativeAudio=window.__qaOriginalPlayNativeAudio2;
-              window.warmIntensiveAudio=window.__qaOriginalWarmIntensiveAudio2;
-              window.requestWake=window.__qaOriginalRequestWake2;
-              window.waitIntensive=window.__qaOriginalWaitIntensive2;
-            });
-            await page.waitForTimeout(100);
+            if(result.item!==result.chosen) throw new Error('normal chosen word mismatch '+JSON.stringify(result));
+            if(Math.abs(result.currentTime-result.chosenStart)>.2) throw new Error('normal chosen start mismatch '+JSON.stringify(result));
+            if(result.plays!==1 || !result.running) throw new Error('normal auto not one continuous play '+JSON.stringify(result));
+            if(result.question!=='none') throw new Error('normal auto must not ask Yes/No '+JSON.stringify(result));
           });
           await check('known answer creates long-term cooldown', async()=> {
             const result=await page.evaluate(async()=>{
@@ -187,10 +172,16 @@ jobs:
             const result=await page.evaluate(async()=>{
               const r=await fetch('./irregular-verbs.json?qa='+Date.now(),{cache:'no-store'});
               const items=await r.json();
-              return {cards:items.length,verbs:new Set(items.map(x=>x.verbNumber)).size,be:items.filter(x=>x.baseVerb==='be').map(x=>x.term),bad:items.filter(x=>!x.ipa||!x.example||!x.exampleIpa||!x.exampleFr).length};
+              return {
+                cards:items.length,
+                verbs:new Set(items.map(x=>x.verbNumber)).size,
+                be:items.filter(x=>x.baseVerb==='be').map(x=>({term:x.term,phoneticFr:x.phoneticFr})),
+                bad:items.filter(x=>!x.ipa||!x.phoneticFr||!x.example||!x.exampleIpa||!x.exampleFr).length
+              };
             });
             if(result.cards!==421||result.verbs!==140||result.bad!==0) throw new Error(JSON.stringify(result));
-            if(result.be.join(',')!=='be,was,were,been') throw new Error('BE sequence '+result.be.join(','));
+            if(result.be.map(x=>x.term).join(',')!=='be,was,were,been') throw new Error('BE sequence '+JSON.stringify(result.be));
+            if(result.be.map(x=>x.phoneticFr).join(',')!=='BII,WOZ,WEU,BIN') throw new Error('French-readable BE pronunciation '+JSON.stringify(result.be));
           });
           await check('irregular list can drive a training session', async()=> {
             const result=await page.evaluate(async()=>{
