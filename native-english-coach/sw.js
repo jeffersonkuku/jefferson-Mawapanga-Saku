@@ -1,4 +1,4 @@
-const CACHE='native-english-coach-v1.10.0';
+const CACHE='native-english-coach-v1.11.0';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon.svg','./audio-index.json','./irregular-verbs.json','./irregular-course-cues.json'];
 
 self.addEventListener('install',e=>{
@@ -20,7 +20,7 @@ self.addEventListener('activate',e=>{
 self.addEventListener('fetch',e=>{
   if(e.request.method!=='GET')return;
   const url=new URL(e.request.url);
-  if(url.pathname.endsWith('/irregular-course.mp3')){
+  if(url.pathname.endsWith('/irregular-course.mp3') || url.pathname.endsWith('/irregular-course.m4a')){
     e.respondWith(fetch(e.request));
     return;
   }
