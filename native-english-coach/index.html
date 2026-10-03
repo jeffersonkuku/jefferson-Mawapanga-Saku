@@ -41,6 +41,7 @@ select,input[type=number],input[type=range]{width:100%;background:#0f1317;color:
 .toggle{display:flex;justify-content:space-between;align-items:center;gap:12px}.toggle input{width:22px;height:22px}
 .file-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hint{font-size:12px;color:var(--muted);line-height:1.45}
 .system-rules{display:none;margin:14px 0 2px;padding:16px 18px;border:1px solid #3d7c67;border-radius:20px;background:linear-gradient(145deg,#12251f,#151b1a)}
+.resume-picker{max-width:680px;margin:18px auto 0}.resume-picker .setting{margin-bottom:12px}.resume-picker select{width:100%;padding:14px;border-radius:14px}
 .system-rules.show{display:block}.system-rules h3{margin:0 0 10px;font-size:17px}.system-rules p{margin:5px 0;color:#d8e3df;font-size:13px;line-height:1.5}.system-flow{font-weight:900;color:var(--accent)!important}
 .toast{position:fixed;left:50%;bottom:calc(26px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(120px);background:#edfdf6;color:#0a241a;padding:12px 16px;border-radius:14px;font-weight:800;transition:.25s;z-index:99;max-width:90%;text-align:center}.toast.show{transform:translateX(-50%) translateY(0)}
 @media(max-width:650px){.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.card{min-height:400px}.rating{grid-template-columns:repeat(2,1fr)}}
@@ -109,6 +110,24 @@ select,input[type=number],input[type=range]{width:100%;background:#0f1317;color:
   </section>
 </main>
 
+<main id="irregularStartView" class="view">
+  <div class="topbar"><button class="icon-btn" data-home>←</button><h2>🔁 Reprendre les verbes</h2><span></span></div>
+  <section class="setting resume-picker">
+    <h3 style="margin:0 0 8px">Où t’es-tu arrêté ?</h3>
+    <p class="hint" style="margin:0 0 16px">Choisis simplement le verbe et sa forme. Le système Auto reste exactement le même ensuite.</p>
+    <div class="setting">
+      <label>Verbe</label>
+      <select id="irregularVerbSelect"></select>
+    </div>
+    <div class="setting">
+      <label>Forme</label>
+      <select id="irregularFormSelect"></select>
+    </div>
+    <button class="btn accent full" id="irregularResumeBtn">▶ Reprendre ici</button>
+    <button class="btn soft full" id="irregularFromStartBtn" style="margin-top:10px">↺ Commencer depuis BE</button>
+  </section>
+</main>
+
 <main id="driveView" class="view">
   <div class="topbar"><button class="icon-btn" id="stopDrive">←</button><h2 id="driveTitle">⚡ Intensif Auto</h2><span id="driveCounter">0/0</span></div>
   <div class="progressline"><span id="driveProgress"></span></div>
@@ -171,8 +190,7 @@ irregularCourseAudio.preload='metadata';
 irregularCourseAudio.playsInline=true;
 let irregularCourseCues=[], irregularCourseReady=false, irregularCourseLoading=null, irregularCourseIndex=-1;
 let irregularCourseMarked=new Set();
-const IRREGULAR_RESUME_KEY='native-english-coach-irregular-resume-v1';
-let irregularLastSavedSecond=-1;
+let irregularSelectedStartId=null;
 
 const irregularSequenceAudio=new Audio();
 irregularSequenceAudio.preload='auto';
@@ -278,48 +296,6 @@ async function loadAudioIndex(){
     $('#voiceInfo').textContent='Pack audio natif en cours de génération';
   }
 }
-function readIrregularResume(){
-  try{
-    const raw=localStorage.getItem(IRREGULAR_RESUME_KEY);
-    if(!raw)return null;
-    const saved=JSON.parse(raw);
-    if(!saved?.cardId)return null;
-    const card=irregularCourseCues.find(x=>x.id===saved.cardId);
-    if(!card)return null;
-    const maxOffset=Math.max(0,(card.end-card.start)-0.15);
-    const offset=Math.min(Math.max(+saved.offset||0,0),maxOffset);
-    return {card,time:card.start+offset};
-  }catch(e){return null}
-}
-function saveIrregularResume(force=false){
-  if(!irregularCourseCues.length)return;
-  const time=Math.max(0,+irregularCourseAudio.currentTime||0);
-  const second=Math.floor(time);
-  if(!force && second===irregularLastSavedSecond)return;
-  const hit=irregularCourseCardAt(time);
-  if(!hit)return;
-  irregularLastSavedSecond=second;
-  try{
-    localStorage.setItem(IRREGULAR_RESUME_KEY,JSON.stringify({
-      cardId:hit.card.id,
-      offset:Math.max(0,time-hit.card.start),
-      savedAt:Date.now()
-    }));
-  }catch(e){}
-}
-function clearIrregularResume(){
-  irregularLastSavedSecond=-1;
-  try{localStorage.removeItem(IRREGULAR_RESUME_KEY)}catch(e){}
-}
-function previewIrregularResume(){
-  const resume=readIrregularResume();
-  if(!resume)return null;
-  try{irregularCourseAudio.currentTime=resume.time}catch(e){}
-  renderIrregularCourseAt(resume.time,true);
-  $('#driveStatus').textContent='Reprendre où tu t’étais arrêté';
-  return resume;
-}
-
 async function loadIrregularCourse(){
   if(irregularCourseReady)return true;
   if(irregularCourseLoading)return irregularCourseLoading;
@@ -342,7 +318,6 @@ async function loadIrregularCourse(){
         });
       }
       irregularCourseReady=true;
-      previewIrregularResume();
       return true;
     }catch(e){
       console.error('Cours audio irrégulier indisponible',e);
@@ -421,7 +396,6 @@ function renderIrregularCourseAt(time,force=false){
   }
 }
 function finishIrregularCourse(){
-  clearIrregularResume();
   driveRunning=false;
   drivePaused=false;
   currentIntensiveItemId=null;
@@ -438,12 +412,7 @@ function finishIrregularCourse(){
   releaseWake();
   updateStats();
 }
-irregularCourseAudio.addEventListener('timeupdate',()=>{
-  if(driveRunning&&activeList==='irregular'){
-    renderIrregularCourseAt(irregularCourseAudio.currentTime);
-    saveIrregularResume();
-  }
-});
+irregularCourseAudio.addEventListener('timeupdate',()=>{if(driveRunning&&activeList==='irregular')renderIrregularCourseAt(irregularCourseAudio.currentTime)});
 irregularCourseAudio.addEventListener('playing',()=>{if(driveRunning)drivePaused=false});
 irregularCourseAudio.addEventListener('waiting',()=>{if(driveRunning)$('#driveStatus').textContent='Chargement audio…'});
 irregularCourseAudio.addEventListener('stalled',()=>{if(driveRunning)$('#driveStatus').textContent='Connexion lente · reprise automatique…'});
@@ -676,6 +645,36 @@ function ratingClick(r){
  renderStudy();
  rateItem(item,skill,r).then(updateStats).catch(e=>{console.error(e);toast('Progression non enregistrée, réessaie.')});
 }
+function populateIrregularFormSelect(){
+ const verbNo=+$('#irregularVerbSelect').value;
+ const forms=irregularCorpus
+   .filter(x=>+x.verbNumber===verbNo)
+   .sort((a,b)=>a.id.localeCompare(b.id));
+ $('#irregularFormSelect').innerHTML=forms.map(x=>
+   `<option value="${x.id}">${String(x.term).toUpperCase()} — ${x.formRole}</option>`
+ ).join('');
+}
+async function openIrregularStartPicker(){
+ const ok=await loadIrregularCourse();
+ if(!ok){toast('Le parcours audio complet n’est pas disponible.');return}
+ const verbs=[...new Map(
+   irregularCorpus
+     .slice()
+     .sort((a,b)=>a.verbNumber-b.verbNumber||a.id.localeCompare(b.id))
+     .map(x=>[x.verbNumber,x])
+ ).values()];
+ $('#irregularVerbSelect').innerHTML=verbs.map(x=>
+   `<option value="${x.verbNumber}">${x.verbNumber}. ${String(x.baseVerb||x.term).toUpperCase()}</option>`
+ ).join('');
+ $('#irregularVerbSelect').value=String(verbs[0]?.verbNumber||1);
+ populateIrregularFormSelect();
+ show('#irregularStartView');
+}
+async function launchIrregularFromSelected(cardId){
+ irregularSelectedStartId=cardId||irregularCourseCues[0]?.id||null;
+ await startIntensiveAuto();
+}
+
 async function startIntensiveAuto(){
  currentMode='intensive-auto';currentSkill='listening';
  session=await buildSession('drive');sessionIndex=0;driveRunning=false;drivePaused=false;
@@ -695,12 +694,12 @@ async function startIntensiveAuto(){
    const ok=await loadIrregularCourse();
    $('#startDrive').disabled=false;
    if(ok){
-     const resume=readIrregularResume();
-     if(resume){
-       previewIrregularResume();
-       $('#startDrive').textContent='▶ Reprendre à '+String(resume.card.term||'').toUpperCase();
-     }else{
-       $('#startDrive').textContent='▶ Lancer les 140 blocs';
+     const chosen=irregularCourseCues.find(x=>x.id===irregularSelectedStartId)||irregularCourseCues[0];
+     const chosenItem=irregularCorpus.find(x=>x.id===chosen?.id);
+     $('#startDrive').textContent=chosenItem?'▶ Lancer à '+String(chosenItem.term).toUpperCase():'▶ Lancer les 140 blocs';
+     if(chosen){
+       try{irregularCourseAudio.currentTime=chosen.start}catch(e){}
+       renderIrregularCourseAt(chosen.start,true);
      }
    }else{
      $('#startDrive').textContent='Audio indisponible';
@@ -978,7 +977,6 @@ async function runDrive(){
  await presentIntensiveCard();
 }
 function stopDrive(){
- if(activeList==='irregular')saveIrregularResume(true);
  driveRunning=false;
  drivePaused=false;
  intensiveToken++;
@@ -1025,11 +1023,17 @@ $$('.list-choice').forEach(b=>b.onclick=()=>{
 });
 $$('.mode:not(.list-choice)').forEach(b=>b.onclick=()=>{
  const m=b.dataset.mode;
- if(m==='intensive-auto')startIntensiveAuto();
+ if(m==='intensive-auto'){
+   if(activeList==='irregular')openIrregularStartPicker();
+   else startIntensiveAuto();
+ }
  else if(m==='intensive-calm')startStudy('intensive');
  else if(m==='browse'){show('#browseView');renderBrowse()}
  else startStudy(m)
 });
+$('#irregularVerbSelect').onchange=populateIrregularFormSelect;
+$('#irregularResumeBtn').onclick=()=>launchIrregularFromSelected($('#irregularFormSelect').value);
+$('#irregularFromStartBtn').onclick=()=>launchIrregularFromSelected(irregularCourseCues[0]?.id);
 $('#revealBtn').onclick=reveal;
 $('#speakBtn').onclick=async()=>{const x=session[sessionIndex];if(x)await speak(x.term,'en',x,settings.speechRate,'term')};
 $('#speakExampleBtn').onclick=async()=>{const x=session[sessionIndex];if(x)await speak(x.example,'en',x,settings.speechRate,'example')};
@@ -1054,8 +1058,8 @@ $('#startDrive').onclick=async()=>{
    intensiveBusy=false;
    irregularCourseMarked=new Set();
    irregularCourseIndex=-1;
-   const resume=readIrregularResume();
-   const startTime=resume?.time||0;
+   const chosen=irregularCourseCues.find(x=>x.id===irregularSelectedStartId)||irregularCourseCues[0];
+   const startTime=chosen?.start||0;
    try{irregularCourseAudio.currentTime=startTime}catch(e){}
    $('#startDrive').style.display='none';
    $('#driveActions').style.display='grid';
@@ -1084,10 +1088,8 @@ $('#drivePause').onclick=()=>{
  drivePaused=!drivePaused;
  const player=activeList==='irregular'?irregularCourseAudio:activeAudio;
  if(player){
-   if(drivePaused){
-     player.pause();
-     if(activeList==='irregular')saveIrregularResume(true);
-   }else player.play().catch(e=>console.error('Reprise audio impossible',e));
+   if(drivePaused)player.pause();
+   else player.play().catch(e=>console.error('Reprise audio impossible',e));
  }
  $('#drivePause').textContent=drivePaused?'▶ Reprendre':'⏸ Pause';
 };
@@ -1117,12 +1119,7 @@ $('#testVoice').onclick=async()=>{const x=activeCorpus().find(i=>i.term==='recko
 $('#csvInput').onchange=e=>{const f=e.target.files?.[0];if(f)importCSV(f);e.target.value=''};
 $('#exportBtn').onclick=exportProgress;$('#resetBtn').onclick=resetAll;
 updateVoiceInfo();
-document.addEventListener('visibilitychange',()=>{
-  if(document.visibilityState==='hidden'&&activeList==='irregular')saveIrregularResume(true);
-  if(document.visibilityState==='visible'&&driveRunning)requestWake();
-});
-window.addEventListener('pagehide',()=>{if(activeList==='irregular')saveIrregularResume(true)});
-
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&driveRunning)requestWake()});
 async function boot(){
  db=await openDB();
  await loadSettings();
@@ -1132,22 +1129,8 @@ async function boot(){
  updateVoiceInfo();
  initFsrs();
 
- // Si l'utilisateur avait quitté pendant les verbes irréguliers,
- // rouvrir directement la session au même endroit. Un tap sur Reprendre
- // reste nécessaire sur téléphone à cause des règles audio iOS/Android.
- let hasSavedIrregular=false;
- try{hasSavedIrregular=!!localStorage.getItem(IRREGULAR_RESUME_KEY)}catch(e){}
- if(hasSavedIrregular){
-   const ok=await loadIrregularCourse();
-   if(ok && readIrregularResume()){
-     activeList='irregular';
-     updateListUI();
-     await startIntensiveAuto();
-   }
- }else{
-   loadIrregularCourse().catch(()=>{});
- }
-
+ // Si l'utilisateur avait quasync function boot(){
+ db=await openDB();await loadSettings();await loadCorpus();await loadAudioIndex();loadIrregularCourse().catch(()=>{});await updateStats();updateVoiceInfo();initFsrs();
  if('serviceWorker'in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
 }
 boot();
