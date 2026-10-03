@@ -20,3 +20,5 @@ Validate mobile startup and irregular system 2026-10-03
 Validate iPhone AAC irregular course 2026-10-03
 
 Final QA 2-second natural voice resume course 2026-10-03
+
+Validate manual resume picker with unchanged auto flow 2026-10-03
