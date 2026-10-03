@@ -57,7 +57,7 @@ def build_irregular_course(irregular_items):
         subprocess.run([
             "ffmpeg", "-y", "-v", "error",
             "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono",
-            "-t", "5",
+            "-t", "2",
             "-c:a", "libmp3lame", "-b:a", "48k",
             str(silence)
         ], check=True)
@@ -133,7 +133,7 @@ def build_irregular_course(irregular_items):
         "-ac", "1",
         "-ar", "44100",
         "-c:a", "aac",
-        "-b:a", "64k",
+        "-b:a", "96k",
         "-movflags", "+faststart",
         str(IRREGULAR_COURSE)
     ], check=True)
