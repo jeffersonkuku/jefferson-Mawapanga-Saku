@@ -2,7 +2,7 @@
   {
     "id": "iv0001",
     "term": "be",
-    "phoneticFr": "",
+    "phoneticFr": "BII",
     "ipa": "/biː/",
     "french": "être",
     "example": "I want to be ready by six.",
@@ -20,7 +20,7 @@
   {
     "id": "iv0002",
     "term": "was",
-    "phoneticFr": "",
+    "phoneticFr": "WOZ",
     "ipa": "/wɔz/",
     "french": "être",
     "example": "I was at work all day.",
@@ -38,7 +38,7 @@
   {
     "id": "iv0003",
     "term": "were",
-    "phoneticFr": "",
+    "phoneticFr": "WEU",
     "ipa": "/wɜː/",
     "french": "être",
     "example": "We were really busy yesterday.",
@@ -56,7 +56,7 @@
   {
     "id": "iv0004",
     "term": "been",
-    "phoneticFr": "",
+    "phoneticFr": "BIN",
     "ipa": "/biːn/",
     "french": "être",
     "example": "I've been really busy this week.",
@@ -74,7 +74,7 @@
   {
     "id": "iv0005",
     "term": "have",
-    "phoneticFr": "",
+    "phoneticFr": "HAV",
     "ipa": "/hæv/",
     "french": "avoir",
     "example": "I have a meeting this afternoon.",
@@ -92,7 +92,7 @@
   {
     "id": "iv0006",
     "term": "had",
-    "phoneticFr": "",
+    "phoneticFr": "HAD",
     "ipa": "/hæd/",
     "french": "avoir",
     "example": "I had a meeting this morning.",
@@ -110,7 +110,7 @@
   {
     "id": "iv0007",
     "term": "had",
-    "phoneticFr": "",
+    "phoneticFr": "HAD",
     "ipa": "/hæd/",
     "french": "avoir",
     "example": "I've had enough for today.",
@@ -128,7 +128,7 @@
   {
     "id": "iv0008",
     "term": "do",
-    "phoneticFr": "",
+    "phoneticFr": "DOU",
     "ipa": "/dʉː/",
     "french": "faire",
     "example": "What do you usually do after work?",
@@ -146,7 +146,7 @@
   {
     "id": "iv0009",
     "term": "did",
-    "phoneticFr": "",
+    "phoneticFr": "DID",
     "ipa": "/dɪd/",
     "french": "faire",
     "example": "What did you do yesterday?",
@@ -164,7 +164,7 @@
   {
     "id": "iv0010",
     "term": "done",
-    "phoneticFr": "",
+    "phoneticFr": "DEUN",
     "ipa": "/dɐn/",
     "french": "faire",
     "example": "I've already done it.",
@@ -182,7 +182,7 @@
   {
     "id": "iv0011",
     "term": "go",
-    "phoneticFr": "",
+    "phoneticFr": "GO",
     "ipa": "/ɡəʉ/",
     "french": "aller",
     "example": "I usually go to work by car.",
@@ -200,7 +200,7 @@
   {
     "id": "iv0012",
     "term": "went",
-    "phoneticFr": "",
+    "phoneticFr": "WÈNT",
     "ipa": "/went/",
     "french": "aller",
     "example": "I went home early yesterday.",
@@ -218,7 +218,7 @@
   {
     "id": "iv0013",
     "term": "gone",
-    "phoneticFr": "",
+    "phoneticFr": "GON",
     "ipa": "/ɡɔn/",
     "french": "aller",
     "example": "She's already gone home.",
@@ -236,7 +236,7 @@
   {
     "id": "iv0014",
     "term": "get",
-    "phoneticFr": "",
+    "phoneticFr": "GUÈT",
     "ipa": "/ɡet/",
     "french": "obtenir / recevoir / devenir / arriver",
     "example": "I usually get home around seven.",
@@ -254,7 +254,7 @@
   {
     "id": "iv0015",
     "term": "got",
-    "phoneticFr": "",
+    "phoneticFr": "GOT",
     "ipa": "/ɡɔt/",
     "french": "obtenir / recevoir / devenir / arriver",
     "example": "I got home late last night.",
@@ -272,7 +272,7 @@
   {
     "id": "iv0016",
     "term": "got",
-    "phoneticFr": "",
+    "phoneticFr": "GOT",
     "ipa": "/ɡɔt/",
     "french": "obtenir / recevoir / devenir / arriver",
     "example": "Things have got much better.",
@@ -290,7 +290,7 @@
   {
     "id": "iv0017",
     "term": "make",
-    "phoneticFr": "",
+    "phoneticFr": "MÉÏK",
     "ipa": "/mæɪk/",
     "french": "faire / fabriquer / créer",
     "example": "I need to make a decision.",
@@ -308,7 +308,7 @@
   {
     "id": "iv0018",
     "term": "made",
-    "phoneticFr": "",
+    "phoneticFr": "MÉÏD",
     "ipa": "/mæɪd/",
     "french": "faire / fabriquer / créer",
     "example": "I made a mistake yesterday.",
@@ -326,7 +326,7 @@
   {
     "id": "iv0019",
     "term": "made",
-    "phoneticFr": "",
+    "phoneticFr": "MÉÏD",
     "ipa": "/mæɪd/",
     "french": "faire / fabriquer / créer",
     "example": "I've made a few changes.",
@@ -344,7 +344,7 @@
   {
     "id": "iv0020",
     "term": "know",
-    "phoneticFr": "",
+    "phoneticFr": "NO",
     "ipa": "/nəʉ/",
     "french": "savoir / connaître",
     "example": "I know what you mean.",
@@ -362,7 +362,7 @@
   {
     "id": "iv0021",
     "term": "knew",
-    "phoneticFr": "",
+    "phoneticFr": "NIOU",
     "ipa": "/njʉː/",
     "french": "savoir / connaître",
     "example": "I knew something was wrong.",
@@ -380,7 +380,7 @@
   {
     "id": "iv0022",
     "term": "known",
-    "phoneticFr": "",
+    "phoneticFr": "NÔNE",
     "ipa": "/nəʉn/",
     "french": "savoir / connaître",
     "example": "I've known him for years.",
@@ -398,7 +398,7 @@
   {
     "id": "iv0023",
     "term": "think",
-    "phoneticFr": "",
+    "phoneticFr": "THINGK",
     "ipa": "/θɪŋk/",
     "french": "penser / réfléchir",
     "example": "I think that's a good idea.",
@@ -416,7 +416,7 @@
   {
     "id": "iv0024",
     "term": "thought",
-    "phoneticFr": "",
+    "phoneticFr": "THÔT",
     "ipa": "/θoːt/",
     "french": "penser / réfléchir",
     "example": "I thought you were working today.",
@@ -434,7 +434,7 @@
   {
     "id": "iv0025",
     "term": "thought",
-    "phoneticFr": "",
+    "phoneticFr": "THÔT",
     "ipa": "/θoːt/",
     "french": "penser / réfléchir",
     "example": "I've thought about it a lot.",
@@ -452,7 +452,7 @@
   {
     "id": "iv0026",
     "term": "take",
-    "phoneticFr": "",
+    "phoneticFr": "TÉÏK",
     "ipa": "/tæɪk/",
     "french": "prendre / emporter",
     "example": "I take the train to work.",
@@ -470,7 +470,7 @@
   {
     "id": "iv0027",
     "term": "took",
-    "phoneticFr": "",
+    "phoneticFr": "TOUK",
     "ipa": "/tʊk/",
     "french": "prendre / emporter",
     "example": "I took the wrong train yesterday.",
@@ -488,7 +488,7 @@
   {
     "id": "iv0028",
     "term": "taken",
-    "phoneticFr": "",
+    "phoneticFr": "TÉÏ-KEUN",
     "ipa": "/ˈtæɪkən/",
     "french": "prendre / emporter",
     "example": "I've taken this route before.",
@@ -506,7 +506,7 @@
   {
     "id": "iv0029",
     "term": "see",
-    "phoneticFr": "",
+    "phoneticFr": "SII",
     "ipa": "/siː/",
     "french": "voir",
     "example": "I see what you mean.",
@@ -524,7 +524,7 @@
   {
     "id": "iv0030",
     "term": "saw",
-    "phoneticFr": "",
+    "phoneticFr": "SÔ",
     "ipa": "/soː/",
     "french": "voir",
     "example": "I saw him this morning.",
@@ -542,7 +542,7 @@
   {
     "id": "iv0031",
     "term": "seen",
-    "phoneticFr": "",
+    "phoneticFr": "SIIN",
     "ipa": "/siːn/",
     "french": "voir",
     "example": "Have you seen my keys?",
@@ -560,7 +560,7 @@
   {
     "id": "iv0032",
     "term": "come",
-    "phoneticFr": "",
+    "phoneticFr": "KEUM",
     "ipa": "/kɐm/",
     "french": "venir",
     "example": "Come and have a look.",
@@ -578,7 +578,7 @@
   {
     "id": "iv0033",
     "term": "came",
-    "phoneticFr": "",
+    "phoneticFr": "KÉÏM",
     "ipa": "/kæɪm/",
     "french": "venir",
     "example": "She came over last night.",
@@ -596,7 +596,7 @@
   {
     "id": "iv0034",
     "term": "come",
-    "phoneticFr": "",
+    "phoneticFr": "KEUM",
     "ipa": "/kɐm/",
     "french": "venir",
     "example": "He's come back already.",
@@ -614,7 +614,7 @@
   {
     "id": "iv0035",
     "term": "give",
-    "phoneticFr": "",
+    "phoneticFr": "GUIV",
     "ipa": "/ɡɪv/",
     "french": "donner",
     "example": "Give me a second.",
@@ -632,7 +632,7 @@
   {
     "id": "iv0036",
     "term": "gave",
-    "phoneticFr": "",
+    "phoneticFr": "GUÉÏV",
     "ipa": "/ɡæɪv/",
     "french": "donner",
     "example": "She gave me her number.",
@@ -650,7 +650,7 @@
   {
     "id": "iv0037",
     "term": "given",
-    "phoneticFr": "",
+    "phoneticFr": "GUI-VEUN",
     "ipa": "/ˈɡɪvən/",
     "french": "donner",
     "example": "They've given me another chance.",
@@ -668,7 +668,7 @@
   {
     "id": "iv0038",
     "term": "find",
-    "phoneticFr": "",
+    "phoneticFr": "FAÏND",
     "ipa": "/fɑend/",
     "french": "trouver",
     "example": "I can't find my phone.",
@@ -686,7 +686,7 @@
   {
     "id": "iv0039",
     "term": "found",
-    "phoneticFr": "",
+    "phoneticFr": "FAOUND",
     "ipa": "/fæɔnd/",
     "french": "trouver",
     "example": "I found it under the seat.",
@@ -704,7 +704,7 @@
   {
     "id": "iv0040",
     "term": "found",
-    "phoneticFr": "",
+    "phoneticFr": "FAOUND",
     "ipa": "/fæɔnd/",
     "french": "trouver",
     "example": "I've finally found a place to stay.",
@@ -722,7 +722,7 @@
   {
     "id": "iv0041",
     "term": "tell",
-    "phoneticFr": "",
+    "phoneticFr": "TÈL",
     "ipa": "/tel/",
     "french": "dire / raconter à quelqu’un",
     "example": "Tell me what happened.",
@@ -740,7 +740,7 @@
   {
     "id": "iv0042",
     "term": "told",
-    "phoneticFr": "",
+    "phoneticFr": "TOLD",
     "ipa": "/təʉld/",
     "french": "dire / raconter à quelqu’un",
     "example": "She told me yesterday.",
@@ -758,7 +758,7 @@
   {
     "id": "iv0043",
     "term": "told",
-    "phoneticFr": "",
+    "phoneticFr": "TOLD",
     "ipa": "/təʉld/",
     "french": "dire / raconter à quelqu’un",
     "example": "I've already told you.",
@@ -776,7 +776,7 @@
   {
     "id": "iv0044",
     "term": "say",
-    "phoneticFr": "",
+    "phoneticFr": "SÉÏ",
     "ipa": "/sæɪ/",
     "french": "dire",
     "example": "What do you say in that situation?",
@@ -794,7 +794,7 @@
   {
     "id": "iv0045",
     "term": "said",
-    "phoneticFr": "",
+    "phoneticFr": "SÈD",
     "ipa": "/sed/",
     "french": "dire",
     "example": "He said he'd call me later.",
@@ -812,7 +812,7 @@
   {
     "id": "iv0046",
     "term": "said",
-    "phoneticFr": "",
+    "phoneticFr": "SÈD",
     "ipa": "/sed/",
     "french": "dire",
     "example": "I've said this before.",
@@ -830,7 +830,7 @@
   {
     "id": "iv0047",
     "term": "leave",
-    "phoneticFr": "",
+    "phoneticFr": "LIIV",
     "ipa": "/liːv/",
     "french": "partir / laisser",
     "example": "I leave home at seven.",
@@ -848,7 +848,7 @@
   {
     "id": "iv0048",
     "term": "left",
-    "phoneticFr": "",
+    "phoneticFr": "LÈFT",
     "ipa": "/left/",
     "french": "partir / laisser",
     "example": "I left my wallet at home.",
@@ -866,7 +866,7 @@
   {
     "id": "iv0049",
     "term": "left",
-    "phoneticFr": "",
+    "phoneticFr": "LÈFT",
     "ipa": "/left/",
     "french": "partir / laisser",
     "example": "She's already left the office.",
@@ -884,7 +884,7 @@
   {
     "id": "iv0050",
     "term": "feel",
-    "phoneticFr": "",
+    "phoneticFr": "FIIL",
     "ipa": "/fiːl/",
     "french": "sentir / se sentir",
     "example": "I feel much better today.",
@@ -902,7 +902,7 @@
   {
     "id": "iv0051",
     "term": "felt",
-    "phoneticFr": "",
+    "phoneticFr": "FÈLT",
     "ipa": "/felt/",
     "french": "sentir / se sentir",
     "example": "I felt tired after work.",
@@ -920,7 +920,7 @@
   {
     "id": "iv0052",
     "term": "felt",
-    "phoneticFr": "",
+    "phoneticFr": "FÈLT",
     "ipa": "/felt/",
     "french": "sentir / se sentir",
     "example": "I've never felt this confident.",
@@ -938,7 +938,7 @@
   {
     "id": "iv0053",
     "term": "put",
-    "phoneticFr": "",
+    "phoneticFr": "POUT",
     "ipa": "/pʊt/",
     "french": "mettre / poser",
     "example": "Put your phone on the table.",
@@ -956,7 +956,7 @@
   {
     "id": "iv0054",
     "term": "put",
-    "phoneticFr": "",
+    "phoneticFr": "POUT",
     "ipa": "/pʊt/",
     "french": "mettre / poser",
     "example": "I put the keys in my bag.",
@@ -974,7 +974,7 @@
   {
     "id": "iv0055",
     "term": "put",
-    "phoneticFr": "",
+    "phoneticFr": "POUT",
     "ipa": "/pʊt/",
     "french": "mettre / poser",
     "example": "I've put everything away.",
@@ -992,7 +992,7 @@
   {
     "id": "iv0056",
     "term": "bring",
-    "phoneticFr": "",
+    "phoneticFr": "BRING",
     "ipa": "/bɹɪŋ/",
     "french": "apporter / amener",
     "example": "Can you bring your laptop tomorrow?",
@@ -1010,7 +1010,7 @@
   {
     "id": "iv0057",
     "term": "brought",
-    "phoneticFr": "",
+    "phoneticFr": "BRÔT",
     "ipa": "/bɹoːt/",
     "french": "apporter / amener",
     "example": "She brought coffee for everyone.",
@@ -1028,7 +1028,7 @@
   {
     "id": "iv0058",
     "term": "brought",
-    "phoneticFr": "",
+    "phoneticFr": "BRÔT",
     "ipa": "/bɹoːt/",
     "french": "apporter / amener",
     "example": "I've brought the documents you asked for.",
@@ -1046,7 +1046,7 @@
   {
     "id": "iv0059",
     "term": "begin",
-    "phoneticFr": "",
+    "phoneticFr": "BI-GUIN",
     "ipa": "/bɪˈɡɪn/",
     "french": "commencer",
     "example": "We begin at nine every morning.",
@@ -1064,7 +1064,7 @@
   {
     "id": "iv0060",
     "term": "began",
-    "phoneticFr": "",
+    "phoneticFr": "BI-GAN",
     "ipa": "/bɪˈɡæn/",
     "french": "commencer",
     "example": "The meeting began late.",
@@ -1082,7 +1082,7 @@
   {
     "id": "iv0061",
     "term": "begun",
-    "phoneticFr": "",
+    "phoneticFr": "BI-GUEUN",
     "ipa": "/bɪˈɡɐn/",
     "french": "commencer",
     "example": "The meeting has already begun.",
@@ -1100,7 +1100,7 @@
   {
     "id": "iv0062",
     "term": "keep",
-    "phoneticFr": "",
+    "phoneticFr": "KIIP",
     "ipa": "/kiːp/",
     "french": "garder / continuer",
     "example": "Keep your receipt just in case.",
@@ -1118,7 +1118,7 @@
   {
     "id": "iv0063",
     "term": "kept",
-    "phoneticFr": "",
+    "phoneticFr": "KÈPT",
     "ipa": "/kept/",
     "french": "garder / continuer",
     "example": "I kept the old one as a backup.",
@@ -1136,7 +1136,7 @@
   {
     "id": "iv0064",
     "term": "kept",
-    "phoneticFr": "",
+    "phoneticFr": "KÈPT",
     "ipa": "/kept/",
     "french": "garder / continuer",
     "example": "I've kept all the emails.",
@@ -1154,7 +1154,7 @@
   {
     "id": "iv0065",
     "term": "hold",
-    "phoneticFr": "",
+    "phoneticFr": "HOLD",
     "ipa": "/həʉld/",
     "french": "tenir / maintenir",
     "example": "Can you hold this for a second?",
@@ -1172,7 +1172,7 @@
   {
     "id": "iv0066",
     "term": "held",
-    "phoneticFr": "",
+    "phoneticFr": "HÈLD",
     "ipa": "/held/",
     "french": "tenir / maintenir",
     "example": "She held the door open for me.",
@@ -1190,7 +1190,7 @@
   {
     "id": "iv0067",
     "term": "held",
-    "phoneticFr": "",
+    "phoneticFr": "HÈLD",
     "ipa": "/held/",
     "french": "tenir / maintenir",
     "example": "We've held this meeting every Monday.",
@@ -1208,7 +1208,7 @@
   {
     "id": "iv0068",
     "term": "write",
-    "phoneticFr": "",
+    "phoneticFr": "RAÏT",
     "ipa": "/ɹɑet/",
     "french": "écrire",
     "example": "I write everything down.",
@@ -1226,7 +1226,7 @@
   {
     "id": "iv0069",
     "term": "wrote",
-    "phoneticFr": "",
+    "phoneticFr": "RÔT",
     "ipa": "/ɹəʉt/",
     "french": "écrire",
     "example": "I wrote him an email yesterday.",
@@ -1244,7 +1244,7 @@
   {
     "id": "iv0070",
     "term": "written",
-    "phoneticFr": "",
+    "phoneticFr": "RI-TEUN",
     "ipa": "/ˈɹɪtən/",
     "french": "écrire",
     "example": "I've written everything down.",
@@ -1262,7 +1262,7 @@
   {
     "id": "iv0071",
     "term": "stand",
-    "phoneticFr": "",
+    "phoneticFr": "STAND",
     "ipa": "/stænd/",
     "french": "se tenir debout / supporter",
     "example": "I usually stand near the door.",
@@ -1280,7 +1280,7 @@
   {
     "id": "iv0072",
     "term": "stood",
-    "phoneticFr": "",
+    "phoneticFr": "STOUD",
     "ipa": "/stʊd/",
     "french": "se tenir debout / supporter",
     "example": "I stood there waiting for ten minutes.",
@@ -1298,7 +1298,7 @@
   {
     "id": "iv0073",
     "term": "stood",
-    "phoneticFr": "",
+    "phoneticFr": "STOUD",
     "ipa": "/stʊd/",
     "french": "se tenir debout / supporter",
     "example": "I've stood in this queue before.",
@@ -1316,7 +1316,7 @@
   {
     "id": "iv0074",
     "term": "hear",
-    "phoneticFr": "",
+    "phoneticFr": "HIA",
     "ipa": "/hiə/",
     "french": "entendre",
     "example": "I can hear someone outside.",
@@ -1334,7 +1334,7 @@
   {
     "id": "iv0075",
     "term": "heard",
-    "phoneticFr": "",
+    "phoneticFr": "HEUD",
     "ipa": "/hɜːd/",
     "french": "entendre",
     "example": "I heard what he said.",
@@ -1352,7 +1352,7 @@
   {
     "id": "iv0076",
     "term": "heard",
-    "phoneticFr": "",
+    "phoneticFr": "HEUD",
     "ipa": "/hɜːd/",
     "french": "entendre",
     "example": "I've heard that story before.",
@@ -1370,7 +1370,7 @@
   {
     "id": "iv0077",
     "term": "let",
-    "phoneticFr": "",
+    "phoneticFr": "LÈT",
     "ipa": "/let/",
     "french": "laisser / permettre",
     "example": "Let me know when you are ready.",
@@ -1388,7 +1388,7 @@
   {
     "id": "iv0078",
     "term": "let",
-    "phoneticFr": "",
+    "phoneticFr": "LÈT",
     "ipa": "/let/",
     "french": "laisser / permettre",
     "example": "They let us leave early.",
@@ -1406,7 +1406,7 @@
   {
     "id": "iv0079",
     "term": "let",
-    "phoneticFr": "",
+    "phoneticFr": "LÈT",
     "ipa": "/let/",
     "french": "laisser / permettre",
     "example": "They've let me work from home.",
@@ -1424,7 +1424,7 @@
   {
     "id": "iv0080",
     "term": "mean",
-    "phoneticFr": "",
+    "phoneticFr": "MIIN",
     "ipa": "/miːn/",
     "french": "vouloir dire / signifier",
     "example": "What does this word mean?",
@@ -1442,7 +1442,7 @@
   {
     "id": "iv0081",
     "term": "meant",
-    "phoneticFr": "",
+    "phoneticFr": "MÈNT",
     "ipa": "/ment/",
     "french": "vouloir dire / signifier",
     "example": "I meant what I said.",
@@ -1460,7 +1460,7 @@
   {
     "id": "iv0082",
     "term": "meant",
-    "phoneticFr": "",
+    "phoneticFr": "MÈNT",
     "ipa": "/ment/",
     "french": "vouloir dire / signifier",
     "example": "I've never meant to upset you.",
@@ -1478,7 +1478,7 @@
   {
     "id": "iv0083",
     "term": "meet",
-    "phoneticFr": "",
+    "phoneticFr": "MIIT",
     "ipa": "/miːt/",
     "french": "rencontrer / retrouver",
     "example": "I meet clients every week.",
@@ -1496,7 +1496,7 @@
   {
     "id": "iv0084",
     "term": "met",
-    "phoneticFr": "",
+    "phoneticFr": "MÈT",
     "ipa": "/met/",
     "french": "rencontrer / retrouver",
     "example": "I met her at work.",
@@ -1514,7 +1514,7 @@
   {
     "id": "iv0085",
     "term": "met",
-    "phoneticFr": "",
+    "phoneticFr": "MÈT",
     "ipa": "/met/",
     "french": "rencontrer / retrouver",
     "example": "We've met before, haven't we?",
@@ -1532,7 +1532,7 @@
   {
     "id": "iv0086",
     "term": "run",
-    "phoneticFr": "",
+    "phoneticFr": "REUN",
     "ipa": "/ɹɐn/",
     "french": "courir / fonctionner / gérer",
     "example": "I run every morning.",
@@ -1550,7 +1550,7 @@
   {
     "id": "iv0087",
     "term": "ran",
-    "phoneticFr": "",
+    "phoneticFr": "RAN",
     "ipa": "/ɹæn/",
     "french": "courir / fonctionner / gérer",
     "example": "I ran five kilometres yesterday.",
@@ -1568,7 +1568,7 @@
   {
     "id": "iv0088",
     "term": "run",
-    "phoneticFr": "",
+    "phoneticFr": "REUN",
     "ipa": "/ɹɐn/",
     "french": "courir / fonctionner / gérer",
     "example": "The system has run without errors all day.",
@@ -1586,7 +1586,7 @@
   {
     "id": "iv0089",
     "term": "pay",
-    "phoneticFr": "",
+    "phoneticFr": "PÉÏ",
     "ipa": "/pæɪ/",
     "french": "payer",
     "example": "I pay by card most of the time.",
@@ -1604,7 +1604,7 @@
   {
     "id": "iv0090",
     "term": "paid",
-    "phoneticFr": "",
+    "phoneticFr": "PÉÏD",
     "ipa": "/pæɪd/",
     "french": "payer",
     "example": "I paid the bill yesterday.",
@@ -1622,7 +1622,7 @@
   {
     "id": "iv0091",
     "term": "paid",
-    "phoneticFr": "",
+    "phoneticFr": "PÉÏD",
     "ipa": "/pæɪd/",
     "french": "payer",
     "example": "Have you paid the bill yet?",
@@ -1640,7 +1640,7 @@
   {
     "id": "iv0092",
     "term": "sit",
-    "phoneticFr": "",
+    "phoneticFr": "SIT",
     "ipa": "/sɪt/",
     "french": "s’asseoir / être assis",
     "example": "I usually sit near the window.",
@@ -1658,7 +1658,7 @@
   {
     "id": "iv0093",
     "term": "sat",
-    "phoneticFr": "",
+    "phoneticFr": "SAT",
     "ipa": "/sæt/",
     "french": "s’asseoir / être assis",
     "example": "We sat outside for lunch.",
@@ -1676,7 +1676,7 @@
   {
     "id": "iv0094",
     "term": "sat",
-    "phoneticFr": "",
+    "phoneticFr": "SAT",
     "ipa": "/sæt/",
     "french": "s’asseoir / être assis",
     "example": "I've sat here for an hour.",
@@ -1694,7 +1694,7 @@
   {
     "id": "iv0095",
     "term": "speak",
-    "phoneticFr": "",
+    "phoneticFr": "SPIIK",
     "ipa": "/spiːk/",
     "french": "parler",
     "example": "I speak English at work.",
@@ -1712,7 +1712,7 @@
   {
     "id": "iv0096",
     "term": "spoke",
-    "phoneticFr": "",
+    "phoneticFr": "SPOK",
     "ipa": "/spəʉk/",
     "french": "parler",
     "example": "I spoke to my manager yesterday.",
@@ -1730,7 +1730,7 @@
   {
     "id": "iv0097",
     "term": "spoken",
-    "phoneticFr": "",
+    "phoneticFr": "SPO-KEUN",
     "ipa": "/ˈspəʉkən/",
     "french": "parler",
     "example": "Have you spoken to your manager?",
@@ -1748,7 +1748,7 @@
   {
     "id": "iv0098",
     "term": "read",
-    "phoneticFr": "",
+    "phoneticFr": "RIID",
     "ipa": "/ɹiːd/",
     "french": "lire",
     "example": "I read the news every morning.",
@@ -1766,7 +1766,7 @@
   {
     "id": "iv0099",
     "term": "read",
-    "phoneticFr": "",
+    "phoneticFr": "RÈD",
     "ipa": "/ɹed/",
     "french": "lire",
     "example": "I read your message last night.",
@@ -1784,7 +1784,7 @@
   {
     "id": "iv0100",
     "term": "read",
-    "phoneticFr": "",
+    "phoneticFr": "RÈD",
     "ipa": "/ɹed/",
     "french": "lire",
     "example": "I've already read the email.",
@@ -1802,7 +1802,7 @@
   {
     "id": "iv0101",
     "term": "lose",
-    "phoneticFr": "",
+    "phoneticFr": "LOUZ",
     "ipa": "/lʉːz/",
     "french": "perdre",
     "example": "I always lose my keys.",
@@ -1820,7 +1820,7 @@
   {
     "id": "iv0102",
     "term": "lost",
-    "phoneticFr": "",
+    "phoneticFr": "LOST",
     "ipa": "/lɔst/",
     "french": "perdre",
     "example": "I lost my wallet yesterday.",
@@ -1838,7 +1838,7 @@
   {
     "id": "iv0103",
     "term": "lost",
-    "phoneticFr": "",
+    "phoneticFr": "LOST",
     "ipa": "/lɔst/",
     "french": "perdre",
     "example": "I've lost my keys again.",
@@ -1856,7 +1856,7 @@
   {
     "id": "iv0104",
     "term": "become",
-    "phoneticFr": "",
+    "phoneticFr": "BI-KEUM",
     "ipa": "/bɪˈkɐm/",
     "french": "devenir",
     "example": "It can become expensive very quickly.",
@@ -1874,7 +1874,7 @@
   {
     "id": "iv0105",
     "term": "became",
-    "phoneticFr": "",
+    "phoneticFr": "BI-KÉÏM",
     "ipa": "/bɪˈkæɪm/",
     "french": "devenir",
     "example": "It became much easier after a week.",
@@ -1892,7 +1892,7 @@
   {
     "id": "iv0106",
     "term": "become",
-    "phoneticFr": "",
+    "phoneticFr": "BI-KEUM",
     "ipa": "/bɪˈkɐm/",
     "french": "devenir",
     "example": "It's become much easier now.",
@@ -1910,7 +1910,7 @@
   {
     "id": "iv0107",
     "term": "buy",
-    "phoneticFr": "",
+    "phoneticFr": "BAÏ",
     "ipa": "/bɑe/",
     "french": "acheter",
     "example": "I usually buy groceries on Friday.",
@@ -1928,7 +1928,7 @@
   {
     "id": "iv0108",
     "term": "bought",
-    "phoneticFr": "",
+    "phoneticFr": "BÔT",
     "ipa": "/boːt/",
     "french": "acheter",
     "example": "I bought it online.",
@@ -1946,7 +1946,7 @@
   {
     "id": "iv0109",
     "term": "bought",
-    "phoneticFr": "",
+    "phoneticFr": "BÔT",
     "ipa": "/boːt/",
     "french": "acheter",
     "example": "I've bought a new phone.",
@@ -1964,7 +1964,7 @@
   {
     "id": "iv0110",
     "term": "send",
-    "phoneticFr": "",
+    "phoneticFr": "SÈND",
     "ipa": "/send/",
     "french": "envoyer",
     "example": "Send me the address when you can.",
@@ -1982,7 +1982,7 @@
   {
     "id": "iv0111",
     "term": "sent",
-    "phoneticFr": "",
+    "phoneticFr": "SÈNT",
     "ipa": "/sent/",
     "french": "envoyer",
     "example": "I sent the file yesterday.",
@@ -2000,7 +2000,7 @@
   {
     "id": "iv0112",
     "term": "sent",
-    "phoneticFr": "",
+    "phoneticFr": "SÈNT",
     "ipa": "/sent/",
     "french": "envoyer",
     "example": "I've sent you the address.",
@@ -2018,7 +2018,7 @@
   {
     "id": "iv0113",
     "term": "build",
-    "phoneticFr": "",
+    "phoneticFr": "BILD",
     "ipa": "/bɪld/",
     "french": "construire / créer",
     "example": "We build apps for field teams.",
@@ -2036,7 +2036,7 @@
   {
     "id": "iv0114",
     "term": "built",
-    "phoneticFr": "",
+    "phoneticFr": "BILT",
     "ipa": "/bɪlt/",
     "french": "construire / créer",
     "example": "They built the app from scratch.",
@@ -2054,7 +2054,7 @@
   {
     "id": "iv0115",
     "term": "built",
-    "phoneticFr": "",
+    "phoneticFr": "BILT",
     "ipa": "/bɪlt/",
     "french": "construire / créer",
     "example": "We've built a simple solution.",
@@ -2072,7 +2072,7 @@
   {
     "id": "iv0116",
     "term": "fall",
-    "phoneticFr": "",
+    "phoneticFr": "FÔL",
     "ipa": "/foːl/",
     "french": "tomber / chuter",
     "example": "Be careful not to fall.",
@@ -2090,7 +2090,7 @@
   {
     "id": "iv0117",
     "term": "fell",
-    "phoneticFr": "",
+    "phoneticFr": "FÈL",
     "ipa": "/fel/",
     "french": "tomber / chuter",
     "example": "My phone fell on the floor.",
@@ -2108,7 +2108,7 @@
   {
     "id": "iv0118",
     "term": "fallen",
-    "phoneticFr": "",
+    "phoneticFr": "FÔLEUN",
     "ipa": "/ˈfoːlən/",
     "french": "tomber / chuter",
     "example": "Prices have fallen this month.",
@@ -2126,7 +2126,7 @@
   {
     "id": "iv0119",
     "term": "break",
-    "phoneticFr": "",
+    "phoneticFr": "BRÉÏK",
     "ipa": "/bɹæɪk/",
     "french": "casser / rompre",
     "example": "Try not to break it.",
@@ -2144,7 +2144,7 @@
   {
     "id": "iv0120",
     "term": "broke",
-    "phoneticFr": "",
+    "phoneticFr": "BROK",
     "ipa": "/bɹəʉk/",
     "french": "casser / rompre",
     "example": "I broke my charger yesterday.",
@@ -2162,7 +2162,7 @@
   {
     "id": "iv0121",
     "term": "broken",
-    "phoneticFr": "",
+    "phoneticFr": "BROKEUN",
     "ipa": "/ˈbɹəʉkən/",
     "french": "casser / rompre",
     "example": "I've broken my charger.",
@@ -2180,7 +2180,7 @@
   {
     "id": "iv0122",
     "term": "choose",
-    "phoneticFr": "",
+    "phoneticFr": "TCHOUZ",
     "ipa": "/tʃʉːz/",
     "french": "choisir",
     "example": "Choose the option that works best.",
@@ -2198,7 +2198,7 @@
   {
     "id": "iv0123",
     "term": "chose",
-    "phoneticFr": "",
+    "phoneticFr": "TCHOZ",
     "ipa": "/tʃəʉz/",
     "french": "choisir",
     "example": "I chose the cheaper one.",
@@ -2216,7 +2216,7 @@
   {
     "id": "iv0124",
     "term": "chosen",
-    "phoneticFr": "",
+    "phoneticFr": "TCHOZEUN",
     "ipa": "/ˈtʃəʉzən/",
     "french": "choisir",
     "example": "Have you chosen a date yet?",
@@ -2234,7 +2234,7 @@
   {
     "id": "iv0125",
     "term": "eat",
-    "phoneticFr": "",
+    "phoneticFr": "IIT",
     "ipa": "/iːt/",
     "french": "manger",
     "example": "I usually eat lunch at one.",
@@ -2252,7 +2252,7 @@
   {
     "id": "iv0126",
     "term": "ate",
-    "phoneticFr": "",
+    "phoneticFr": "ÉÏT",
     "ipa": "/æɪt/",
     "french": "manger",
     "example": "I ate too much last night.",
@@ -2270,7 +2270,7 @@
   {
     "id": "iv0127",
     "term": "eaten",
-    "phoneticFr": "",
+    "phoneticFr": "IITEUN",
     "ipa": "/ˈiːtən/",
     "french": "manger",
     "example": "I haven't eaten yet.",
@@ -2288,7 +2288,7 @@
   {
     "id": "iv0128",
     "term": "drink",
-    "phoneticFr": "",
+    "phoneticFr": "DRINGK",
     "ipa": "/dɹɪŋk/",
     "french": "boire",
     "example": "I drink a lot of water at work.",
@@ -2306,7 +2306,7 @@
   {
     "id": "iv0129",
     "term": "drank",
-    "phoneticFr": "",
+    "phoneticFr": "DRANGK",
     "ipa": "/dɹæŋk/",
     "french": "boire",
     "example": "I drank two coffees this morning.",
@@ -2324,7 +2324,7 @@
   {
     "id": "iv0130",
     "term": "drunk",
-    "phoneticFr": "",
+    "phoneticFr": "DREUNGK",
     "ipa": "/dɹɐŋk/",
     "french": "boire",
     "example": "I've drunk way too much coffee today.",
@@ -2342,7 +2342,7 @@
   {
     "id": "iv0131",
     "term": "drive",
-    "phoneticFr": "",
+    "phoneticFr": "DRAÏV",
     "ipa": "/dɹɑev/",
     "french": "conduire",
     "example": "I drive to work most days.",
@@ -2360,7 +2360,7 @@
   {
     "id": "iv0132",
     "term": "drove",
-    "phoneticFr": "",
+    "phoneticFr": "DROV",
     "ipa": "/dɹəʉv/",
     "french": "conduire",
     "example": "I drove to Canberra last weekend.",
@@ -2378,7 +2378,7 @@
   {
     "id": "iv0133",
     "term": "driven",
-    "phoneticFr": "",
+    "phoneticFr": "DRIVEUN",
     "ipa": "/ˈdɹɪvən/",
     "french": "conduire",
     "example": "I've never driven there before.",
@@ -2396,7 +2396,7 @@
   {
     "id": "iv0134",
     "term": "sleep",
-    "phoneticFr": "",
+    "phoneticFr": "SLIIP",
     "ipa": "/sliːp/",
     "french": "dormir",
     "example": "I usually sleep seven hours.",
@@ -2414,7 +2414,7 @@
   {
     "id": "iv0135",
     "term": "slept",
-    "phoneticFr": "",
+    "phoneticFr": "SLÈPT",
     "ipa": "/slept/",
     "french": "dormir",
     "example": "I slept badly last night.",
@@ -2432,7 +2432,7 @@
   {
     "id": "iv0136",
     "term": "slept",
-    "phoneticFr": "",
+    "phoneticFr": "SLÈPT",
     "ipa": "/slept/",
     "french": "dormir",
     "example": "I haven't slept much this week.",
@@ -2450,7 +2450,7 @@
   {
     "id": "iv0137",
     "term": "wear",
-    "phoneticFr": "",
+    "phoneticFr": "WÈ",
     "ipa": "/weː/",
     "french": "porter un vêtement",
     "example": "I wear safety boots at work.",
@@ -2468,7 +2468,7 @@
   {
     "id": "iv0138",
     "term": "wore",
-    "phoneticFr": "",
+    "phoneticFr": "WÔ",
     "ipa": "/woː/",
     "french": "porter un vêtement",
     "example": "I wore a jacket yesterday.",
@@ -2486,7 +2486,7 @@
   {
     "id": "iv0139",
     "term": "worn",
-    "phoneticFr": "",
+    "phoneticFr": "WÔNE",
     "ipa": "/woːn/",
     "french": "porter un vêtement",
     "example": "I've worn these shoes all week.",
@@ -2504,7 +2504,7 @@
   {
     "id": "iv0140",
     "term": "win",
-    "phoneticFr": "",
+    "phoneticFr": "WIN",
     "ipa": "/wɪn/",
     "french": "gagner",
     "example": "I really want to win this game.",
@@ -2522,7 +2522,7 @@
   {
     "id": "iv0141",
     "term": "won",
-    "phoneticFr": "",
+    "phoneticFr": "WEUN",
     "ipa": "/wɐn/",
     "french": "gagner",
     "example": "Who won the game last night?",
@@ -2540,7 +2540,7 @@
   {
     "id": "iv0142",
     "term": "won",
-    "phoneticFr": "",
+    "phoneticFr": "WEUN",
     "ipa": "/wɐn/",
     "french": "gagner",
     "example": "They've won three games in a row.",
@@ -2558,7 +2558,7 @@
   {
     "id": "iv0143",
     "term": "catch",
-    "phoneticFr": "",
+    "phoneticFr": "KATCH",
     "ipa": "/kætʃ/",
     "french": "attraper / prendre",
     "example": "I need to catch the next train.",
@@ -2576,7 +2576,7 @@
   {
     "id": "iv0144",
     "term": "caught",
-    "phoneticFr": "",
+    "phoneticFr": "KÔT",
     "ipa": "/koːt/",
     "french": "attraper / prendre",
     "example": "I caught the train just in time.",
@@ -2594,7 +2594,7 @@
   {
     "id": "iv0145",
     "term": "caught",
-    "phoneticFr": "",
+    "phoneticFr": "KÔT",
     "ipa": "/koːt/",
     "french": "attraper / prendre",
     "example": "I've caught a cold.",
@@ -2612,7 +2612,7 @@
   {
     "id": "iv0146",
     "term": "forget",
-    "phoneticFr": "",
+    "phoneticFr": "FEU-GUÈT",
     "ipa": "/fəˈɡet/",
     "french": "oublier",
     "example": "Don't forget your keys.",
@@ -2630,7 +2630,7 @@
   {
     "id": "iv0147",
     "term": "forgot",
-    "phoneticFr": "",
+    "phoneticFr": "FEU-GOT",
     "ipa": "/fəˈɡɔt/",
     "french": "oublier",
     "example": "I forgot his name.",
@@ -2648,7 +2648,7 @@
   {
     "id": "iv0148",
     "term": "forgotten",
-    "phoneticFr": "",
+    "phoneticFr": "FEU-GOTEUN",
     "ipa": "/fəˈɡɔtən/",
     "french": "oublier",
     "example": "I've forgotten his name.",
@@ -2666,7 +2666,7 @@
   {
     "id": "iv0149",
     "term": "understand",
-    "phoneticFr": "",
+    "phoneticFr": "EUNDEU-STAND",
     "ipa": "/ˌɐndəˈstænd/",
     "french": "comprendre",
     "example": "I understand what you mean.",
@@ -2684,7 +2684,7 @@
   {
     "id": "iv0150",
     "term": "understood",
-    "phoneticFr": "",
+    "phoneticFr": "EUNDEU-STOUD",
     "ipa": "/ˌɐndəˈstʊd/",
     "french": "comprendre",
     "example": "I understood the first part.",
@@ -2702,7 +2702,7 @@
   {
     "id": "iv0151",
     "term": "understood",
-    "phoneticFr": "",
+    "phoneticFr": "EUNDEU-STOUD",
     "ipa": "/ˌɐndəˈstʊd/",
     "french": "comprendre",
     "example": "I've understood the main idea.",
@@ -2720,7 +2720,7 @@
   {
     "id": "iv0152",
     "term": "show",
-    "phoneticFr": "",
+    "phoneticFr": "CHO",
     "ipa": "/ʃəʉ/",
     "french": "montrer",
     "example": "I'll show you how it works.",
@@ -2738,7 +2738,7 @@
   {
     "id": "iv0153",
     "term": "showed",
-    "phoneticFr": "",
+    "phoneticFr": "CHOD",
     "ipa": "/ʃəʉd/",
     "french": "montrer",
     "example": "She showed me the new system.",
@@ -2756,7 +2756,7 @@
   {
     "id": "iv0154",
     "term": "shown",
-    "phoneticFr": "",
+    "phoneticFr": "CHÔNE",
     "ipa": "/ʃəʉn/",
     "french": "montrer",
     "example": "I've shown him the problem.",
@@ -2774,7 +2774,7 @@
   {
     "id": "iv0155",
     "term": "grow",
-    "phoneticFr": "",
+    "phoneticFr": "GRO",
     "ipa": "/ɡɹəʉ/",
     "french": "grandir / croître",
     "example": "The business continues to grow.",
@@ -2792,7 +2792,7 @@
   {
     "id": "iv0156",
     "term": "grew",
-    "phoneticFr": "",
+    "phoneticFr": "GROU",
     "ipa": "/ɡɹʉː/",
     "french": "grandir / croître",
     "example": "The company grew quickly last year.",
@@ -2810,7 +2810,7 @@
   {
     "id": "iv0157",
     "term": "grown",
-    "phoneticFr": "",
+    "phoneticFr": "GRÔNE",
     "ipa": "/ɡɹəʉn/",
     "french": "grandir / croître",
     "example": "The company has grown quickly.",
@@ -2828,7 +2828,7 @@
   {
     "id": "iv0158",
     "term": "sell",
-    "phoneticFr": "",
+    "phoneticFr": "SÈL",
     "ipa": "/sel/",
     "french": "vendre",
     "example": "They sell coffee near the station.",
@@ -2846,7 +2846,7 @@
   {
     "id": "iv0159",
     "term": "sold",
-    "phoneticFr": "",
+    "phoneticFr": "SOLD",
     "ipa": "/səʉld/",
     "french": "vendre",
     "example": "They sold the car last week.",
@@ -2864,7 +2864,7 @@
   {
     "id": "iv0160",
     "term": "sold",
-    "phoneticFr": "",
+    "phoneticFr": "SOLD",
     "ipa": "/səʉld/",
     "french": "vendre",
     "example": "They've sold all the tickets.",
@@ -2882,7 +2882,7 @@
   {
     "id": "iv0161",
     "term": "spend",
-    "phoneticFr": "",
+    "phoneticFr": "SPÈND",
     "ipa": "/spend/",
     "french": "dépenser / passer du temps",
     "example": "I try not to spend too much.",
@@ -2900,7 +2900,7 @@
   {
     "id": "iv0162",
     "term": "spent",
-    "phoneticFr": "",
+    "phoneticFr": "SPÈNT",
     "ipa": "/spent/",
     "french": "dépenser / passer du temps",
     "example": "I spent the whole day working.",
@@ -2918,7 +2918,7 @@
   {
     "id": "iv0163",
     "term": "spent",
-    "phoneticFr": "",
+    "phoneticFr": "SPÈNT",
     "ipa": "/spent/",
     "french": "dépenser / passer du temps",
     "example": "I've spent a lot of time on this.",
@@ -2936,7 +2936,7 @@
   {
     "id": "iv0164",
     "term": "teach",
-    "phoneticFr": "",
+    "phoneticFr": "TIITCH",
     "ipa": "/tiːtʃ/",
     "french": "enseigner / apprendre à quelqu’un",
     "example": "I teach new staff how to use the app.",
@@ -2954,7 +2954,7 @@
   {
     "id": "iv0165",
     "term": "taught",
-    "phoneticFr": "",
+    "phoneticFr": "TÔT",
     "ipa": "/toːt/",
     "french": "enseigner / apprendre à quelqu’un",
     "example": "She taught me how to use it.",
@@ -2972,7 +2972,7 @@
   {
     "id": "iv0166",
     "term": "taught",
-    "phoneticFr": "",
+    "phoneticFr": "TÔT",
     "ipa": "/toːt/",
     "french": "enseigner / apprendre à quelqu’un",
     "example": "He's taught me a lot.",
@@ -2990,7 +2990,7 @@
   {
     "id": "iv0167",
     "term": "learn",
-    "phoneticFr": "",
+    "phoneticFr": "LEUN",
     "ipa": "/lɜːn/",
     "french": "apprendre",
     "example": "I learn something new every day.",
@@ -3008,7 +3008,7 @@
   {
     "id": "iv0168",
     "term": "learnt",
-    "phoneticFr": "",
+    "phoneticFr": "LEUNT",
     "ipa": "/lɜːnt/",
     "french": "apprendre",
     "example": "I learnt a lot from that job.",
@@ -3026,7 +3026,7 @@
   {
     "id": "iv0169",
     "term": "learnt",
-    "phoneticFr": "",
+    "phoneticFr": "LEUNT",
     "ipa": "/lɜːnt/",
     "french": "apprendre",
     "example": "I've learnt a lot this month.",
@@ -3044,7 +3044,7 @@
   {
     "id": "iv0170",
     "term": "wake",
-    "phoneticFr": "",
+    "phoneticFr": "WÉÏK",
     "ipa": "/wæɪk/",
     "french": "se réveiller / réveiller",
     "example": "I wake up at six every day.",
@@ -3062,7 +3062,7 @@
   {
     "id": "iv0171",
     "term": "woke",
-    "phoneticFr": "",
+    "phoneticFr": "WOK",
     "ipa": "/wəʉk/",
     "french": "se réveiller / réveiller",
     "example": "I woke up really early.",
@@ -3080,7 +3080,7 @@
   {
     "id": "iv0172",
     "term": "woken",
-    "phoneticFr": "",
+    "phoneticFr": "WOKEUN",
     "ipa": "/ˈwəʉkən/",
     "french": "se réveiller / réveiller",
     "example": "I've woken up early all week.",
@@ -3098,7 +3098,7 @@
   {
     "id": "iv0173",
     "term": "ring",
-    "phoneticFr": "",
+    "phoneticFr": "RING",
     "ipa": "/ɹɪŋ/",
     "french": "sonner / appeler",
     "example": "Ring me when you arrive.",
@@ -3116,7 +3116,7 @@
   {
     "id": "iv0174",
     "term": "rang",
-    "phoneticFr": "",
+    "phoneticFr": "RANG",
     "ipa": "/ɹæŋ/",
     "french": "sonner / appeler",
     "example": "She rang me this morning.",
@@ -3134,7 +3134,7 @@
   {
     "id": "iv0175",
     "term": "rung",
-    "phoneticFr": "",
+    "phoneticFr": "REUNG",
     "ipa": "/ɹɐŋ/",
     "french": "sonner / appeler",
     "example": "He's rung me twice already.",
@@ -3152,7 +3152,7 @@
   {
     "id": "iv0176",
     "term": "set",
-    "phoneticFr": "",
+    "phoneticFr": "SÈT",
     "ipa": "/set/",
     "french": "régler / fixer / poser",
     "example": "Set an alarm for six.",
@@ -3170,7 +3170,7 @@
   {
     "id": "iv0177",
     "term": "set",
-    "phoneticFr": "",
+    "phoneticFr": "SÈT",
     "ipa": "/set/",
     "french": "régler / fixer / poser",
     "example": "I set the alarm last night.",
@@ -3188,7 +3188,7 @@
   {
     "id": "iv0178",
     "term": "set",
-    "phoneticFr": "",
+    "phoneticFr": "SÈT",
     "ipa": "/set/",
     "french": "régler / fixer / poser",
     "example": "I've set everything up.",
@@ -3206,7 +3206,7 @@
   {
     "id": "iv0179",
     "term": "cut",
-    "phoneticFr": "",
+    "phoneticFr": "KEUT",
     "ipa": "/kɐt/",
     "french": "couper",
     "example": "Cut the cable carefully.",
@@ -3224,7 +3224,7 @@
   {
     "id": "iv0180",
     "term": "cut",
-    "phoneticFr": "",
+    "phoneticFr": "KEUT",
     "ipa": "/kɐt/",
     "french": "couper",
     "example": "I cut my finger cooking dinner.",
@@ -3242,7 +3242,7 @@
   {
     "id": "iv0181",
     "term": "cut",
-    "phoneticFr": "",
+    "phoneticFr": "KEUT",
     "ipa": "/kɐt/",
     "french": "couper",
     "example": "I've cut the list down to ten.",
@@ -3260,7 +3260,7 @@
   {
     "id": "iv0182",
     "term": "hit",
-    "phoneticFr": "",
+    "phoneticFr": "HIT",
     "ipa": "/hɪt/",
     "french": "frapper / heurter / atteindre",
     "example": "Don't hit the brakes too hard.",
@@ -3278,7 +3278,7 @@
   {
     "id": "iv0183",
     "term": "hit",
-    "phoneticFr": "",
+    "phoneticFr": "HIT",
     "ipa": "/hɪt/",
     "french": "frapper / heurter / atteindre",
     "example": "Someone hit my car yesterday.",
@@ -3296,7 +3296,7 @@
   {
     "id": "iv0184",
     "term": "hit",
-    "phoneticFr": "",
+    "phoneticFr": "HIT",
     "ipa": "/hɪt/",
     "french": "frapper / heurter / atteindre",
     "example": "We've hit our target this month.",
@@ -3314,7 +3314,7 @@
   {
     "id": "iv0185",
     "term": "shut",
-    "phoneticFr": "",
+    "phoneticFr": "CHEUT",
     "ipa": "/ʃɐt/",
     "french": "fermer",
     "example": "Can you shut the door?",
@@ -3332,7 +3332,7 @@
   {
     "id": "iv0186",
     "term": "shut",
-    "phoneticFr": "",
+    "phoneticFr": "CHEUT",
     "ipa": "/ʃɐt/",
     "french": "fermer",
     "example": "I shut the window before leaving.",
@@ -3350,7 +3350,7 @@
   {
     "id": "iv0187",
     "term": "shut",
-    "phoneticFr": "",
+    "phoneticFr": "CHEUT",
     "ipa": "/ʃɐt/",
     "french": "fermer",
     "example": "I've shut everything down.",
@@ -3368,7 +3368,7 @@
   {
     "id": "iv0188",
     "term": "cost",
-    "phoneticFr": "",
+    "phoneticFr": "KOST",
     "ipa": "/kɔst/",
     "french": "coûter",
     "example": "How much does it cost?",
@@ -3386,7 +3386,7 @@
   {
     "id": "iv0189",
     "term": "cost",
-    "phoneticFr": "",
+    "phoneticFr": "KOST",
     "ipa": "/kɔst/",
     "french": "coûter",
     "example": "How much did it cost?",
@@ -3404,7 +3404,7 @@
   {
     "id": "iv0190",
     "term": "cost",
-    "phoneticFr": "",
+    "phoneticFr": "KOST",
     "ipa": "/kɔst/",
     "french": "coûter",
     "example": "It's cost more than expected.",
@@ -3422,7 +3422,7 @@
   {
     "id": "iv0191",
     "term": "draw",
-    "phoneticFr": "",
+    "phoneticFr": "DRÔ",
     "ipa": "/dɹoː/",
     "french": "dessiner / tirer",
     "example": "Draw a quick diagram for me.",
@@ -3440,7 +3440,7 @@
   {
     "id": "iv0192",
     "term": "drew",
-    "phoneticFr": "",
+    "phoneticFr": "DROU",
     "ipa": "/dɹʉː/",
     "french": "dessiner / tirer",
     "example": "He drew a quick diagram.",
@@ -3458,7 +3458,7 @@
   {
     "id": "iv0193",
     "term": "drawn",
-    "phoneticFr": "",
+    "phoneticFr": "DRÔNE",
     "ipa": "/dɹoːn/",
     "french": "dessiner / tirer",
     "example": "I've drawn a line under the issue.",
@@ -3476,7 +3476,7 @@
   {
     "id": "iv0194",
     "term": "fly",
-    "phoneticFr": "",
+    "phoneticFr": "FLAÏ",
     "ipa": "/flɑe/",
     "french": "voler / prendre l’avion",
     "example": "I usually fly when the trip is long.",
@@ -3494,7 +3494,7 @@
   {
     "id": "iv0195",
     "term": "flew",
-    "phoneticFr": "",
+    "phoneticFr": "FLOU",
     "ipa": "/flʉː/",
     "french": "voler / prendre l’avion",
     "example": "I flew to Melbourne last month.",
@@ -3512,7 +3512,7 @@
   {
     "id": "iv0196",
     "term": "flown",
-    "phoneticFr": "",
+    "phoneticFr": "FLÔNE",
     "ipa": "/fləʉn/",
     "french": "voler / prendre l’avion",
     "example": "I've flown to Melbourne a few times.",
@@ -3530,7 +3530,7 @@
   {
     "id": "iv0197",
     "term": "ride",
-    "phoneticFr": "",
+    "phoneticFr": "RAÏD",
     "ipa": "/ɹɑed/",
     "french": "monter / faire du vélo",
     "example": "I ride my bike to work sometimes.",
@@ -3548,7 +3548,7 @@
   {
     "id": "iv0198",
     "term": "rode",
-    "phoneticFr": "",
+    "phoneticFr": "ROD",
     "ipa": "/ɹəʉd/",
     "french": "monter / faire du vélo",
     "example": "I rode my bike to work yesterday.",
@@ -3566,7 +3566,7 @@
   {
     "id": "iv0199",
     "term": "ridden",
-    "phoneticFr": "",
+    "phoneticFr": "RIDEUN",
     "ipa": "/ˈɹɪdən/",
     "french": "monter / faire du vélo",
     "example": "I've ridden that route before.",
@@ -3584,7 +3584,7 @@
   {
     "id": "iv0200",
     "term": "throw",
-    "phoneticFr": "",
+    "phoneticFr": "THRO",
     "ipa": "/θɹəʉ/",
     "french": "jeter / lancer",
     "example": "Don't throw that away.",
@@ -3602,7 +3602,7 @@
   {
     "id": "iv0201",
     "term": "threw",
-    "phoneticFr": "",
+    "phoneticFr": "THROU",
     "ipa": "/θɹʉː/",
     "french": "jeter / lancer",
     "example": "I threw the old one away.",
@@ -3620,7 +3620,7 @@
   {
     "id": "iv0202",
     "term": "thrown",
-    "phoneticFr": "",
+    "phoneticFr": "THRÔNE",
     "ipa": "/θɹəʉn/",
     "french": "jeter / lancer",
     "example": "I've thrown the receipt away.",
@@ -3638,7 +3638,7 @@
   {
     "id": "iv0203",
     "term": "fight",
-    "phoneticFr": "",
+    "phoneticFr": "FAÏT",
     "ipa": "/fɑet/",
     "french": "se battre / lutter",
     "example": "They always fight over small things.",
@@ -3656,7 +3656,7 @@
   {
     "id": "iv0204",
     "term": "fought",
-    "phoneticFr": "",
+    "phoneticFr": "FÔT",
     "ipa": "/foːt/",
     "french": "se battre / lutter",
     "example": "They fought about money.",
@@ -3674,7 +3674,7 @@
   {
     "id": "iv0205",
     "term": "fought",
-    "phoneticFr": "",
+    "phoneticFr": "FÔT",
     "ipa": "/foːt/",
     "french": "se battre / lutter",
     "example": "They've fought hard to keep the business open.",
@@ -3692,7 +3692,7 @@
   {
     "id": "iv0206",
     "term": "forgive",
-    "phoneticFr": "",
+    "phoneticFr": "FEU-GUIV",
     "ipa": "/fəˈɡɪv/",
     "french": "pardonner",
     "example": "Can you forgive me?",
@@ -3710,7 +3710,7 @@
   {
     "id": "iv0207",
     "term": "forgave",
-    "phoneticFr": "",
+    "phoneticFr": "FEU-GUÉÏV",
     "ipa": "/fəˈɡæɪv/",
     "french": "pardonner",
     "example": "She forgave him eventually.",
@@ -3728,7 +3728,7 @@
   {
     "id": "iv0208",
     "term": "forgiven",
-    "phoneticFr": "",
+    "phoneticFr": "FEU-GUIVEUN",
     "ipa": "/fəˈɡɪvən/",
     "french": "pardonner",
     "example": "I've forgiven him, but I still remember.",
@@ -3746,7 +3746,7 @@
   {
     "id": "iv0209",
     "term": "hide",
-    "phoneticFr": "",
+    "phoneticFr": "HAÏD",
     "ipa": "/hɑed/",
     "french": "cacher",
     "example": "Don't hide the problem.",
@@ -3764,7 +3764,7 @@
   {
     "id": "iv0210",
     "term": "hid",
-    "phoneticFr": "",
+    "phoneticFr": "HID",
     "ipa": "/hɪd/",
     "french": "cacher",
     "example": "He hid the key under the mat.",
@@ -3782,7 +3782,7 @@
   {
     "id": "iv0211",
     "term": "hidden",
-    "phoneticFr": "",
+    "phoneticFr": "HIDEUN",
     "ipa": "/ˈhɪdən/",
     "french": "cacher",
     "example": "They've hidden the settings menu.",
@@ -3800,7 +3800,7 @@
   {
     "id": "iv0212",
     "term": "lead",
-    "phoneticFr": "",
+    "phoneticFr": "LIID",
     "ipa": "/liːd/",
     "french": "diriger / mener",
     "example": "I lead a small technical team.",
@@ -3818,7 +3818,7 @@
   {
     "id": "iv0213",
     "term": "led",
-    "phoneticFr": "",
+    "phoneticFr": "LÈD",
     "ipa": "/led/",
     "french": "diriger / mener",
     "example": "She led the project last year.",
@@ -3836,7 +3836,7 @@
   {
     "id": "iv0214",
     "term": "led",
-    "phoneticFr": "",
+    "phoneticFr": "LÈD",
     "ipa": "/led/",
     "french": "diriger / mener",
     "example": "She's led several projects before.",
@@ -3854,7 +3854,7 @@
   {
     "id": "iv0215",
     "term": "deal",
-    "phoneticFr": "",
+    "phoneticFr": "DIIL",
     "ipa": "/diːl/",
     "french": "gérer / traiter",
     "example": "I'll deal with it tomorrow.",
@@ -3872,7 +3872,7 @@
   {
     "id": "iv0216",
     "term": "dealt",
-    "phoneticFr": "",
+    "phoneticFr": "DÈLT",
     "ipa": "/delt/",
     "french": "gérer / traiter",
     "example": "I dealt with the complaint yesterday.",
@@ -3890,7 +3890,7 @@
   {
     "id": "iv0217",
     "term": "dealt",
-    "phoneticFr": "",
+    "phoneticFr": "DÈLT",
     "ipa": "/delt/",
     "french": "gérer / traiter",
     "example": "I've dealt with this issue before.",
@@ -3908,7 +3908,7 @@
   {
     "id": "iv0218",
     "term": "lend",
-    "phoneticFr": "",
+    "phoneticFr": "LÈND",
     "ipa": "/lend/",
     "french": "prêter",
     "example": "Can you lend me twenty dollars?",
@@ -3926,7 +3926,7 @@
   {
     "id": "iv0219",
     "term": "lent",
-    "phoneticFr": "",
+    "phoneticFr": "LÈNT",
     "ipa": "/lent/",
     "french": "prêter",
     "example": "He lent me his charger.",
@@ -3944,7 +3944,7 @@
   {
     "id": "iv0220",
     "term": "lent",
-    "phoneticFr": "",
+    "phoneticFr": "LÈNT",
     "ipa": "/lent/",
     "french": "prêter",
     "example": "He's lent me his car before.",
@@ -3962,7 +3962,7 @@
   {
     "id": "iv0221",
     "term": "feed",
-    "phoneticFr": "",
+    "phoneticFr": "FIID",
     "ipa": "/fiːd/",
     "french": "nourrir / alimenter",
     "example": "I feed the dog before work.",
@@ -3980,7 +3980,7 @@
   {
     "id": "iv0222",
     "term": "fed",
-    "phoneticFr": "",
+    "phoneticFr": "FÈD",
     "ipa": "/fed/",
     "french": "nourrir / alimenter",
     "example": "I fed the dog this morning.",
@@ -3998,7 +3998,7 @@
   {
     "id": "iv0223",
     "term": "fed",
-    "phoneticFr": "",
+    "phoneticFr": "FÈD",
     "ipa": "/fed/",
     "french": "nourrir / alimenter",
     "example": "I've fed all the data into the system.",
@@ -4016,7 +4016,7 @@
   {
     "id": "iv0224",
     "term": "rise",
-    "phoneticFr": "",
+    "phoneticFr": "RAÏZ",
     "ipa": "/ɹɑez/",
     "french": "monter / augmenter / se lever",
     "example": "Prices continue to rise.",
@@ -4034,7 +4034,7 @@
   {
     "id": "iv0225",
     "term": "rose",
-    "phoneticFr": "",
+    "phoneticFr": "ROZ",
     "ipa": "/ɹəʉz/",
     "french": "monter / augmenter / se lever",
     "example": "Prices rose again last month.",
@@ -4052,7 +4052,7 @@
   {
     "id": "iv0226",
     "term": "risen",
-    "phoneticFr": "",
+    "phoneticFr": "RIZEUN",
     "ipa": "/ˈɹɪzən/",
     "french": "monter / augmenter / se lever",
     "example": "Prices have risen again.",
@@ -4070,7 +4070,7 @@
   {
     "id": "iv0227",
     "term": "shake",
-    "phoneticFr": "",
+    "phoneticFr": "CHÉÏK",
     "ipa": "/ʃæɪk/",
     "french": "secouer",
     "example": "Shake the bottle before you open it.",
@@ -4088,7 +4088,7 @@
   {
     "id": "iv0228",
     "term": "shook",
-    "phoneticFr": "",
+    "phoneticFr": "CHOUK",
     "ipa": "/ʃʊk/",
     "french": "secouer",
     "example": "We shook hands after the meeting.",
@@ -4106,7 +4106,7 @@
   {
     "id": "iv0229",
     "term": "shaken",
-    "phoneticFr": "",
+    "phoneticFr": "CHÉÏKEUN",
     "ipa": "/ˈʃæɪkən/",
     "french": "secouer",
     "example": "I've never shaken his hand.",
@@ -4124,7 +4124,7 @@
   {
     "id": "iv0230",
     "term": "shoot",
-    "phoneticFr": "",
+    "phoneticFr": "CHOUT",
     "ipa": "/ʃʉːt/",
     "french": "tirer / shooter",
     "example": "Shoot when you have a clear chance.",
@@ -4142,7 +4142,7 @@
   {
     "id": "iv0231",
     "term": "shot",
-    "phoneticFr": "",
+    "phoneticFr": "CHOT",
     "ipa": "/ʃɔt/",
     "french": "tirer / shooter",
     "example": "He shot from outside the box.",
@@ -4160,7 +4160,7 @@
   {
     "id": "iv0232",
     "term": "shot",
-    "phoneticFr": "",
+    "phoneticFr": "CHOT",
     "ipa": "/ʃɔt/",
     "french": "tirer / shooter",
     "example": "He's shot three times already.",
@@ -4178,7 +4178,7 @@
   {
     "id": "iv0233",
     "term": "sing",
-    "phoneticFr": "",
+    "phoneticFr": "SING",
     "ipa": "/sɪŋ/",
     "french": "chanter",
     "example": "I sing in the car all the time.",
@@ -4196,7 +4196,7 @@
   {
     "id": "iv0234",
     "term": "sang",
-    "phoneticFr": "",
+    "phoneticFr": "SANG",
     "ipa": "/sæŋ/",
     "french": "chanter",
     "example": "They sang along to the song.",
@@ -4214,7 +4214,7 @@
   {
     "id": "iv0235",
     "term": "sung",
-    "phoneticFr": "",
+    "phoneticFr": "SEUNG",
     "ipa": "/sɐŋ/",
     "french": "chanter",
     "example": "I've never sung in public.",
@@ -4232,7 +4232,7 @@
   {
     "id": "iv0236",
     "term": "swim",
-    "phoneticFr": "",
+    "phoneticFr": "SWIM",
     "ipa": "/swɪm/",
     "french": "nager",
     "example": "I swim at the beach on weekends.",
@@ -4250,7 +4250,7 @@
   {
     "id": "iv0237",
     "term": "swam",
-    "phoneticFr": "",
+    "phoneticFr": "SWAM",
     "ipa": "/swæm/",
     "french": "nager",
     "example": "I swam for an hour yesterday.",
@@ -4268,7 +4268,7 @@
   {
     "id": "iv0238",
     "term": "swum",
-    "phoneticFr": "",
+    "phoneticFr": "SWEUM",
     "ipa": "/swɐm/",
     "french": "nager",
     "example": "I've never swum in the ocean here.",
@@ -4286,7 +4286,7 @@
   {
     "id": "iv0239",
     "term": "steal",
-    "phoneticFr": "",
+    "phoneticFr": "STIIL",
     "ipa": "/stiːl/",
     "french": "voler / dérober",
     "example": "Don't steal someone else's idea.",
@@ -4304,7 +4304,7 @@
   {
     "id": "iv0240",
     "term": "stole",
-    "phoneticFr": "",
+    "phoneticFr": "STOL",
     "ipa": "/stəʉl/",
     "french": "voler / dérober",
     "example": "Someone stole my bike.",
@@ -4322,7 +4322,7 @@
   {
     "id": "iv0241",
     "term": "stolen",
-    "phoneticFr": "",
+    "phoneticFr": "STOLEUN",
     "ipa": "/ˈstəʉlən/",
     "french": "voler / dérober",
     "example": "Someone's stolen my phone.",
@@ -4340,7 +4340,7 @@
   {
     "id": "iv0242",
     "term": "freeze",
-    "phoneticFr": "",
+    "phoneticFr": "FRIIZ",
     "ipa": "/fɹiːz/",
     "french": "geler / se figer",
     "example": "The app can freeze on older phones.",
@@ -4358,7 +4358,7 @@
   {
     "id": "iv0243",
     "term": "froze",
-    "phoneticFr": "",
+    "phoneticFr": "FROZ",
     "ipa": "/fɹəʉz/",
     "french": "geler / se figer",
     "example": "The screen froze again.",
@@ -4376,7 +4376,7 @@
   {
     "id": "iv0244",
     "term": "frozen",
-    "phoneticFr": "",
+    "phoneticFr": "FROZEUN",
     "ipa": "/ˈfɹəʉzən/",
     "french": "geler / se figer",
     "example": "The screen has frozen again.",
@@ -4394,7 +4394,7 @@
   {
     "id": "iv0245",
     "term": "beat",
-    "phoneticFr": "",
+    "phoneticFr": "BIIT",
     "ipa": "/biːt/",
     "french": "battre",
     "example": "We can beat them if we stay focused.",
@@ -4412,7 +4412,7 @@
   {
     "id": "iv0246",
     "term": "beat",
-    "phoneticFr": "",
+    "phoneticFr": "BIIT",
     "ipa": "/biːt/",
     "french": "battre",
     "example": "They beat us two-nil.",
@@ -4430,7 +4430,7 @@
   {
     "id": "iv0247",
     "term": "beaten",
-    "phoneticFr": "",
+    "phoneticFr": "BIITEUN",
     "ipa": "/ˈbiːtən/",
     "french": "battre",
     "example": "We've beaten them before.",
@@ -4448,7 +4448,7 @@
   {
     "id": "iv0248",
     "term": "bite",
-    "phoneticFr": "",
+    "phoneticFr": "BAÏT",
     "ipa": "/bɑet/",
     "french": "mordre",
     "example": "Dogs can bite when they are scared.",
@@ -4466,7 +4466,7 @@
   {
     "id": "iv0249",
     "term": "bit",
-    "phoneticFr": "",
+    "phoneticFr": "BIT",
     "ipa": "/bɪt/",
     "french": "mordre",
     "example": "The dog bit him.",
@@ -4484,7 +4484,7 @@
   {
     "id": "iv0250",
     "term": "bitten",
-    "phoneticFr": "",
+    "phoneticFr": "BITEUN",
     "ipa": "/ˈbɪtən/",
     "french": "mordre",
     "example": "I've never been bitten by a dog.",
@@ -4502,7 +4502,7 @@
   {
     "id": "iv0251",
     "term": "blow",
-    "phoneticFr": "",
+    "phoneticFr": "BLO",
     "ipa": "/bləʉ/",
     "french": "souffler / emporter",
     "example": "The wind can blow hard near the coast.",
@@ -4520,7 +4520,7 @@
   {
     "id": "iv0252",
     "term": "blew",
-    "phoneticFr": "",
+    "phoneticFr": "BLOU",
     "ipa": "/blʉː/",
     "french": "souffler / emporter",
     "example": "The wind blew the door shut.",
@@ -4538,7 +4538,7 @@
   {
     "id": "iv0253",
     "term": "blown",
-    "phoneticFr": "",
+    "phoneticFr": "BLÔNE",
     "ipa": "/bləʉn/",
     "french": "souffler / emporter",
     "example": "The wind has blown the sign over.",
@@ -4556,7 +4556,7 @@
   {
     "id": "iv0254",
     "term": "bend",
-    "phoneticFr": "",
+    "phoneticFr": "BÈND",
     "ipa": "/bend/",
     "french": "plier / se pencher",
     "example": "Don't bend the cable too much.",
@@ -4574,7 +4574,7 @@
   {
     "id": "iv0255",
     "term": "bent",
-    "phoneticFr": "",
+    "phoneticFr": "BÈNT",
     "ipa": "/bent/",
     "french": "plier / se pencher",
     "example": "I bent the cable by accident.",
@@ -4592,7 +4592,7 @@
   {
     "id": "iv0256",
     "term": "bent",
-    "phoneticFr": "",
+    "phoneticFr": "BÈNT",
     "ipa": "/bent/",
     "french": "plier / se pencher",
     "example": "I've bent the bracket slightly.",
@@ -4610,7 +4610,7 @@
   {
     "id": "iv0257",
     "term": "bleed",
-    "phoneticFr": "",
+    "phoneticFr": "BLIID",
     "ipa": "/bliːd/",
     "french": "saigner",
     "example": "Small cuts can bleed a lot.",
@@ -4628,7 +4628,7 @@
   {
     "id": "iv0258",
     "term": "bled",
-    "phoneticFr": "",
+    "phoneticFr": "BLÈD",
     "ipa": "/bled/",
     "french": "saigner",
     "example": "My finger bled for a few minutes.",
@@ -4646,7 +4646,7 @@
   {
     "id": "iv0259",
     "term": "bled",
-    "phoneticFr": "",
+    "phoneticFr": "BLÈD",
     "ipa": "/bled/",
     "french": "saigner",
     "example": "It's bled through the bandage.",
@@ -4664,7 +4664,7 @@
   {
     "id": "iv0260",
     "term": "dig",
-    "phoneticFr": "",
+    "phoneticFr": "DIG",
     "ipa": "/dɪɡ/",
     "french": "creuser",
     "example": "They need to dig a deeper hole.",
@@ -4682,7 +4682,7 @@
   {
     "id": "iv0261",
     "term": "dug",
-    "phoneticFr": "",
+    "phoneticFr": "DEUG",
     "ipa": "/dɐɡ/",
     "french": "creuser",
     "example": "They dug a hole in the garden.",
@@ -4700,7 +4700,7 @@
   {
     "id": "iv0262",
     "term": "dug",
-    "phoneticFr": "",
+    "phoneticFr": "DEUG",
     "ipa": "/dɐɡ/",
     "french": "creuser",
     "example": "They've dug up the whole street.",
@@ -4718,7 +4718,7 @@
   {
     "id": "iv0263",
     "term": "hang",
-    "phoneticFr": "",
+    "phoneticFr": "HANG",
     "ipa": "/hæŋ/",
     "french": "accrocher / suspendre",
     "example": "Hang your jacket by the door.",
@@ -4736,7 +4736,7 @@
   {
     "id": "iv0264",
     "term": "hung",
-    "phoneticFr": "",
+    "phoneticFr": "HEUNG",
     "ipa": "/hɐŋ/",
     "french": "accrocher / suspendre",
     "example": "I hung my jacket by the door.",
@@ -4754,7 +4754,7 @@
   {
     "id": "iv0265",
     "term": "hung",
-    "phoneticFr": "",
+    "phoneticFr": "HEUNG",
     "ipa": "/hɐŋ/",
     "french": "accrocher / suspendre",
     "example": "I've hung the picture above the desk.",
@@ -4772,7 +4772,7 @@
   {
     "id": "iv0266",
     "term": "lay",
-    "phoneticFr": "",
+    "phoneticFr": "LÉÏ",
     "ipa": "/læɪ/",
     "french": "poser / déposer",
     "example": "Lay the documents on the desk.",
@@ -4790,7 +4790,7 @@
   {
     "id": "iv0267",
     "term": "laid",
-    "phoneticFr": "",
+    "phoneticFr": "LÉÏD",
     "ipa": "/læɪd/",
     "french": "poser / déposer",
     "example": "She laid the documents on the desk.",
@@ -4808,7 +4808,7 @@
   {
     "id": "iv0268",
     "term": "laid",
-    "phoneticFr": "",
+    "phoneticFr": "LÉÏD",
     "ipa": "/læɪd/",
     "french": "poser / déposer",
     "example": "I've laid everything out for the meeting.",
@@ -4826,7 +4826,7 @@
   {
     "id": "iv0269",
     "term": "lie",
-    "phoneticFr": "",
+    "phoneticFr": "LAÏ",
     "ipa": "/lɑe/",
     "french": "être allongé / s’allonger",
     "example": "I usually lie down for ten minutes after work.",
@@ -4844,7 +4844,7 @@
   {
     "id": "iv0270",
     "term": "lay",
-    "phoneticFr": "",
+    "phoneticFr": "LÉÏ",
     "ipa": "/læɪ/",
     "french": "être allongé / s’allonger",
     "example": "I lay on the sofa for an hour.",
@@ -4862,7 +4862,7 @@
   {
     "id": "iv0271",
     "term": "lain",
-    "phoneticFr": "",
+    "phoneticFr": "LÉÏN",
     "ipa": "/læɪn/",
     "french": "être allongé / s’allonger",
     "example": "I've lain awake for hours.",
@@ -4880,7 +4880,7 @@
   {
     "id": "iv0272",
     "term": "light",
-    "phoneticFr": "",
+    "phoneticFr": "LAÏT",
     "ipa": "/lɑet/",
     "french": "allumer / éclairer",
     "example": "Light the candle carefully.",
@@ -4898,7 +4898,7 @@
   {
     "id": "iv0273",
     "term": "lit",
-    "phoneticFr": "",
+    "phoneticFr": "LIT",
     "ipa": "/lɪt/",
     "french": "allumer / éclairer",
     "example": "He lit a candle.",
@@ -4916,7 +4916,7 @@
   {
     "id": "iv0274",
     "term": "lit",
-    "phoneticFr": "",
+    "phoneticFr": "LIT",
     "ipa": "/lɪt/",
     "french": "allumer / éclairer",
     "example": "I've lit the fire already.",
@@ -4934,7 +4934,7 @@
   {
     "id": "iv0275",
     "term": "seek",
-    "phoneticFr": "",
+    "phoneticFr": "SIIK",
     "ipa": "/siːk/",
     "french": "chercher / rechercher",
     "example": "We seek experienced candidates.",
@@ -4952,7 +4952,7 @@
   {
     "id": "iv0276",
     "term": "sought",
-    "phoneticFr": "",
+    "phoneticFr": "SÔT",
     "ipa": "/soːt/",
     "french": "chercher / rechercher",
     "example": "They sought legal advice.",
@@ -4970,7 +4970,7 @@
   {
     "id": "iv0277",
     "term": "sought",
-    "phoneticFr": "",
+    "phoneticFr": "SÔT",
     "ipa": "/soːt/",
     "french": "chercher / rechercher",
     "example": "They've sought help from a specialist.",
@@ -4988,7 +4988,7 @@
   {
     "id": "iv0278",
     "term": "slide",
-    "phoneticFr": "",
+    "phoneticFr": "SLAÏD",
     "ipa": "/slɑed/",
     "french": "glisser",
     "example": "Slide the box across the floor.",
@@ -5006,7 +5006,7 @@
   {
     "id": "iv0279",
     "term": "slid",
-    "phoneticFr": "",
+    "phoneticFr": "SLID",
     "ipa": "/slɪd/",
     "french": "glisser",
     "example": "The phone slid off the table.",
@@ -5024,7 +5024,7 @@
   {
     "id": "iv0280",
     "term": "slid",
-    "phoneticFr": "",
+    "phoneticFr": "SLID",
     "ipa": "/slɪd/",
     "french": "glisser",
     "example": "It's slid under the seat.",
@@ -5042,7 +5042,7 @@
   {
     "id": "iv0281",
     "term": "stick",
-    "phoneticFr": "",
+    "phoneticFr": "STIK",
     "ipa": "/stɪk/",
     "french": "coller / rester coincé",
     "example": "Stick the label on the box.",
@@ -5060,7 +5060,7 @@
   {
     "id": "iv0282",
     "term": "stuck",
-    "phoneticFr": "",
+    "phoneticFr": "STEUK",
     "ipa": "/stɐk/",
     "french": "coller / rester coincé",
     "example": "The door stuck halfway.",
@@ -5078,7 +5078,7 @@
   {
     "id": "iv0283",
     "term": "stuck",
-    "phoneticFr": "",
+    "phoneticFr": "STEUK",
     "ipa": "/stɐk/",
     "french": "coller / rester coincé",
     "example": "I'm stuck in traffic.",
@@ -5096,7 +5096,7 @@
   {
     "id": "iv0284",
     "term": "strike",
-    "phoneticFr": "",
+    "phoneticFr": "STRAÏK",
     "ipa": "/stɹɑek/",
     "french": "frapper / toucher",
     "example": "Lightning can strike without warning.",
@@ -5114,7 +5114,7 @@
   {
     "id": "iv0285",
     "term": "struck",
-    "phoneticFr": "",
+    "phoneticFr": "STREUK",
     "ipa": "/stɹɐk/",
     "french": "frapper / toucher",
     "example": "Lightning struck the building.",
@@ -5132,7 +5132,7 @@
   {
     "id": "iv0286",
     "term": "struck",
-    "phoneticFr": "",
+    "phoneticFr": "STREUK",
     "ipa": "/stɹɐk/",
     "french": "frapper / toucher",
     "example": "Lightning has struck nearby twice this week.",
@@ -5150,7 +5150,7 @@
   {
     "id": "iv0287",
     "term": "swear",
-    "phoneticFr": "",
+    "phoneticFr": "SWÈ",
     "ipa": "/sweː/",
     "french": "jurer",
     "example": "I swear I did not touch it.",
@@ -5168,7 +5168,7 @@
   {
     "id": "iv0288",
     "term": "swore",
-    "phoneticFr": "",
+    "phoneticFr": "SWÔ",
     "ipa": "/swoː/",
     "french": "jurer",
     "example": "He swore he was telling the truth.",
@@ -5186,7 +5186,7 @@
   {
     "id": "iv0289",
     "term": "sworn",
-    "phoneticFr": "",
+    "phoneticFr": "SWÔNE",
     "ipa": "/swoːn/",
     "french": "jurer",
     "example": "I've sworn never to do that again.",
@@ -5204,7 +5204,7 @@
   {
     "id": "iv0290",
     "term": "sweep",
-    "phoneticFr": "",
+    "phoneticFr": "SWIIP",
     "ipa": "/swiːp/",
     "french": "balayer",
     "example": "I sweep the floor every Friday.",
@@ -5222,7 +5222,7 @@
   {
     "id": "iv0291",
     "term": "swept",
-    "phoneticFr": "",
+    "phoneticFr": "SWÈPT",
     "ipa": "/swept/",
     "french": "balayer",
     "example": "I swept the floor this morning.",
@@ -5240,7 +5240,7 @@
   {
     "id": "iv0292",
     "term": "swept",
-    "phoneticFr": "",
+    "phoneticFr": "SWÈPT",
     "ipa": "/swept/",
     "french": "balayer",
     "example": "I've swept the whole garage.",
@@ -5258,7 +5258,7 @@
   {
     "id": "iv0293",
     "term": "swing",
-    "phoneticFr": "",
+    "phoneticFr": "SWING",
     "ipa": "/swɪŋ/",
     "french": "se balancer / pivoter",
     "example": "The door can swing open in the wind.",
@@ -5276,7 +5276,7 @@
   {
     "id": "iv0294",
     "term": "swung",
-    "phoneticFr": "",
+    "phoneticFr": "SWEUNG",
     "ipa": "/swɐŋ/",
     "french": "se balancer / pivoter",
     "example": "The door swung open.",
@@ -5294,7 +5294,7 @@
   {
     "id": "iv0295",
     "term": "swung",
-    "phoneticFr": "",
+    "phoneticFr": "SWEUNG",
     "ipa": "/swɐŋ/",
     "french": "se balancer / pivoter",
     "example": "The door has swung shut again.",
@@ -5312,7 +5312,7 @@
   {
     "id": "iv0296",
     "term": "tear",
-    "phoneticFr": "",
+    "phoneticFr": "TÈ",
     "ipa": "/teː/",
     "french": "déchirer",
     "example": "Don't tear the label off.",
@@ -5330,7 +5330,7 @@
   {
     "id": "iv0297",
     "term": "tore",
-    "phoneticFr": "",
+    "phoneticFr": "TÔ",
     "ipa": "/toː/",
     "french": "déchirer",
     "example": "I tore my shirt at work.",
@@ -5348,7 +5348,7 @@
   {
     "id": "iv0298",
     "term": "torn",
-    "phoneticFr": "",
+    "phoneticFr": "TÔNE",
     "ipa": "/toːn/",
     "french": "déchirer",
     "example": "I've torn my shirt.",
@@ -5366,7 +5366,7 @@
   {
     "id": "iv0299",
     "term": "burst",
-    "phoneticFr": "",
+    "phoneticFr": "BEUST",
     "ipa": "/bɜːst/",
     "french": "éclater / crever",
     "example": "Pipes can burst in cold weather.",
@@ -5384,7 +5384,7 @@
   {
     "id": "iv0300",
     "term": "burst",
-    "phoneticFr": "",
+    "phoneticFr": "BEUST",
     "ipa": "/bɜːst/",
     "french": "éclater / crever",
     "example": "The pipe burst overnight.",
@@ -5402,7 +5402,7 @@
   {
     "id": "iv0301",
     "term": "burst",
-    "phoneticFr": "",
+    "phoneticFr": "BEUST",
     "ipa": "/bɜːst/",
     "french": "éclater / crever",
     "example": "A pipe has burst upstairs.",
@@ -5420,7 +5420,7 @@
   {
     "id": "iv0302",
     "term": "split",
-    "phoneticFr": "",
+    "phoneticFr": "SPLIT",
     "ipa": "/splɪt/",
     "french": "diviser / partager",
     "example": "Let's split the bill.",
@@ -5438,7 +5438,7 @@
   {
     "id": "iv0303",
     "term": "split",
-    "phoneticFr": "",
+    "phoneticFr": "SPLIT",
     "ipa": "/splɪt/",
     "french": "diviser / partager",
     "example": "We split the work between us.",
@@ -5456,7 +5456,7 @@
   {
     "id": "iv0304",
     "term": "split",
-    "phoneticFr": "",
+    "phoneticFr": "SPLIT",
     "ipa": "/splɪt/",
     "french": "diviser / partager",
     "example": "We've split the project into three parts.",
@@ -5474,7 +5474,7 @@
   {
     "id": "iv0305",
     "term": "spread",
-    "phoneticFr": "",
+    "phoneticFr": "SPRÈD",
     "ipa": "/spɹed/",
     "french": "répandre / se propager",
     "example": "News can spread very quickly online.",
@@ -5492,7 +5492,7 @@
   {
     "id": "iv0306",
     "term": "spread",
-    "phoneticFr": "",
+    "phoneticFr": "SPRÈD",
     "ipa": "/spɹed/",
     "french": "répandre / se propager",
     "example": "The news spread quickly.",
@@ -5510,7 +5510,7 @@
   {
     "id": "iv0307",
     "term": "spread",
-    "phoneticFr": "",
+    "phoneticFr": "SPRÈD",
     "ipa": "/spɹed/",
     "french": "répandre / se propager",
     "example": "The rumour has spread everywhere.",
@@ -5528,7 +5528,7 @@
   {
     "id": "iv0308",
     "term": "bet",
-    "phoneticFr": "",
+    "phoneticFr": "BÈT",
     "ipa": "/bet/",
     "french": "parier / être presque sûr",
     "example": "I bet he's already left.",
@@ -5546,7 +5546,7 @@
   {
     "id": "iv0309",
     "term": "bet",
-    "phoneticFr": "",
+    "phoneticFr": "BÈT",
     "ipa": "/bet/",
     "french": "parier / être presque sûr",
     "example": "I bet ten dollars on the match.",
@@ -5564,7 +5564,7 @@
   {
     "id": "iv0310",
     "term": "bet",
-    "phoneticFr": "",
+    "phoneticFr": "BÈT",
     "ipa": "/bet/",
     "french": "parier / être presque sûr",
     "example": "I've bet on that team before.",
@@ -5582,7 +5582,7 @@
   {
     "id": "iv0311",
     "term": "quit",
-    "phoneticFr": "",
+    "phoneticFr": "KWIT",
     "ipa": "/kwɪt/",
     "french": "quitter / arrêter",
     "example": "I want to quit wasting time.",
@@ -5600,7 +5600,7 @@
   {
     "id": "iv0312",
     "term": "quit",
-    "phoneticFr": "",
+    "phoneticFr": "KWIT",
     "ipa": "/kwɪt/",
     "french": "quitter / arrêter",
     "example": "He quit his job last month.",
@@ -5618,7 +5618,7 @@
   {
     "id": "iv0313",
     "term": "quit",
-    "phoneticFr": "",
+    "phoneticFr": "KWIT",
     "ipa": "/kwɪt/",
     "french": "quitter / arrêter",
     "example": "She's quit smoking.",
@@ -5636,7 +5636,7 @@
   {
     "id": "iv0314",
     "term": "prove",
-    "phoneticFr": "",
+    "phoneticFr": "PROUV",
     "ipa": "/pɹʉːv/",
     "french": "prouver",
     "example": "You need to prove that it works.",
@@ -5654,7 +5654,7 @@
   {
     "id": "iv0315",
     "term": "proved",
-    "phoneticFr": "",
+    "phoneticFr": "PROUVD",
     "ipa": "/pɹʉːvd/",
     "french": "prouver",
     "example": "The test proved the system was stable.",
@@ -5672,7 +5672,7 @@
   {
     "id": "iv0316",
     "term": "proven",
-    "phoneticFr": "",
+    "phoneticFr": "PROUVEUN",
     "ipa": "/ˈpɹʉːvən/",
     "french": "prouver",
     "example": "It's proven to work.",
@@ -5690,7 +5690,7 @@
   {
     "id": "iv0317",
     "term": "burn",
-    "phoneticFr": "",
+    "phoneticFr": "BEUN",
     "ipa": "/bɜːn/",
     "french": "brûler",
     "example": "Be careful not to burn the toast.",
@@ -5708,7 +5708,7 @@
   {
     "id": "iv0318",
     "term": "burnt",
-    "phoneticFr": "",
+    "phoneticFr": "BEUNT",
     "ipa": "/bɜːnt/",
     "french": "brûler",
     "example": "I burnt the toast again.",
@@ -5726,7 +5726,7 @@
   {
     "id": "iv0319",
     "term": "burnt",
-    "phoneticFr": "",
+    "phoneticFr": "BEUNT",
     "ipa": "/bɜːnt/",
     "french": "brûler",
     "example": "I've burnt my hand on the pan.",
@@ -5744,7 +5744,7 @@
   {
     "id": "iv0320",
     "term": "dream",
-    "phoneticFr": "",
+    "phoneticFr": "DRIIM",
     "ipa": "/dɹiːm/",
     "french": "rêver",
     "example": "I often dream about travelling.",
@@ -5762,7 +5762,7 @@
   {
     "id": "iv0321",
     "term": "dreamt",
-    "phoneticFr": "",
+    "phoneticFr": "DRÈMT",
     "ipa": "/dɹemt/",
     "french": "rêver",
     "example": "I dreamt about work last night.",
@@ -5780,7 +5780,7 @@
   {
     "id": "iv0322",
     "term": "dreamt",
-    "phoneticFr": "",
+    "phoneticFr": "DRÈMT",
     "ipa": "/dɹemt/",
     "french": "rêver",
     "example": "I've dreamt about this moment for years.",
@@ -5798,7 +5798,7 @@
   {
     "id": "iv0323",
     "term": "smell",
-    "phoneticFr": "",
+    "phoneticFr": "SMÈL",
     "ipa": "/smel/",
     "french": "sentir une odeur",
     "example": "Can you smell smoke?",
@@ -5816,7 +5816,7 @@
   {
     "id": "iv0324",
     "term": "smelt",
-    "phoneticFr": "",
+    "phoneticFr": "SMÈLT",
     "ipa": "/smelt/",
     "french": "sentir une odeur",
     "example": "It smelt really strange.",
@@ -5834,7 +5834,7 @@
   {
     "id": "iv0325",
     "term": "smelt",
-    "phoneticFr": "",
+    "phoneticFr": "SMÈLT",
     "ipa": "/smelt/",
     "french": "sentir une odeur",
     "example": "I've smelt that perfume before.",
@@ -5852,7 +5852,7 @@
   {
     "id": "iv0326",
     "term": "spell",
-    "phoneticFr": "",
+    "phoneticFr": "SPÈL",
     "ipa": "/spel/",
     "french": "épeler",
     "example": "Can you spell your surname?",
@@ -5870,7 +5870,7 @@
   {
     "id": "iv0327",
     "term": "spelt",
-    "phoneticFr": "",
+    "phoneticFr": "SPÈLT",
     "ipa": "/spelt/",
     "french": "épeler",
     "example": "I spelt his name wrong.",
@@ -5888,7 +5888,7 @@
   {
     "id": "iv0328",
     "term": "spelt",
-    "phoneticFr": "",
+    "phoneticFr": "SPÈLT",
     "ipa": "/spelt/",
     "french": "épeler",
     "example": "I've spelt it correctly this time.",
@@ -5906,7 +5906,7 @@
   {
     "id": "iv0329",
     "term": "spill",
-    "phoneticFr": "",
+    "phoneticFr": "SPIL",
     "ipa": "/spɪl/",
     "french": "renverser",
     "example": "Don't spill your coffee.",
@@ -5924,7 +5924,7 @@
   {
     "id": "iv0330",
     "term": "spilt",
-    "phoneticFr": "",
+    "phoneticFr": "SPILT",
     "ipa": "/spɪlt/",
     "french": "renverser",
     "example": "I spilt coffee on my shirt.",
@@ -5942,7 +5942,7 @@
   {
     "id": "iv0331",
     "term": "spilt",
-    "phoneticFr": "",
+    "phoneticFr": "SPILT",
     "ipa": "/spɪlt/",
     "french": "renverser",
     "example": "I've spilt water all over the desk.",
@@ -5960,7 +5960,7 @@
   {
     "id": "iv0332",
     "term": "spoil",
-    "phoneticFr": "",
+    "phoneticFr": "SPOÏL",
     "ipa": "/spoɪl/",
     "french": "gâcher / spoiler",
     "example": "Don't spoil the ending for me.",
@@ -5978,7 +5978,7 @@
   {
     "id": "iv0333",
     "term": "spoilt",
-    "phoneticFr": "",
+    "phoneticFr": "SPOÏLT",
     "ipa": "/spoɪlt/",
     "french": "gâcher / spoiler",
     "example": "The rain spoilt our plans.",
@@ -5996,7 +5996,7 @@
   {
     "id": "iv0334",
     "term": "spoilt",
-    "phoneticFr": "",
+    "phoneticFr": "SPOÏLT",
     "ipa": "/spoɪlt/",
     "french": "gâcher / spoiler",
     "example": "You've spoilt the surprise.",
@@ -6014,7 +6014,7 @@
   {
     "id": "iv0335",
     "term": "lean",
-    "phoneticFr": "",
+    "phoneticFr": "LIIN",
     "ipa": "/liːn/",
     "french": "s’appuyer / se pencher",
     "example": "Lean the ladder against the wall.",
@@ -6032,7 +6032,7 @@
   {
     "id": "iv0336",
     "term": "leant",
-    "phoneticFr": "",
+    "phoneticFr": "LÈNT",
     "ipa": "/lent/",
     "french": "s’appuyer / se pencher",
     "example": "He leant against the wall.",
@@ -6050,7 +6050,7 @@
   {
     "id": "iv0337",
     "term": "leant",
-    "phoneticFr": "",
+    "phoneticFr": "LÈNT",
     "ipa": "/lent/",
     "french": "s’appuyer / se pencher",
     "example": "I've leant on that railing before.",
@@ -6068,7 +6068,7 @@
   {
     "id": "iv0338",
     "term": "leap",
-    "phoneticFr": "",
+    "phoneticFr": "LIIP",
     "ipa": "/liːp/",
     "french": "bondir / sauter",
     "example": "The dog can leap over the fence.",
@@ -6086,7 +6086,7 @@
   {
     "id": "iv0339",
     "term": "leapt",
-    "phoneticFr": "",
+    "phoneticFr": "LÈPT",
     "ipa": "/lept/",
     "french": "bondir / sauter",
     "example": "The dog leapt over the fence.",
@@ -6104,7 +6104,7 @@
   {
     "id": "iv0340",
     "term": "leapt",
-    "phoneticFr": "",
+    "phoneticFr": "LÈPT",
     "ipa": "/lept/",
     "french": "bondir / sauter",
     "example": "It's leapt onto the sofa again.",
@@ -6122,7 +6122,7 @@
   {
     "id": "iv0341",
     "term": "speed",
-    "phoneticFr": "",
+    "phoneticFr": "SPIID",
     "ipa": "/spiːd/",
     "french": "accélérer / rouler vite",
     "example": "Don't speed through residential streets.",
@@ -6140,7 +6140,7 @@
   {
     "id": "iv0342",
     "term": "sped",
-    "phoneticFr": "",
+    "phoneticFr": "SPÈD",
     "ipa": "/sped/",
     "french": "accélérer / rouler vite",
     "example": "The car sped past us.",
@@ -6158,7 +6158,7 @@
   {
     "id": "iv0343",
     "term": "sped",
-    "phoneticFr": "",
+    "phoneticFr": "SPÈD",
     "ipa": "/sped/",
     "french": "accélérer / rouler vite",
     "example": "He's sped up a lot since the last lap.",
@@ -6176,7 +6176,7 @@
   {
     "id": "iv0344",
     "term": "shine",
-    "phoneticFr": "",
+    "phoneticFr": "CHAÏN",
     "ipa": "/ʃɑen/",
     "french": "briller",
     "example": "The sun can shine all day in summer.",
@@ -6194,7 +6194,7 @@
   {
     "id": "iv0345",
     "term": "shone",
-    "phoneticFr": "",
+    "phoneticFr": "CHON",
     "ipa": "/ʃɔn/",
     "french": "briller",
     "example": "The sun shone all afternoon.",
@@ -6212,7 +6212,7 @@
   {
     "id": "iv0346",
     "term": "shone",
-    "phoneticFr": "",
+    "phoneticFr": "CHON",
     "ipa": "/ʃɔn/",
     "french": "briller",
     "example": "The sun has shone all day.",
@@ -6230,7 +6230,7 @@
   {
     "id": "iv0347",
     "term": "spring",
-    "phoneticFr": "",
+    "phoneticFr": "SPRING",
     "ipa": "/spɹɪŋ/",
     "french": "bondir / surgir",
     "example": "Problems can spring up without warning.",
@@ -6248,7 +6248,7 @@
   {
     "id": "iv0348",
     "term": "sprang",
-    "phoneticFr": "",
+    "phoneticFr": "SPRANG",
     "ipa": "/spɹæŋ/",
     "french": "bondir / surgir",
     "example": "He sprang out of bed.",
@@ -6266,7 +6266,7 @@
   {
     "id": "iv0349",
     "term": "sprung",
-    "phoneticFr": "",
+    "phoneticFr": "SPREUNG",
     "ipa": "/spɹɐŋ/",
     "french": "bondir / surgir",
     "example": "Several new shops have sprung up nearby.",
@@ -6284,7 +6284,7 @@
   {
     "id": "iv0350",
     "term": "sting",
-    "phoneticFr": "",
+    "phoneticFr": "STING",
     "ipa": "/stɪŋ/",
     "french": "piquer",
     "example": "Bees can sting if they feel threatened.",
@@ -6302,7 +6302,7 @@
   {
     "id": "iv0351",
     "term": "stung",
-    "phoneticFr": "",
+    "phoneticFr": "STEUNG",
     "ipa": "/stɐŋ/",
     "french": "piquer",
     "example": "A bee stung me.",
@@ -6320,7 +6320,7 @@
   {
     "id": "iv0352",
     "term": "stung",
-    "phoneticFr": "",
+    "phoneticFr": "STEUNG",
     "ipa": "/stɐŋ/",
     "french": "piquer",
     "example": "I've been stung twice this summer.",
@@ -6338,7 +6338,7 @@
   {
     "id": "iv0353",
     "term": "bind",
-    "phoneticFr": "",
+    "phoneticFr": "BAÏND",
     "ipa": "/bɑend/",
     "french": "lier / obliger",
     "example": "These rules bind everyone on the team.",
@@ -6356,7 +6356,7 @@
   {
     "id": "iv0354",
     "term": "bound",
-    "phoneticFr": "",
+    "phoneticFr": "BAOUND",
     "ipa": "/bæɔnd/",
     "french": "lier / obliger",
     "example": "The contract bound both sides.",
@@ -6374,7 +6374,7 @@
   {
     "id": "iv0355",
     "term": "bound",
-    "phoneticFr": "",
+    "phoneticFr": "BAOUND",
     "ipa": "/bæɔnd/",
     "french": "lier / obliger",
     "example": "We're bound by the agreement.",
@@ -6392,7 +6392,7 @@
   {
     "id": "iv0356",
     "term": "broadcast",
-    "phoneticFr": "",
+    "phoneticFr": "BRÔDKAST",
     "ipa": "/ˈbɹoːdkæst/",
     "french": "diffuser",
     "example": "They broadcast the news live every evening.",
@@ -6410,7 +6410,7 @@
   {
     "id": "iv0357",
     "term": "broadcast",
-    "phoneticFr": "",
+    "phoneticFr": "BRÔDKAST",
     "ipa": "/ˈbɹoːdkæst/",
     "french": "diffuser",
     "example": "They broadcast the match live last night.",
@@ -6428,7 +6428,7 @@
   {
     "id": "iv0358",
     "term": "broadcast",
-    "phoneticFr": "",
+    "phoneticFr": "BRÔDKAST",
     "ipa": "/ˈbɹoːdkæst/",
     "french": "diffuser",
     "example": "The interview has been broadcast worldwide.",
@@ -6446,7 +6446,7 @@
   {
     "id": "iv0359",
     "term": "cast",
-    "phoneticFr": "",
+    "phoneticFr": "KAST",
     "ipa": "/kæst/",
     "french": "attribuer un rôle / jeter",
     "example": "They cast new actors every year.",
@@ -6464,7 +6464,7 @@
   {
     "id": "iv0360",
     "term": "cast",
-    "phoneticFr": "",
+    "phoneticFr": "KAST",
     "ipa": "/kæst/",
     "french": "attribuer un rôle / jeter",
     "example": "They cast her in the lead role.",
@@ -6482,7 +6482,7 @@
   {
     "id": "iv0361",
     "term": "cast",
-    "phoneticFr": "",
+    "phoneticFr": "KAST",
     "ipa": "/kæst/",
     "french": "attribuer un rôle / jeter",
     "example": "She's been cast in the lead role.",
@@ -6500,7 +6500,7 @@
   {
     "id": "iv0362",
     "term": "creep",
-    "phoneticFr": "",
+    "phoneticFr": "KRIIP",
     "ipa": "/kɹiːp/",
     "french": "avancer discrètement / augmenter lentement",
     "example": "Prices can creep up over time.",
@@ -6518,7 +6518,7 @@
   {
     "id": "iv0363",
     "term": "crept",
-    "phoneticFr": "",
+    "phoneticFr": "KRÈPT",
     "ipa": "/kɹept/",
     "french": "avancer discrètement / augmenter lentement",
     "example": "The cat crept into the room.",
@@ -6536,7 +6536,7 @@
   {
     "id": "iv0364",
     "term": "crept",
-    "phoneticFr": "",
+    "phoneticFr": "KRÈPT",
     "ipa": "/kɹept/",
     "french": "avancer discrètement / augmenter lentement",
     "example": "Prices have crept up again.",
@@ -6554,7 +6554,7 @@
   {
     "id": "iv0365",
     "term": "withdraw",
-    "phoneticFr": "",
+    "phoneticFr": "WI-DH-DRÔ",
     "ipa": "/wɪˈðdɹoː/",
     "french": "retirer / se retirer",
     "example": "I need to withdraw some cash.",
@@ -6572,7 +6572,7 @@
   {
     "id": "iv0366",
     "term": "withdrew",
-    "phoneticFr": "",
+    "phoneticFr": "WI-DH-DROU",
     "ipa": "/wɪˈðdɹʉː/",
     "french": "retirer / se retirer",
     "example": "I withdrew some cash yesterday.",
@@ -6590,7 +6590,7 @@
   {
     "id": "iv0367",
     "term": "withdrawn",
-    "phoneticFr": "",
+    "phoneticFr": "WI-DH-DRÔNE",
     "ipa": "/wɪˈðdɹoːn/",
     "french": "retirer / se retirer",
     "example": "They've withdrawn the offer.",
@@ -6608,7 +6608,7 @@
   {
     "id": "iv0368",
     "term": "overcome",
-    "phoneticFr": "",
+    "phoneticFr": "OVEU-KEUM",
     "ipa": "/ˌəʉvəˈkɐm/",
     "french": "surmonter",
     "example": "We can overcome this problem.",
@@ -6626,7 +6626,7 @@
   {
     "id": "iv0369",
     "term": "overcame",
-    "phoneticFr": "",
+    "phoneticFr": "OVEU-KÉÏM",
     "ipa": "/ˌəʉvəˈkæɪm/",
     "french": "surmonter",
     "example": "She overcame a difficult start.",
@@ -6644,7 +6644,7 @@
   {
     "id": "iv0370",
     "term": "overcome",
-    "phoneticFr": "",
+    "phoneticFr": "OVEU-KEUM",
     "ipa": "/ˌəʉvəˈkɐm/",
     "french": "surmonter",
     "example": "He's overcome his fear of speaking.",
@@ -6662,7 +6662,7 @@
   {
     "id": "iv0371",
     "term": "overhear",
-    "phoneticFr": "",
+    "phoneticFr": "OVEU-HIA",
     "ipa": "/ˌəʉvəˈhiə/",
     "french": "entendre par hasard",
     "example": "I sometimes overhear conversations on the train.",
@@ -6680,7 +6680,7 @@
   {
     "id": "iv0372",
     "term": "overheard",
-    "phoneticFr": "",
+    "phoneticFr": "OVEU-HEUD",
     "ipa": "/ˌəʉvəˈhɜːd/",
     "french": "entendre par hasard",
     "example": "I overheard them talking about it.",
@@ -6698,7 +6698,7 @@
   {
     "id": "iv0373",
     "term": "overheard",
-    "phoneticFr": "",
+    "phoneticFr": "OVEU-HEUD",
     "ipa": "/ˌəʉvəˈhɜːd/",
     "french": "entendre par hasard",
     "example": "I've overheard that name a few times.",
@@ -6716,7 +6716,7 @@
   {
     "id": "iv0374",
     "term": "overtake",
-    "phoneticFr": "",
+    "phoneticFr": "OVEU-TÉÏK",
     "ipa": "/ˌəʉvəˈtæɪk/",
     "french": "dépasser",
     "example": "Only overtake when it is safe.",
@@ -6734,7 +6734,7 @@
   {
     "id": "iv0375",
     "term": "overtook",
-    "phoneticFr": "",
+    "phoneticFr": "OVEU-TOUK",
     "ipa": "/ˌəʉvəˈtʊk/",
     "french": "dépasser",
     "example": "A truck overtook us on the highway.",
@@ -6752,7 +6752,7 @@
   {
     "id": "iv0376",
     "term": "overtaken",
-    "phoneticFr": "",
+    "phoneticFr": "OVEU-TÉÏKEUN",
     "ipa": "/ˌəʉvəˈtæɪkən/",
     "french": "dépasser",
     "example": "We've been overtaken by two cars.",
@@ -6770,7 +6770,7 @@
   {
     "id": "iv0377",
     "term": "redo",
-    "phoneticFr": "",
+    "phoneticFr": "RII-DOU",
     "ipa": "/ˌɹiːˈdʉː/",
     "french": "refaire",
     "example": "I need to redo this section.",
@@ -6788,7 +6788,7 @@
   {
     "id": "iv0378",
     "term": "redid",
-    "phoneticFr": "",
+    "phoneticFr": "RII-DID",
     "ipa": "/ˌɹiːˈdɪd/",
     "french": "refaire",
     "example": "I redid the whole page yesterday.",
@@ -6806,7 +6806,7 @@
   {
     "id": "iv0379",
     "term": "redone",
-    "phoneticFr": "",
+    "phoneticFr": "RII-DEUN",
     "ipa": "/ˌɹiːˈdɐn/",
     "french": "refaire",
     "example": "I've redone the calculation.",
@@ -6824,7 +6824,7 @@
   {
     "id": "iv0380",
     "term": "repay",
-    "phoneticFr": "",
+    "phoneticFr": "RII-PÉÏ",
     "ipa": "/ɹiːˈpæɪ/",
     "french": "rembourser",
     "example": "I'll repay you tomorrow.",
@@ -6842,7 +6842,7 @@
   {
     "id": "iv0381",
     "term": "repaid",
-    "phoneticFr": "",
+    "phoneticFr": "RII-PÉÏD",
     "ipa": "/ɹiːˈpæɪd/",
     "french": "rembourser",
     "example": "I repaid him last week.",
@@ -6860,7 +6860,7 @@
   {
     "id": "iv0382",
     "term": "repaid",
-    "phoneticFr": "",
+    "phoneticFr": "RII-PÉÏD",
     "ipa": "/ɹiːˈpæɪd/",
     "french": "rembourser",
     "example": "I've repaid the full amount.",
@@ -6878,7 +6878,7 @@
   {
     "id": "iv0383",
     "term": "retake",
-    "phoneticFr": "",
+    "phoneticFr": "RII-TÉÏK",
     "ipa": "/ˌɹiːˈtæɪk/",
     "french": "reprendre / repasser",
     "example": "I need to retake the exam.",
@@ -6896,7 +6896,7 @@
   {
     "id": "iv0384",
     "term": "retook",
-    "phoneticFr": "",
+    "phoneticFr": "RII-TOUK",
     "ipa": "/ˌɹiːˈtʊk/",
     "french": "reprendre / repasser",
     "example": "I retook the test last month.",
@@ -6914,7 +6914,7 @@
   {
     "id": "iv0385",
     "term": "retaken",
-    "phoneticFr": "",
+    "phoneticFr": "RII-TÉÏKEUN",
     "ipa": "/ˌɹiːˈtæɪkən/",
     "french": "reprendre / repasser",
     "example": "I've retaken the photo three times.",
@@ -6932,7 +6932,7 @@
   {
     "id": "iv0386",
     "term": "rewrite",
-    "phoneticFr": "",
+    "phoneticFr": "RII-RAÏT",
     "ipa": "/ˌɹiːˈɹɑet/",
     "french": "réécrire",
     "example": "I need to rewrite this email.",
@@ -6950,7 +6950,7 @@
   {
     "id": "iv0387",
     "term": "rewrote",
-    "phoneticFr": "",
+    "phoneticFr": "RII-ROT",
     "ipa": "/ˌɹiːˈɹəʉt/",
     "french": "réécrire",
     "example": "I rewrote the introduction yesterday.",
@@ -6968,7 +6968,7 @@
   {
     "id": "iv0388",
     "term": "rewritten",
-    "phoneticFr": "",
+    "phoneticFr": "RII-RITEUN",
     "ipa": "/ˌɹiːˈɹɪtən/",
     "french": "réécrire",
     "example": "I've rewritten the email.",
@@ -6986,7 +6986,7 @@
   {
     "id": "iv0389",
     "term": "undergo",
-    "phoneticFr": "",
+    "phoneticFr": "EUNDEU-GO",
     "ipa": "/ˌɐndəˈɡəʉ/",
     "french": "subir / passer par",
     "example": "The system may undergo major changes.",
@@ -7004,7 +7004,7 @@
   {
     "id": "iv0390",
     "term": "underwent",
-    "phoneticFr": "",
+    "phoneticFr": "EUNDEU-WÈNT",
     "ipa": "/ˌɐndəˈwent/",
     "french": "subir / passer par",
     "example": "The system underwent a major update.",
@@ -7022,7 +7022,7 @@
   {
     "id": "iv0391",
     "term": "undergone",
-    "phoneticFr": "",
+    "phoneticFr": "EUNDEU-GON",
     "ipa": "/ˌɐndəˈɡɔn/",
     "french": "subir / passer par",
     "example": "The system has undergone major changes.",
@@ -7040,7 +7040,7 @@
   {
     "id": "iv0392",
     "term": "undertake",
-    "phoneticFr": "",
+    "phoneticFr": "EUNDEU-TÉÏK",
     "ipa": "/ˌɐndəˈtæɪk/",
     "french": "entreprendre / effectuer",
     "example": "We undertake regular safety checks.",
@@ -7058,7 +7058,7 @@
   {
     "id": "iv0393",
     "term": "undertook",
-    "phoneticFr": "",
+    "phoneticFr": "EUNDEU-TOUK",
     "ipa": "/ˌɐndəˈtʊk/",
     "french": "entreprendre / effectuer",
     "example": "We undertook a full review last month.",
@@ -7076,7 +7076,7 @@
   {
     "id": "iv0394",
     "term": "undertaken",
-    "phoneticFr": "",
+    "phoneticFr": "EUNDEU-TÉÏKEUN",
     "ipa": "/ˌɐndəˈtæɪkən/",
     "french": "entreprendre / effectuer",
     "example": "We've undertaken several audits this year.",
@@ -7094,7 +7094,7 @@
   {
     "id": "iv0395",
     "term": "undo",
-    "phoneticFr": "",
+    "phoneticFr": "EU-NDOU",
     "ipa": "/ɐˈndʉː/",
     "french": "annuler / défaire",
     "example": "Can I undo that change?",
@@ -7112,7 +7112,7 @@
   {
     "id": "iv0396",
     "term": "undid",
-    "phoneticFr": "",
+    "phoneticFr": "EU-NDID",
     "ipa": "/ɐˈndɪd/",
     "french": "annuler / défaire",
     "example": "I undid the last change.",
@@ -7130,7 +7130,7 @@
   {
     "id": "iv0397",
     "term": "undone",
-    "phoneticFr": "",
+    "phoneticFr": "EU-NDEUN",
     "ipa": "/ɐˈndɐn/",
     "french": "annuler / défaire",
     "example": "I've undone the update by mistake.",
@@ -7148,7 +7148,7 @@
   {
     "id": "iv0398",
     "term": "upset",
-    "phoneticFr": "",
+    "phoneticFr": "EU-PSÈT",
     "ipa": "/ɐˈpset/",
     "french": "contrarier / bouleverser",
     "example": "I don't want to upset anyone.",
@@ -7166,7 +7166,7 @@
   {
     "id": "iv0399",
     "term": "upset",
-    "phoneticFr": "",
+    "phoneticFr": "EU-PSÈT",
     "ipa": "/ɐˈpset/",
     "french": "contrarier / bouleverser",
     "example": "The news upset him.",
@@ -7184,7 +7184,7 @@
   {
     "id": "iv0400",
     "term": "upset",
-    "phoneticFr": "",
+    "phoneticFr": "EU-PSÈT",
     "ipa": "/ɐˈpset/",
     "french": "contrarier / bouleverser",
     "example": "I've upset her without meaning to.",
@@ -7202,7 +7202,7 @@
   {
     "id": "iv0401",
     "term": "withhold",
-    "phoneticFr": "",
+    "phoneticFr": "WI-DH-HOLD",
     "ipa": "/wɪˈðhəʉld/",
     "french": "retenir / ne pas communiquer",
     "example": "They cannot withhold important information.",
@@ -7220,7 +7220,7 @@
   {
     "id": "iv0402",
     "term": "withheld",
-    "phoneticFr": "",
+    "phoneticFr": "WI-DH-HÈLD",
     "ipa": "/wɪˈðheld/",
     "french": "retenir / ne pas communiquer",
     "example": "They withheld some information.",
@@ -7238,7 +7238,7 @@
   {
     "id": "iv0403",
     "term": "withheld",
-    "phoneticFr": "",
+    "phoneticFr": "WI-DH-HÈLD",
     "ipa": "/wɪˈðheld/",
     "french": "retenir / ne pas communiquer",
     "example": "They've withheld the final payment.",
@@ -7256,7 +7256,7 @@
   {
     "id": "iv0404",
     "term": "misunderstand",
-    "phoneticFr": "",
+    "phoneticFr": "MI-SEUNDEU-STAND",
     "ipa": "/mɪˌsɐndəˈstænd/",
     "french": "mal comprendre",
     "example": "Don't misunderstand me.",
@@ -7274,7 +7274,7 @@
   {
     "id": "iv0405",
     "term": "misunderstood",
-    "phoneticFr": "",
+    "phoneticFr": "MI-SEUNDEU-STOUD",
     "ipa": "/mɪˌsɐndəˈstʊd/",
     "french": "mal comprendre",
     "example": "I misunderstood the question.",
@@ -7292,7 +7292,7 @@
   {
     "id": "iv0406",
     "term": "misunderstood",
-    "phoneticFr": "",
+    "phoneticFr": "MI-SEUNDEU-STOUD",
     "ipa": "/mɪˌsɐndəˈstʊd/",
     "french": "mal comprendre",
     "example": "I think you've misunderstood me.",
@@ -7310,7 +7310,7 @@
   {
     "id": "iv0407",
     "term": "mislead",
-    "phoneticFr": "",
+    "phoneticFr": "MI-SLIID",
     "ipa": "/mɪˈsliːd/",
     "french": "induire en erreur",
     "example": "Headlines can mislead people.",
@@ -7328,7 +7328,7 @@
   {
     "id": "iv0408",
     "term": "misled",
-    "phoneticFr": "",
+    "phoneticFr": "MI-SLÈD",
     "ipa": "/mɪˈsled/",
     "french": "induire en erreur",
     "example": "The advert misled a lot of customers.",
@@ -7346,7 +7346,7 @@
   {
     "id": "iv0409",
     "term": "misled",
-    "phoneticFr": "",
+    "phoneticFr": "MI-SLÈD",
     "ipa": "/mɪˈsled/",
     "french": "induire en erreur",
     "example": "The wording has misled people before.",
@@ -7364,7 +7364,7 @@
   {
     "id": "iv0410",
     "term": "mistake",
-    "phoneticFr": "",
+    "phoneticFr": "MI-STÉÏK",
     "ipa": "/mɪˈstæɪk/",
     "french": "confondre / se tromper sur",
     "example": "Don't mistake confidence for arrogance.",
@@ -7382,7 +7382,7 @@
   {
     "id": "iv0411",
     "term": "mistook",
-    "phoneticFr": "",
+    "phoneticFr": "MI-STOUK",
     "ipa": "/mɪˈstʊk/",
     "french": "confondre / se tromper sur",
     "example": "I mistook him for someone else.",
@@ -7400,7 +7400,7 @@
   {
     "id": "iv0412",
     "term": "mistaken",
-    "phoneticFr": "",
+    "phoneticFr": "MI-STÉÏKEUN",
     "ipa": "/mɪˈstæɪkən/",
     "french": "confondre / se tromper sur",
     "example": "I've mistaken the date again.",
@@ -7418,7 +7418,7 @@
   {
     "id": "iv0413",
     "term": "oversleep",
-    "phoneticFr": "",
+    "phoneticFr": "OVEU-SLIIP",
     "ipa": "/ˌəʉvəˈsliːp/",
     "french": "dormir trop longtemps",
     "example": "I sometimes oversleep on Sundays.",
@@ -7436,7 +7436,7 @@
   {
     "id": "iv0414",
     "term": "overslept",
-    "phoneticFr": "",
+    "phoneticFr": "OVEU-SLÈPT",
     "ipa": "/ˌəʉvəˈslept/",
     "french": "dormir trop longtemps",
     "example": "I overslept and missed my train.",
@@ -7454,7 +7454,7 @@
   {
     "id": "iv0415",
     "term": "overslept",
-    "phoneticFr": "",
+    "phoneticFr": "OVEU-SLÈPT",
     "ipa": "/ˌəʉvəˈslept/",
     "french": "dormir trop longtemps",
     "example": "I've overslept twice this week.",
@@ -7472,7 +7472,7 @@
   {
     "id": "iv0416",
     "term": "foresee",
-    "phoneticFr": "",
+    "phoneticFr": "FÔ-SII",
     "ipa": "/foːˈsiː/",
     "french": "prévoir",
     "example": "I cannot foresee every problem.",
@@ -7490,7 +7490,7 @@
   {
     "id": "iv0417",
     "term": "foresaw",
-    "phoneticFr": "",
+    "phoneticFr": "FÔ-SÔ",
     "ipa": "/foːˈsoː/",
     "french": "prévoir",
     "example": "Nobody foresaw the delay.",
@@ -7508,7 +7508,7 @@
   {
     "id": "iv0418",
     "term": "foreseen",
-    "phoneticFr": "",
+    "phoneticFr": "FÔ-SIIN",
     "ipa": "/foːˈsiːn/",
     "french": "prévoir",
     "example": "Nobody could have foreseen that problem.",
@@ -7526,7 +7526,7 @@
   {
     "id": "iv0419",
     "term": "arise",
-    "phoneticFr": "",
+    "phoneticFr": "EU-RAÏZ",
     "ipa": "/əˈɹɑez/",
     "french": "survenir / apparaître",
     "example": "Problems can arise without warning.",
@@ -7544,7 +7544,7 @@
   {
     "id": "iv0420",
     "term": "arose",
-    "phoneticFr": "",
+    "phoneticFr": "EU-ROZ",
     "ipa": "/əˈɹəʉz/",
     "french": "survenir / apparaître",
     "example": "A problem arose during the meeting.",
@@ -7562,7 +7562,7 @@
   {
     "id": "iv0421",
     "term": "arisen",
-    "phoneticFr": "",
+    "phoneticFr": "EU-RIZEUN",
     "ipa": "/əˈɹɪzən/",
     "french": "survenir / apparaître",
     "example": "Several issues have arisen since Monday.",
