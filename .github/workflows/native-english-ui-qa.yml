@@ -252,64 +252,54 @@ jobs:
             if(Math.abs(result.expectedDuration-result.actualDuration)>0.1) throw new Error('course duration mismatch '+JSON.stringify(result));
             if(result.size<10000000) throw new Error('continuous course file missing or too small '+JSON.stringify(result));
           });
-          await check('irregular course resumes where user stopped', async()=> {
+          await check('irregular auto opens manual resume picker', async()=> {
             const result=await page.evaluate(async()=>{
               activeList='irregular';updateListUI();
-              await startIntensiveAuto();
-              const card=irregularCourseCues[10];
-              const target=card.start+Math.min(.75,(card.end-card.start)/2);
-              irregularCourseAudio.currentTime=target;
-              renderIrregularCourseAt(target,true);
-              saveIrregularResume(true);
-              const saved=JSON.parse(localStorage.getItem(IRREGULAR_RESUME_KEY)||'null');
-              irregularCourseAudio.currentTime=0;
-              irregularCourseIndex=-1;
-              const restored=previewIrregularResume();
-              const out={
-                savedCard:saved?.cardId,
-                restoredCard:restored?.card?.id,
-                lastItem:lastDriveItem?.id,
-                restoredTime:restored?.time||0,
-                target
+              await openIrregularStartPicker();
+              return {
+                picker:document.querySelector('#irregularStartView').classList.contains('active'),
+                verbs:document.querySelector('#irregularVerbSelect').options.length,
+                forms:[...document.querySelector('#irregularFormSelect').options].map(o=>o.textContent)
               };
-              clearIrregularResume();
-              activeList='general';updateListUI();
-              return out;
             });
-            if(!result.savedCard || result.savedCard!==result.restoredCard || result.savedCard!==result.lastItem) throw new Error('resume card mismatch '+JSON.stringify(result));
-            if(Math.abs(result.restoredTime-result.target)>.15) throw new Error('resume time mismatch '+JSON.stringify(result));
+            if(!result.picker) throw new Error('picker did not open '+JSON.stringify(result));
+            if(result.verbs!==140) throw new Error('wrong verb count '+JSON.stringify(result));
+            if(result.forms.length!==4 || !result.forms[0].startsWith('BE') || !result.forms[1].startsWith('WAS') || !result.forms[2].startsWith('WERE') || !result.forms[3].startsWith('BEEN')) throw new Error('wrong BE forms '+JSON.stringify(result));
           });
-          await check('app reopens saved irregular session after reload', async()=> {
-            const saved=await page.evaluate(async()=>{
+          await check('manual picker starts unchanged auto course at chosen word', async()=> {
+            const result=await page.evaluate(async()=>{
               activeList='irregular';updateListUI();
               await loadIrregularCourse();
-              const card=irregularCourseCues[12];
-              const target=card.start+.5;
-              irregularCourseAudio.currentTime=target;
-              renderIrregularCourseAt(target,true);
-              saveIrregularResume(true);
-              return {id:card.id,term:card.term};
-            });
-            await page.reload({waitUntil:'networkidle'});
-            await page.waitForTimeout(700);
-            const result=await page.evaluate(()=>({
-              driveActive:document.querySelector('#driveView').classList.contains('active'),
-              activeList,
-              button:document.querySelector('#startDrive').textContent,
-              item:lastDriveItem?.id||null
-            }));
-            if(!result.driveActive || result.activeList!=='irregular') throw new Error('saved session not reopened '+JSON.stringify({saved,result}));
-            if(result.item!==saved.id || !result.button.includes('Reprendre')) throw new Error('wrong resumed card '+JSON.stringify({saved,result}));
-            await page.evaluate(()=>{
-              clearIrregularResume();
-              try{irregularCourseAudio.pause();irregularCourseAudio.currentTime=0}catch(e){}
-              driveRunning=false;drivePaused=false;
+              const chosen=irregularCourseCues[10];
+              irregularSelectedStartId=chosen.id;
+              await startIntensiveAuto();
+              const oldPlay=irregularCourseAudio.play.bind(irregularCourseAudio);
+              let plays=0;
+              irregularCourseAudio.play=async()=>{plays++;};
+              await document.querySelector('#startDrive').click();
+              await new Promise(r=>setTimeout(r,50));
+              const out={
+                chosen:chosen.id,
+                currentTime:irregularCourseAudio.currentTime,
+                chosenStart:chosen.start,
+                item:lastDriveItem?.id||null,
+                plays,
+                running:driveRunning
+              };
+              irregularCourseAudio.play=oldPlay;
+              stopDrive();
               activeList='general';updateListUI();show('#homeView');
+              return out;
             });
+            if(result.item!==result.chosen) throw new Error('wrong chosen card '+JSON.stringify(result));
+            if(Math.abs(result.currentTime-result.chosenStart)>.2) throw new Error('wrong chosen start time '+JSON.stringify(result));
+            if(result.plays!==1 || !result.running) throw new Error('auto flow changed '+JSON.stringify(result));
           });
           await check('irregular auto uses one media play for the whole course', async()=> {
             const result=await page.evaluate(async()=>{
               activeList='irregular';updateListUI();
+              await loadIrregularCourse();
+              irregularSelectedStartId=irregularCourseCues[0]?.id||null;
               await startIntensiveAuto();
               const oldPlay=irregularCourseAudio.play.bind(irregularCourseAudio);
               let plays=0;
