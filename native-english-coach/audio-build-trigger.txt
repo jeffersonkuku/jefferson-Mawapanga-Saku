@@ -8,3 +8,5 @@ Build single continuous irregular course 2026-10-02
 Build iPhone-safe M4A irregular course 2026-10-03
 
 Build 2-second resumable natural-voice course 2026-10-03
+
+Rebuild dedicated mobile course after playback error 2026-10-03
