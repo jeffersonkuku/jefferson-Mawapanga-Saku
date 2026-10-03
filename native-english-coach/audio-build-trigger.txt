@@ -4,3 +4,5 @@ French translation audio enabled
 Irregular verbs 421 cards AU audio rebuild 2026-09-29
 
 Build single continuous irregular course 2026-10-02
+
+Build iPhone-safe M4A irregular course 2026-10-03
