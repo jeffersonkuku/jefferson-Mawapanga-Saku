@@ -110,6 +110,20 @@ select,input[type=number],input[type=range]{width:100%;background:#0f1317;color:
   </section>
 </main>
 
+<main id="generalStartView" class="view">
+  <div class="topbar"><button class="icon-btn" data-home>←</button><h2>💬 Reprendre les mots</h2><span></span></div>
+  <section class="setting resume-picker">
+    <h3 style="margin:0 0 8px">À quel mot veux-tu commencer ?</h3>
+    <p class="hint" style="margin:0 0 16px">Choisis le mot où tu t’étais arrêté. Ensuite : mot → 2 s → français → mot ×3 → phrase anglaise → suivant, automatiquement.</p>
+    <div class="setting">
+      <label>Mot</label>
+      <select id="generalWordSelect"></select>
+    </div>
+    <button class="btn accent full" id="generalResumeBtn">▶ Reprendre ici</button>
+    <button class="btn soft full" id="generalFromStartBtn" style="margin-top:10px">↺ Commencer depuis le premier mot</button>
+  </section>
+</main>
+
 <main id="irregularStartView" class="view">
   <div class="topbar"><button class="icon-btn" data-home>←</button><h2>🔁 Reprendre les verbes</h2><span></span></div>
   <section class="setting resume-picker">
@@ -165,7 +179,7 @@ select,input[type=number],input[type=range]{width:100%;background:#0f1317;color:
   <div class="settings" style="margin-top:14px">
     <div class="setting"><label>Voix anglaises</label><select id="voiceMode"><option value="mix">Mix automatique · AU / US / UK</option></select><small>Chaque carte utilise un MP3 neuronal pré-généré avec une voix native déterminée. Aucune voix anglaise Safari et aucun TTS local.</small></div>
     <div class="setting"><label>Répétitions Intensif Auto</label><input id="repeatCount" type="number" min="3" max="3" value="3" disabled/><small>3 répétitions continues dans un seul audio pour supprimer les micro-lags.</small></div>
-    <div class="setting"><label>Temps pour trouver le sens (secondes)</label><input id="thinkSeconds" type="number" min="2" max="12" value="5"/></div>
+    <div class="setting"><label>Temps pour trouver le sens (secondes)</label><input id="thinkSeconds" type="number" min="2" max="12" value="2"/></div>
     <div class="setting toggle"><div><label>Lire aussi le français</label><small>Utile en voiture.</small></div><input id="speakFrench" type="checkbox" checked/></div>
     <div class="setting toggle"><div><label>Changer de voix régulièrement</label><small>Mélange les accents et les voix disponibles.</small></div><input id="rotateVoices" type="checkbox" checked/></div>
     <div class="setting"><label>Vitesse audio</label><input id="speechRate" type="range" min="0.75" max="1.1" step="0.05" value="0.95"/><small id="rateLabel">0.95×</small></div>
@@ -180,7 +194,7 @@ select,input[type=number],input[type=range]{width:100%;background:#0f1317;color:
 <script>
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const DB_NAME='native-english-coach', DB_VERSION=1;
-const DEFAULT_SETTINGS={voiceMode:'mix',repeatCount:3,thinkSeconds:5,speakFrench:true,rotateVoices:true,speechRate:.95};
+const DEFAULT_SETTINGS={voiceMode:'mix',repeatCount:3,thinkSeconds:2,speakFrench:true,rotateVoices:true,speechRate:.95};
 const INTENSIVE_KNOWN_COOLDOWN_MS=30*24*60*60*1000;
 let db, corpus=[], generalCorpus=[], irregularCorpus=[], activeList='general', settings={...DEFAULT_SETTINGS}, session=[], sessionIndex=0, currentMode='normal', currentSkill='reading';
 let fsrs=null, fsrsLib=null, wakeLock=null, driveRunning=false, drivePaused=false, lastDriveItem=null;
@@ -191,6 +205,13 @@ irregularCourseAudio.playsInline=true;
 let irregularCourseCues=[], irregularCourseReady=false, irregularCourseLoading=null, irregularCourseIndex=-1;
 let irregularCourseMarked=new Set();
 let irregularSelectedStartId=null;
+
+const generalCourseAudio=new Audio();
+generalCourseAudio.preload='metadata';
+generalCourseAudio.playsInline=true;
+let generalCourseCues=[], generalCourseReady=false, generalCourseLoading=null, generalCourseIndex=-1;
+let generalCourseMarked=new Set();
+let generalSelectedStartId=null;
 
 const irregularSequenceAudio=new Audio();
 irregularSequenceAudio.preload='auto';
@@ -221,12 +242,12 @@ function updateListUI(){
  $$('.list-choice').forEach(b=>b.classList.toggle('active-list',b.dataset.list===activeList));
  const irregular=activeList==='irregular';
  $('#irregularRules').classList.toggle('show',irregular);
- $('#autoModeTitle').textContent=irregular?'Système Verbes irréguliers':'Intensif Auto';
+ $('#autoModeTitle').textContent=irregular?'Système Verbes irréguliers':'Système Mots normaux';
  const autoCopy=$('[data-mode="intensive-auto"] p');
  if(autoCopy){
    autoCopy.textContent=irregular
      ?'Un seul Play : mot → 2 s → traduction française → mot ×3 → phrase anglaise → forme suivante. Blocs complets, jamais mélangés.'
-     :'Mode voiture : mot → 2 s → traduction française audio → 3 répétitions natives → Oui/Non → mot suivant automatique.';
+     :'Même système Auto : mot → 2 s → traduction française → mot ×3 → phrase anglaise → mot suivant, sans toucher le téléphone.';
  }
 }
 async function loadCorpus(){
@@ -296,6 +317,135 @@ async function loadAudioIndex(){
     $('#voiceInfo').textContent='Pack audio natif en cours de génération';
   }
 }
+async function loadGeneralCourse(){
+  if(generalCourseReady)return true;
+  if(generalCourseLoading)return generalCourseLoading;
+  generalCourseLoading=(async()=>{
+    try{
+      const r=await fetch('./general-course-cues.json?v=1',{cache:'no-store'});
+      if(!r.ok)throw new Error('general cues unavailable');
+      const data=await r.json();
+      if(!Array.isArray(data.cards)||!data.cards.length)throw new Error('invalid general course cues');
+      generalCourseCues=data.cards;
+      generalCourseAudio.src='./general-course-mobile.m4a?v=1';
+      generalCourseAudio.load();
+      if(generalCourseAudio.readyState<1){
+        await new Promise(resolve=>{
+          let done=false;
+          const finish=()=>{if(done)return;done=true;clearTimeout(timer);resolve()};
+          const timer=setTimeout(finish,8000);
+          generalCourseAudio.addEventListener('loadedmetadata',finish,{once:true});
+          generalCourseAudio.addEventListener('error',finish,{once:true});
+        });
+      }
+      generalCourseReady=true;
+      return true;
+    }catch(e){
+      console.error('Cours audio mots normaux indisponible',e);
+      generalCourseReady=false;
+      return false;
+    }finally{
+      generalCourseLoading=null;
+    }
+  })();
+  return generalCourseLoading;
+}
+function generalCourseCardAt(time){
+  let lo=0,hi=generalCourseCues.length-1,best=-1;
+  while(lo<=hi){
+    const mid=(lo+hi)>>1,card=generalCourseCues[mid];
+    if(time>=card.start){best=mid;lo=mid+1}else hi=mid-1;
+  }
+  if(best<0)return null;
+  const card=generalCourseCues[best];
+  return time<card.end?{card,index:best}:null;
+}
+function generalCoursePhaseAt(card,time){
+  return (card.phases||[]).find(p=>time>=p.start&&time<p.end)||card.phases?.[card.phases.length-1]||null;
+}
+function renderGeneralCourseAt(time,force=false){
+  const hit=generalCourseCardAt(time);
+  if(!hit)return;
+  const card=hit.card,index=hit.index;
+  const phase=generalCoursePhaseAt(card,time);
+  const item=generalCorpus.find(x=>x.id===card.id)||card;
+  sessionIndex=index;
+  lastDriveItem=item;
+  currentIntensiveItemId=item.id;
+
+  if(force||generalCourseIndex!==index){
+    generalCourseIndex=index;
+    $('#driveCounter').textContent='Mot '+(index+1)+'/'+generalCourseCues.length;
+    $('#driveTerm').textContent=item.term||'';
+    $('#drivePhon').textContent=item.phoneticFr||'';
+    $('#driveIpa').textContent=item.ipa||'';
+    $('#driveMeaning').textContent='';
+    $('#driveExample').textContent='';
+    $('#driveExampleFr').textContent='';
+    $('#knowledgeQuestion').style.display='none';
+    if(!generalCourseMarked.has(item.id)){
+      generalCourseMarked.add(item.id);
+      markExposure(item).catch(()=>{});
+    }
+  }
+
+  const duration=Number.isFinite(generalCourseAudio.duration)&&generalCourseAudio.duration>0
+    ?generalCourseAudio.duration
+    :(generalCourseCues.at(-1)?.end||1);
+  $('#driveProgress').style.width=Math.min(100,time/duration*100)+'%';
+
+  if(!phase)return;
+  if(phase.phase==='word'){
+    $('#driveStatus').textContent='Écoute le mot';
+  }else if(phase.phase==='think'){
+    const left=Math.max(1,Math.ceil(phase.end-time));
+    $('#driveStatus').textContent='Trouve le sens · '+left+' s';
+  }else if(phase.phase==='french'){
+    $('#driveStatus').textContent='Traduction française';
+    $('#driveMeaning').textContent=item.french||'';
+  }else if(phase.phase==='repeat'){
+    $('#driveStatus').textContent='Répétition '+phase.repetition+'/3';
+    $('#driveMeaning').textContent=item.french||'';
+  }else if(phase.phase==='example'){
+    $('#driveStatus').textContent='Phrase naturelle';
+    $('#driveMeaning').textContent=item.french||'';
+    $('#driveExample').textContent=item.example||'';
+    $('#driveExampleFr').textContent='';
+  }
+}
+function finishGeneralCourse(){
+  driveRunning=false;
+  drivePaused=false;
+  currentIntensiveItemId=null;
+  $('#driveStatus').textContent='Parcours terminé ✅';
+  $('#driveTerm').textContent='DONE';
+  $('#drivePhon').textContent=generalCourseCues.length+' mots parcourus';
+  $('#driveIpa').textContent='';
+  $('#driveMeaning').textContent='';
+  $('#driveExample').textContent='';
+  $('#driveExampleFr').textContent='';
+  $('#knowledgeQuestion').style.display='none';
+  $('#driveActions').style.display='none';
+  $('#startDrive').style.display='block';
+  $('#startDrive').textContent='↻ Recommencer';
+  releaseWake();
+  updateStats();
+}
+generalCourseAudio.addEventListener('timeupdate',()=>{if(driveRunning&&activeList==='general')renderGeneralCourseAt(generalCourseAudio.currentTime)});
+generalCourseAudio.addEventListener('playing',()=>{if(driveRunning&&activeList==='general')drivePaused=false});
+generalCourseAudio.addEventListener('waiting',()=>{if(driveRunning&&activeList==='general')$('#driveStatus').textContent='Chargement audio…'});
+generalCourseAudio.addEventListener('stalled',()=>{if(driveRunning&&activeList==='general')$('#driveStatus').textContent='Connexion lente · reprise automatique…'});
+generalCourseAudio.addEventListener('error',()=>{
+  if(driveRunning&&activeList==='general'){
+    driveRunning=false;
+    $('#driveActions').style.display='none';
+    $('#startDrive').style.display='block';
+    $('#startDrive').textContent='▶ Réessayer';
+    $('#driveStatus').textContent='Erreur audio mobile · réessaie';
+  }
+});
+generalCourseAudio.addEventListener('ended',finishGeneralCourse);
+
 async function loadIrregularCourse(){
   if(irregularCourseReady)return true;
   if(irregularCourseLoading)return irregularCourseLoading;
@@ -359,7 +509,7 @@ function renderIrregularCourseAt(time,force=false){
     const blockForms=block.map(x=>x.term.toUpperCase()).join(' → ');
     $('#driveCounter').textContent=`Verbe ${item.verbNumber}/140 · ${blockIndex+1}/${block.length}`;
     $('#driveTerm').textContent=(item.term||'').toUpperCase();
-    $('#drivePhon').textContent=`${item.formRole||''} · ${blockForms}`;
+    $('#drivePhon').textContent=[item.phoneticFr,item.formRole,blockForms].filter(Boolean).join(' · ');
     $('#driveIpa').textContent=item.ipa||'';
     $('#driveMeaning').textContent='';
     $('#driveExample').textContent='';
@@ -588,12 +738,15 @@ async function buildSession(mode){
 
  // La session Auto des verbes irréguliers est un parcours complet et ordonné.
  // Ex. BE → WAS → WERE → BEEN, puis HAVE → HAD → HAD, etc.
- if(activeList==='irregular' && mode==='drive'){
-   return irregularCorpus.slice().sort((a,b)=>{
-     const byVerb=(a.verbNumber||0)-(b.verbNumber||0);
-     if(byVerb)return byVerb;
-     return a.id.localeCompare(b.id);
-   });
+ if(mode==='drive'){
+   if(activeList==='irregular'){
+     return irregularCorpus.slice().sort((a,b)=>{
+       const byVerb=(a.verbNumber||0)-(b.verbNumber||0);
+       if(byVerb)return byVerb;
+       return a.id.localeCompare(b.id);
+     });
+   }
+   return generalCorpus.slice();
  }
 
  const progress=await getAll('progress'), map=new Map(progress.map(x=>[x.id,x])), now=Date.now();
@@ -645,6 +798,24 @@ function ratingClick(r){
  renderStudy();
  rateItem(item,skill,r).then(updateStats).catch(e=>{console.error(e);toast('Progression non enregistrée, réessaie.')});
 }
+async function openGeneralStartPicker(){
+ const ok=await loadGeneralCourse();
+ if(!ok){toast('Le parcours audio des mots n’est pas disponible.');return}
+ const cards=generalCourseCues.map((card,index)=>{
+   const item=generalCorpus.find(x=>x.id===card.id)||card;
+   return {card,item,index};
+ });
+ $('#generalWordSelect').innerHTML=cards.map(({card,item,index})=>
+   '<option value="'+card.id+'">'+(index+1)+'. '+item.term+' — '+(item.phoneticFr||'')+'</option>'
+ ).join('');
+ $('#generalWordSelect').value=cards[0]?.card.id||'';
+ show('#generalStartView');
+}
+async function launchGeneralFromSelected(cardId){
+ generalSelectedStartId=cardId||generalCourseCues[0]?.id||null;
+ await startIntensiveAuto();
+}
+
 function populateIrregularFormSelect(){
  const verbNo=+$('#irregularVerbSelect').value;
  const forms=irregularCorpus
@@ -680,12 +851,12 @@ async function startIntensiveAuto(){
  session=await buildSession('drive');sessionIndex=0;driveRunning=false;drivePaused=false;
  intensiveChoice=null;intensiveAttempts=new Map();currentIntensiveItemId=null;
  $('#driveActions').style.display='none';$('#startDrive').style.display='block';
- $('#driveTitle').textContent=activeList==='irregular'?'🔁 Système Verbes irréguliers':'⚡ Intensif Auto';
- $('#startDrive').textContent=activeList==='irregular'?'▶ Lancer les 140 blocs':'▶ Démarrer l’intensif';
+ $('#driveTitle').textContent=activeList==='irregular'?'🔁 Système Verbes irréguliers':'💬 Système Mots normaux';
+ $('#startDrive').textContent=activeList==='irregular'?'▶ Lancer les 140 blocs':'▶ Lancer les mots';
  $('#driveTerm').textContent='START';
  $('#drivePhon').textContent=activeList==='irregular'
    ?'BE → WAS → WERE → BEEN, puis chaque verbe dans l’ordre'
-   :'Mot + phonétique, puis 2 secondes pour trouver le sens';
+   :'Mot → 2 s → français → mot ×3 → phrase → suivant';
  $('#driveIpa').textContent='';$('#driveMeaning').textContent='';$('#driveExample').textContent='';$('#driveExampleFr').textContent='';
  $('#knowledgeQuestion').style.display='none';$('#driveStatus').textContent='Prêt';
  if(activeList==='irregular'){
@@ -706,7 +877,22 @@ async function startIntensiveAuto(){
      toast('Le parcours audio complet n’est pas encore disponible.');
    }
  }else{
-   loadAudioIndex().then(()=>warmIntensiveAudio(session,0,Math.min(8,session.length))).catch(()=>{});
+   $('#startDrive').disabled=true;
+   $('#startDrive').textContent='Chargement du parcours…';
+   const ok=await loadGeneralCourse();
+   $('#startDrive').disabled=false;
+   if(ok){
+     const chosen=generalCourseCues.find(x=>x.id===generalSelectedStartId)||generalCourseCues[0];
+     const chosenItem=generalCorpus.find(x=>x.id===chosen?.id);
+     $('#startDrive').textContent=chosenItem?'▶ Lancer à '+String(chosenItem.term).toUpperCase():'▶ Lancer les mots';
+     if(chosen){
+       try{generalCourseAudio.currentTime=chosen.start}catch(e){}
+       renderGeneralCourseAt(chosen.start,true);
+     }
+   }else{
+     $('#startDrive').textContent='Audio indisponible';
+     toast('Le parcours audio des mots n’est pas encore disponible.');
+   }
  }
  show('#driveView');
 }
@@ -983,7 +1169,9 @@ function stopDrive(){
  intensiveBusy=false;
  currentIntensiveItemId=null;
  try{irregularCourseAudio.pause();irregularCourseAudio.currentTime=0}catch(e){}
+ try{generalCourseAudio.pause();generalCourseAudio.currentTime=0}catch(e){}
  irregularCourseIndex=-1;
+ generalCourseIndex=-1;
  stopIrregularSequenceAudio();
  cancelStudyPlayback();
  releaseWake();
@@ -1025,12 +1213,14 @@ $$('.mode:not(.list-choice)').forEach(b=>b.onclick=()=>{
  const m=b.dataset.mode;
  if(m==='intensive-auto'){
    if(activeList==='irregular')openIrregularStartPicker();
-   else startIntensiveAuto();
+   else openGeneralStartPicker();
  }
  else if(m==='intensive-calm')startStudy('intensive');
  else if(m==='browse'){show('#browseView');renderBrowse()}
  else startStudy(m)
 });
+$('#generalResumeBtn').onclick=()=>launchGeneralFromSelected($('#generalWordSelect').value);
+$('#generalFromStartBtn').onclick=()=>launchGeneralFromSelected(generalCourseCues[0]?.id);
 $('#irregularVerbSelect').onchange=populateIrregularFormSelect;
 $('#irregularResumeBtn').onclick=()=>launchIrregularFromSelected($('#irregularFormSelect').value);
 $('#irregularFromStartBtn').onclick=()=>launchIrregularFromSelected(irregularCourseCues[0]?.id);
@@ -1080,13 +1270,39 @@ $('#startDrive').onclick=async()=>{
      toast('Appuie de nouveau sur Play pour autoriser l’audio.');
    }
  }else{
-   $('#driveReplay').textContent='↻ Réécouter le mot';
-   runDrive();
+   if(!generalCourseReady){
+     toast('Chargement du parcours audio…');
+     return;
+   }
+   driveRunning=true;
+   drivePaused=false;
+   intensiveBusy=false;
+   generalCourseMarked=new Set();
+   generalCourseIndex=-1;
+   const chosen=generalCourseCues.find(x=>x.id===generalSelectedStartId)||generalCourseCues[0];
+   const startTime=chosen?.start||0;
+   try{generalCourseAudio.currentTime=startTime}catch(e){}
+   $('#startDrive').style.display='none';
+   $('#driveActions').style.display='grid';
+   $('#drivePause').textContent='⏸ Pause';
+   $('#driveReplay').textContent='↻ Rejouer la carte';
+   $('#driveStatus').textContent='Démarrage…';
+   requestWake().catch(()=>{});
+   renderGeneralCourseAt(startTime,true);
+   try{
+     await generalCourseAudio.play();
+   }catch(e){
+     console.error('Lecture du parcours mots bloquée',e);
+     driveRunning=false;
+     $('#startDrive').style.display='block';
+     $('#driveActions').style.display='none';
+     toast('Appuie de nouveau sur Play pour autoriser l’audio.');
+   }
  }
 };
 $('#drivePause').onclick=()=>{
  drivePaused=!drivePaused;
- const player=activeList==='irregular'?irregularCourseAudio:activeAudio;
+ const player=activeList==='irregular'?irregularCourseAudio:generalCourseAudio;
  if(player){
    if(drivePaused)player.pause();
    else player.play().catch(e=>console.error('Reprise audio impossible',e));
@@ -1104,6 +1320,18 @@ $('#driveReplay').onclick=async()=>{
      $('#drivePause').textContent='⏸ Pause';
      renderIrregularCourseAt(card.start,true);
      await irregularCourseAudio.play();
+   }catch(e){console.error('Relecture impossible',e)}
+   return;
+ }
+ if(activeList==='general' && generalCourseReady){
+   const card=generalCourseCues.find(x=>x.id===lastDriveItem.id);
+   if(!card)return;
+   try{
+     generalCourseAudio.currentTime=card.start;
+     drivePaused=false;
+     $('#drivePause').textContent='⏸ Pause';
+     renderGeneralCourseAt(card.start,true);
+     await generalCourseAudio.play();
    }catch(e){console.error('Relecture impossible',e)}
    return;
  }
@@ -1125,12 +1353,11 @@ async function boot(){
  await loadSettings();
  await loadCorpus();
  await loadAudioIndex();
+ loadIrregularCourse().catch(()=>{});
+ loadGeneralCourse().catch(()=>{});
  await updateStats();
  updateVoiceInfo();
  initFsrs();
-
- // Si l'utilisateur avait quasync function boot(){
- db=await openDB();await loadSettings();await loadCorpus();await loadAudioIndex();loadIrregularCourse().catch(()=>{});await updateStats();updateVoiceInfo();initFsrs();
  if('serviceWorker'in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
 }
 boot();
