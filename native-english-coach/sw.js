@@ -1,5 +1,5 @@
-const CACHE='native-english-coach-v1.14.0';
-const ASSETS=['./','./index.html','./manifest.webmanifest','./icon.svg','./audio-index.json','./irregular-verbs.json','./irregular-course-cues.json'];
+const CACHE='native-english-coach-v1.15.0';
+const ASSETS=['./','./index.html','./manifest.webmanifest','./icon.svg','./audio-index.json','./irregular-verbs.json','./irregular-course-cues.json','./general-course-cues.json'];
 
 self.addEventListener('install',e=>{
   e.waitUntil(
@@ -20,7 +20,7 @@ self.addEventListener('activate',e=>{
 self.addEventListener('fetch',e=>{
   if(e.request.method!=='GET')return;
   const url=new URL(e.request.url);
-  if(url.pathname.endsWith('/irregular-course.mp3') || url.pathname.endsWith('/irregular-course.m4a') || url.pathname.endsWith('/irregular-course-mobile.m4a')){
+  if(url.pathname.endsWith('/irregular-course.mp3') || url.pathname.endsWith('/irregular-course.m4a') || url.pathname.endsWith('/irregular-course-mobile.m4a') || url.pathname.endsWith('/general-course-mobile.m4a')){
     e.respondWith(fetch(e.request));
     return;
   }
@@ -30,7 +30,8 @@ self.addEventListener('fetch',e=>{
     url.pathname.endsWith('/index.html') ||
     url.pathname.endsWith('/audio-index.json') ||
     url.pathname.endsWith('/irregular-verbs.json') ||
-    url.pathname.endsWith('/irregular-course-cues.json');
+    url.pathname.endsWith('/irregular-course-cues.json') ||
+    url.pathname.endsWith('/general-course-cues.json');
 
   if(networkFirst){
     e.respondWith(
