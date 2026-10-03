@@ -131,9 +131,10 @@ def build_irregular_course(irregular_items):
         "-f", "concat", "-safe", "0", "-i", str(concat_file),
         "-vn",
         "-ac", "1",
-        "-ar", "44100",
+        "-ar", "24000",
         "-c:a", "aac",
-        "-b:a", "96k",
+        "-profile:a", "aac_low",
+        "-b:a", "128k",
         "-movflags", "+faststart",
         str(IRREGULAR_COURSE)
     ], check=True)
