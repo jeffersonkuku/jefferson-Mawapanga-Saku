@@ -247,10 +247,37 @@ jobs:
             if(result.phases.map(x=>x.phase).join(',')!==expected.join(',')) throw new Error('wrong phase order '+JSON.stringify(result));
             if(result.phases.filter(x=>x.phase==='repeat').map(x=>x.repetition).join(',')!=='1,2,3') throw new Error('wrong repetition count '+JSON.stringify(result));
             const think=result.phases.find(x=>x.phase==='think');
-            if(Math.abs((think.end-think.start)-5)>0.08) throw new Error('think gap is not 5 seconds '+JSON.stringify(result));
+            if(Math.abs((think.end-think.start)-2)>0.08) throw new Error('think gap is not 2 seconds '+JSON.stringify(result));
             if(Math.abs(result.firstEnd-result.secondStart)>0.01) throw new Error('cards do not chain directly '+JSON.stringify(result));
             if(Math.abs(result.expectedDuration-result.actualDuration)>0.1) throw new Error('course duration mismatch '+JSON.stringify(result));
             if(result.size<10000000) throw new Error('continuous course file missing or too small '+JSON.stringify(result));
+          });
+          await check('irregular course resumes where user stopped', async()=> {
+            const result=await page.evaluate(async()=>{
+              activeList='irregular';updateListUI();
+              await startIntensiveAuto();
+              const card=irregularCourseCues[10];
+              const target=card.start+Math.min(.75,(card.end-card.start)/2);
+              irregularCourseAudio.currentTime=target;
+              renderIrregularCourseAt(target,true);
+              saveIrregularResume(true);
+              const saved=JSON.parse(localStorage.getItem(IRREGULAR_RESUME_KEY)||'null');
+              irregularCourseAudio.currentTime=0;
+              irregularCourseIndex=-1;
+              const restored=previewIrregularResume();
+              const out={
+                savedCard:saved?.cardId,
+                restoredCard:restored?.card?.id,
+                lastItem:lastDriveItem?.id,
+                restoredTime:restored?.time||0,
+                target
+              };
+              clearIrregularResume();
+              activeList='general';updateListUI();
+              return out;
+            });
+            if(!result.savedCard || result.savedCard!==result.restoredCard || result.savedCard!==result.lastItem) throw new Error('resume card mismatch '+JSON.stringify(result));
+            if(Math.abs(result.restoredTime-result.target)>.15) throw new Error('resume time mismatch '+JSON.stringify(result));
           });
           await check('irregular auto uses one media play for the whole course', async()=> {
             const result=await page.evaluate(async()=>{
