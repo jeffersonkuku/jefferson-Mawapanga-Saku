@@ -6,7 +6,7 @@ CORPUS = ROOT / "corpus.json"
 IRREGULAR = ROOT / "irregular-verbs.json"
 AUDIO = ROOT / "audio"
 INDEX = ROOT / "audio-index.json"
-IRREGULAR_COURSE = ROOT / "irregular-course.m4a"
+IRREGULAR_COURSE = ROOT / "irregular-course-mobile.m4a"
 IRREGULAR_CUES = ROOT / "irregular-course-cues.json"
 
 VOICES_GENERAL = [
