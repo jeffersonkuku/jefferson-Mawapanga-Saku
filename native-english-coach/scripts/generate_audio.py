@@ -52,7 +52,7 @@ def build_irregular_course(irregular_items):
         return
 
     ordered = sorted(irregular_items, key=lambda x: (int(x.get("verbNumber", 0)), x["id"]))
-    silence = AUDIO / "_silence-5s.mp3"
+    silence = AUDIO / "_silence-2s.mp3"
     if not silence.exists():
         subprocess.run([
             "ffmpeg", "-y", "-v", "error",
@@ -140,8 +140,8 @@ def build_irregular_course(irregular_items):
 
     actual_duration = media_duration(IRREGULAR_COURSE)
     IRREGULAR_CUES.write_text(json.dumps({
-        "version": 1,
-        "sequence": "word -> 5s -> french -> word x3 -> example -> next",
+        "version": 2,
+        "sequence": "word -> 2s -> french -> word x3 -> example -> next",
         "cards": cards,
         "expectedDuration": round(t, 3),
         "actualDuration": round(actual_duration, 3)
