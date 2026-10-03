@@ -213,11 +213,21 @@ jobs:
             if(result.first.join(',')!=='be,was,were,been,have,had,had') throw new Error('wrong first blocks '+JSON.stringify(result));
             if(!result.ordered || result.lastVerb!==140) throw new Error('not ordered '+JSON.stringify(result));
           });
+          await check('mobile course uses AAC/M4A, not concatenated MP3', async()=> {
+            const result=await page.evaluate(()=>{
+              return {
+                src:irregularCourseAudio.src,
+                html:document.documentElement.innerHTML.includes('irregular-course.mp3')
+              };
+            });
+            if(!result.src.includes('irregular-course.m4a')) throw new Error('wrong mobile course source '+JSON.stringify(result));
+            if(result.html) throw new Error('old concatenated MP3 still referenced '+JSON.stringify(result));
+          });
           await check('continuous irregular course has exact requested sequence', async()=> {
             const result=await page.evaluate(async()=>{
               const r=await fetch('./irregular-course-cues.json?qa='+Date.now(),{cache:'no-store'});
               const data=await r.json();
-              const head=await fetch('./irregular-course.mp3',{method:'HEAD',cache:'no-store'});
+              const head=await fetch('./irregular-course.m4a',{method:'HEAD',cache:'no-store'});
               const first=data.cards[0], firstFour=data.cards.slice(0,4).map(x=>x.term);
               return {
                 cards:data.cards.length,
