@@ -8,6 +8,8 @@ AUDIO = ROOT / "audio"
 INDEX = ROOT / "audio-index.json"
 IRREGULAR_COURSE = ROOT / "irregular-course-mobile.m4a"
 IRREGULAR_CUES = ROOT / "irregular-course-cues.json"
+GENERAL_COURSE = ROOT / "general-course-mobile.m4a"
+GENERAL_CUES = ROOT / "general-course-cues.json"
 
 VOICES_GENERAL = [
     "en-US-AvaNeural",
@@ -47,11 +49,10 @@ def media_duration(path):
     ], text=True).strip()
     return float(out)
 
-def build_irregular_course(irregular_items):
-    if not irregular_items:
+def build_course(course_items, course_path, cues_path, label, ordered_items):
+    if not course_items:
         return
 
-    ordered = sorted(irregular_items, key=lambda x: (int(x.get("verbNumber", 0)), x["id"]))
     silence = AUDIO / "_silence-2s.mp3"
     if not silence.exists():
         subprocess.run([
@@ -67,7 +68,7 @@ def build_irregular_course(irregular_items):
     cards = []
     t = 0.0
 
-    for item in ordered:
+    for item in ordered_items:
         term = AUDIO / f"{item['id']}-term.mp3"
         french = AUDIO / f"{item['id']}-fr.mp3"
         example = AUDIO / f"{item['id']}-example.mp3"
@@ -106,6 +107,7 @@ def build_irregular_course(irregular_items):
             "baseVerb": item.get("baseVerb"),
             "formRole": item.get("formRole"),
             "term": item.get("term"),
+            "phoneticFr": item.get("phoneticFr"),
             "french": item.get("french"),
             "ipa": item.get("ipa"),
             "example": item.get("example"),
@@ -115,17 +117,12 @@ def build_irregular_course(irregular_items):
             "phases": phases
         })
 
-    concat_file = ROOT / "_irregular-course-concat.txt"
+    concat_file = ROOT / f"_{label}-course-concat.txt"
     concat_file.write_text(
         "\n".join("file '" + str(p.resolve()).replace("'", "'\\''") + "'" for p in parts) + "\n",
         encoding="utf-8"
     )
 
-    # IMPORTANT MOBILE/iPHONE:
-    # Do NOT stream-copy concatenated MP3 files. Desktop browsers tolerate the
-    # discontinuous MP3 headers/timestamps, but Safari/iOS can stop playback
-    # at an early concat boundary (typically right after the French cue).
-    # Decode every segment and encode ONE continuous AAC timeline instead.
     subprocess.run([
         "ffmpeg", "-y", "-v", "error",
         "-f", "concat", "-safe", "0", "-i", str(concat_file),
@@ -136,12 +133,12 @@ def build_irregular_course(irregular_items):
         "-profile:a", "aac_low",
         "-b:a", "72k",
         "-movflags", "+faststart",
-        str(IRREGULAR_COURSE)
+        str(course_path)
     ], check=True)
 
-    actual_duration = media_duration(IRREGULAR_COURSE)
-    IRREGULAR_CUES.write_text(json.dumps({
-        "version": 2,
+    actual_duration = media_duration(course_path)
+    cues_path.write_text(json.dumps({
+        "version": 3,
         "sequence": "word -> 2s -> french -> word x3 -> example -> next",
         "cards": cards,
         "expectedDuration": round(t, 3),
@@ -149,10 +146,11 @@ def build_irregular_course(irregular_items):
     }, ensure_ascii=False, indent=2), encoding="utf-8")
     concat_file.unlink(missing_ok=True)
     silence.unlink(missing_ok=True)
-    print(f"Built irregular course: {len(cards)} cards, {actual_duration/60:.1f} minutes, {IRREGULAR_COURSE.stat().st_size/1024/1024:.1f} MB")
+    print(f"Built {label} course: {len(cards)} cards, {actual_duration/60:.1f} minutes, {course_path.stat().st_size/1024/1024:.1f} MB")
 
 async def main():
-    items = json.loads(CORPUS.read_text(encoding="utf-8"))
+    general_items = json.loads(CORPUS.read_text(encoding="utf-8"))
+    items = list(general_items)
     irregular_items = []
     if IRREGULAR.exists():
         irregular_items = json.loads(IRREGULAR.read_text(encoding="utf-8"))
@@ -192,7 +190,20 @@ async def main():
 
     await asyncio.gather(*(one(item, idx) for idx, item in enumerate(items)))
     INDEX.write_text(json.dumps(index, indent=2, ensure_ascii=False), encoding="utf-8")
-    build_irregular_course(irregular_items)
+    build_course(
+        irregular_items,
+        IRREGULAR_COURSE,
+        IRREGULAR_CUES,
+        "irregular",
+        sorted(irregular_items, key=lambda x: (int(x.get("verbNumber", 0)), x["id"]))
+    )
+    build_course(
+        general_items,
+        GENERAL_COURSE,
+        GENERAL_CUES,
+        "general",
+        list(general_items)
+    )
     print(f"Generated {len(index)} items / {len(index)*4} MP3 files")
 
 if __name__ == "__main__":
