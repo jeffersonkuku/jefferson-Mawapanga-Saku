@@ -306,7 +306,7 @@ async function loadIrregularCourse(){
       const data=await r.json();
       if(!Array.isArray(data.cards)||data.cards.length!==421)throw new Error('invalid irregular course cues');
       irregularCourseCues=data.cards;
-      irregularCourseAudio.src='./irregular-course.m4a?v=4';
+      irregularCourseAudio.src='./irregular-course-mobile.m4a?v=1';
       irregularCourseAudio.load();
       if(irregularCourseAudio.readyState<1){
         await new Promise(resolve=>{
