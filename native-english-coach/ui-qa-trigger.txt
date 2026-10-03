@@ -24,3 +24,5 @@ Final QA 2-second natural voice resume course 2026-10-03
 Validate manual resume picker with unchanged auto flow 2026-10-03
 
 Validate mobile playback fix after dedicated smaller audio 2026-10-03
+
+Validate French pronunciation cues and identical normal-word auto system 2026-10-03
