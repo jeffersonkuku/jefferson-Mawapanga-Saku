@@ -220,14 +220,14 @@ jobs:
                 html:document.documentElement.innerHTML.includes('irregular-course.mp3')
               };
             });
-            if(!result.src.includes('irregular-course.m4a')) throw new Error('wrong mobile course source '+JSON.stringify(result));
+            if(!result.src.includes('irregular-course-mobile.m4a')) throw new Error('wrong mobile course source '+JSON.stringify(result));
             if(result.html) throw new Error('old concatenated MP3 still referenced '+JSON.stringify(result));
           });
           await check('continuous irregular course has exact requested sequence', async()=> {
             const result=await page.evaluate(async()=>{
               const r=await fetch('./irregular-course-cues.json?qa='+Date.now(),{cache:'no-store'});
               const data=await r.json();
-              const head=await fetch('./irregular-course.m4a',{method:'HEAD',cache:'no-store'});
+              const head=await fetch('./irregular-course-mobile.m4a',{method:'HEAD',cache:'no-store'});
               const first=data.cards[0], firstFour=data.cards.slice(0,4).map(x=>x.term);
               return {
                 cards:data.cards.length,
