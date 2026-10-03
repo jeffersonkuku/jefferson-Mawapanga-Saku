@@ -29,7 +29,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add native-english-coach/audio native-english-coach/audio-index.json native-english-coach/irregular-course.m4a native-english-coach/irregular-course-cues.json
+          git add native-english-coach/audio native-english-coach/audio-index.json native-english-coach/irregular-course-mobile.m4a native-english-coach/irregular-course-cues.json
           if git diff --cached --quiet; then
             echo "No audio changes"
           else
