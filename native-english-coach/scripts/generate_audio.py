@@ -6,7 +6,7 @@ CORPUS = ROOT / "corpus.json"
 IRREGULAR = ROOT / "irregular-verbs.json"
 AUDIO = ROOT / "audio"
 INDEX = ROOT / "audio-index.json"
-IRREGULAR_COURSE = ROOT / "irregular-course.mp3"
+IRREGULAR_COURSE = ROOT / "irregular-course.m4a"
 IRREGULAR_CUES = ROOT / "irregular-course-cues.json"
 
 VOICES_GENERAL = [
@@ -121,10 +121,20 @@ def build_irregular_course(irregular_items):
         encoding="utf-8"
     )
 
+    # IMPORTANT MOBILE/iPHONE:
+    # Do NOT stream-copy concatenated MP3 files. Desktop browsers tolerate the
+    # discontinuous MP3 headers/timestamps, but Safari/iOS can stop playback
+    # at an early concat boundary (typically right after the French cue).
+    # Decode every segment and encode ONE continuous AAC timeline instead.
     subprocess.run([
         "ffmpeg", "-y", "-v", "error",
         "-f", "concat", "-safe", "0", "-i", str(concat_file),
-        "-c:a", "copy",
+        "-vn",
+        "-ac", "1",
+        "-ar", "44100",
+        "-c:a", "aac",
+        "-b:a", "64k",
+        "-movflags", "+faststart",
         str(IRREGULAR_COURSE)
     ], check=True)
 
