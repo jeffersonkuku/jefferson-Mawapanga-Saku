@@ -12,3 +12,5 @@ Build 2-second resumable natural-voice course 2026-10-03
 Rebuild dedicated mobile course after playback error 2026-10-03
 
 Rebuild mobile course safely below size threshold 2026-10-03
+
+Build matching normal-word auto course and refreshed pronunciation cues 2026-10-03
