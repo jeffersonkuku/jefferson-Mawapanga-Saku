@@ -198,7 +198,7 @@ function updateListUI(){
  corpus=activeCorpus();
  $('#statCorpus').textContent=corpus.length;
  $('#listBadge').textContent=activeList==='irregular'?'140 verbes · 421 cartes':corpus.length+' cartes';
- $('.list-choice').forEach(b=>b.classList.toggle('active-list',b.dataset.list===activeList));
+ $$('.list-choice').forEach(b=>b.classList.toggle('active-list',b.dataset.list===activeList));
  const irregular=activeList==='irregular';
  $('#irregularRules').classList.toggle('show',irregular);
  $('#autoModeTitle').textContent=irregular?'Système Verbes irréguliers':'Intensif Auto';
@@ -935,7 +935,7 @@ async function exportProgress(){download('native-english-coach-progress.json',JS
 async function resetAll(){if(!confirm('Réinitialiser toute la progression et le corpus personnalisé ?'))return;await clearStore('progress');await clearStore('customCorpus');generalCorpus=window.__NATIVE_COACH_SEED__;updateListUI();await updateStats();toast('Progression réinitialisée')}
 $$('[data-home]').forEach(b=>b.onclick=()=>{cancelStudyPlayback();show('#homeView');updateStats()});
 $('#settingsBtn').onclick=()=>show('#settingsView');
-$$('.list-choice').forEach(b=>b.onclick=()=>{
+$$$('.list-choice').forEach(b=>b.onclick=()=>{
  activeList=b.dataset.list;updateListUI();
  if(activeList==='irregular'&&!irregularCorpus.length)toast('La liste des verbes irréguliers est en cours de chargement.');
  else toast(activeList==='irregular'?'Verbes irréguliers · 421 cartes':'Anglais utile · '+generalCorpus.length+' cartes');
