@@ -17,7 +17,7 @@
 
 Business application for request creation, draft management, team assignment, ticket lifecycle, documents, Outlook conversation archiving, routing, notifications, access/delegation and operational KPIs.
 
-[![Power Platform Ticketing System demo](./projects/power-platform-ticketing-system/assets/01-home_clean_v2.png)](./projects/power-platform-ticketing-system/)
+[![Power Platform Ticketing System demo](./projects/power-platform-ticketing-system/assets/01-home_4K.png)](https://www.youtube.com/watch?v=_jR8T9s2VUE)
 
 **[▶ Watch the demo](https://www.youtube.com/watch?v=_jR8T9s2VUE)** · **[Open the full case study](./projects/power-platform-ticketing-system/)**
 
