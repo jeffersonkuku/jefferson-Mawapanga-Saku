@@ -2,7 +2,7 @@
 
 > **I build business applications and workflow automation with Power Apps, Power Automate and SharePoint.**
 
-[🇬🇧 English](#english) · [🇫🇷 Français](#francais) · [▶ Watch the Power Apps demo](https://www.youtube.com/watch?v=Y15BCn_i-fo)
+[🇬🇧 English](#english) · [🇫🇷 Français](#francais) · [▶ Ticketing demo](https://www.youtube.com/watch?v=_jR8T9s2VUE) · [▶ Building Operations demo](https://www.youtube.com/watch?v=Y15BCn_i-fo)
 
 ![Power Apps](https://img.shields.io/badge/Power%20Apps-Canvas%20Apps-742774?logo=powerapps&logoColor=white)
 ![Power Automate](https://img.shields.io/badge/Power%20Automate-Workflow-0066FF?logo=powerautomate&logoColor=white)
@@ -11,7 +11,15 @@
 
 ## 30-second Power Platform portfolio
 
-[![Building Operations Hub — Power Apps demo](./projects/building-operations-hub/assets/01-home.png)](https://www.youtube.com/watch?v=Y15BCn_i-fo)
+### Power Platform Ticketing & Request Management
+
+**Power Apps · Power Automate · SharePoint · Microsoft 365**
+
+Business application for request creation, draft management, team assignment, ticket lifecycle, documents, Outlook conversation archiving, routing, notifications, access/delegation and operational KPIs.
+
+[![Power Platform Ticketing System demo](https://img.youtube.com/vi/_jR8T9s2VUE/maxresdefault.jpg)](https://www.youtube.com/watch?v=_jR8T9s2VUE)
+
+**[▶ Watch the demo](https://www.youtube.com/watch?v=_jR8T9s2VUE)** · **[Open the full case study](./projects/power-platform-ticketing-system/)**
 
 ### Building Operations Hub
 
