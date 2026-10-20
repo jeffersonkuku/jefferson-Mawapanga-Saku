@@ -22,7 +22,7 @@
 
 ### ▶ See it working
 
-[![Power Platform Ticketing System demo](./assets/01-home_4K.png)](https://www.youtube.com/watch?v=_jR8T9s2VUE)
+[![Power Platform Ticketing System demo](./assets/01-home_clean_v2.png)](https://www.youtube.com/watch?v=_jR8T9s2VUE)
 
 **[Watch the full demo on YouTube →](https://www.youtube.com/watch?v=_jR8T9s2VUE)**
 
@@ -32,37 +32,37 @@
 
 ### 1. Home dashboard
 
-![Home dashboard](./assets/01-home_4K.png)
+![Home dashboard](./assets/01-home_clean_v2.png)
 
 The landing page gives the user immediate access to personal tickets, service tickets, settings and the latest requests that need attention.
 
 ### 2. Personal profile, absences and delegation
 
-![Personal profile](./assets/02-profile_4K.png)
+![Personal profile](./assets/02-profile_clean_v2.png)
 
 Users can review their access context and manage personal absence/delegation information without exposing security decisions only through the interface.
 
 ### 3. Operational statistics
 
-![Operational statistics](./assets/03-statistics_4K.png)
+![Operational statistics](./assets/03-statistics_clean_v2.png)
 
 Team-level indicators provide visibility over open workload, tickets waiting for ownership, tickets in progress, waiting tickets, urgent tickets and backlog distribution.
 
 ### 4. My tickets
 
-![My tickets](./assets/04-my-tickets_4K.png)
+![My tickets](./assets/04-my-tickets_clean_v2.png)
 
 The personal workspace separates **drafts** from real submitted tickets. A draft remains a creation-in-progress until the final submission step is completed.
 
 ### 5. Service tickets
 
-![Service tickets](./assets/05-service-tickets_4K.png)
+![Service tickets](./assets/05-service-tickets_clean_v2.png)
 
 Operational teams can review incoming requests, take ownership, reassign work, change status and prioritise urgent items.
 
 ### 6. Request creation
 
-![Create a ticket](./assets/06-create-ticket_4K.png)
+![Create a ticket](./assets/06-create-ticket_clean_v2.png)
 
 The application supports six business journeys:
 
@@ -83,13 +83,13 @@ Documents are staged and associated with the request lifecycle without making th
 
 ### 9. Ticket detail
 
-![Ticket detail](./assets/12-ticket-detail_4K.png)
+![Ticket detail](./assets/12-ticket-detail_clean_v2.png)
 
 The ticket workspace centralises status, urgency, team, assignee, activity, comments, documents, linked e-mails and history.
 
 ### 10. Outlook conversation archiving
 
-![Outlook conversation archiving](./assets/13-outlook-archive_4K.png)
+![Outlook conversation archiving](./assets/13-linked-emails-modal_clean_v2.png)
 
 A user can attach an Outlook conversation to a ticket. The conversation is archived in SharePoint so ticket consultation does not depend on direct mailbox access.
 
@@ -97,23 +97,23 @@ A user can attach an Outlook conversation to a ticket. The conversation is archi
 
 #### Team management
 
-![Team management](./assets/07-team-management_4K.png)
+![Team management](./assets/07-team-management_clean_v2.png)
 
 #### Routing and settings
 
-![Routing and settings](./assets/08-settings_4K.png)
+![Routing and settings](./assets/08-settings_clean_v2.png)
 
 #### Access management
 
-![Access management](./assets/09-access-management_4K.png)
+![Access management](./assets/09-access-management_clean_v2.png)
 
 #### Delegations
 
-![Delegations](./assets/10-delegations_4K.png)
+![Delegations](./assets/10-delegations_clean_v2.png)
 
 #### Administration journal
 
-![Administration journal](./assets/11-admin-journal_4K.png)
+![Administration journal](./assets/11-audit-log_clean_v2.png)
 
 Administrative screens cover teams, members, routing rules, access, temporary delegations, notification parameters and audit history.
 
