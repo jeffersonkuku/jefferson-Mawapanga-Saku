@@ -22,7 +22,7 @@
 
 ### ▶ See it working
 
-[![Power Platform Ticketing System demo](https://img.youtube.com/vi/_jR8T9s2VUE/maxresdefault.jpg)](https://www.youtube.com/watch?v=_jR8T9s2VUE)
+[![Power Platform Ticketing System demo](./assets/01-home.webp)](https://www.youtube.com/watch?v=_jR8T9s2VUE)
 
 **[Watch the full demo on YouTube →](https://www.youtube.com/watch?v=_jR8T9s2VUE)**
 
@@ -32,25 +32,37 @@
 
 ### 1. Home dashboard
 
+![Home dashboard](./assets/01-home.webp)
+
 The landing page gives the user immediate access to personal tickets, service tickets, settings and the latest requests that need attention.
 
 ### 2. Personal profile, absences and delegation
+
+![Personal profile](./assets/02-profile.webp)
 
 Users can review their access context and manage personal absence/delegation information without exposing security decisions only through the interface.
 
 ### 3. Operational statistics
 
+![Operational statistics](./assets/03-statistics.webp)
+
 Team-level indicators provide visibility over open workload, tickets waiting for ownership, tickets in progress, waiting tickets, urgent tickets and backlog distribution.
 
 ### 4. My tickets
+
+![My tickets](./assets/04-my-tickets.webp)
 
 The personal workspace separates **drafts** from real submitted tickets. A draft remains a creation-in-progress until the final submission step is completed.
 
 ### 5. Service tickets
 
+![Service tickets](./assets/05-service-tickets.webp)
+
 Operational teams can review incoming requests, take ownership, reassign work, change status and prioritise urgent items.
 
 ### 6. Request creation
+
+![Create a ticket](./assets/06-create-ticket.webp)
 
 The application supports six business journeys:
 
@@ -71,13 +83,37 @@ Documents are staged and associated with the request lifecycle without making th
 
 ### 9. Ticket detail
 
+![Ticket detail](./assets/12-ticket-detail.webp)
+
 The ticket workspace centralises status, urgency, team, assignee, activity, comments, documents, linked e-mails and history.
 
 ### 10. Outlook conversation archiving
 
+![Outlook conversation archiving](./assets/13-outlook-archive.webp)
+
 A user can attach an Outlook conversation to a ticket. The conversation is archived in SharePoint so ticket consultation does not depend on direct mailbox access.
 
 ### 11. Team, routing and access administration
+
+#### Team management
+
+![Team management](./assets/07-team-management.webp)
+
+#### Routing and settings
+
+![Routing and settings](./assets/08-settings.webp)
+
+#### Access management
+
+![Access management](./assets/09-access-management.webp)
+
+#### Delegations
+
+![Delegations](./assets/10-delegations.webp)
+
+#### Administration journal
+
+![Administration journal](./assets/11-admin-journal.webp)
 
 Administrative screens cover teams, members, routing rules, access, temporary delegations, notification parameters and audit history.
 
@@ -213,6 +249,8 @@ The following are intentionally **not published**:
 - credentials, secrets and connection details;
 - confidential business data;
 - raw internal screenshots containing private branding or personal information.
+
+The screenshots published in this case study are sanitised versions of the supplied application captures: private branding was removed and personal display names were replaced with **Jefferson Mawapanga Saku**. No generated replacement screenshots are used.
 
 The public material focuses on the **business problem, product journey, architecture, engineering choices and demonstrated capabilities**.
 
