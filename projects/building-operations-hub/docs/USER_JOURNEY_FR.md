@@ -1,56 +1,23 @@
 # Parcours utilisateur
 
-[English](USER_JOURNEY.md) · [Français](USER_JOURNEY_FR.md)
+[← Building Operations Hub](../README.md)
 
-## Parcours d'astreinte principal
+## Parcours terrain principal
 
-```mermaid
-flowchart TD
-    A[Building Operations Hub] --> B[Aide à l'astreinte]
-    B --> C[Choisir le site]
-    C --> D[Choisir le bâtiment]
-    D --> E[Choisir l'étage / zone]
-    E --> F[Choisir l'équipement]
-    F --> G{Action}
-    G --> H[Marche]
-    G --> I[Arrêt]
-    G --> J[Paramétrage]
-    G --> K[REX / Dépannage]
-    G --> L[Tous les tutoriels]
-```
-
-## Annuaire
-
-```mermaid
+\`\`\`mermaid
 flowchart LR
-    A[Contacts] --> B[Recherche / filtres]
-    B --> C[Entreprise / service]
-    C --> D[Appeler ou envoyer un e-mail]
-    C --> E[Modification autorisée]
-    E --> F[Soumission d'une modification gouvernée]
-```
+    A[Où suis-je ?] --> B[Quel bâtiment / quelle zone ?]
+    B --> C[Quel équipement ?]
+    C --> D[Que dois-je faire ?]
+    D --> E[Ouvrir la bonne procédure]
+\`\`\`
 
-## Proposition de contenu
+L’application suit des questions naturelles pour un technicien, pas l’emplacement technique des fichiers.
 
-```mermaid
-flowchart LR
-    A[Équipement] --> B[Proposer un contenu]
-    B --> C[Titre / contexte / vidéo / description]
-    C --> D[Envoyer]
-    D --> E[En attente]
-    E --> F[Validation technique]
-    F --> G[Publication ou refus]
-```
+## Autres parcours
 
-## Barométrie à chaud
+- **Besoin d’aide ?** Ouvrir l’annuaire technique.
+- **Nouvelle solution utile ?** Proposer un contenu à valider.
+- **Intervention terminée ?** Donner un retour lié au contexte de l’intervention.
 
-```mermaid
-flowchart LR
-    A[Barométrie] --> B[Saisir la référence]
-    B --> C[Valider la référence]
-    C --> D[Note 1 à 5]
-    D --> E[Enregistrer]
-    E --> F[KPI / amélioration continue]
-```
-
-La démonstration publique utilise des données synthétiques. Dans l'architecture entreprise, validation et stockage sont exécutés sur les sources gouvernées.
+Le but est de transformer l’expérience terrain en connaissance facile à retrouver.
