@@ -1,39 +1,40 @@
 # RoadWords AU
 
-[**English**](README.md) · [**Français**](README_FR.md)
+[← Portfolio](../README.md) · [English](./README.md)
 
-Application d'apprentissage du vocabulaire anglais orientée audio pour iPhone, reconstruite comme adaptation du projet open source **Motamot** plutôt que comme prototype isolé.
+> **Application mobile de vocabulaire pensée d’abord pour l’écoute d’une vraie prononciation australienne.**
 
-## Principe
+## Comprendre en 20 secondes
 
-1. Création d'un pool de cartes avec répétition espacée Leitner.
-2. Recherche d'une **prononciation australienne réelle** pour chaque mot.
-3. Les mots sans enregistrement australien résolu sont ignorés.
-4. Un premier appui utilisateur débloque l'audio sur iPhone.
-5. Lecture du mot anglais.
-6. Attente configurable.
-7. Affichage anglais + français.
-8. Répétition du même enregistrement humain.
-9. Réponse Oui / Non par voix lorsque disponible, avec boutons tactiles en secours.
-10. Sauvegarde de la progression localement.
+\`\`\`mermaid
+flowchart LR
+    A[Choisir un mot à réviser] --> B[Écouter la prononciation australienne]
+    B --> C[Attendre]
+    C --> D[Afficher anglais + français]
+    D --> E[Réécouter]
+    E --> F[Connu / pas connu]
+    F --> G[Programmer la prochaine révision]
+\`\`\`
 
-## Audio australien
+## Pourquoi
 
-L'application ne s'appuie pas sur le TTS du navigateur pour les mots cibles. Elle recherche des enregistrements Wikimedia Commons / Wiktionary explicitement associés à l'anglais australien lorsque disponibles.
+Le but est de travailler le vocabulaire comme un exercice d’**écoute réelle**, pas seulement comme une liste de traductions.
 
-## Vocabulaire
+L’application cherche un enregistrement australien réel. Si elle n’en trouve pas, elle préfère ignorer le mot plutôt que d’inventer une prononciation disponible.
 
-`public/words-3000.json` contient les entrées anglais/français.
+## Fonctions principales
 
-## Développement
+- répétition espacée ;
+- recherche de prononciation australienne ;
+- apprentissage audio d’abord ;
+- révélation anglais + français ;
+- répétitions d’écoute ;
+- réponse connu / pas connu ;
+- progression conservée localement.
 
-```bash
-npm install
-npm test
-npm run dev
-npm run build
-```
+<details>
+<summary><strong>Détails techniques</strong></summary>
 
-## Open source
+RoadWords AU adapte le projet open source **Motamot** et conserve son architecture mobile/PWA et Leitner. Les enregistrements sont recherchés via Wikimedia Commons / Wiktionary lorsque disponibles.
 
-RoadWords AU est basé sur **JulianGama/Motamot**, sous licence MIT. Voir [UPSTREAM.md](./UPSTREAM.md) et [LICENSE](./LICENSE).
+</details>

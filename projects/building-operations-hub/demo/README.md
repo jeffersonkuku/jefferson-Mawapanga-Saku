@@ -1,37 +1,21 @@
-# Building Operations Hub — Demo
+# Building Operations Hub — demo
 
-[English](#english) · [Français](#français)
+[← Project](../README.md)
 
-## English
+**[▶ Watch the full demo on YouTube](https://www.youtube.com/watch?v=Y15BCn_i-fo)**
 
-**Full desktop walkthrough:** [▶ Watch on YouTube](https://www.youtube.com/watch?v=Y15BCn_i-fo)
+## What the video shows
 
-The portfolio demo is hosted on YouTube for direct browser playback. The public recording is sanitised and focused on the application.
+\`\`\`mermaid
+flowchart LR
+    A[Home] --> B[Site / building / zone]
+    B --> C[Equipment]
+    C --> D[Procedure / troubleshooting]
+    D --> E[Contacts / contribution / feedback]
+\`\`\`
 
-The demo covers:
+The video focuses on the user experience. Production connectors, credentials and confidential source details are not shown.
 
-1. Home / operational services
-2. Site → Building → Floor → Equipment
-3. Start / configuration / REX tutorial flows
-4. Contact directory and governed contact creation
-5. Technical-content proposal
-6. Hot barometry
+## 🇫🇷
 
-The Power Apps source, formulas and production connectors are not shown or distributed.
-
-## Français
-
-**Démonstration desktop complète :** [▶ Voir sur YouTube](https://www.youtube.com/watch?v=Y15BCn_i-fo)
-
-La démonstration portfolio est hébergée sur YouTube pour une lecture directe dans le navigateur. La version publique est anonymisée et centrée sur l'application.
-
-La démonstration couvre :
-
-1. Accueil / services opérationnels
-2. Site → Bâtiment → Étage → Équipement
-3. Tutoriels Marche / Paramétrage / REX
-4. Annuaire et création gouvernée d'un contact
-5. Proposition de contenu technique
-6. Barométrie à chaud
-
-Le code source Power Apps, les formules et les connecteurs de production ne sont ni affichés ni distribués.
+La vidéo montre le parcours complet depuis l’accueil jusqu’à l’équipement, puis les procédures, le dépannage, les contacts, les propositions de contenu et le retour d’intervention.

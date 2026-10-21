@@ -1,57 +1,42 @@
 # RoadWords AU
 
-[**English**](README.md) · [**Français**](README_FR.md)
+[← Main portfolio](../README.md) · [Français](./README_FR.md)
 
-Audio-first English vocabulary trainer for iPhone, rebuilt as an adaptation of
-the open-source **Motamot** project rather than as a custom one-off prototype.
+> **A mobile vocabulary trainer designed around hearing a real Australian pronunciation, then recalling the meaning.**
 
-## What changed
+## Understand it in 20 seconds
 
-The previous RoadWords implementation was removed completely. This version keeps
-Motamot's proven mobile/PWA + Leitner architecture and adapts the learning loop:
+\`\`\`mermaid
+flowchart LR
+    A[Show a due/new word] --> B[Play Australian recording]
+    B --> C[Wait]
+    C --> D[Reveal English + French]
+    D --> E[Replay]
+    E --> F[Known / not known]
+    F --> G[Schedule the next review]
+\`\`\`
 
-1. Build a due/new-card pool using Leitner spaced repetition.
-2. Resolve only a **real Australian pronunciation recording** for each English word.
-3. Skip cards that do not have a resolvable Australian recording.
-4. User taps once to start the first audio on iPhone.
-5. Play the English word.
-6. Wait 5 seconds by default.
-7. Reveal English + French.
-8. Replay the exact same human recording 3 times.
-9. Ask for **Oui / Non** by voice when browser speech recognition is available,
-   with large touch buttons as fallback.
-10. Save progress locally in IndexedDB.
+## Why I built it
 
-## Australian human audio
+The goal is to make vocabulary practice closer to **real listening** instead of reading a list of translations.
 
-No English browser TTS is used for the target words.
+The app tries to use a real Australian-English recording for the target word. If no suitable recording can be resolved, the card is skipped rather than pretending the pronunciation is available.
 
-RoadWords first looks for the conventional Wikimedia Commons title
-`En-au-<word>.ogg`. If that title does not exist, it asks Simple Wiktionary and
-English Wiktionary for an English audio template explicitly tagged AU/Australia,
-then resolves the actual audio/transcode through the Wikimedia Commons API.
+## What it does
 
-Successful and missing lookups are cached locally. Audio files already played can
-also be cached by the PWA service worker.
+- spaced repetition;
+- Australian-pronunciation lookup;
+- audio-first learning;
+- English + French reveal;
+- repeated listening;
+- simple known / not-known answer;
+- local progress on the device.
 
-## Vocabulary
+<details>
+<summary><strong>Technical details</strong></summary>
 
-`public/words-3000.json` contains the 3000 English/French study entries. The
-session engine introduces only cards for which a real Australian recording can
-be resolved.
+RoadWords AU is an adaptation of the open-source **Motamot** project and keeps its mobile/PWA + Leitner foundation. It uses Wikimedia Commons / Wiktionary sources to resolve Australian-tagged recordings when available, caches lookups locally and stores learning progress in IndexedDB.
 
-## Development
+See [UPSTREAM.md](./UPSTREAM.md) for the original project and licence information.
 
-```bash
-npm install
-npm test
-npm run dev
-npm run build
-```
-
-The production build is written to `dist/`.
-
-## Upstream
-
-RoadWords AU is based on **JulianGama/Motamot**, MIT licensed.
-See [UPSTREAM.md](./UPSTREAM.md) and [LICENSE](./LICENSE).
+</details>
