@@ -1,64 +1,45 @@
-# Security, Governance & ALM
+# Security & governance — explained simply
 
-[← Case study](../README.md)
+[← Ticketing project](../README.md)
 
-## Security boundary
+## The main rule
 
-UI properties such as **Visible** and **DisplayMode** are treated as user-experience controls, not as the security boundary.
+**Hiding a button is not security.**
 
-Sensitive operations are designed to be revalidated by SharePoint permissions and/or server-side Power Automate logic.
+A user interface can make an action easier or harder to reach, but sensitive actions must also be checked where the data or automation is actually changed.
 
-## Least privilege
+\`\`\`mermaid
+flowchart LR
+    A[User asks to perform an action] --> B[Check identity / scope / business rule]
+    B -->|Allowed| C[Perform action]
+    B -->|Not allowed| D[Reject action]
+    C --> E[Keep trace / history]
+\`\`\`
 
-Production access should be granted through the smallest practical SharePoint / Microsoft 365 scope.
+## What this protects
 
-The public portfolio does not expose:
+- access to team or administrative actions;
+- destructive operations;
+- routing and configuration;
+- documents and business records;
+- temporary delegation;
+- repeated or duplicate actions.
 
-- tenant URLs;
-- connection IDs;
-- environment-variable values;
-- user identities from the source environment;
-- credentials or secrets;
-- production list/library identifiers;
-- source packages.
+## Deployment
 
-## Data-loss prevention
+\`\`\`mermaid
+flowchart LR
+    D[DEV] --> T[TEST / UAT]
+    T --> P[PROD]
+\`\`\`
 
-Before production deployment, connector use must be compatible with the environment DLP policy.
+Changes should be tested before production. Environment-specific values should not be hard-coded into the business logic.
 
-The supplied flow solution references connection references for:
+<details>
+<summary><strong>Technical notes</strong></summary>
 
-- SharePoint;
-- Office 365 Outlook;
-- Office 365 Users.
+The solution uses solution-aware Power Automate patterns, connection references and environment variables. Production design should also respect DLP policies, least privilege, explicit error handling, controlled retries, anti-duplicate/idempotency measures and protection against self-triggered recursion.
 
-## Error handling and reliability
+The public portfolio does not expose credentials, tenant URLs, connection IDs, production list identifiers or source packages.
 
-Production flows should keep:
-
-- explicit error paths;
-- useful run-history diagnostics;
-- controlled retry behaviour;
-- idempotency/anti-duplicate controls where the trigger or action can repeat;
-- bounded concurrency where parallel work is independent;
-- protection against self-triggered recursion.
-
-## ALM
-
-The intended lifecycle is:
-
-**DEV → TEST/UAT → PROD**
-
-The flow package is solution-aware and uses environment-variable definitions for environment-specific configuration.
-
-Microsoft references:
-
-- [Solutions in Power Apps](https://learn.microsoft.com/power-apps/maker/data-platform/solutions-overview)
-- [Environment variables in Power Automate](https://learn.microsoft.com/en-us/power-automate/environment-variables)
-- [Solution-aware cloud flows](https://learn.microsoft.com/en-us/power-automate/guidance/coding-guidelines/understand-benefits-solution-aware-flows)
-
-## Public-source policy
-
-This case study deliberately publishes **documentation, architecture and functional evidence**, not production source code.
-
-That boundary protects confidential implementation details while still demonstrating Power Platform engineering capability.
+</details>
