@@ -1,213 +1,94 @@
-# Jefferson Mawapanga Saku — Power Platform Engineer
+# Jefferson Mawapanga Saku — Power Platform Portfolio
 
-> **I build business applications and workflow automation with Power Apps, Power Automate and SharePoint.**
+> **I build simple business tools that replace scattered e-mails, manual follow-up and hard-to-read data.**
 
-[🇬🇧 English](#english) · [🇫🇷 Français](#francais) · [▶ Ticketing demo](https://www.youtube.com/watch?v=_jR8T9s2VUE) · [▶ Building Operations demo](https://www.youtube.com/watch?v=Y15BCn_i-fo)
-
-![Power Apps](https://img.shields.io/badge/Power%20Apps-Canvas%20Apps-742774?logo=powerapps&logoColor=white)
-![Power Automate](https://img.shields.io/badge/Power%20Automate-Workflow-0066FF?logo=powerautomate&logoColor=white)
-![SharePoint](https://img.shields.io/badge/SharePoint-Data%20%26%20Documents-038387?logo=microsoftsharepoint&logoColor=white)
-![Power Fx](https://img.shields.io/badge/Power%20Fx-Business%20Logic-7B61FF)
-
-## 30-second Power Platform portfolio
-
-### Power Platform Ticketing & Request Management
-
-**Power Apps · Power Automate · SharePoint · Microsoft 365**
-
-Business application for request creation, draft management, team assignment, ticket lifecycle, documents, Outlook conversation archiving, routing, notifications, access/delegation and operational KPIs.
-
-[![Power Platform Ticketing System demo](./projects/power-platform-ticketing-system/assets/01-home_4K.png)](https://www.youtube.com/watch?v=_jR8T9s2VUE)
-
-**[▶ Watch the demo](https://www.youtube.com/watch?v=_jR8T9s2VUE)** · **[Open the full case study](./projects/power-platform-ticketing-system/)**
-
-### Building Operations Hub
-
-**Power Apps · Power Automate · SharePoint · Power Fx**
-
-Responsive field application for maintenance operations, on-call support, equipment procedures, technical contacts and intervention feedback.
-
-**[▶ Watch the demo](https://www.youtube.com/watch?v=Y15BCn_i-fo)** · **[Open the full case study](./projects/building-operations-hub/)**
+[👤 GitHub profile](https://github.com/jeffersonkuku) · [📊 Power BI portfolio](https://github.com/jeffersonkuku/powerbi-portfolio-projects) · [💼 LinkedIn](https://www.linkedin.com/in/jefferson-mawapanga-saku-604b72191/) · [🤝 Malt](https://www.malt.com/profile/jeffersonmawapanga)
 
 ---
 
-# Building Operations Hub — full visual walkthrough
+## 30-second view
 
-The quick view above is intentionally short. Below is the complete application journey with the main screens and capabilities.
+### 1. Ticketing & Request Management
 
-### 1. Operations hub / Hub opérationnel
+**Problem:** requests are spread across e-mails, documents and several teams.
 
-![Operations hub](./projects/building-operations-hub/assets/01-home.png)
+**What I built:** one application to create a request, send it to the right team, follow its status, keep documents and linked e-mails together, and retain a clear history.
 
-One operational entry point for on-call assistance, intervention feedback and technical contacts.
+[![Ticketing application](./projects/power-platform-ticketing-system/assets/01-home_4K.png)](./projects/power-platform-ticketing-system/)
 
-### 2. Site selection / Choix du site
+**[Open the project →](./projects/power-platform-ticketing-system/)** · **[Watch the demo →](https://www.youtube.com/watch?v=_jR8T9s2VUE)**
 
-![Site selection](./projects/building-operations-hub/assets/02-sites.png)
+### 2. Building Operations Hub
 
-Visual multi-site navigation designed for fast field use.
+**Problem:** a technician can lose time searching for the right procedure, equipment information or contact.
 
-### 3. Building selection / Choix du bâtiment
+**What I built:** one field application that follows the real physical path of the site.
 
-![Building selection](./projects/building-operations-hub/assets/03-buildings.png)
-
-The site context is preserved while the user moves to the relevant building.
-
-### 4. Floor or technical zone / Étage ou zone technique
-
-![Floor selection](./projects/building-operations-hub/assets/04-floors.png)
-
-The navigation follows the real physical hierarchy of the facility.
-
-### 5. Equipment library / Bibliothèque équipements
-
-![Equipment library](./projects/building-operations-hub/assets/05-equipment-library.png)
-
-Search and filters help the user reach the correct equipment while keeping its technical context visible.
-
-### 6. Equipment action hub / Actions équipement
-
-![Equipment detail](./projects/building-operations-hub/assets/06-equipment-detail.png)
-
-Each asset gives direct access to **Start, Stop, Configuration, troubleshooting / lessons learned and additional tutorials**.
-
-### 7. Start procedure / Procédure de mise en service
-
-![Start tutorial](./projects/building-operations-hub/assets/07-start-tutorial.png)
-
-Dedicated technical guidance is attached to the selected equipment and action.
-
-### 8. Configuration library / Bibliothèque de paramétrage
-
-![Configuration library](./projects/building-operations-hub/assets/08-configuration.png)
-
-Multiple configuration tutorials can be searched and managed independently for the same equipment.
-
-### 9. Troubleshooting & lessons learned / Dépannage & REX
-
-![Troubleshooting](./projects/building-operations-hub/assets/09-troubleshooting.png)
-
-Operational feedback is structured as reusable knowledge instead of remaining in informal notes.
-
-### 10. Technical contact directory / Annuaire technique
-
-![Contact directory](./projects/building-operations-hub/assets/10-contacts.png)
-
-Users can quickly find the right company, service, phone number or e-mail.
-
-### 11. Intervention reference / Référence intervention
-
-![Intervention reference](./projects/building-operations-hub/assets/11-barometry-reference.png)
-
-Feedback is linked to an intervention context before submission.
-
-### 12. Technical-content proposal / Proposition de contenu
-
-![Content proposal](./projects/building-operations-hub/assets/12-content-proposal.png)
-
-Users can propose new technical knowledge without publishing it directly.
-
-### 13. Post-intervention feedback / Retour après intervention
-
-![Feedback](./projects/building-operations-hub/assets/13-barometry-rating.png)
-
-A simple rating captures immediate service feedback for later operational analysis.
-
----
-
-<a id="english"></a>
-
-# 🇬🇧 English
-
-## What I can deliver
-
-| Business need | What I build |
-|---|---|
-| **Operational applications** | Responsive Power Apps Canvas applications for field and business teams |
-| **Workflow automation** | Power Automate flows for approvals, notifications, lifecycle management and repetitive tasks |
-| **Data & document solutions** | SharePoint lists and libraries structured for business data, documents and controlled access |
-| **Business process digitalisation** | End-to-end solutions from user input to processing, tracking and controlled completion |
-| **Enterprise-ready design** | Delegation-aware patterns, explicit error handling, security principles and ALM |
-
-## Building Operations Hub
-
-A multi-site maintenance and on-call support application that centralises equipment procedures, troubleshooting knowledge, technical contacts, governed technical-content proposals and post-intervention feedback.
-
-**Business journey:**
+[![Building Operations Hub](./projects/building-operations-hub/assets/01-home.png)](./projects/building-operations-hub/)
 
 **Site → Building → Floor / Zone → Equipment → Action / Tutorial**
 
-**Technology:** Power Apps Canvas · Power Fx · Power Automate · SharePoint · Microsoft 365
-
-**[▶ Watch the full YouTube demo](https://www.youtube.com/watch?v=Y15BCn_i-fo)** · **[Open the dedicated case study](./projects/building-operations-hub/)**
-
-## Engineering approach
-
-I design Power Platform solutions around the complete business workflow, not only the interface:
-
-**Business need → Process → Data model → Power Apps → Power Automate → SharePoint → Security → ALM**
-
-The project documents responsive design, source-side/delegation-aware patterns, explicit error handling, controlled actions, role-based access principles and DEV → TEST/UAT → PROD deployment practices.
-
-## Architecture
-
-```mermaid
-flowchart TB
-    U[Technicians / Technical Leads / Managers] --> APP[Power Apps Canvas App]
-    APP --> SP[(SharePoint Lists)]
-    APP --> LIB[(SharePoint Media / Document Libraries)]
-    APP --> FLOW[Power Automate]
-    FLOW --> SP
-    FLOW --> LIB
-    FLOW --> APPR[Approvals / Controlled Actions]
-```
-
-## Public portfolio boundary
-
-The public repository uses sanitised or synthetic information. Production tenant URLs, credentials, confidential datasets, production source packages and sensitive connection details are not published.
+**[Open the project →](./projects/building-operations-hub/)** · **[Watch the demo →](https://www.youtube.com/watch?v=Y15BCn_i-fo)**
 
 ---
 
-<a id="francais"></a>
+## What I am trying to improve
 
-# 🇫🇷 Français
+\`\`\`mermaid
+flowchart LR
+    A[Too many e-mails / files / manual steps] --> B[One clear user journey]
+    B --> C[Simple application]
+    C --> D[Automatic repetitive tasks]
+    D --> E[One place to follow the work]
+    E --> F[Less searching, clearer decisions]
+\`\`\`
 
-## Ce que je peux apporter
+The point is not to use technology for its own sake. The point is to make a business process **easier to understand, easier to follow and harder to lose**.
 
-| Besoin | Solution |
+## Projects
+
+| Project | What a non-technical reader should understand |
 |---|---|
-| **Applications métiers** | Applications Power Apps Canvas responsives pour équipes terrain et fonctions support |
-| **Automatisation** | Flows Power Automate pour validations, notifications, cycles de vie et tâches répétitives |
-| **Données & documents** | Architecture SharePoint pour données métiers, documents et accès maîtrisés |
-| **Digitalisation des processus** | Solutions de bout en bout, de la saisie utilisateur jusqu'au traitement et au suivi |
-| **Conception entreprise** | Délégation, gestion explicite des erreurs, sécurité, gouvernance et ALM |
+| **[Ticketing & Request Management](./projects/power-platform-ticketing-system/)** | A request moves from the requester to the right team with status, documents, e-mails and history kept together |
+| **[Building Operations Hub](./projects/building-operations-hub/)** | A technician reaches the right procedure or contact by following the real equipment hierarchy |
+| **[RoadWords AU](./roadwords-au/)** | A mobile vocabulary trainer focused on hearing and repeating real Australian pronunciation |
+| **[Native English Coach](./native-english-coach/)** | An audio-first learning experiment built around native phrases, repetition and listening practice |
 
-## Building Operations Hub
+**[Open the project index →](./projects/README.md)**
 
-Application Power Apps responsive pour la maintenance et l'astreinte, avec procédures équipements, dépannage / REX, annuaire technique, proposition de nouveaux contenus et retour après intervention.
+## How the business solutions work
 
-**Parcours métier :**
+\`\`\`mermaid
+flowchart TB
+    U[User] --> APP[Simple screen / form]
+    APP --> DATA[Shared business information]
+    APP --> AUTO[Automatic actions]
+    AUTO --> DATA
+    AUTO --> MSG[Notifications / approvals / follow-up]
+    DATA --> VIEW[Status, history and reporting]
+\`\`\`
 
-**Site → Bâtiment → Étage / Zone → Équipement → Action / Tutoriel**
+<details>
+<summary><strong>Technical view — only if you want it</strong></summary>
 
-**Technologies :** Power Apps Canvas · Power Fx · Power Automate · SharePoint · Microsoft 365
+The business applications use **Power Apps Canvas**, **Power Automate**, **SharePoint**, **Microsoft 365** and **Power Fx**. The public case studies also document responsive design, delegation-aware filtering, error handling, security boundaries and DEV → TEST/UAT → PROD deployment principles.
 
-**[▶ Voir la démonstration YouTube](https://www.youtube.com/watch?v=Y15BCn_i-fo)** · **[Voir l'étude de cas complète](./projects/building-operations-hub/#francais)**
+Production packages, tenant URLs, credentials and confidential data are intentionally not published.
 
-## Approche
-
-Je construis les solutions autour du processus métier complet :
-
-**Besoin métier → Processus → Modèle de données → Power Apps → Power Automate → SharePoint → Sécurité → ALM**
-
-Le projet documente l'UX responsive, les principes de délégation et de traitement côté source, la gestion explicite des erreurs, les actions contrôlées, la sécurité par rôles et le cycle DEV → TEST/UAT → PROD.
-
-Les versions publiques utilisent des données anonymisées ou synthétiques et n'exposent pas les éléments confidentiels des environnements de production.
+</details>
 
 ---
 
-## Separate Power BI portfolio
+## Power BI
 
-My Power BI work is intentionally kept in a separate repository so the Power Platform and Business Intelligence portfolios stay clear and focused.
+My dashboard and analytics work lives in a separate repository so the two portfolios stay easy to navigate.
 
-**[Open the separate Power BI portfolio →](https://github.com/jeffersonkuku/powerbi-portfolio-projects)**
+**[Open the Power BI portfolio →](https://github.com/jeffersonkuku/powerbi-portfolio-projects)**
+
+---
+
+## 🇫🇷 En une phrase
+
+Je transforme des processus compliqués — e-mails, fichiers, relances manuelles, informations dispersées — en **parcours simples à utiliser et faciles à suivre**.
+
+Chaque projet commence désormais par **le problème, la solution, les images et le résultat**. Les détails techniques viennent seulement après.

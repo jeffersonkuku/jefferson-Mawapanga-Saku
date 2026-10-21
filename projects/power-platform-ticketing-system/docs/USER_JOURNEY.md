@@ -1,84 +1,42 @@
-# User Journey
+# User journey — who does what?
 
-[← Case study](../README.md)
+[← Ticketing project](../README.md)
 
-## Requester journey
+## Requester
 
-```text
-Home
-  ↓
-Create a ticket
-  ↓
-Choose request type
-  ↓
-Complete business information
-  ↓
-Add documents if needed
-  ↓
-Verification
-  ↓
-Final submission
-  ↓
-My tickets
-  ↓
-Follow status / activity / documents / e-mails
-```
+\`\`\`mermaid
+flowchart LR
+    A[Create request] --> B[Fill useful information]
+    B --> C[Add documents if needed]
+    C --> D[Check summary]
+    D --> E[Submit]
+    E --> F[Follow status]
+\`\`\`
 
-### Draft behaviour
+A requester should not need to understand the internal organisation. The application guides the request and shows what happens next.
 
-- opening a form with only system defaults does not count as meaningful user work;
-- a meaningful field or document change can start the draft lifecycle;
-- leaving an untouched new form does not create a record;
-- a saved draft remains a draft even when documents exist;
-- drafts are visible to the requester in **My tickets**;
-- drafts are excluded from the operational **Service tickets** queue;
-- final submission is the transition from draft to an operational ticket.
+## Operational team
 
-## Operational-team journey
+\`\`\`mermaid
+flowchart LR
+    A[Open service queue] --> B[Review request]
+    B --> C[Take ownership or reassign]
+    C --> D[Process]
+    D --> E[Add comments / documents / e-mails]
+    E --> F[Update status]
+    F --> G[Complete / close]
+\`\`\`
 
-```text
-Service tickets
-  ↓
-Select team / queue
-  ↓
-Review request
-  ↓
-Take ownership or reassign
-  ↓
-Process
-  ↓
-Add comments / documents / linked e-mails
-  ↓
-Change status
-  ↓
-Complete / close
-```
+## Administrator
 
-## Administrator journey
+Administrators manage teams, access, temporary delegation, routing, notifications and audit history.
 
-Administrators can work with:
+## Why drafts matter
 
-- teams and membership;
-- access levels;
-- temporary delegations;
-- routing rules;
-- notification parameters;
-- application parameters;
-- administration audit history.
+A draft is simply **unfinished work**.
 
-## Ticket workspace
-
-The detailed ticket page brings together:
-
-- status;
-- urgency;
-- team;
-- responsible person;
-- key business fields;
-- activity;
-- comments;
-- documents;
-- linked e-mails;
-- history.
-
-This reduces the need to jump between separate tools while processing a request.
+- untouched default values do not count as meaningful work;
+- documents can be prepared without submitting;
+- drafts stay in **My tickets**;
+- drafts stay out of **Service tickets**;
+- final confirmation creates the operational ticket.
