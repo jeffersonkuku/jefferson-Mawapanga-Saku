@@ -1,44 +1,42 @@
 # Building Operations Hub
 
-[← Main portfolio](../../README.md) · [▶ Watch the demo](https://www.youtube.com/watch?v=Y15BCn_i-fo) · [🧭 All projects](../README.md)
+[← Portfolio](../../README.md) · [▶ Demo](https://www.youtube.com/watch?v=Y15BCn_i-fo)
 
-> **A field application designed to help technicians find the right information without searching through several tools.**
+---
 
-## Understand it in 30 seconds
+## 🇬🇧 English
 
-**Problem:** during an intervention, useful information can be spread across documents, contacts and people’s experience.
+### Understand the project in 30 seconds
 
-**Solution:** organise the application the same way the technician experiences the site:
+**Problem:** during an intervention, technicians may waste time searching through documents, contacts and people’s experience.
 
-**Site → Building → Floor / Zone → Equipment → Action / Tutorial**
+**Solution:** one field application organised like the real physical environment.
 
-**Why:** the user does not have to know where a document is stored. They only have to know **where they are and what equipment they are working on**.
+**Site → Building → Zone → Equipment → Action**
 
 [![Building Operations Hub](./assets/01-home.png)](https://www.youtube.com/watch?v=Y15BCn_i-fo)
 
-**[▶ Watch the demo →](https://www.youtube.com/watch?v=Y15BCn_i-fo)**
+### How it works
 
-## The idea in one diagram
-
-\`\`\`mermaid
+```mermaid
 flowchart LR
     A[Choose site] --> B[Choose building]
     B --> C[Choose zone]
     C --> D[Choose equipment]
     D --> E[Choose action]
-    E --> F[Open the right procedure / contact / knowledge]
-\`\`\`
+    E --> F[Open procedure / contact / knowledge]
+```
 
-## What the user can do
+### What the user can do
 
-- find a site, building, zone and equipment;
-- open start, stop, configuration or troubleshooting guidance;
-- search technical contacts;
-- reuse lessons learned from previous interventions;
-- propose useful technical content without publishing it directly;
-- give post-intervention feedback.
+- find the right equipment;
+- open start, stop, configuration or troubleshooting procedures;
+- find technical contacts;
+- reuse lessons learned;
+- propose new technical content;
+- leave post-intervention feedback.
 
-## Visual walkthrough — click any image to open it
+### Visual journey
 
 [![Home](./assets/01-home.png)](./assets/01-home.png)
 
@@ -48,11 +46,11 @@ flowchart LR
 
 [![Zone](./assets/04-floors.png)](./assets/04-floors.png)
 
-[![Equipment library](./assets/05-equipment-library.png)](./assets/05-equipment-library.png)
+[![Equipment](./assets/05-equipment-library.png)](./assets/05-equipment-library.png)
 
 [![Equipment actions](./assets/06-equipment-detail.png)](./assets/06-equipment-detail.png)
 
-[![Start procedure](./assets/07-start-tutorial.png)](./assets/07-start-tutorial.png)
+[![Procedure](./assets/07-start-tutorial.png)](./assets/07-start-tutorial.png)
 
 [![Configuration](./assets/08-configuration.png)](./assets/08-configuration.png)
 
@@ -60,37 +58,54 @@ flowchart LR
 
 [![Contacts](./assets/10-contacts.png)](./assets/10-contacts.png)
 
-[![Intervention reference](./assets/11-barometry-reference.png)](./assets/11-barometry-reference.png)
-
 [![Content proposal](./assets/12-content-proposal.png)](./assets/12-content-proposal.png)
 
 [![Feedback](./assets/13-barometry-rating.png)](./assets/13-barometry-rating.png)
 
-## How it works behind the screen
+### Want the technical detail?
 
-\`\`\`mermaid
-flowchart TB
-    U[Technician] --> APP[Power Apps]
-    APP --> DATA[Equipment / contacts / knowledge]
-    APP --> AUTO[Automation]
-    AUTO --> APPROVAL[Validation / notifications]
-    DATA --> REPORT[Operational feedback / reporting]
-\`\`\`
+- **[Architecture →](./docs/ARCHITECTURE.md)**
+- **[User journey →](./docs/USER_JOURNEY.md)**
+- **[Security & approvals →](./docs/SECURITY_AND_APPROVALS.md)**
 
-<details>
-<summary><strong>Technical details</strong></summary>
+---
 
-The case study uses Power Apps Canvas, Power Fx, SharePoint, Power Automate and Microsoft 365. The design also documents responsive layouts, controlled approval paths, role-based access principles, explicit error handling and DEV → TEST/UAT → PROD deployment.
+## 🇫🇷 Français
 
-- [Architecture](./docs/ARCHITECTURE.md)
-- [Security & approvals](./docs/SECURITY_AND_APPROVALS.md)
-- [User journey](./docs/USER_JOURNEY.md)
-- [Demo notes](./demo/README.md)
+### Comprendre le projet en 30 secondes
 
-</details>
+**Problème :** pendant une intervention, un technicien peut perdre du temps à chercher dans des documents, des contacts ou l’expérience des autres.
 
-## 🇫🇷 Résumé rapide
+**Solution :** une seule application terrain organisée comme l’environnement physique réel.
 
-**Problème :** un technicien peut perdre du temps à chercher une procédure, une information équipement ou le bon contact.
+**Site → Bâtiment → Zone → Équipement → Action**
 
-**Solution :** l’application suit le parcours réel **Site → Bâtiment → Zone → Équipement → Action**, puis affiche l’information utile dans ce contexte.
+### Fonctionnement
+
+```mermaid
+flowchart LR
+    A[Choisir le site] --> B[Choisir le bâtiment]
+    B --> C[Choisir la zone]
+    C --> D[Choisir l’équipement]
+    D --> E[Choisir l’action]
+    E --> F[Ouvrir procédure / contact / connaissance]
+```
+
+### Ce que l’utilisateur peut faire
+
+- retrouver le bon équipement ;
+- ouvrir les procédures marche, arrêt, paramétrage ou dépannage ;
+- trouver les contacts techniques ;
+- réutiliser les retours d’expérience ;
+- proposer un nouveau contenu technique ;
+- donner un retour après intervention.
+
+### Parcours visuel
+
+Les captures ci-dessus suivent exactement ce parcours et sont cliquables pour être ouvertes en grand.
+
+### Pour aller plus loin techniquement
+
+- **[Architecture →](./docs/ARCHITECTURE.md)**
+- **[Parcours utilisateur →](./docs/USER_JOURNEY.md)**
+- **[Sécurité & validations →](./docs/SECURITY_AND_APPROVALS.md)**

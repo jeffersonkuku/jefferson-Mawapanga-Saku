@@ -1,94 +1,85 @@
 # Jefferson Mawapanga Saku — Power Platform Portfolio
 
-> **I build simple business tools that replace scattered e-mails, manual follow-up and hard-to-read data.**
-
-[👤 GitHub profile](https://github.com/jeffersonkuku) · [📊 Power BI portfolio](https://github.com/jeffersonkuku/powerbi-portfolio-projects) · [💼 LinkedIn](https://www.linkedin.com/in/jefferson-mawapanga-saku-604b72191/) · [🤝 Malt](https://www.malt.com/profile/jeffersonmawapanga)
+[GitHub profile](https://github.com/jeffersonkuku) · [Power BI portfolio](https://github.com/jeffersonkuku/powerbi-portfolio-projects) · [LinkedIn](https://www.linkedin.com/in/jefferson-mawapanga-saku-604b72191/) · [Malt](https://www.malt.com/profile/jeffersonmawapanga)
 
 ---
 
-## 30-second view
+## 🇬🇧 English
 
-### 1. Ticketing & Request Management
+### 30-second overview
 
-**Problem:** requests are spread across e-mails, documents and several teams.
+I use Microsoft Power Platform to turn **manual business processes** into simple applications and automated workflows.
 
-**What I built:** one application to create a request, send it to the right team, follow its status, keep documents and linked e-mails together, and retain a clear history.
+```mermaid
+flowchart LR
+    A[Manual process] --> B[Simple application]
+    B --> C[Automatic routing / actions]
+    C --> D[Shared information]
+    D --> E[Clear follow-up]
+```
 
-[![Ticketing application](./projects/power-platform-ticketing-system/assets/01-home_4K.png)](./projects/power-platform-ticketing-system/)
+### Main projects
 
-**[Open the project →](./projects/power-platform-ticketing-system/)** · **[Watch the demo →](https://www.youtube.com/watch?v=_jR8T9s2VUE)**
+#### Ticketing & Request Management
 
-### 2. Building Operations Hub
+**Goal:** stop losing requests between e-mails, documents and teams.
 
-**Problem:** a technician can lose time searching for the right procedure, equipment information or contact.
+[![Ticketing](./projects/power-platform-ticketing-system/assets/01-home_4K.png)](./projects/power-platform-ticketing-system/)
 
-**What I built:** one field application that follows the real physical path of the site.
+**[Open project →](./projects/power-platform-ticketing-system/)** · **[Video →](https://www.youtube.com/watch?v=_jR8T9s2VUE)**
+
+#### Building Operations Hub
+
+**Goal:** help a technician find the right equipment procedure or contact quickly.
 
 [![Building Operations Hub](./projects/building-operations-hub/assets/01-home.png)](./projects/building-operations-hub/)
 
-**Site → Building → Floor / Zone → Equipment → Action / Tutorial**
+**[Open project →](./projects/building-operations-hub/)** · **[Video →](https://www.youtube.com/watch?v=Y15BCn_i-fo)**
 
-**[Open the project →](./projects/building-operations-hub/)** · **[Watch the demo →](https://www.youtube.com/watch?v=Y15BCn_i-fo)**
+### Other personal projects
+
+- **[RoadWords AU](./roadwords-au/)** — vocabulary learning with Australian pronunciation.
+- **[Native English Coach](./native-english-coach/)** — audio-first English practice.
+
+**[See all projects →](./projects/README.md)**
 
 ---
 
-## What I am trying to improve
+## 🇫🇷 Français
 
-\`\`\`mermaid
+### Vue en 30 secondes
+
+J’utilise Microsoft Power Platform pour transformer des **processus métiers manuels** en applications simples et workflows automatisés.
+
+```mermaid
 flowchart LR
-    A[Too many e-mails / files / manual steps] --> B[One clear user journey]
-    B --> C[Simple application]
-    C --> D[Automatic repetitive tasks]
-    D --> E[One place to follow the work]
-    E --> F[Less searching, clearer decisions]
-\`\`\`
+    A[Processus manuel] --> B[Application simple]
+    B --> C[Routage / actions automatiques]
+    C --> D[Information partagée]
+    D --> E[Suivi clair]
+```
 
-The point is not to use technology for its own sake. The point is to make a business process **easier to understand, easier to follow and harder to lose**.
+### Projets principaux
 
-## Projects
+#### Ticketing & gestion des demandes
 
-| Project | What a non-technical reader should understand |
-|---|---|
-| **[Ticketing & Request Management](./projects/power-platform-ticketing-system/)** | A request moves from the requester to the right team with status, documents, e-mails and history kept together |
-| **[Building Operations Hub](./projects/building-operations-hub/)** | A technician reaches the right procedure or contact by following the real equipment hierarchy |
-| **[RoadWords AU](./roadwords-au/)** | A mobile vocabulary trainer focused on hearing and repeating real Australian pronunciation |
-| **[Native English Coach](./native-english-coach/)** | An audio-first learning experiment built around native phrases, repetition and listening practice |
+**Objectif :** éviter que les demandes se perdent entre les e-mails, les documents et les équipes.
 
-**[Open the project index →](./projects/README.md)**
+**[Voir le projet →](./projects/power-platform-ticketing-system/)** · **[Vidéo →](https://www.youtube.com/watch?v=_jR8T9s2VUE)**
 
-## How the business solutions work
+#### Building Operations Hub
 
-\`\`\`mermaid
-flowchart TB
-    U[User] --> APP[Simple screen / form]
-    APP --> DATA[Shared business information]
-    APP --> AUTO[Automatic actions]
-    AUTO --> DATA
-    AUTO --> MSG[Notifications / approvals / follow-up]
-    DATA --> VIEW[Status, history and reporting]
-\`\`\`
+**Objectif :** aider un technicien à trouver rapidement la bonne procédure ou le bon contact.
 
-<details>
-<summary><strong>Technical view — only if you want it</strong></summary>
+**[Voir le projet →](./projects/building-operations-hub/)** · **[Vidéo →](https://www.youtube.com/watch?v=Y15BCn_i-fo)**
 
-The business applications use **Power Apps Canvas**, **Power Automate**, **SharePoint**, **Microsoft 365** and **Power Fx**. The public case studies also document responsive design, delegation-aware filtering, error handling, security boundaries and DEV → TEST/UAT → PROD deployment principles.
+### Autres projets personnels
 
-Production packages, tenant URLs, credentials and confidential data are intentionally not published.
+- **[RoadWords AU](./roadwords-au/)** — apprentissage du vocabulaire avec prononciation australienne.
+- **[Native English Coach](./native-english-coach/)** — entraînement audio à l’anglais.
 
-</details>
+**[Voir tous les projets →](./projects/README.md)**
 
 ---
 
-## Power BI
-
-My dashboard and analytics work lives in a separate repository so the two portfolios stay easy to navigate.
-
-**[Open the Power BI portfolio →](https://github.com/jeffersonkuku/powerbi-portfolio-projects)**
-
----
-
-## 🇫🇷 En une phrase
-
-Je transforme des processus compliqués — e-mails, fichiers, relances manuelles, informations dispersées — en **parcours simples à utiliser et faciles à suivre**.
-
-Chaque projet commence désormais par **le problème, la solution, les images et le résultat**. Les détails techniques viennent seulement après.
+Les détails techniques sont volontairement placés **dans les pages projets**, pas sur cette page d’accueil.
