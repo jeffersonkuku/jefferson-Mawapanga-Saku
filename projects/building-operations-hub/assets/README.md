@@ -1,23 +1,12 @@
-# Screenshots / Captures
+# Captures / Screenshots
 
-[← Project](../README.md)
+[← Projet / Project](../README.md)
 
----
+🇫🇷 Les 13 captures suivent le parcours réel de l’utilisateur.  
+*🇬🇧 The 13 screenshots follow the real user journey.*
 
-## 🇬🇧 English
+**Accueil → Site → Bâtiment → Zone → Équipement → Action → Procédure → Paramétrage → Dépannage → Contacts → Référence intervention → Proposition → Feedback**  
+*Home → Site → Building → Zone → Equipment → Action → Procedure → Configuration → Troubleshooting → Contacts → Intervention reference → Proposal → Feedback*
 
-The screenshots follow the user journey:
-
-**Home → Site → Building → Zone → Equipment → Action → Procedure → Knowledge → Contacts → Feedback**
-
-For the guided explanation, return to the [project page](../README.md).
-
----
-
-## 🇫🇷 Français
-
-Les captures suivent le parcours utilisateur :
-
-**Accueil → Site → Bâtiment → Zone → Équipement → Action → Procédure → Connaissance → Contacts → Retour**
-
-Pour l’explication guidée, revenez à la [page projet](../README.md).
+🇫🇷 Pour comprendre chaque écran, utilise la [page projet](../README.md).  
+*🇬🇧 For an explanation of every screen, use the [project page](../README.md).*

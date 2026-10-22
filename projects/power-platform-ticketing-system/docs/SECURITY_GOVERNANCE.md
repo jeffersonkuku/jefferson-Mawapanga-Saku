@@ -1,54 +1,33 @@
-# Security & Governance — Ticketing
+# Sécurité & gouvernance / Security & Governance
 
-[← Project](../README.md)
+[← Projet / Project](../README.md)
 
----
+## 🛡️ Principe principal / Main principle
 
-## 🇬🇧 English
-
-### Main rule
-
-**A hidden button is not security.**
+> 🇫🇷 **Cacher un bouton n’est pas une sécurité.**  
+> *🇬🇧 Hiding a button is not security.*
 
 ```mermaid
 flowchart LR
-    A[User requests an action] --> B[Check identity + business rule]
-    B -->|Allowed| C[Perform action]
-    B -->|Not allowed| D[Reject]
-    C --> E[Keep audit trail]
+    A[Action utilisateur<br/>User action] --> B[Vérifier identité / règle<br/>Check identity / rule]
+    B -->|Autorisé / Allowed| C[Exécuter<br/>Execute]
+    B -->|Refusé / Denied| D[Rejeter<br/>Reject]
+    C --> E[Audit]
 ```
 
-Sensitive actions should be checked where the data or automation is actually changed.
+🇫🇷 Les actions sensibles doivent être revalidées au niveau SharePoint et/ou Power Automate.  
+*🇬🇧 Sensitive actions should be revalidated at the SharePoint and/or Power Automate layer.*
 
-### Deployment
+## 🔁 Fiabilité / Reliability
 
-```mermaid
-flowchart LR
-    A[DEV] --> B[TEST / UAT]
-    B --> C[PROD]
-```
+- 🇫🇷 Branches d’erreur explicites et historique utile.  
+  *🇬🇧 Explicit error paths and useful history.*
+- 🇫🇷 Contrôle des répétitions et doublons lorsque nécessaire.  
+  *🇬🇧 Duplicate/idempotency controls where needed.*
+- 🇫🇷 Concurrence limitée aux tâches indépendantes.  
+  *🇬🇧 Concurrency limited to independent tasks.*
 
-Changes should be tested before production, and environment-specific settings should not be hard-coded.
-
----
-
-## 🇫🇷 Français
-
-### Règle principale
-
-**Cacher un bouton n’est pas une sécurité.**
-
-```mermaid
-flowchart LR
-    A[Utilisateur demande une action] --> B[Vérifier identité + règle métier]
-    B -->|Autorisé| C[Exécuter]
-    B -->|Refusé| D[Rejeter]
-    C --> E[Conserver une trace]
-```
-
-Les actions sensibles doivent être vérifiées là où les données ou automatisations sont réellement modifiées.
-
-### Déploiement
+## 🚀 Déploiement / Deployment
 
 ```mermaid
 flowchart LR
@@ -56,4 +35,5 @@ flowchart LR
     B --> C[PROD]
 ```
 
-Les changements doivent être testés avant la production et les paramètres liés à l’environnement ne doivent pas être codés en dur.
+🇫🇷 Les variables d’environnement et références de connexion évitent de coder en dur les valeurs propres à chaque environnement.  
+*🇬🇧 Environment variables and connection references avoid hard-coding environment-specific values.*

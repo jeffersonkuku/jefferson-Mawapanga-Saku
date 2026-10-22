@@ -1,37 +1,20 @@
-# Security & Approvals — Building Operations Hub
+# Sécurité & validations / Security & Approvals
 
-[← Project](../README.md)
+[← Projet / Project](../README.md)
 
----
-
-## 🇬🇧 English
-
-### Why approval exists
-
-A technician can propose useful knowledge, but a proposal should not become official guidance immediately.
+## ✅ Validation d’un contenu / Content approval
 
 ```mermaid
 flowchart LR
-    A[User proposes content] --> B[Check rights / scope]
-    B --> C[Review]
-    C -->|Approved| D[Publish]
-    C -->|Rejected| E[Return / archive]
-    D --> F[Keep history]
+    A[Proposition terrain<br/>Field proposal] --> B[Vérifier périmètre / droits<br/>Check scope / rights]
+    B --> C[Relecture<br/>Review]
+    C -->|Validé / Approved| D[Publier<br/>Publish]
+    C -->|Refusé / Rejected| E[Retour / archive<br/>Return / archive]
+    D --> F[Historique<br/>Audit]
 ```
 
----
+🇫🇷 Une proposition terrain ne devient pas automatiquement une procédure officielle.  
+*🇬🇧 A field proposal does not automatically become official guidance.*
 
-## 🇫🇷 Français
-
-### Pourquoi une validation ?
-
-Un technicien peut proposer une connaissance utile, mais une proposition ne doit pas devenir immédiatement une procédure officielle.
-
-```mermaid
-flowchart LR
-    A[Utilisateur propose un contenu] --> B[Vérifier droits / périmètre]
-    B --> C[Relire]
-    C -->|Validé| D[Publier]
-    C -->|Refusé| E[Retour / archivage]
-    D --> F[Conserver l’historique]
-```
+🇫🇷 Les actions sensibles doivent être validées côté source/flow, pas uniquement cachées dans l’interface.  
+*🇬🇧 Sensitive actions should be validated at the source/flow layer, not only hidden in the interface.*

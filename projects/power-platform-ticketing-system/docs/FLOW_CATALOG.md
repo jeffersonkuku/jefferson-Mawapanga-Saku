@@ -1,80 +1,67 @@
-# Automation Catalogue — Ticketing
+# Catalogue des automatisations / Automation Catalogue
 
-[← Project](../README.md)
+[← Projet / Project](../README.md)
 
----
-
-## 🇬🇧 English
-
-### What the automations do
-
-There are **27 documented Power Automate flows**, but they can be understood as four business groups.
+🇫🇷 Les **27 flows** se comprennent plus facilement par leur rôle métier que par leur nom technique.  
+*🇬🇧 The **27 flows** are easier to understand by business responsibility than by technical name.*
 
 ```mermaid
 flowchart TB
-    A[Ticket lifecycle] --> E[Business process]
-    B[Documents] --> E
-    C[E-mails / notifications] --> E
-    D[Administration] --> E
+    F[27 flows] --> T[Cycle ticket<br/>Ticket lifecycle]
+    F --> D[Documents]
+    F --> M[Outlook / notifications]
+    F --> A[Administration / accès<br/>Administration / access]
 ```
 
-#### 1. Ticket lifecycle
+## 1. Cycle ticket / Ticket lifecycle
 
-Draft → submission → routing → assignment → status → closure.
+🇫🇷 Brouillons, soumission initiale, actions ticket, routage et KPI service.  
+*🇬🇧 Drafts, initial submission, ticket actions, routing and service KPIs.*
 
-#### 2. Documents
+## 2. Documents / Documents
 
-Prepare documents, list them, delete them, attach them to the final ticket and maintain them later.
+🇫🇷 Staging, lecture, suppression, rattachement final et maintenance documentaire.  
+*🇬🇧 Staging, reading, deletion, final attachment and document maintenance.*
 
-#### 3. Outlook & notifications
+## 3. Outlook & notifications
 
-Search messages, archive a conversation, synchronise it and notify the right users.
+🇫🇷 Recherche de messages, archivage/synchronisation de conversations et notifications d’affectation ou de copie.  
+*🇬🇧 Message search, conversation archive/synchronisation and assignment/copy notifications.*
 
-#### 4. Administration
+## 4. Administration / Administration
 
-Manage teams, access, routing rules, parameters, delegations, favourites and retention.
+🇫🇷 Paramètres, équipes, accès, routage, délégations, favoris SharePoint et rétention.  
+*🇬🇧 Settings, teams, access, routing, delegations, SharePoint favourites and retention.*
 
 <details>
-<summary><strong>Technical flow names</strong></summary>
+<summary><strong>Noms techniques / Technical names</strong></summary>
 
-Ticket lifecycle: PA_BrouillonsTicket_V1, PA_ActionsTicket, PA_InitialiserTransmissionTicket, PA_MoteurRoutageTickets, PA_KPITicketsService_V1.
-
-Documents: PA_DocumentStaging_V1, PA_DocumentsListerStaging_V1, PA_DocumentsSupprimerPieceStaging_V1, PA_DocumentsTicket_V2, PA_MaintenanceDocuments.
-
-Outlook / notifications: PA_Outlook_RechercherMessages_V1, PA_RattacherConversationOutlook, PA_SynchroniserConversationsOutlook, PA_Mail_DetecterNouveauxDocuments, PA_Mail_GererAffectation, PA_Mail_EnvoyerNotifications, PA_Mail_CreerNotificationsHistorique, PA_Mail_NotifierAjoutCopie, PA_AjouterCopiesTicket_V2.
-
-Administration: PA_AdministrationParametres_V1, PA_AdministrationAccesEquipes_V1, PA_AdministrationNotifications_V1, PA_AdministrationReglesRoutage_V1, PA_ProfilAbsencesDelegations_V1, PA_FavorisNavigateurSharePoint_V1, PA_Graph_NavigateurSharePoint_V2, PA_ArchivageRetentionTickets.
+- PA_BrouillonsTicket_V1
+- PA_ActionsTicket
+- PA_InitialiserTransmissionTicket
+- PA_MoteurRoutageTickets
+- PA_KPITicketsService_V1
+- PA_DocumentStaging_V1
+- PA_DocumentsListerStaging_V1
+- PA_DocumentsSupprimerPieceStaging_V1
+- PA_DocumentsTicket_V2
+- PA_MaintenanceDocuments
+- PA_Outlook_RechercherMessages_V1
+- PA_RattacherConversationOutlook
+- PA_SynchroniserConversationsOutlook
+- PA_Mail_DetecterNouveauxDocuments
+- PA_Mail_GererAffectation
+- PA_Mail_EnvoyerNotifications
+- PA_Mail_CreerNotificationsHistorique
+- PA_Mail_NotifierAjoutCopie
+- PA_AjouterCopiesTicket_V2
+- PA_AdministrationParametres_V1
+- PA_AdministrationAccesEquipes_V1
+- PA_AdministrationNotifications_V1
+- PA_AdministrationReglesRoutage_V1
+- PA_ProfilAbsencesDelegations_V1
+- PA_FavorisNavigateurSharePoint_V1
+- PA_Graph_NavigateurSharePoint_V2
+- PA_ArchivageRetentionTickets
 
 </details>
-
----
-
-## 🇫🇷 Français
-
-### À quoi servent les automatisations
-
-Les **27 flows Power Automate** se comprennent plus simplement en quatre groupes métier.
-
-```mermaid
-flowchart TB
-    A[Cycle du ticket] --> E[Processus métier]
-    B[Documents] --> E
-    C[E-mails / notifications] --> E
-    D[Administration] --> E
-```
-
-#### 1. Cycle du ticket
-
-Brouillon → soumission → routage → affectation → statut → clôture.
-
-#### 2. Documents
-
-Préparer, lister, supprimer, rattacher au ticket final puis maintenir les documents.
-
-#### 3. Outlook & notifications
-
-Rechercher les messages, archiver une conversation, la synchroniser et notifier les bons utilisateurs.
-
-#### 4. Administration
-
-Gérer équipes, accès, routage, paramètres, délégations, favoris et archivage.

@@ -1,73 +1,39 @@
-# User Journey — Ticketing
+# Parcours utilisateurs / User Journeys
 
-[← Project](../README.md)
+[← Projet / Project](../README.md)
 
----
-
-## 🇬🇧 English
-
-### Requester
+## 👤 Demandeur / Requester
 
 ```mermaid
 flowchart LR
-    A[Create request] --> B[Fill information]
-    B --> C[Add documents]
-    C --> D[Check summary]
-    D --> E[Submit]
-    E --> F[Follow status]
+    A[Créer<br/>Create] --> B[Renseigner<br/>Fill]
+    B --> C[Documents]
+    C --> D[Vérifier<br/>Review]
+    D --> E[Soumettre<br/>Submit]
+    E --> F[Suivre<br/>Follow]
 ```
 
-### Operational team
+🇫🇷 Le demandeur suit un parcours guidé sans devoir connaître l’organisation interne.  
+*🇬🇧 The requester follows a guided journey without needing to understand internal organisation.*
+
+## 🧑‍🔧 Équipe opérationnelle / Operational team
 
 ```mermaid
 flowchart LR
-    A[Open service queue] --> B[Review request]
-    B --> C[Take ownership / reassign]
-    C --> D[Process]
-    D --> E[Comments / documents / e-mails]
-    E --> F[Update status]
-    F --> G[Close]
+    A[File service<br/>Service queue] --> B[Lire<br/>Review]
+    B --> C[Prendre en charge<br/>Own]
+    C --> D[Traiter<br/>Process]
+    D --> E[Commentaires / docs / mails]
+    E --> F[Statut<br/>Status]
+    F --> G[Clôture<br/>Close]
 ```
 
-### Administrator
+## 🛠️ Administration / Administration
 
-Administrators manage teams, access, routing rules, temporary delegation, notifications and audit history.
+🇫🇷 Les administrateurs gèrent équipes, accès, délégations, routage, paramètres de notification et historique d’administration.  
+*🇬🇧 Administrators manage teams, access, delegations, routing, notification settings and administration history.*
 
-### Why drafts matter
+## 📝 Brouillons / Drafts
 
-A draft is unfinished work. It should not enter the operational queue before final submission.
-
----
-
-## 🇫🇷 Français
-
-### Demandeur
-
-```mermaid
-flowchart LR
-    A[Créer la demande] --> B[Renseigner les informations]
-    B --> C[Ajouter les documents]
-    C --> D[Vérifier le résumé]
-    D --> E[Soumettre]
-    E --> F[Suivre le statut]
-```
-
-### Équipe opérationnelle
-
-```mermaid
-flowchart LR
-    A[Ouvrir la file service] --> B[Lire la demande]
-    B --> C[Prendre en charge / réaffecter]
-    C --> D[Traiter]
-    D --> E[Commentaires / documents / e-mails]
-    E --> F[Mettre à jour le statut]
-    F --> G[Clôturer]
-```
-
-### Administrateur
-
-L’administrateur gère les équipes, accès, règles de routage, délégations temporaires, notifications et historique d’administration.
-
-### Pourquoi les brouillons sont importants
-
-Un brouillon est un travail non terminé. Il ne doit pas entrer dans la file opérationnelle avant la soumission finale.
+🇫🇷 Un brouillon est un travail non terminé et reste hors de la file opérationnelle avant la soumission finale.  
+*🇬🇧 A draft is unfinished work and stays out of the operational queue until final submission.*

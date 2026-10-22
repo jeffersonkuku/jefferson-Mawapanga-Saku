@@ -1,37 +1,21 @@
-# Ticketing Demo
+# Démonstration Ticketing / Ticketing Demo
 
-[← Project](../README.md)
+[← Projet / Project](../README.md)
 
----
-
-## 🇬🇧 English
-
-**[▶ Watch the full demo](https://www.youtube.com/watch?v=_jR8T9s2VUE)**
+**🇫🇷 Voir la démonstration complète :** [YouTube](https://www.youtube.com/watch?v=_jR8T9s2VUE)  
+*🇬🇧 Watch the full demo: [YouTube](https://www.youtube.com/watch?v=_jR8T9s2VUE)*
 
 ```mermaid
 flowchart LR
-    A[Create] --> B[Assign]
-    B --> C[Process]
+    A[Créer<br/>Create] --> B[Affecter<br/>Assign]
+    B --> C[Traiter<br/>Process]
     C --> D[Documents / e-mails]
-    D --> E[Follow status]
-    E --> F[Close / report]
+    D --> E[Suivre<br/>Follow]
+    E --> F[Clôturer<br/>Close]
 ```
 
-The video shows the user journey first. Technical implementation details are documented separately.
+🇫🇷 La vidéo se concentre sur l’expérience utilisateur et le parcours métier.  
+*🇬🇧 The video focuses on user experience and the business journey.*
 
----
-
-## 🇫🇷 Français
-
-**[▶ Voir la démonstration complète](https://www.youtube.com/watch?v=_jR8T9s2VUE)**
-
-```mermaid
-flowchart LR
-    A[Créer] --> B[Affecter]
-    B --> C[Traiter]
-    C --> D[Documents / e-mails]
-    D --> E[Suivre le statut]
-    E --> F[Clôturer / piloter]
-```
-
-La vidéo montre d’abord le parcours utilisateur. Les détails techniques sont documentés séparément.
+🇫🇷 Les packages de production, secrets et connexions ne sont pas montrés.  
+*🇬🇧 Production packages, secrets and connections are not shown.*

@@ -1,37 +1,30 @@
 # Architecture — Building Operations Hub
 
-[← Project](../README.md)
-
----
-
-## 🇬🇧 English
-
-### Simple view
+[← Projet / Project](../README.md)
 
 ```mermaid
-flowchart LR
-    U[Technician] --> A[Power Apps]
-    A --> D[Equipment + contacts + procedures]
-    A --> W[Power Automate]
-    W --> V[Validation / notifications]
-    D --> K[Reusable knowledge]
+flowchart TB
+    U[Techniciens / managers<br/>Technicians / managers] --> ID[Entra ID]
+    ID --> APP[Power Apps]
+    APP --> SP[(SharePoint Lists)]
+    APP --> LIB[(Document / media libraries)]
+    APP --> FLOW[Power Automate]
+    FLOW --> SP
+    FLOW --> LIB
+    FLOW --> APPR[Approvals]
+    FLOW --> MSG[Email / Teams]
+    FLOW --> AUD[Audit]
+    SP --> BI[Power BI / KPI]
 ```
 
-The application guides the technician. Data stores the knowledge. Automation handles controlled actions.
+🇫🇷 **Power Apps** guide l’utilisateur et gère navigation, recherche et formulaires.  
+*🇬🇧 **Power Apps** guides the user and manages navigation, search and forms.*
 
----
+🇫🇷 **SharePoint** conserve équipements, contacts, métadonnées et contenus.  
+*🇬🇧 **SharePoint** stores equipment, contacts, metadata and content.*
 
-## 🇫🇷 Français
+🇫🇷 **Power Automate** gère validations, notifications et actions contrôlées.  
+*🇬🇧 **Power Automate** handles approvals, notifications and controlled actions.*
 
-### Vue simple
-
-```mermaid
-flowchart LR
-    U[Technicien] --> A[Power Apps]
-    A --> D[Équipements + contacts + procédures]
-    A --> W[Power Automate]
-    W --> V[Validation / notifications]
-    D --> K[Connaissance réutilisable]
-```
-
-L’application guide le technicien. Les données conservent la connaissance. L’automatisation gère les actions contrôlées.
+🇫🇷 **Power BI** exploite les données de feedback et de performance.  
+*🇬🇧 **Power BI** uses feedback and performance data.*
