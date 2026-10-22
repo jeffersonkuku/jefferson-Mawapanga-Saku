@@ -1,6 +1,6 @@
 # Parcours utilisateurs / User Journeys
 
-[← Projet / Project](../README.md)
+[← Projet / Project](../README.md) · [📚 Index](./README.md) · [Délégation / Delegation](./DELEGATION_SYSTEM.md)
 
 ## 👤 Demandeur / Requester
 
@@ -37,3 +37,20 @@ flowchart LR
 
 🇫🇷 Un brouillon est un travail non terminé et reste hors de la file opérationnelle avant la soumission finale.  
 *🇬🇧 A draft is unfinished work and stays out of the operational queue until final submission.*
+
+
+## 🔁 Absence & délégation / Absence & delegation
+
+🇫🇷 Lorsqu’un utilisateur est absent, la délégation ajoute un **contexte temporaire** sans remplacer ses rôles permanents.  
+*🇬🇧 When a user is unavailable, delegation adds **temporary context** without replacing permanent roles.*
+
+```mermaid
+flowchart LR
+    A[Absence] --> B[Délégation temporaire<br/>Temporary delegation]
+    B --> C[Période + périmètre<br/>Period + scope]
+    C --> D[Contexte effectif<br/>Effective context]
+    D --> E[Actions / visibilité<br/>Actions / visibility]
+    E --> F[Expiration<br/>Expiry]
+```
+
+**[→ Voir toutes les règles de délégation / See all delegation rules](./DELEGATION_SYSTEM.md)**

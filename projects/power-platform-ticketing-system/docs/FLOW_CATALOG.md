@@ -1,6 +1,6 @@
 # Catalogue complet des automatisations / Full Automation Catalogue
 
-[← Projet / Project](../README.md) · [Architecture](./ARCHITECTURE.md) · [Parcours utilisateur / User journey](./USER_JOURNEY.md)
+[← Projet / Project](../README.md) · [📚 Index](./README.md) · [Architecture](./ARCHITECTURE.md) · [Parcours utilisateur / User journey](./USER_JOURNEY.md) · [Délégation / Delegation](./DELEGATION_SYSTEM.md)
 
 > 🇫🇷 Cette page décrit les **27 flows Power Automate** du projet, leur rôle, leur ordre logique, leurs dépendances fonctionnelles et ce qui se passe si l’un d’eux ne fonctionne plus.  
 > *🇬🇧 This page describes the project’s **27 Power Automate flows**, their role, logical order, functional dependencies and what happens if one of them stops working.*
@@ -596,6 +596,8 @@ flowchart LR
 ---
 
 ## 7.5 PA_ProfilAbsencesDelegations_V1
+
+**[→ Documentation complète du système de délégation / Complete delegation-system documentation](./DELEGATION_SYSTEM.md)**
 
 **Rôle / Role**  
 🇫🇷 Gère le profil, les absences et les délégations temporaires.  

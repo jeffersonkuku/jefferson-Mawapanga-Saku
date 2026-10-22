@@ -1,6 +1,6 @@
 # Ticketing & Request Management
 
-[← Portfolio](../../README.md) · [▶ Démo / Demo](https://www.youtube.com/watch?v=_jR8T9s2VUE)
+[← Portfolio](../../README.md) · [📚 Documentation complète / Complete documentation](./docs/README.md)
 
 > 🇫🇷 **Une application métier pour éviter qu’une demande se perde entre les e-mails, les documents, les relances et plusieurs équipes.**  
 > *🇬🇧 A business application designed to prevent requests from getting lost between e-mails, documents, follow-ups and multiple teams.*
@@ -24,14 +24,6 @@ flowchart LR
     D --> E[Suivre<br/>Follow]
     E --> F[Clôturer<br/>Close]
 ```
-
-## 🎬 Démonstration / Demo
-
-<a href="https://www.youtube.com/watch?v=_jR8T9s2VUE"><img src="https://img.youtube.com/vi/_jR8T9s2VUE/maxresdefault.jpg" width="100%"></a>
-
-**[▶ Voir la vidéo complète / Watch the full demo →](https://www.youtube.com/watch?v=_jR8T9s2VUE)**
-
----
 
 # Parcours complet image par image / Full image-by-image walkthrough
 
@@ -58,8 +50,10 @@ flowchart LR
     D --> E[Fin de période<br/>End date]
 ```
 
-🇫🇷 Le flow documenté **PA_ProfilAbsencesDelegations_V1** prend en charge la gestion profil/absence/délégation côté automatisation. Les règles précises de droits de production ne sont pas publiées.  
-*🇬🇧 The documented **PA_ProfilAbsencesDelegations_V1** flow handles profile/absence/delegation management on the automation side. Exact production permission rules are not published.*
+🇫🇷 Le flow documenté **PA_ProfilAbsencesDelegations_V1** prend en charge la couche automatisée du profil/absence/délégation. Le système complet — périodes, périmètre, priorité des droits, activation, expiration, audit et cas limites — est documenté séparément.  
+*🇬🇧 The documented **PA_ProfilAbsencesDelegations_V1** flow handles the automated profile/absence/delegation layer. The complete system — periods, scope, permission precedence, activation, expiry, audit and edge cases — is documented separately.*
+
+**[→ Voir le système de délégation complet / Open the complete delegation system](./docs/DELEGATION_SYSTEM.md)**
 ## 3. Statistiques opérationnelles / Operational statistics
 
 <a href="./assets/03-statistics_4K.png"><img src="./assets/03-statistics_4K.png" alt="Operational statistics" width="100%"></a>
@@ -297,13 +291,16 @@ flowchart LR
 - **29** variables d’environnement / environment-variable definitions
 - Connecteurs documentés : **SharePoint, Office 365 Outlook, Office 365 Users**
 
-# 🔎 Détails techniques / Technical deep dive
+# 📚 Documentation complète / Complete documentation
 
-- [Architecture détaillée / Detailed architecture](./docs/ARCHITECTURE.md)
-- [Parcours utilisateur / User journey](./docs/USER_JOURNEY.md)
-- [Catalogue des flows / Flow catalogue](./docs/FLOW_CATALOG.md)
-- [Sécurité & gouvernance / Security & governance](./docs/SECURITY_GOVERNANCE.md)
-- [Notes de démonstration / Demo notes](./demo/README.md)
+| Lien / Link | Ce que vous trouverez / What you will find |
+|---|---|
+| **[Index documentation](./docs/README.md)** | tous les liens du projet / all project documentation links |
+| **[Architecture détaillée / Detailed architecture](./docs/ARCHITECTURE.md)** | Power Apps, SharePoint, Automate, Outlook, cycle de vie |
+| **[Parcours utilisateurs / User journeys](./docs/USER_JOURNEY.md)** | demandeur, équipe, administration, brouillons |
+| **[Catalogue complet des 27 flows / Full 27-flow catalogue](./docs/FLOW_CATALOG.md)** | flow par flow, dépendances, impacts de panne |
+| **[Système absence & délégation / Absence & delegation system](./docs/DELEGATION_SYSTEM.md)** | règles, période, périmètre, activation, expiration, audit |
+| **[Sécurité & gouvernance / Security & governance](./docs/SECURITY_GOVERNANCE.md)** | permissions, validations, fiabilité, déploiement |
 
 ---
 

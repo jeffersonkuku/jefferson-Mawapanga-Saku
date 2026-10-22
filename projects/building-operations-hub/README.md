@@ -1,6 +1,6 @@
 # Building Operations Hub
 
-[← Portfolio](../../README.md) · [▶ Démo / Demo](https://www.youtube.com/watch?v=Y15BCn_i-fo)
+[← Portfolio](../../README.md) · [📚 Documentation complète / Complete documentation](./docs/README.md)
 
 > 🇫🇷 **Une application terrain qui guide un technicien depuis le site jusqu’à la bonne procédure, au bon contact ou au bon retour d’expérience.**  
 > *🇬🇧 A field application that guides a technician from the site to the right procedure, contact or reusable lesson learned.*
@@ -24,14 +24,6 @@ flowchart LR
     D --> E[Action]
     E --> F[Procédure / contact / REX<br/>Procedure / contact / lesson learned]
 ```
-
-## 🎬 Démonstration / Demo
-
-<a href="https://www.youtube.com/watch?v=Y15BCn_i-fo"><img src="https://img.youtube.com/vi/Y15BCn_i-fo/maxresdefault.jpg" width="100%"></a>
-
-**[▶ Voir la vidéo complète / Watch the full demo →](https://www.youtube.com/watch?v=Y15BCn_i-fo)**
-
----
 
 # Parcours complet image par image / Full image-by-image walkthrough
 
@@ -175,37 +167,33 @@ flowchart TB
     J --> K[Réutilisable par l’équipe<br/>Reusable by team]
 ```
 
-# 🧩 Architecture technique globale / Overall technical architecture
+# 🧩 Architecture cible de l’application / Target application architecture
 
 ```mermaid
 flowchart TB
-    U[Techniciens / référents / managers<br/>Technicians / leads / managers] --> ID[Microsoft Entra ID]
-    ID --> APP[Power Apps Canvas]
+    U[Technicien / référent / manager<br/>Technician / lead / manager] --> APP[Power Apps Canvas]
 
-    APP --> SP[(SharePoint Lists<br/>equipment / contacts / metadata)]
-    APP --> LIB[(SharePoint Libraries<br/>procedures / media)]
-    APP --> FLOW[Power Automate]
+    APP --> REF[(Sites / Buildings / Zones)]
+    APP --> EQ[(Equipment / Contacts)]
+    APP --> LIB[(Procedures / Media)]
+    APP --> INT[(Interventions / Feedback)]
 
-    FLOW --> SP
-    FLOW --> LIB
-    FLOW --> APPR[Validations<br/>Approvals]
-    FLOW --> MSG[Email / Teams]
-    FLOW --> AUD[Audit opérationnel<br/>Operational audit]
-
-    SP --> BI[Power BI / KPI]
+    APP --> AUTO[Automatisation minimale cible<br/>Minimal target automation]
+    AUTO --> REVIEW[Validation de proposition<br/>Proposal review]
+    AUTO --> NOTIF[Notification optionnelle<br/>Optional notification]
 ```
 
-**🇫🇷 Power Apps** gère la navigation responsive, la recherche, les formulaires et l’expérience terrain.  
-*🇬🇧 Power Apps manages responsive navigation, search, forms and the field experience.*
+**🇫🇷 Power Apps** porte l’essentiel du produit : navigation, contexte physique, recherche, formulaires, rôles UX, messages, responsive et états.  
+*🇬🇧 Power Apps owns most of the product: navigation, physical context, search, forms, UX roles, messages, responsive behaviour and state.*
 
-**🇫🇷 SharePoint** conserve les équipements, contacts, métadonnées et références documentaires.  
-*🇬🇧 SharePoint stores equipment, contacts, metadata and document references.*
+**🇫🇷 SharePoint** sert de référentiel pour sites, bâtiments, zones, équipements, contacts, procédures, interventions, feedback et propositions.  
+*🇬🇧 SharePoint acts as the reference store for sites, buildings, zones, equipment, contacts, procedures, interventions, feedback and proposals.*
 
-**🇫🇷 Power Automate** gère les validations, notifications et actions sensibles ou contrôlées.  
-*🇬🇧 Power Automate handles approvals, notifications and sensitive or controlled actions.*
+**🇫🇷 Power Automate** reste volontairement limité à quelques traitements cibles utiles, principalement la validation d’une proposition de contenu et éventuellement une notification critique.  
+*🇬🇧 Power Automate is intentionally limited to a few useful target processes, mainly content-proposal approval and optionally critical notifications.*
 
-**🇫🇷 Power BI** peut exploiter les retours et données opérationnelles pour le pilotage.  
-*🇬🇧 Power BI can use feedback and operational data for performance monitoring.*
+> 🇫🇷 **Transparence :** cette partie décrit la conception cible simulée lorsque l’automatisation n’a pas été livrée dans le package public.  
+> *🇬🇧 **Transparency:** this section describes the simulated target design where automation was not delivered in the public package.*
 
 # 🛡️ Sécurité et validation / Security & approval
 
@@ -225,12 +213,17 @@ flowchart LR
 🇫🇷 Le parcours est pensé pour desktop, tablette et mobile afin que la navigation reste utilisable sur le terrain.  
 *🇬🇧 The journey is designed for desktop, tablet and mobile so navigation remains usable in the field.*
 
-# 🔎 Détails techniques / Technical deep dive
+# 📚 Documentation complète de l’application / Complete application documentation
 
-- [Architecture détaillée / Detailed architecture](./docs/ARCHITECTURE.md)
-- [Parcours utilisateur / User journey](./docs/USER_JOURNEY.md)
-- [Sécurité & validations / Security & approvals](./docs/SECURITY_AND_APPROVALS.md)
-- [Notes de démonstration / Demo notes](./demo/README.md)
+| Lien / Link | Ce que vous trouverez / What you will find |
+|---|---|
+| **[Index documentation](./docs/README.md)** | tous les liens du projet / all project documentation links |
+| **[Catalogue complet de l’application / Full application catalogue](./docs/APPLICATION_CATALOG.md)** | écrans, navigation, états, dépendances, recherche, responsive |
+| **[Parcours utilisateurs / User journeys](./docs/USER_JOURNEY.md)** | technicien, référent, manager, administrateur |
+| **[Modèle de données cible / Target data model](./docs/DATA_MODEL.md)** | sites, bâtiments, zones, équipements, contenus, contacts, feedback |
+| **[Rôles & messages applicatifs / Roles & application messages](./docs/ROLES_AND_MESSAGES.md)** | rôles, accès UX, messages chargement/succès/erreur |
+| **[Architecture cible / Target architecture](./docs/ARCHITECTURE.md)** | Power Apps + SharePoint + automatisation minimale simulée |
+| **[Sécurité & validation / Security & approvals](./docs/SECURITY_AND_APPROVALS.md)** | permissions, publication contenu, suppression, documents |
 
 ---
 

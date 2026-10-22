@@ -14,7 +14,6 @@
 <br><em>🇬🇧 Centralise requests, assignments, documents, e-mails and history.</em>
 <br><br><code>Demande → équipe → traitement → clôture</code>
 <br><br><a href="./power-platform-ticketing-system/"><strong>Voir / Open →</strong></a>
-<br><a href="https://www.youtube.com/watch?v=_jR8T9s2VUE">▶ Démo / Demo</a>
 </td>
 
 <td width="50%" valign="top">
@@ -24,7 +23,6 @@
 <br><em>🇬🇧 Guide technicians to the right equipment procedure.</em>
 <br><br><code>Site → bâtiment → équipement → action</code>
 <br><br><a href="./building-operations-hub/"><strong>Voir / Open →</strong></a>
-<br><a href="https://www.youtube.com/watch?v=Y15BCn_i-fo">▶ Démo / Demo</a>
 </td>
 </tr>
 </table>

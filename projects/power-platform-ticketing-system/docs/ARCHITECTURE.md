@@ -1,6 +1,6 @@
 # Architecture — Ticketing
 
-[← Projet / Project](../README.md)
+[← Projet / Project](../README.md) · [📚 Index](./README.md) · [Délégation / Delegation](./DELEGATION_SYSTEM.md) · [Flows](./FLOW_CATALOG.md)
 
 ## 🧩 Vue simple / Simple view
 

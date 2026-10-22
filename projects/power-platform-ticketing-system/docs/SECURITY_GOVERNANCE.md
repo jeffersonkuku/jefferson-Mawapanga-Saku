@@ -1,6 +1,6 @@
 # Sécurité & gouvernance / Security & Governance
 
-[← Projet / Project](../README.md)
+[← Projet / Project](../README.md) · [📚 Index](./README.md) · [Délégation / Delegation](./DELEGATION_SYSTEM.md)
 
 ## 🛡️ Principe principal / Main principle
 
@@ -37,3 +37,11 @@ flowchart LR
 
 🇫🇷 Les variables d’environnement et références de connexion évitent de coder en dur les valeurs propres à chaque environnement.  
 *🇬🇧 Environment variables and connection references avoid hard-coding environment-specific values.*
+
+
+## 🔁 Sécurité de la délégation / Delegation security
+
+🇫🇷 Une délégation ne remplace pas les droits permanents : elle étend temporairement un périmètre précis et doit être revalidée pour toute action sensible.  
+*🇬🇧 Delegation does not replace permanent permissions: it temporarily extends a specific scope and should be revalidated for sensitive actions.*
+
+**[→ Documentation complète / Full documentation](./DELEGATION_SYSTEM.md)**
