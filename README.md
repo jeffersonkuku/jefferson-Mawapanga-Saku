@@ -10,38 +10,39 @@
 
 I use Microsoft Power Platform to turn **manual business processes** into simple applications and automated workflows.
 
+<table>
+<tr>
+<td width="50%" valign="top">
+<a href="./projects/power-platform-ticketing-system/">
+<img src="./projects/power-platform-ticketing-system/assets/01-home_4K.png" width="100%">
+</a>
+<br><strong>Ticketing & Request Management</strong><br>
+Goal: keep requests, owners, status, documents and e-mails in one place.
+<br><br><a href="./projects/power-platform-ticketing-system/"><strong>Open project →</strong></a>
+</td>
+<td width="50%" valign="top">
+<a href="./projects/building-operations-hub/">
+<img src="./projects/building-operations-hub/assets/01-home.png" width="100%">
+</a>
+<br><strong>Building Operations Hub</strong><br>
+Goal: guide a technician from the site to the correct equipment procedure.
+<br><br><a href="./projects/building-operations-hub/"><strong>Open project →</strong></a>
+</td>
+</tr>
+</table>
+
 ```mermaid
 flowchart LR
     A[Manual process] --> B[Simple application]
-    B --> C[Automatic routing / actions]
+    B --> C[Automatic actions]
     C --> D[Shared information]
     D --> E[Clear follow-up]
 ```
 
-### Main projects
-
-#### Ticketing & Request Management
-
-**Goal:** stop losing requests between e-mails, documents and teams.
-
-[![Ticketing](./projects/power-platform-ticketing-system/assets/01-home_4K.png)](./projects/power-platform-ticketing-system/)
-
-**[Open project →](./projects/power-platform-ticketing-system/)** · **[Video →](https://www.youtube.com/watch?v=_jR8T9s2VUE)**
-
-#### Building Operations Hub
-
-**Goal:** help a technician find the right equipment procedure or contact quickly.
-
-[![Building Operations Hub](./projects/building-operations-hub/assets/01-home.png)](./projects/building-operations-hub/)
-
-**[Open project →](./projects/building-operations-hub/)** · **[Video →](https://www.youtube.com/watch?v=Y15BCn_i-fo)**
-
 ### Other personal projects
 
-- **[RoadWords AU](./roadwords-au/)** — vocabulary learning with Australian pronunciation.
-- **[Native English Coach](./native-english-coach/)** — audio-first English practice.
-
-**[See all projects →](./projects/README.md)**
+- **[RoadWords AU](./roadwords-au/)**
+- **[Native English Coach](./native-english-coach/)**
 
 ---
 
@@ -51,35 +52,24 @@ flowchart LR
 
 J’utilise Microsoft Power Platform pour transformer des **processus métiers manuels** en applications simples et workflows automatisés.
 
+| Projet | Objectif |
+|---|---|
+| **[Ticketing & gestion des demandes](./projects/power-platform-ticketing-system/)** | Regrouper demande, responsable, statut, documents et e-mails au même endroit |
+| **[Building Operations Hub](./projects/building-operations-hub/)** | Guider le technicien du site jusqu’à la bonne procédure équipement |
+
 ```mermaid
 flowchart LR
     A[Processus manuel] --> B[Application simple]
-    B --> C[Routage / actions automatiques]
+    B --> C[Actions automatiques]
     C --> D[Information partagée]
     D --> E[Suivi clair]
 ```
 
-### Projets principaux
-
-#### Ticketing & gestion des demandes
-
-**Objectif :** éviter que les demandes se perdent entre les e-mails, les documents et les équipes.
-
-**[Voir le projet →](./projects/power-platform-ticketing-system/)** · **[Vidéo →](https://www.youtube.com/watch?v=_jR8T9s2VUE)**
-
-#### Building Operations Hub
-
-**Objectif :** aider un technicien à trouver rapidement la bonne procédure ou le bon contact.
-
-**[Voir le projet →](./projects/building-operations-hub/)** · **[Vidéo →](https://www.youtube.com/watch?v=Y15BCn_i-fo)**
-
 ### Autres projets personnels
 
-- **[RoadWords AU](./roadwords-au/)** — apprentissage du vocabulaire avec prononciation australienne.
-- **[Native English Coach](./native-english-coach/)** — entraînement audio à l’anglais.
-
-**[Voir tous les projets →](./projects/README.md)**
+- **[RoadWords AU](./roadwords-au/)**
+- **[Native English Coach](./native-english-coach/)**
 
 ---
 
-Les détails techniques sont volontairement placés **dans les pages projets**, pas sur cette page d’accueil.
+Les détails techniques sont volontairement placés **dans chaque projet**, pas sur cette page d’accueil.

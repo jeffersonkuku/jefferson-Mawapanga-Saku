@@ -10,67 +10,60 @@
 
 **Problem:** a business request can be lost between e-mails, documents, follow-ups and several teams.
 
-**Solution:** one application that keeps the request, its owner, status, documents, comments, linked Outlook conversations and history together.
+**Solution:** one application that keeps the request, owner, status, documents, comments, linked Outlook conversations and history together.
 
-**Result:** the requester can follow the request and the operational team can see what needs to be processed.
-
-[![Ticketing demo](./assets/01-home_4K.png)](https://www.youtube.com/watch?v=_jR8T9s2VUE)
-
-### How it works
+**Result:** the requester can follow the request and the operational team can immediately see what needs to be processed.
 
 ```mermaid
 flowchart LR
-    A[Create request] --> B[Send to the right team]
+    A[Create] --> B[Route]
     B --> C[Take ownership]
-    C --> D[Process request]
-    D --> E[Add documents / comments / e-mails]
+    C --> D[Process]
+    D --> E[Documents / e-mails / comments]
     E --> F[Update status]
-    F --> G[Close with history]
+    F --> G[Close + history]
 ```
 
 ### Before / after
 
 | Before | With the application |
 |---|---|
-| Request sent by e-mail | Guided request creation |
-| Hard to know who owns it | Team and assignee are visible |
-| Documents stored separately | Documents linked to the ticket |
-| E-mail discussion outside the tool | Conversation archived with the ticket |
-| Manual relaunches | Status and history visible |
+| Request by e-mail | Guided request creation |
+| Ownership unclear | Team and assignee visible |
+| Documents separate | Documents linked to the ticket |
+| E-mails outside the process | Outlook conversation archived |
+| Manual follow-up | Status and history visible |
 
-### Main screens
+### Visual gallery — click to enlarge
 
-#### Requester
+<table>
+<tr>
+<td width="33%"><a href="./assets/01-home_4K.png"><img src="./assets/01-home_4K.png" width="100%"></a><br><b>Home</b></td>
+<td width="33%"><a href="./assets/02-profile_4K.png"><img src="./assets/02-profile_4K.png" width="100%"></a><br><b>Profile</b></td>
+<td width="33%"><a href="./assets/03-statistics_4K.png"><img src="./assets/03-statistics_4K.png" width="100%"></a><br><b>Statistics</b></td>
+</tr>
+<tr>
+<td><a href="./assets/04-my-tickets_4K.png"><img src="./assets/04-my-tickets_4K.png" width="100%"></a><br><b>My tickets</b></td>
+<td><a href="./assets/05-service-tickets_4K.png"><img src="./assets/05-service-tickets_4K.png" width="100%"></a><br><b>Service tickets</b></td>
+<td><a href="./assets/06-create-ticket_4K.png"><img src="./assets/06-create-ticket_4K.png" width="100%"></a><br><b>Create request</b></td>
+</tr>
+<tr>
+<td><a href="./assets/07-team-management_4K.png"><img src="./assets/07-team-management_4K.png" width="100%"></a><br><b>Teams</b></td>
+<td><a href="./assets/08-settings_4K.png"><img src="./assets/08-settings_4K.png" width="100%"></a><br><b>Settings</b></td>
+<td><a href="./assets/09-access-management_4K.png"><img src="./assets/09-access-management_4K.png" width="100%"></a><br><b>Access</b></td>
+</tr>
+<tr>
+<td><a href="./assets/10-delegations_4K.png"><img src="./assets/10-delegations_4K.png" width="100%"></a><br><b>Delegations</b></td>
+<td><a href="./assets/11-admin-journal_4K.png"><img src="./assets/11-admin-journal_4K.png" width="100%"></a><br><b>Audit</b></td>
+<td><a href="./assets/12-ticket-detail_4K.png"><img src="./assets/12-ticket-detail_4K.png" width="100%"></a><br><b>Ticket detail</b></td>
+</tr>
+<tr>
+<td><a href="./assets/13-outlook-archive_4K.png"><img src="./assets/13-outlook-archive_4K.png" width="100%"></a><br><b>Outlook archive</b></td>
+<td></td><td></td>
+</tr>
+</table>
 
-[![Home](./assets/01-home_4K.png)](./assets/01-home_4K.png)
-
-[![My tickets](./assets/04-my-tickets_4K.png)](./assets/04-my-tickets_4K.png)
-
-[![Create ticket](./assets/06-create-ticket_4K.png)](./assets/06-create-ticket_4K.png)
-
-#### Operational team
-
-[![Service tickets](./assets/05-service-tickets_4K.png)](./assets/05-service-tickets_4K.png)
-
-[![Ticket detail](./assets/12-ticket-detail_4K.png)](./assets/12-ticket-detail_4K.png)
-
-[![Outlook archive](./assets/13-outlook-archive_4K.png)](./assets/13-outlook-archive_4K.png)
-
-#### Administration
-
-[![Statistics](./assets/03-statistics_4K.png)](./assets/03-statistics_4K.png)
-
-[![Teams](./assets/07-team-management_4K.png)](./assets/07-team-management_4K.png)
-
-[![Settings](./assets/08-settings_4K.png)](./assets/08-settings_4K.png)
-
-[![Access](./assets/09-access-management_4K.png)](./assets/09-access-management_4K.png)
-
-[![Delegations](./assets/10-delegations_4K.png)](./assets/10-delegations_4K.png)
-
-[![Audit](./assets/11-admin-journal_4K.png)](./assets/11-admin-journal_4K.png)
-
-### Want the technical detail?
+### Technical detail
 
 - **[Architecture →](./docs/ARCHITECTURE.md)**
 - **[User journey →](./docs/USER_JOURNEY.md)**
@@ -85,20 +78,18 @@ flowchart LR
 
 **Problème :** une demande métier peut se perdre entre les e-mails, les documents, les relances et plusieurs équipes.
 
-**Solution :** une seule application qui regroupe la demande, son responsable, son statut, ses documents, commentaires, conversations Outlook et son historique.
+**Solution :** une seule application qui regroupe la demande, le responsable, le statut, les documents, commentaires, conversations Outlook et l’historique.
 
-**Résultat :** le demandeur sait où en est sa demande et l’équipe opérationnelle sait ce qu’elle doit traiter.
-
-### Fonctionnement
+**Résultat :** le demandeur sait où en est sa demande et l’équipe sait immédiatement ce qu’elle doit traiter.
 
 ```mermaid
 flowchart LR
-    A[Créer la demande] --> B[Envoyer à la bonne équipe]
+    A[Créer] --> B[Router]
     B --> C[Prendre en charge]
     C --> D[Traiter]
-    D --> E[Documents / commentaires / e-mails]
+    D --> E[Documents / e-mails / commentaires]
     E --> F[Mettre à jour le statut]
-    F --> G[Clôturer avec historique]
+    F --> G[Clôturer + historique]
 ```
 
 ### Avant / après
@@ -106,16 +97,16 @@ flowchart LR
 | Avant | Avec l’application |
 |---|---|
 | Demande par e-mail | Création guidée |
-| Responsable difficile à identifier | Équipe et responsable visibles |
+| Responsable peu clair | Équipe et responsable visibles |
 | Documents séparés | Documents liés au ticket |
-| Conversation e-mail à part | Conversation archivée dans le ticket |
+| E-mails hors processus | Conversation Outlook archivée |
 | Relances manuelles | Statut et historique visibles |
 
-### Écrans principaux
+### Galerie
 
-Les images ci-dessus correspondent aux mêmes parcours : **demandeur → équipe → administration**. Chaque image est cliquable pour l’ouvrir en grand.
+Les **13 captures ci-dessus** sont cliquables pour être ouvertes en grand.
 
-### Pour aller plus loin techniquement
+### Détail technique
 
 - **[Architecture →](./docs/ARCHITECTURE.md)**
 - **[Parcours utilisateur →](./docs/USER_JOURNEY.md)**

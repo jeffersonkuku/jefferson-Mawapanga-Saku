@@ -8,61 +8,55 @@
 
 ### Understand the project in 30 seconds
 
-**Problem:** during an intervention, technicians may waste time searching through documents, contacts and people’s experience.
+**Problem:** during an intervention, technicians can waste time searching through documents, contacts and people’s experience.
 
 **Solution:** one field application organised like the real physical environment.
 
 **Site → Building → Zone → Equipment → Action**
 
-[![Building Operations Hub](./assets/01-home.png)](https://www.youtube.com/watch?v=Y15BCn_i-fo)
-
-### How it works
-
 ```mermaid
 flowchart LR
-    A[Choose site] --> B[Choose building]
-    B --> C[Choose zone]
-    C --> D[Choose equipment]
-    D --> E[Choose action]
-    E --> F[Open procedure / contact / knowledge]
+    A[Site] --> B[Building]
+    B --> C[Zone]
+    C --> D[Equipment]
+    D --> E[Action]
+    E --> F[Procedure / contact / knowledge]
 ```
+
+### Visual gallery — click to enlarge
+
+<table>
+<tr>
+<td width="33%"><a href="./assets/01-home.png"><img src="./assets/01-home.png" width="100%"></a><br><b>Home</b></td>
+<td width="33%"><a href="./assets/02-sites.png"><img src="./assets/02-sites.png" width="100%"></a><br><b>Sites</b></td>
+<td width="33%"><a href="./assets/03-buildings.png"><img src="./assets/03-buildings.png" width="100%"></a><br><b>Buildings</b></td>
+</tr>
+<tr>
+<td><a href="./assets/04-floors.png"><img src="./assets/04-floors.png" width="100%"></a><br><b>Zones</b></td>
+<td><a href="./assets/05-equipment-library.png"><img src="./assets/05-equipment-library.png" width="100%"></a><br><b>Equipment</b></td>
+<td><a href="./assets/06-equipment-detail.png"><img src="./assets/06-equipment-detail.png" width="100%"></a><br><b>Actions</b></td>
+</tr>
+<tr>
+<td><a href="./assets/07-start-tutorial.png"><img src="./assets/07-start-tutorial.png" width="100%"></a><br><b>Start procedure</b></td>
+<td><a href="./assets/08-configuration.png"><img src="./assets/08-configuration.png" width="100%"></a><br><b>Configuration</b></td>
+<td><a href="./assets/09-troubleshooting.png"><img src="./assets/09-troubleshooting.png" width="100%"></a><br><b>Troubleshooting</b></td>
+</tr>
+<tr>
+<td><a href="./assets/10-contacts.png"><img src="./assets/10-contacts.png" width="100%"></a><br><b>Contacts</b></td>
+<td><a href="./assets/11-barometry-reference.png"><img src="./assets/11-barometry-reference.png" width="100%"></a><br><b>Intervention reference</b></td>
+<td><a href="./assets/12-content-proposal.png"><img src="./assets/12-content-proposal.png" width="100%"></a><br><b>Content proposal</b></td>
+</tr>
+<tr>
+<td><a href="./assets/13-barometry-rating.png"><img src="./assets/13-barometry-rating.png" width="100%"></a><br><b>Feedback</b></td>
+<td></td><td></td>
+</tr>
+</table>
 
 ### What the user can do
 
-- find the right equipment;
-- open start, stop, configuration or troubleshooting procedures;
-- find technical contacts;
-- reuse lessons learned;
-- propose new technical content;
-- leave post-intervention feedback.
+Find the right equipment → open the right procedure → find the right contact → reuse or propose knowledge → leave feedback.
 
-### Visual journey
-
-[![Home](./assets/01-home.png)](./assets/01-home.png)
-
-[![Site](./assets/02-sites.png)](./assets/02-sites.png)
-
-[![Building](./assets/03-buildings.png)](./assets/03-buildings.png)
-
-[![Zone](./assets/04-floors.png)](./assets/04-floors.png)
-
-[![Equipment](./assets/05-equipment-library.png)](./assets/05-equipment-library.png)
-
-[![Equipment actions](./assets/06-equipment-detail.png)](./assets/06-equipment-detail.png)
-
-[![Procedure](./assets/07-start-tutorial.png)](./assets/07-start-tutorial.png)
-
-[![Configuration](./assets/08-configuration.png)](./assets/08-configuration.png)
-
-[![Troubleshooting](./assets/09-troubleshooting.png)](./assets/09-troubleshooting.png)
-
-[![Contacts](./assets/10-contacts.png)](./assets/10-contacts.png)
-
-[![Content proposal](./assets/12-content-proposal.png)](./assets/12-content-proposal.png)
-
-[![Feedback](./assets/13-barometry-rating.png)](./assets/13-barometry-rating.png)
-
-### Want the technical detail?
+### Technical detail
 
 - **[Architecture →](./docs/ARCHITECTURE.md)**
 - **[User journey →](./docs/USER_JOURNEY.md)**
@@ -80,31 +74,24 @@ flowchart LR
 
 **Site → Bâtiment → Zone → Équipement → Action**
 
-### Fonctionnement
-
 ```mermaid
 flowchart LR
-    A[Choisir le site] --> B[Choisir le bâtiment]
-    B --> C[Choisir la zone]
-    C --> D[Choisir l’équipement]
-    D --> E[Choisir l’action]
-    E --> F[Ouvrir procédure / contact / connaissance]
+    A[Site] --> B[Bâtiment]
+    B --> C[Zone]
+    C --> D[Équipement]
+    D --> E[Action]
+    E --> F[Procédure / contact / connaissance]
 ```
+
+### Galerie
+
+Les **13 captures ci-dessus** sont cliquables pour être ouvertes en grand.
 
 ### Ce que l’utilisateur peut faire
 
-- retrouver le bon équipement ;
-- ouvrir les procédures marche, arrêt, paramétrage ou dépannage ;
-- trouver les contacts techniques ;
-- réutiliser les retours d’expérience ;
-- proposer un nouveau contenu technique ;
-- donner un retour après intervention.
+Trouver le bon équipement → ouvrir la bonne procédure → trouver le bon contact → réutiliser ou proposer une connaissance → laisser un retour.
 
-### Parcours visuel
-
-Les captures ci-dessus suivent exactement ce parcours et sont cliquables pour être ouvertes en grand.
-
-### Pour aller plus loin techniquement
+### Détail technique
 
 - **[Architecture →](./docs/ARCHITECTURE.md)**
 - **[Parcours utilisateur →](./docs/USER_JOURNEY.md)**
