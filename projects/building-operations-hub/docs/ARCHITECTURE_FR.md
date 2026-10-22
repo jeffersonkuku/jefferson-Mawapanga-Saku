@@ -1,28 +1,15 @@
-# Architecture — version simple
+# Architecture — Bilingual page
 
-[← Building Operations Hub](../README.md)
+---
 
-## L’objectif
+## 🇬🇧 English
 
-Le technicien doit voir **un parcours simple vers la bonne information**, même si plusieurs composants travaillent derrière.
+The architecture page is now bilingual.  
+**[Open the current architecture page →](./ARCHITECTURE.md)**
 
-\`\`\`mermaid
-flowchart LR
-    U[Technicien] --> A[Application]
-    A --> D[Équipements / contacts / procédures]
-    A --> W[Automatisation]
-    W --> V[Validation / notification]
-    D --> K[Connaissance réutilisable]
-\`\`\`
+---
 
-- **Application :** guide l’utilisateur.
-- **Données :** conservent équipements, contacts et connaissances.
-- **Automatisation :** gère les actions contrôlées, validations et notifications.
-- **Reporting :** exploite ensuite les retours terrain.
+## 🇫🇷 Français
 
-<details>
-<summary><strong>Vue technique</strong></summary>
-
-La conception cible repose sur Power Apps Canvas, Power Fx, SharePoint, Power Automate et Microsoft 365, avec UX responsive, séparation des responsabilités, contrôle des accès et déploiement par environnement.
-
-</details>
+La page architecture est maintenant bilingue.  
+**[Ouvrir la page architecture actuelle →](./ARCHITECTURE.md)**

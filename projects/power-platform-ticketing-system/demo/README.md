@@ -1,22 +1,37 @@
-# Ticketing demo
+# Ticketing Demo
 
-[← Ticketing project](../README.md)
+[← Project](../README.md)
 
-## Start with the video
+---
 
-**[▶ Power Apps Ticketing System Demo](https://www.youtube.com/watch?v=_jR8T9s2VUE)**
+## 🇬🇧 English
 
-The video is the fastest way to understand the product before reading technical documentation.
+**[▶ Watch the full demo](https://www.youtube.com/watch?v=_jR8T9s2VUE)**
 
-### What to watch for
-
-\`\`\`mermaid
+```mermaid
 flowchart LR
     A[Create] --> B[Assign]
     B --> C[Process]
     C --> D[Documents / e-mails]
     D --> E[Follow status]
-    E --> F[Admin & reporting]
-\`\`\`
+    E --> F[Close / report]
+```
 
-The public recording focuses on the user journey and the business problem. Production source packages, credentials and confidential environment details are intentionally excluded.
+The video shows the user journey first. Technical implementation details are documented separately.
+
+---
+
+## 🇫🇷 Français
+
+**[▶ Voir la démonstration complète](https://www.youtube.com/watch?v=_jR8T9s2VUE)**
+
+```mermaid
+flowchart LR
+    A[Créer] --> B[Affecter]
+    B --> C[Traiter]
+    C --> D[Documents / e-mails]
+    D --> E[Suivre le statut]
+    E --> F[Clôturer / piloter]
+```
+
+La vidéo montre d’abord le parcours utilisateur. Les détails techniques sont documentés séparément.

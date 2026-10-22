@@ -1,23 +1,15 @@
-# Parcours utilisateur
+# User Journey — Bilingual page
 
-[← Building Operations Hub](../README.md)
+---
 
-## Parcours terrain principal
+## 🇬🇧 English
 
-\`\`\`mermaid
-flowchart LR
-    A[Où suis-je ?] --> B[Quel bâtiment / quelle zone ?]
-    B --> C[Quel équipement ?]
-    C --> D[Que dois-je faire ?]
-    D --> E[Ouvrir la bonne procédure]
-\`\`\`
+The user-journey page is now bilingual.  
+**[Open the current page →](./USER_JOURNEY.md)**
 
-L’application suit des questions naturelles pour un technicien, pas l’emplacement technique des fichiers.
+---
 
-## Autres parcours
+## 🇫🇷 Français
 
-- **Besoin d’aide ?** Ouvrir l’annuaire technique.
-- **Nouvelle solution utile ?** Proposer un contenu à valider.
-- **Intervention terminée ?** Donner un retour lié au contexte de l’intervention.
-
-Le but est de transformer l’expérience terrain en connaissance facile à retrouver.
+La page parcours utilisateur est maintenant bilingue.  
+**[Ouvrir la page actuelle →](./USER_JOURNEY.md)**

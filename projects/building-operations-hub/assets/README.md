@@ -1,11 +1,23 @@
-# Screenshots
+# Screenshots / Captures
 
-[← Building Operations Hub](../README.md)
+[← Project](../README.md)
 
-This folder contains the screenshots used by the public case study.
+---
 
-They follow the same order as the user journey:
+## 🇬🇧 English
+
+The screenshots follow the user journey:
 
 **Home → Site → Building → Zone → Equipment → Action → Procedure → Knowledge → Contacts → Feedback**
 
-For the easiest reading experience, open the [main project page](../README.md) instead of browsing this folder directly.
+For the guided explanation, return to the [project page](../README.md).
+
+---
+
+## 🇫🇷 Français
+
+Les captures suivent le parcours utilisateur :
+
+**Accueil → Site → Bâtiment → Zone → Équipement → Action → Procédure → Connaissance → Contacts → Retour**
+
+Pour l’explication guidée, revenez à la [page projet](../README.md).

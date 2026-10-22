@@ -1,21 +1,31 @@
-# Building Operations Hub — demo
+# Building Operations Hub — Demo
 
 [← Project](../README.md)
 
-**[▶ Watch the full demo on YouTube](https://www.youtube.com/watch?v=Y15BCn_i-fo)**
+---
 
-## What the video shows
+## 🇬🇧 English
 
-\`\`\`mermaid
+**[▶ Watch the full demo](https://www.youtube.com/watch?v=Y15BCn_i-fo)**
+
+```mermaid
 flowchart LR
     A[Home] --> B[Site / building / zone]
     B --> C[Equipment]
     C --> D[Procedure / troubleshooting]
-    D --> E[Contacts / contribution / feedback]
-\`\`\`
+    D --> E[Contacts / feedback]
+```
 
-The video focuses on the user experience. Production connectors, credentials and confidential source details are not shown.
+---
 
-## 🇫🇷
+## 🇫🇷 Français
 
-La vidéo montre le parcours complet depuis l’accueil jusqu’à l’équipement, puis les procédures, le dépannage, les contacts, les propositions de contenu et le retour d’intervention.
+**[▶ Voir la démonstration complète](https://www.youtube.com/watch?v=Y15BCn_i-fo)**
+
+```mermaid
+flowchart LR
+    A[Accueil] --> B[Site / bâtiment / zone]
+    B --> C[Équipement]
+    C --> D[Procédure / dépannage]
+    D --> E[Contacts / retour]
+```
