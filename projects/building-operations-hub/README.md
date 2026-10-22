@@ -27,7 +27,7 @@ flowchart LR
 
 ## 🎬 Démonstration / Demo
 
-<a href="https://www.youtube.com/watch?v=Y15BCn_i-fo"><img src="./assets/01-home.png" width="100%"></a>
+<a href="https://www.youtube.com/watch?v=Y15BCn_i-fo"><img src="https://img.youtube.com/vi/Y15BCn_i-fo/maxresdefault.jpg" width="100%"></a>
 
 **[▶ Voir la vidéo complète / Watch the full demo →](https://www.youtube.com/watch?v=Y15BCn_i-fo)**
 
