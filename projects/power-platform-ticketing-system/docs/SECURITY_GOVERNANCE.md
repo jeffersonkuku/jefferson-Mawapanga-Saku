@@ -1,45 +1,59 @@
-# Security & governance — explained simply
+# Security & Governance — Ticketing
 
-[← Ticketing project](../README.md)
+[← Project](../README.md)
 
-## The main rule
+---
 
-**Hiding a button is not security.**
+## 🇬🇧 English
 
-A user interface can make an action easier or harder to reach, but sensitive actions must also be checked where the data or automation is actually changed.
+### Main rule
 
-\`\`\`mermaid
+**A hidden button is not security.**
+
+```mermaid
 flowchart LR
-    A[User asks to perform an action] --> B[Check identity / scope / business rule]
+    A[User requests an action] --> B[Check identity + business rule]
     B -->|Allowed| C[Perform action]
-    B -->|Not allowed| D[Reject action]
-    C --> E[Keep trace / history]
-\`\`\`
+    B -->|Not allowed| D[Reject]
+    C --> E[Keep audit trail]
+```
 
-## What this protects
+Sensitive actions should be checked where the data or automation is actually changed.
 
-- access to team or administrative actions;
-- destructive operations;
-- routing and configuration;
-- documents and business records;
-- temporary delegation;
-- repeated or duplicate actions.
+### Deployment
 
-## Deployment
-
-\`\`\`mermaid
+```mermaid
 flowchart LR
-    D[DEV] --> T[TEST / UAT]
-    T --> P[PROD]
-\`\`\`
+    A[DEV] --> B[TEST / UAT]
+    B --> C[PROD]
+```
 
-Changes should be tested before production. Environment-specific values should not be hard-coded into the business logic.
+Changes should be tested before production, and environment-specific settings should not be hard-coded.
 
-<details>
-<summary><strong>Technical notes</strong></summary>
+---
 
-The solution uses solution-aware Power Automate patterns, connection references and environment variables. Production design should also respect DLP policies, least privilege, explicit error handling, controlled retries, anti-duplicate/idempotency measures and protection against self-triggered recursion.
+## 🇫🇷 Français
 
-The public portfolio does not expose credentials, tenant URLs, connection IDs, production list identifiers or source packages.
+### Règle principale
 
-</details>
+**Cacher un bouton n’est pas une sécurité.**
+
+```mermaid
+flowchart LR
+    A[Utilisateur demande une action] --> B[Vérifier identité + règle métier]
+    B -->|Autorisé| C[Exécuter]
+    B -->|Refusé| D[Rejeter]
+    C --> E[Conserver une trace]
+```
+
+Les actions sensibles doivent être vérifiées là où les données ou automatisations sont réellement modifiées.
+
+### Déploiement
+
+```mermaid
+flowchart LR
+    A[DEV] --> B[TEST / UAT]
+    B --> C[PROD]
+```
+
+Les changements doivent être testés avant la production et les paramètres liés à l’environnement ne doivent pas être codés en dur.

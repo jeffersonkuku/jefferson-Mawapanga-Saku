@@ -1,28 +1,37 @@
-# Architecture — explained simply
+# Architecture — Building Operations Hub
 
-[← Building Operations Hub](../README.md)
+[← Project](../README.md)
 
-## The goal
+---
 
-The technician should see **one simple route to the answer**, while the technical services stay behind the scenes.
+## 🇬🇧 English
 
-\`\`\`mermaid
+### Simple view
+
+```mermaid
 flowchart LR
-    U[Technician] --> A[Application]
-    A --> D[Equipment / contacts / procedures]
-    A --> W[Automation]
-    W --> V[Validation / notification]
-    D --> K[Reusable operational knowledge]
-\`\`\`
+    U[Technician] --> A[Power Apps]
+    A --> D[Equipment + contacts + procedures]
+    A --> W[Power Automate]
+    W --> V[Validation / notifications]
+    D --> K[Reusable knowledge]
+```
 
-- **Application:** guides the user.
-- **Data:** stores equipment, contacts and knowledge.
-- **Automation:** handles controlled actions, approvals and notifications.
-- **Reporting:** can use the feedback later.
+The application guides the technician. Data stores the knowledge. Automation handles controlled actions.
 
-<details>
-<summary><strong>Technical view</strong></summary>
+---
 
-The intended stack is Power Apps Canvas + Power Fx + SharePoint + Power Automate + Microsoft 365. Production-oriented design separates interface, data, controlled actions and access rules, with responsive UX and environment-aware deployment.
+## 🇫🇷 Français
 
-</details>
+### Vue simple
+
+```mermaid
+flowchart LR
+    U[Technicien] --> A[Power Apps]
+    A --> D[Équipements + contacts + procédures]
+    A --> W[Power Automate]
+    W --> V[Validation / notifications]
+    D --> K[Connaissance réutilisable]
+```
+
+L’application guide le technicien. Les données conservent la connaissance. L’automatisation gère les actions contrôlées.

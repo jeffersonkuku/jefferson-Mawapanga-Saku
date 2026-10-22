@@ -1,25 +1,37 @@
-# Security & approvals — explained simply
+# Security & Approvals — Building Operations Hub
 
-[← Building Operations Hub](../README.md)
+[← Project](../README.md)
 
-## Why approval exists
+---
 
-A field user can propose useful information, but not every proposal should become official guidance immediately.
+## 🇬🇧 English
 
-\`\`\`mermaid
+### Why approval exists
+
+A technician can propose useful knowledge, but a proposal should not become official guidance immediately.
+
+```mermaid
 flowchart LR
-    A[User proposes content] --> B[Check scope / permissions]
+    A[User proposes content] --> B[Check rights / scope]
     B --> C[Review]
     C -->|Approved| D[Publish]
     C -->|Rejected| E[Return / archive]
-    D --> F[Keep a trace]
-\`\`\`
+    D --> F[Keep history]
+```
 
-The same principle applies to sensitive actions: the interface helps the user, but the data / automation layer must still verify that the action is allowed.
+---
 
-<details>
-<summary><strong>Technical principles</strong></summary>
+## 🇫🇷 Français
 
-Least privilege, server-side validation, auditability, controlled destructive actions, explicit error paths and DEV → TEST/UAT → PROD deployment are part of the intended production approach.
+### Pourquoi une validation ?
 
-</details>
+Un technicien peut proposer une connaissance utile, mais une proposition ne doit pas devenir immédiatement une procédure officielle.
+
+```mermaid
+flowchart LR
+    A[Utilisateur propose un contenu] --> B[Vérifier droits / périmètre]
+    B --> C[Relire]
+    C -->|Validé| D[Publier]
+    C -->|Refusé| E[Retour / archivage]
+    D --> F[Conserver l’historique]
+```

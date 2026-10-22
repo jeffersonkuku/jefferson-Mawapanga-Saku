@@ -1,23 +1,31 @@
-# User journey
+# User Journey — Building Operations Hub
 
-[← Building Operations Hub](../README.md)
+[← Project](../README.md)
 
-## The normal field journey
+---
 
-\`\`\`mermaid
+## 🇬🇧 English
+
+```mermaid
 flowchart LR
     A[Where am I?] --> B[Which building / zone?]
     B --> C[Which equipment?]
-    C --> D[What do I need to do?]
-    D --> E[Open the right procedure]
-\`\`\`
+    C --> D[What do I need?]
+    D --> E[Open procedure / contact / knowledge]
+```
 
-The application is designed around questions a technician can answer naturally, not around where files are stored.
+The user does not need to know where files are stored. The application follows questions that make sense in the field.
 
-## Other journeys
+---
 
-- **Need help?** Open the technical contact directory.
-- **Found a useful solution?** Propose technical content for validation.
-- **Finished an intervention?** Leave feedback linked to the intervention context.
+## 🇫🇷 Français
 
-The design tries to turn field knowledge into something that can be found again later.
+```mermaid
+flowchart LR
+    A[Où suis-je ?] --> B[Quel bâtiment / quelle zone ?]
+    B --> C[Quel équipement ?]
+    C --> D[De quoi ai-je besoin ?]
+    D --> E[Ouvrir procédure / contact / connaissance]
+```
+
+L’utilisateur n’a pas besoin de savoir où sont stockés les fichiers. L’application suit des questions naturelles sur le terrain.

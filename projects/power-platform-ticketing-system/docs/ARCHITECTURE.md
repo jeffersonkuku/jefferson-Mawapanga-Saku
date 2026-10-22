@@ -1,57 +1,98 @@
-# Architecture — explained simply
+# Architecture — Ticketing & Request Management
 
-[← Ticketing project](../README.md)
+[← Project](../README.md)
 
-## What is the architecture trying to achieve?
+---
 
-The user should see **one simple application**, even though several services work behind it.
+## 🇬🇧 English
 
-\`\`\`mermaid
+### Simple explanation
+
+The user sees one application, but several services work behind it.
+
+```mermaid
 flowchart LR
-    U[User] --> A[Application]
-    A --> D[Business data & documents]
-    A --> W[Automation]
+    U[User] --> A[Power Apps]
+    A --> D[Requests + documents]
+    A --> W[Power Automate]
     W --> D
-    W --> M[E-mails / notifications]
-    D --> R[History & reporting]
-\`\`\`
+    W --> M[Outlook / notifications]
+    D --> H[History / reporting]
+```
 
-- **Power Apps** is the screen the user works with.
-- **SharePoint** keeps requests, configuration and documents.
-- **Power Automate** performs controlled actions and repetitive work.
-- **Outlook / Microsoft 365** is used when e-mail or user information is needed.
+### What each part does
 
-## Request lifecycle
+- **Power Apps:** the screens and forms used by the user.
+- **SharePoint:** stores requests, documents and configuration.
+- **Power Automate:** performs controlled actions and repetitive tasks.
+- **Outlook / Microsoft 365:** handles e-mail and user information.
 
-\`\`\`mermaid
-stateDiagram-v2
-    [*] --> Creating
-    Creating --> Draft: save meaningful work
-    Draft --> Creating: resume
-    Creating --> Submitted: final confirmation
-    Submitted --> InProgress: team takes ownership
-    InProgress --> Waiting
-    Waiting --> InProgress
-    InProgress --> Completed
-    Completed --> Closed
-\`\`\`
+### Request lifecycle
 
-**Important:** uploading a document does not turn a draft into a submitted ticket.
-
-## Outlook archive
-
-\`\`\`mermaid
+```mermaid
 flowchart LR
-    A[User selects an Outlook conversation] --> B[Automation reads it]
-    B --> C[Conversation + attachments are archived]
-    C --> D[Ticket displays the archived copy]
-\`\`\`
+    A[Create] --> B[Draft]
+    B --> C[Final submission]
+    C --> D[Assigned]
+    D --> E[In progress]
+    E --> F[Waiting if needed]
+    F --> E
+    E --> G[Completed]
+    G --> H[Closed]
+```
 
-<details>
-<summary><strong>Technical details</strong></summary>
+A document upload does **not** submit a ticket. Submission happens only when the user confirms the final step.
 
-The documented solution includes 28 Canvas screens, 27 cloud flows and 29 environment-variable definitions, with SharePoint, Office 365 Outlook and Office 365 Users connection references.
+### Outlook conversation
 
-The design also considers source-side filtering, limited refreshes, bounded concurrency, explicit error paths, traceability and environment-specific configuration.
+```mermaid
+flowchart LR
+    A[Select conversation] --> B[Read messages]
+    B --> C[Archive conversation + attachments]
+    C --> D[Display it from the ticket]
+```
 
-</details>
+### Technical facts
+
+The documented solution contains **28 Canvas screens**, **27 Power Automate flows** and **29 environment-variable definitions**.
+
+---
+
+## 🇫🇷 Français
+
+### Explication simple
+
+L’utilisateur voit une seule application, mais plusieurs services travaillent derrière.
+
+```mermaid
+flowchart LR
+    U[Utilisateur] --> A[Power Apps]
+    A --> D[Demandes + documents]
+    A --> W[Power Automate]
+    W --> D
+    W --> M[Outlook / notifications]
+    D --> H[Historique / reporting]
+```
+
+### Rôle de chaque élément
+
+- **Power Apps :** les écrans et formulaires utilisés par l’utilisateur.
+- **SharePoint :** stocke les demandes, documents et paramètres.
+- **Power Automate :** réalise les actions contrôlées et répétitives.
+- **Outlook / Microsoft 365 :** gère les e-mails et informations utilisateurs.
+
+### Cycle de vie
+
+```mermaid
+flowchart LR
+    A[Création] --> B[Brouillon]
+    B --> C[Soumission finale]
+    C --> D[Affectation]
+    D --> E[En cours]
+    E --> F[En attente si nécessaire]
+    F --> E
+    E --> G[Terminé]
+    G --> H[Clôturé]
+```
+
+Ajouter un document ne soumet **pas** automatiquement le ticket. La soumission existe uniquement après confirmation finale.

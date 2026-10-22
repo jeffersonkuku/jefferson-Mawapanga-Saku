@@ -1,42 +1,51 @@
 # RoadWords AU
 
-[← Main portfolio](../README.md) · [Français](./README_FR.md)
+[← Portfolio](../README.md)
 
-> **A mobile vocabulary trainer designed around hearing a real Australian pronunciation, then recalling the meaning.**
+---
 
-## Understand it in 20 seconds
+## 🇬🇧 English
 
-\`\`\`mermaid
+### 20-second overview
+
+RoadWords AU is a mobile vocabulary trainer focused on **hearing real Australian pronunciation before reading the translation**.
+
+```mermaid
 flowchart LR
-    A[Show a due/new word] --> B[Play Australian recording]
+    A[Word to review] --> B[Play Australian audio]
     B --> C[Wait]
     C --> D[Reveal English + French]
     D --> E[Replay]
     E --> F[Known / not known]
-    F --> G[Schedule the next review]
-\`\`\`
+    F --> G[Schedule next review]
+```
 
-## Why I built it
+### Why
 
-The goal is to make vocabulary practice closer to **real listening** instead of reading a list of translations.
+The goal is to practise vocabulary as listening, not only as a written word list.
 
-The app tries to use a real Australian-English recording for the target word. If no suitable recording can be resolved, the card is skipped rather than pretending the pronunciation is available.
+### Technical detail
 
-## What it does
+The project adapts the open-source Motamot project and uses spaced repetition, local progress and Australian-tagged audio sources when available.
 
-- spaced repetition;
-- Australian-pronunciation lookup;
-- audio-first learning;
-- English + French reveal;
-- repeated listening;
-- simple known / not-known answer;
-- local progress on the device.
+---
 
-<details>
-<summary><strong>Technical details</strong></summary>
+## 🇫🇷 Français
 
-RoadWords AU is an adaptation of the open-source **Motamot** project and keeps its mobile/PWA + Leitner foundation. It uses Wikimedia Commons / Wiktionary sources to resolve Australian-tagged recordings when available, caches lookups locally and stores learning progress in IndexedDB.
+### Vue en 20 secondes
 
-See [UPSTREAM.md](./UPSTREAM.md) for the original project and licence information.
+RoadWords AU est une application mobile de vocabulaire centrée sur **l’écoute d’une vraie prononciation australienne avant de lire la traduction**.
 
-</details>
+```mermaid
+flowchart LR
+    A[Mot à réviser] --> B[Audio australien]
+    B --> C[Attendre]
+    C --> D[Afficher anglais + français]
+    D --> E[Réécouter]
+    E --> F[Connu / pas connu]
+    F --> G[Programmer la prochaine révision]
+```
+
+### Pourquoi
+
+Le but est de travailler le vocabulaire comme un exercice d’écoute et pas uniquement comme une liste de mots écrits.

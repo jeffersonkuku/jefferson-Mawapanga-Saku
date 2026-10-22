@@ -1,42 +1,73 @@
-# User journey — who does what?
+# User Journey — Ticketing
 
-[← Ticketing project](../README.md)
+[← Project](../README.md)
 
-## Requester
+---
 
-\`\`\`mermaid
+## 🇬🇧 English
+
+### Requester
+
+```mermaid
 flowchart LR
-    A[Create request] --> B[Fill useful information]
-    B --> C[Add documents if needed]
+    A[Create request] --> B[Fill information]
+    B --> C[Add documents]
     C --> D[Check summary]
     D --> E[Submit]
     E --> F[Follow status]
-\`\`\`
+```
 
-A requester should not need to understand the internal organisation. The application guides the request and shows what happens next.
+### Operational team
 
-## Operational team
-
-\`\`\`mermaid
+```mermaid
 flowchart LR
     A[Open service queue] --> B[Review request]
-    B --> C[Take ownership or reassign]
+    B --> C[Take ownership / reassign]
     C --> D[Process]
-    D --> E[Add comments / documents / e-mails]
+    D --> E[Comments / documents / e-mails]
     E --> F[Update status]
-    F --> G[Complete / close]
-\`\`\`
+    F --> G[Close]
+```
 
-## Administrator
+### Administrator
 
-Administrators manage teams, access, temporary delegation, routing, notifications and audit history.
+Administrators manage teams, access, routing rules, temporary delegation, notifications and audit history.
 
-## Why drafts matter
+### Why drafts matter
 
-A draft is simply **unfinished work**.
+A draft is unfinished work. It should not enter the operational queue before final submission.
 
-- untouched default values do not count as meaningful work;
-- documents can be prepared without submitting;
-- drafts stay in **My tickets**;
-- drafts stay out of **Service tickets**;
-- final confirmation creates the operational ticket.
+---
+
+## 🇫🇷 Français
+
+### Demandeur
+
+```mermaid
+flowchart LR
+    A[Créer la demande] --> B[Renseigner les informations]
+    B --> C[Ajouter les documents]
+    C --> D[Vérifier le résumé]
+    D --> E[Soumettre]
+    E --> F[Suivre le statut]
+```
+
+### Équipe opérationnelle
+
+```mermaid
+flowchart LR
+    A[Ouvrir la file service] --> B[Lire la demande]
+    B --> C[Prendre en charge / réaffecter]
+    C --> D[Traiter]
+    D --> E[Commentaires / documents / e-mails]
+    E --> F[Mettre à jour le statut]
+    F --> G[Clôturer]
+```
+
+### Administrateur
+
+L’administrateur gère les équipes, accès, règles de routage, délégations temporaires, notifications et historique d’administration.
+
+### Pourquoi les brouillons sont importants
+
+Un brouillon est un travail non terminé. Il ne doit pas entrer dans la file opérationnelle avant la soumission finale.

@@ -1,39 +1,39 @@
 # Native English Coach
 
-[← Main portfolio](../README.md)
+[← Portfolio](../README.md)
 
-> **An audio-first learning experiment for practising native English phrases, irregular verbs and listening patterns.**
+---
 
-## The idea
+## 🇬🇧 English
 
-\`\`\`mermaid
+### 20-second overview
+
+An audio-first experiment for learning native English phrases by **hearing, understanding, repeating and recognising them automatically**.
+
+```mermaid
 flowchart LR
-    A[Hear a natural phrase] --> B[Understand the meaning]
-    B --> C[Repeat the same sound]
-    C --> D[Hear it again in context]
-    D --> E[Build automatic recognition]
-\`\`\`
+    A[Hear phrase] --> B[Understand meaning]
+    B --> C[Repeat]
+    C --> D[Hear again in context]
+    D --> E[Recognise automatically]
+```
 
-## Why I built it
+The project includes phrase corpora, irregular verbs, long-form audio, mobile audio and a web/PWA interface.
 
-The project explores a simple question:
+---
 
-**How can a learner stop translating every word and start recognising common native-English blocks as sound patterns?**
+## 🇫🇷 Français
 
-The focus is repetition, listening and context rather than long grammar explanations.
+### Vue en 20 secondes
 
-## What is inside
+Une expérimentation audio pour apprendre des phrases naturelles en anglais en les **écoutant, comprenant, répétant puis reconnaissant automatiquement**.
 
-- curated phrase and vocabulary material;
-- irregular-verb practice;
-- long-form course audio;
-- mobile audio versions;
-- cue/index files that synchronise text and sound;
-- a web interface with offline/PWA support.
+```mermaid
+flowchart LR
+    A[Écouter la phrase] --> B[Comprendre]
+    B --> C[Répéter]
+    C --> D[Réécouter en contexte]
+    D --> E[Reconnaître automatiquement]
+```
 
-<details>
-<summary><strong>Technical note</strong></summary>
-
-This folder contains the web application, audio assets, JSON course data, service worker and helper scripts. It is a learning experiment rather than an enterprise Power Platform case study.
-
-</details>
+Le projet contient des corpus de phrases, verbes irréguliers, audios longs, versions mobiles et une interface web/PWA.
