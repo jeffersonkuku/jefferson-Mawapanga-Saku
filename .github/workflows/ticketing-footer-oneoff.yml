@@ -74,6 +74,7 @@ jobs:
           im.save(path,optimize=True)
           print(f"updated {filename}: removed lower-left name")
           
+          PY
       - name: Commit the four updated PNG files
         shell: bash
         run: |
