@@ -1,0 +1,37 @@
+name: Correct ticketing screenshots
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'projects/power-platform-ticketing-system/tools/fix_ticketing_screenshots.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  correct-images:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install Pillow
+        run: python -m pip install 'Pillow==11.3.0'
+      - name: Correct image files
+        run: python projects/power-platform-ticketing-system/tools/fix_ticketing_screenshots.py
+      - name: Commit only changed ticketing PNGs
+        shell: bash
+        run: |
+          TARGET="projects/power-platform-ticketing-system/assets"
+          if ! git diff --quiet -- "$TARGET"; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -- "$TARGET"/*.png
+            git commit -m "Fix ticketing screenshots: greeting and sidebar identity"
+            git push origin HEAD:main
+          else
+            echo "Nothing to commit; images already corrected."
+          fi
