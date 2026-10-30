@@ -34,7 +34,7 @@ ROLE = "Administrateur principal"
 
 
 def git_sha(data: bytes) -> str:
-    return hashlib.sha1(("blob %d\\0" % len(data)).encode("ascii") + data).hexdigest()
+    return hashlib.sha1(("blob %d\0" % len(data)).encode("ascii") + data).hexdigest()
 
 
 def has_sidebar(image: Image.Image) -> bool:
