@@ -18,6 +18,7 @@ jobs:
       - name: Align profile footer and remove name on Outlook image
         shell: bash
         run: |
+          python - <<'PY'
           from pathlib import Path
           from PIL import Image, ImageDraw, ImageFont
           import hashlib
