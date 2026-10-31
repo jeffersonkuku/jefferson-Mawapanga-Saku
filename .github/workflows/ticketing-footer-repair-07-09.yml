@@ -1,0 +1,62 @@
+name: One-time correct ticketing screenshots 7 and 9
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/ticketing-footer-repair-07-09.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Pillow
+        run: python -m pip install --quiet Pillow==11.3.0
+      - name: Repair only the profile footer in captures 07 and 09
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageDraw, ImageFont
+          root = Path("projects/power-platform-ticketing-system/assets")
+          fontdir = "/usr/share/fonts/truetype/dejavu/"
+          font = ImageFont.truetype(fontdir+"DejaVuSans.ttf", 12)
+          avatar_font = ImageFont.truetype(fontdir+"DejaVuSans-Bold.ttf", 15)
+          files = ("07-team-management_4K.png", "09-access-management_4K.png")
+          for filename in files:
+              path = root / filename
+              im = Image.open(path).convert("RGB")
+              w,h = im.size
+              assert 1900 <= w <= 1925 and 880 <= h <= 930, (filename,w,h)
+              draw = ImageDraw.Draw(im)
+              sidebar = im.getpixel((20,700))
+              bg = im.getpixel((300,h-4))
+              bottom = h-13
+              # Clean the previous footer, including any cut-off avatar/text.
+              draw.rectangle((1,h-99,287,bottom),fill=sidebar)
+              # Leave an intentional margin below the sidebar like the corrected 08/10/12 images.
+              draw.rectangle((0,bottom+1,288,h-1),fill=bg)
+              avatar_x, avatar_y = 14,bottom-54
+              draw.rounded_rectangle((avatar_x,avatar_y,avatar_x+42,avatar_y+42),radius=2,fill=(255,196,0))
+              draw.text((avatar_x+21,avatar_y+21),"A",font=avatar_font,anchor="mm",fill=(24,24,24))
+              draw.text((68,bottom-51),"JEFFERSON MAWAPANGA SAKU",font=font,anchor="lt",fill=(245,245,245))
+              draw.text((68,bottom-29),"Administrateur principal",font=font,anchor="lt",fill=(219,223,230))
+              # Both lines fit within the sidebar width and height.
+              assert draw.textbbox((68,bottom-51),"JEFFERSON MAWAPANGA SAKU",font=font,anchor="lt")[2] < 283
+              assert draw.textbbox((68,bottom-29),"Administrateur principal",font=font,anchor="lt")[3] < bottom
+              im.save(path,optimize=True)
+              print(f"Repaired {filename}: {w}x{h}, profile name and role aligned")
+          
+          PY
+      - name: Publish only two corrected PNGs
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- projects/power-platform-ticketing-system/assets/07-team-management_4K.png projects/power-platform-ticketing-system/assets/09-access-management_4K.png
+          git diff --cached --check
+          git diff --cached --quiet && exit 0
+          git commit -m "fix: align user footer in ticketing screenshots 7 and 9"
+          git push
